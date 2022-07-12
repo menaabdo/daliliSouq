@@ -1,0 +1,11 @@
+<div class="container mt-5">
+    <div class="row">
+        <div class="col-md-4" *ngFor="let category of categories ; index as i">
+            <div class="category-card mb-3">
+                <img src="https://dalilisouq.com/{{category.image}}" alt="">
+                <span class="count">14</span>
+                <h4 class="title">{{category.name}} </h4>
+            </div>
+        </div>
+    </div>
+</div>

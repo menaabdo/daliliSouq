@@ -1,0 +1,72 @@
+<div class="mt-4">
+    <form #f='ngForm' (ngSubmit)='edit()'>
+        <div class="row">
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label for="exampleInputEmail1">first name</label>
+                    <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"  name="firstName" [(ngModel)]= profile_data?.Response.name >
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label for="exampleInputEmail1">last name</label>
+                    <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" name="lastName" [(ngModel)]=profile_data?.Response.s_name>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label for="exampleInputEmail1">username</label>
+                    <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" name='username' [(ngModel)]=profile_data?.Response.name>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label for="exampleInputEmail1">email</label>
+                    <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" name='email' [(ngModel)]=profile_data?.Response.email>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label for="exampleInputEmail1">phone</label>
+                    <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" name='phone' [(ngModel)]=profile_data?.Response.mobile>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label for="exampleInputEmail1">date of birth</label>
+                    <input type="date" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" name='bdate' [(ngModel)]=profile_data?.Response.birth_date>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label for="exampleInputEmail1">facebook link</label>
+                    <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" name='flink' [(ngModel)]=profile_data?.Response.facebook>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label for="exampleInputEmail1">twitter link</label>
+                    <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" name='tlink' [(ngModel)]=profile_data?.Response.twitter>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label for="exampleInputEmail1">instagram link</label>
+                    <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" name='ilink' [(ngModel)]=profile_data?.Response.instagram>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label for="exampleInputEmail1">youtube link</label>
+                    <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" name='ylink' [(ngModel)]=profile_data?.Response.google>
+                </div>
+            </div>
+
+        </div>
+        <div class="form-group form-check">
+            <input type="checkbox" class="form-check-input" id="exampleCheck1">
+            <label class="form-check-label" for="exampleCheck1">show my number on profile and advetising</label>
+        </div>
+        <button type="submit" class="btn btn-primary" >Submit</button>
+    </form>
+</div>

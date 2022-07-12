@@ -1,0 +1,40 @@
+
+
+   <div class='row '>
+    <div  class="rounded  mx-auto  my-5 logo img" style="width:150px; height:150px" >
+</div>
+    <div class="container body">
+      <div class="row">
+      <div class='col-md-6 border-right text-center'style='border-color:#102951'><h1>sign up</h1></div>
+
+<div class='col-md-6 '>
+ 
+<div class="text-center ">
+  
+  <h1 >Log in</h1>
+
+<div class="header-menu container">
+ 
+<form class="my-5" #f='ngForm' (ngSubmit)='login()' enctype="multipart/form-data">
+    <div class="form-group rounded">
+     
+      <input class='form-control input mx-auto rounded' placeholder="E-mail" required type="email" name="email" id="email" [(ngModel)]=user.email>
+
+    </div>
+    <div class="form-group mt-3">
+     
+      <input class='form-control input rounded mx-auto' placeholder='password' required type="password" name="password" id="password" [(ngModel)]=user.password>
+    </div>
+   
+    <button  class='button btn rounded mt-2'type="submit" [disabled]='f.invalid'>Login</button>
+  
+  </form>
+  
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+

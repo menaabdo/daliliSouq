@@ -1,0 +1,14 @@
+.category-card {
+    position: relative;
+    h4.title {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        padding: 1rem;
+        color: #fff;
+        background-color: rgba(0, 0, 0, .6);
+        margin: 0;
+        text-align: center;
+    }
+}

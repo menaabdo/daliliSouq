@@ -1,0 +1,27 @@
+<h3>my sales</h3>
+<div class="row">
+    <div class="col-md-6" *ngFor="let sale of sales" >
+        <div class="card">
+            <div class="card-header d-flex justify-content-between align-items-center">
+                <p  class='m-0'>
+                    <span class="badge badge-warning">
+                        pending
+                    </span>
+                </p>
+                <p class='m-0'>
+                    order (24)
+                </p>
+                <p class='m-0 d-flex flex-column'>
+                    <span>18-02-2022</span>
+                    <span>12:09 AM</span>
+                </p>
+            </div>
+            <div class="card-body">
+                <i class="fa fa-store"></i>
+                <p class='m-0'>
+                    cash on delivery
+                </p>
+            </div>
+        </div>
+    </div>
+</div>

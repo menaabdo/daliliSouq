@@ -1,1 +1,173 @@
+// @import '~bootstrap/scss/bootstrap';
+
 /* You can add global styles to this file, and also import other style files */
+
+
+/* Importing Bootstrap SCSS file. */
+
+@import 'swiper/scss';
+@import 'swiper/scss/navigation';
+@import 'swiper/scss/pagination';
+body {
+    background-color: #f1f1f1;
+    position: relative;
+}
+
+* {
+    text-transform: capitalize !important;
+}
+
+.remove-after {
+    &::after {
+        display: none;
+        opacity: 0;
+        visibility: hidden;
+        width: 0;
+        height: 0;
+        overflow: hidden;
+    }
+}
+
+.card {
+    .card-header,
+    .card-body {
+        min-height: auto;
+        &::after {
+            display: none !important;
+            opacity: 0;
+            visibility: hidden;
+            width: 0;
+            height: 0;
+            overflow: hidden;
+        }
+    }
+}
+
+button {
+    text-transform: capitalize;
+    &.btn {
+        text-transform: capitalize;
+    }
+}
+
+.btn-primary {
+    border-color: #8c1434;
+    background-color: #8c1434;
+    color: #fff;
+    box-shadow: none;
+    &:hover {
+        border-color: #163e73;
+        background-color: #163e73;
+    }
+}
+
+.card-body h4 {
+    margin-bottom: 0.7rem;
+    color: #2c2c2c;
+}
+
+.dropdown-menu {
+    .dropdown-item {
+        font-size: 1.5rem;
+        position: relative;
+        &:hover {
+            background: #163e73;
+            cursor: pointer;
+            color: #fff !important;
+        }
+        i {
+            margin-right: 0.5rem;
+        }
+    }
+}
+
+.dropdown>i {
+    width: 35px;
+    height: 35px;
+    background: #ccc;
+    border-radius: 50%;
+    text-align: center;
+    line-height: 35px;
+    cursor: pointer;
+}
+
+.cursor-pointer {
+    cursor: pointer;
+}
+
+// .fa.fa-heart{
+// color: #8c1434;
+// }
+.badge {
+    font-size: 80%;
+}
+
+.badge.bg-danger {
+    color: #fff;
+}
+
+a {
+    text-decoration: none !important;
+    color: #000;
+}
+
+.following-card {
+    img {
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+    }
+}
+
+.text-primary {
+    color: #8c1434 !important;
+}
+
+.filter-view-way {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    .input {
+        width: 50%;
+        input {
+            width: 100%;
+            margin-bottom: 0;
+        }
+    }
+    .view-way {
+        display: flex;
+        i {
+            width: 35px;
+            height: 35px;
+            font-size: 2rem;
+            text-align: center;
+            line-height: 35px;
+            border-radius: 50%;
+            background: #8c1434;
+            color: #fff;
+            cursor: pointer;
+            margin-left: 1rem;
+        }
+    }
+}
+
+a.btn-link,
+a,
+.btn-link {
+    color: #8c1434;
+    text-decoration: none;
+    &:hover {
+        color: #163e73;
+    }
+}
+
+.bg-primary {
+    background-color: #8c1434 !important;
+}
+
+.form-check {
+    margin-left: 1.25rem;
+    label {
+        margin-left: 0.5rem;
+    }
+}

@@ -1,0 +1,45 @@
+<div class="">
+  
+
+    
+    <div class="header-menu container">
+        <img src="assets/images/logos/6.jpg" class="rounded  mx-auto  my-5 logo img" width='150px' height="150px">
+        <div *ngIf='message_error' class="alert alert-warning alert-dismissible fade show" role="alert">
+            <strong>{{message_error.desc}}!</strong>
+            <!-- <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button> -->
+          </div>
+    <form class="my-5" #f='ngForm' (ngSubmit)='regist()'>
+        <div class="text-center ">
+         
+            <input class=' mb-3  form-control input  round' placeholder="firstname" required type="text" name="firstName" id='name' [(ngModel)]=user.name>
+            <input class='  ml-3  form-control input   round' placeholder="lastname" required type="text" name="lastName" id ='name' [(ngModel)]=user.s_name>
+      
+          </div>
+        <div class="form-group rounded">
+         
+          <input class='form-control input mx-auto round' placeholder="E-mail" required type="email" name="email" id="email" [(ngModel)]=user.email>
+    
+        </div>
+        <div class="form-group mt-3">
+         
+            <input class='form-control input round mx-auto' placeholder='password' required type="password" name="password" id="password" [(ngModel)]=user.password>
+          </div>
+        <div class="form-group mt-3">
+         
+            <input class='form-control input mx-auto round' placeholder="mobile" required type="number" name="mobile"  [(ngModel)]=user.mobile>
+      
+          </div>
+          <div class="form-group mt-3">
+         
+            <input class='form-control input mx-auto round' type="date"  placeholder="birth-data" required  name="birthdate"  [(ngModel)]=user.birth_date>
+      
+          </div>
+       
+       <div class="text-left ml-5 pl-5">
+        <button  class='button btn ml-5 round' type="submit" [disabled]='f.invalid'>regist</button>
+        <a routerLink='/login' id='a' class='text-secondary ml-5 pl-5 link-secondar'> already has account</a>
+        </div>
+      </form>
+    </div>
+    
+    
