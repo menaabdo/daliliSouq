@@ -38,7 +38,7 @@ this.image_file=file
        (res)=>{this.logininfo=res;this.token=this.logininfo.Response.access_token; 
       this.id=this.logininfo.Response.user.id
        localStorage.setItem('token',this.token)
-       localStorage.setItem('id',this.id)
+       //localStorage.setItem('id',this.id)
         this.route.navigateByUrl('/home');
       
 
@@ -72,7 +72,7 @@ this.image_file=file
   /////////////////////////////////Ads///////////
   Ads(){
     const headers =this.headers
-    return this.httpclient.get(`${environment.apiURL}profile/products?os=android&user_id=${localStorage.getItem('id')}&page=1`,{headers})
+    return this.httpclient.get(`${environment.apiURL}profile/products?os=android&user_id=${this.id}&page=1`,{headers})
 
   }
   ////////////////////////////////end/////////////////
