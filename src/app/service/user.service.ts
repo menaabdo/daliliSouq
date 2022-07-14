@@ -15,7 +15,7 @@ import { JSDocTagName } from '@angular/compiler/src/output/output_ast';
 })
 export class UserService {
 user?:any
-id?:number
+id!:string
 logininfo?:any
 image_file?:any
 token!:string
@@ -36,8 +36,9 @@ this.image_file=file
     return this.httpclient.post(`${environment.apiURL}login?os=android`,user)
     .subscribe(
        (res)=>{this.logininfo=res;this.token=this.logininfo.Response.access_token; 
-       console.log(this.token)
+      this.id=this.logininfo.Response.user.id
        localStorage.setItem('token',this.token)
+       localStorage.setItem('id',this.id)
         this.route.navigateByUrl('/home');
       
 
@@ -71,7 +72,7 @@ this.image_file=file
   /////////////////////////////////Ads///////////
   Ads(){
     const headers =this.headers
-    return this.httpclient.get(`${environment.apiURL}profile/products?os=android&page=1`,{headers})
+    return this.httpclient.get(`${environment.apiURL}profile/products?os=android&user_id=${localStorage.getItem('id')}&page=1`,{headers})
 
   }
   ////////////////////////////////end/////////////////
