@@ -79,7 +79,7 @@ this.image_file=file
   ///////////////////////followers/////////////////////
   follwers(){
     const headers =this.headers
-    return this.httpclient.get(`${environment.apiURL}profile/followers?os=android`,{headers})
+    return this.httpclient.get(`${environment.apiURL}profile/followers?os=android&user_id=${this.id}`,{headers})
   }
   follow(id:number){
     const headers =this.headers
@@ -88,7 +88,7 @@ this.image_file=file
   //////////////////////endfollowers///////////////
   follwing(){
     const headers =this.headers
-    return this.httpclient.get(`${environment.apiURL}profile/followings?os=android`,{headers})
+    return this.httpclient.get(`${environment.apiURL}profile/followings?os=android&user_id=${this.id}`,{headers})
    
   }
  showalladdress(){
