@@ -33,6 +33,8 @@ import { CitiesComponent } from 'src/app/cities/cities.component';
 import { RegionsComponent } from 'src/app/cities/regions/regions.component';
 import { AddofferComponent } from './profile-components/offers/addoffer/addoffer.component';
 import { AddpackagesComponent } from './profile-components/offers/addpackages/addpackages.component';
+import { ViewcodeComponent } from 'src/app/viewcode/viewcode.component';
+import { SalesdetailesComponent } from './profile-components/sales/salesdetailes/salesdetailes.component';
 const routes: Routes = [
   {
     path: "",
@@ -59,7 +61,7 @@ const routes: Routes = [
             component:AddproductComponent
           },
           {
-            path: "edit-product",
+            path: "edit-product/:id/:data",
             component: EditProductsComponent
           }
         ]
@@ -140,11 +142,16 @@ const routes: Routes = [
       },
       {
         path: "orders",
-        component: OrdersComponent
+        component: OrdersComponent,
+       
       },
       {
         path: "sales",
         component: SalesComponent
+      },
+      { 
+        path:"saledetailes/:id",
+        component:SalesdetailesComponent
       },
       {
         path: "paid-sales",
@@ -158,6 +165,10 @@ const routes: Routes = [
         path: "recently-view",
         component: RecentlyViewComponent
       }, {path:'order/:id',component:OrderComponent},
+        { path:'viewcode/:id',
+          component:ViewcodeComponent
+        },
+      
    
       {
         path:'cities/:data',

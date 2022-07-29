@@ -7,6 +7,7 @@ import { ActiveAdsComponent } from './advertising-components/active-ads/active-a
 import { PassiveAdsComponent } from './advertising-components/passive-ads/passive-ads.component';
 import { ExpiredAdsComponent } from './advertising-components/expired-ads/expired-ads.component';
 import { SharedModule } from 'src/app/shared/shared.module';
+import { Ng2SearchPipeModule } from 'ng2-search-filter';
 
 
 @NgModule({
@@ -19,7 +20,8 @@ import { SharedModule } from 'src/app/shared/shared.module';
   imports: [
     CommonModule,
     MyAdvertisingRoutingModule,
-    SharedModule
+    SharedModule,
+    Ng2SearchPipeModule,
   ]
 })
 export class MyAdvertisingModule { }

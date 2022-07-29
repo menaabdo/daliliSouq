@@ -35,4 +35,8 @@ profile_data:any
   })
 
 
-}}
+}
+redirect(link:string){
+  window.open(`http://${link}`, '_blank')
+}
+}

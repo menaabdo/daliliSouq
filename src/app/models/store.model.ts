@@ -1,4 +1,5 @@
 import { City } from "./city.model";
+import { Product } from "./product.model";
 import { User } from "./user.model";
 
 export interface Store {
@@ -15,7 +16,15 @@ export interface Store {
     is_follow:number;
     no_followings:number,
     followers_count:number
-    no_follows:number
+    no_follows:number,
+    sales_count:number
+    address:string
+    products:Product[]
+    mobile:number
+    delivery_price:number
+    speed_fees:number
+    total_user:number
+    
     
 
 }

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Order } from 'src/app/models/order.model';
 import { UserService } from 'src/app/service/user.service';
 
@@ -15,7 +15,7 @@ orders?:Order[]
 start_d!:string
 end_d!:string
 id!:number
-  constructor(private paid_sales:UserService,private activeroute:ActivatedRoute) {
+  constructor(private paid_sales:UserService,private activeroute:ActivatedRoute,private router:Router) {
     this.id=this.activeroute.snapshot.params['id']
    }
 
@@ -29,6 +29,10 @@ id!:number
   reset(){
     this.start_d=''
     this.end_d=''
+  }
+  details(order_id:number){
+    this.router.navigateByUrl(`home/me/store/${this.id}/order-detailes/${order_id}/${this.id}`)
+
   }
 
 }

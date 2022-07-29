@@ -80,17 +80,18 @@ height: 380px; background-size: 100% 100%; top:0 ">
 </div>
 <div class=" row text-center ml-2 mt-4">
     
-    <div class="dropdown ml-5  "><i class="fa fa-facebook"></i> </div>
-    <div class="dropdown mx-1 "><i class="fa fa-facebook"></i> </div>
-    <div class="dropdown "><i class="fa fa-facebook"></i> </div>
-    <div class="dropdown mx-1"><i class="fa fa-facebook"></i> </div>
+    <div class="dropdown ml-5  "><i  class="fab fa-facebook-f   "  id="dropdownMenuButton" data-toggle="dropdown" aria-expanded="false">
+    </i> </div>
+    <div class="dropdown mx-1 "><i class="fab fa-instagram"></i> </div>
+    <div class="dropdown "><i class="fab fa-twitter"></i> </div>
+    <div class="dropdown mx-1"><i class="fab fa-youtube"></i> </div>
    
     <p class='col-md-9 text-right ' >
-        <i class="fa fa-star" [ngClass]='store.rate===0?"colored":" "'></i>
-        <i class="fa fa-star" [ngClass]='store.rate===1?"colored":" "'></i>
-        <i class="fa fa-star" [ngClass]='store.rate===2?"colored":""'></i>
-        <i class="fa fa-star" [ngClass]='store.rate==1?"colored":""'></i>
-        <i class="fa fa-star" [ngClass]='store.rate==3?"colored":""'></i>
+        <i class="fa fa-star" [ngClass]='store.rate>0?"colored":""'></i>{{store.rate}}
+        <!-- <i class="fa fa-star" [ngClass]='store.rate>1?"colored":""'></i>
+        <i class="fa fa-star" [ngClass]='store.rate>2?"colored":""'></i>
+        <i class="fa fa-star" [ngClass]='store.rate>3?"colored":""'></i>
+        <i class="fa fa-star" [ngClass]='store.rate>4?"colored":""'></i> -->
     </p>
             <h2 class=' col-md-11  '>{{store.name}} {{store.s_name}}
                 <i style="font-size: 10px;" class='fa fa-check p-1  bg-primary text-light rounded-circle'></i>
@@ -162,15 +163,19 @@ height: 380px; background-size: 100% 100%; top:0 ">
                     </a>
                 </li>
                 <li>
-                    <a routerLink="my-sales/{{store.id}}" [routerLinkActive]="'active'" [routerLinkActiveOptions]="{exact: false}">
-                        <i class="fas fa-shopping-basket"></i>
-                        <span>my sales</span>
+                    <a class="d-flex justify-content-between" routerLink="my-sales/{{store.id}}" [routerLinkActive]="'active'" [routerLinkActiveOptions]="{exact: false}">
+                        <span> <i class="fas fa-shopping-basket"></i>
+                        my sales</span>
+                        <span class="total  border p-1 rounded-circle">{{store.sales_count}}</span>
+                    
                     </a>
                 </li>
                 <li>
-                    <a routerLink="followers/{{store.id}}" [routerLinkActive]="'active'" [routerLinkActiveOptions]="{exact: false}">
-                        <i class="fa fa-users"></i>
-                        <span>followers</span>
+                    <a class="d-flex justify-content-between" routerLink="followers/{{store.id}}" [routerLinkActive]="'active'" [routerLinkActiveOptions]="{exact: false}">
+                        <span> <i class="fa fa-users"></i>
+                        followers</span>
+                        <span class="total  border p-1 rounded-circle">{{store.followers_count}}</span>
+                    
                     </a>
                 </li>
                 <li>

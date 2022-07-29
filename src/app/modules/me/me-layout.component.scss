@@ -71,6 +71,7 @@
 
       li {
         font-size: 1.6rem;
+        
 
         a {
           color: #222;
@@ -107,6 +108,16 @@
     }
   }
 }
+.links i{
+  width: 35px;
+  height: 35px;
+  background: #ccc;
+  border-radius: 50%;
+  text-align: center;
+  line-height: 35px;
+  cursor: pointer;
+}
+
 
 .wallet {
   display: flex;

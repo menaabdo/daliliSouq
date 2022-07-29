@@ -13,7 +13,7 @@ export interface Package{
     special_product_days:number
     balance:number
     view:number
-    types:type[]
+    types:any[]
     views:number
 }
 

@@ -31,6 +31,8 @@ export class StoreProfileComponent implements OnInit {
           this.flag=1
             }
       
+delete(id:number){  this.profile.delete_product(id).subscribe((res)=>{
+              window.location.reload()
+            })
 
-
-}
+}}

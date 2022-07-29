@@ -24,11 +24,12 @@ token!:string
   
 });
   activeroute: any;
- 
   
   constructor(private httpclient: HttpClient,private cookieService: CookieService,private route:Router ) { }
  getimage(file:object){
 this.image_file=file
+this.headers.append('Access-Control-Allow-Methods','*')
+this.headers.append('Access-Control-Allow-Origin','*')
  }
  
   login(user:any){
@@ -38,7 +39,7 @@ this.image_file=file
        (res)=>{this.logininfo=res;this.token=this.logininfo.Response.access_token; 
       this.id=this.logininfo.Response.user.id
        localStorage.setItem('token',this.token)
-       //localStorage.setItem('id',this.id)
+       localStorage.setItem('id',this.id)
         this.route.navigateByUrl('/home');
       
 
@@ -72,8 +73,23 @@ this.image_file=file
   /////////////////////////////////Ads///////////
   Ads(){
     const headers =this.headers
-    return this.httpclient.get(`${environment.apiURL}profile/products?os=android&user_id=${this.id}&page=1`,{headers})
+    return this.httpclient.get(`${environment.apiURL}profile/products?os=android&user_id=${localStorage.getItem('id')}&page=1`,{headers})
 
+  }
+  product_detailes(id:number){
+    return this.httpclient.get(`${environment.apiURL}product?os=android&product_id=${id}`)
+
+  }
+  delete_product(id:number){
+    const headers =this.headers
+    return this.httpclient.post( `${environment.apiURL}product/delete?os=android`,{'id':id},{headers})
+  
+  }
+  update_product(data:any){
+    console.log(data)
+    const headers =this.headers
+    return this.httpclient.post( `${environment.apiURL}product/edit?os=android`,(data),{headers})
+  
   }
   ////////////////////////////////end/////////////////
   ///////////////////////followers/////////////////////
@@ -88,7 +104,7 @@ this.image_file=file
   //////////////////////endfollowers///////////////
   follwing(){
     const headers =this.headers
-    return this.httpclient.get(`${environment.apiURL}profile/followings?os=android&user_id=${this.id}`,{headers})
+    return this.httpclient.get(`${environment.apiURL}profile/followings?os=android&user_id=${localStorage.getItem('id')}`,{headers})
    
   }
  showalladdress(){
@@ -136,13 +152,13 @@ this.image_file=file
   myorders(is_complete:number){
     console.log(is_complete)
     const headers =this.headers
-    return this.httpclient.post(`${environment.apiURL}store/create?os=android`,{'is_complete':is_complete},{headers})
+    return this.httpclient.post(`${environment.apiURL}user/orders?os=android`,{'is_complete':is_complete},{headers})
  
 
   }
   orderdetailes(id:number){
     const headers =this.headers
-    return this.httpclient.post(`${environment.apiURL}user/order?os=android`,{'order_id':id},{headers})
+    return this.httpclient.post(`${environment.apiURL}order/details?os=android`,{'order_id':id,'is_driver':0},{headers})
  
   }
   myaccount(){
@@ -171,12 +187,23 @@ this.image_file=file
   }
   mysales(){
     const headers =this.headers
-    return this.httpclient.post(`${environment.apiURL}seller/orders?os=android&users=[${this.id}]`,{headers})
+    return this.httpclient.post(`${environment.apiURL}seller/orders?os=android`,{'page':1},{headers})
  
+  }
+  seller_order(id:number){
+    const headers =this.headers
+    return this.httpclient.post(`${environment.apiURL}seller/order?os=android`,{'order_id':id},{headers})
+ 
+  }
+  setoutofstock(cart_id:number){
+    const headers =this.headers
+    return this.httpclient.post(`${environment.apiURL}order/action?os=android`,{'cart_id':cart_id,'action':1},{headers})
+ 
+
   }
   paid_orders(start_d:string,end_d:string){
     const headers =this.headers
-    console.log(headers)
+    
     if(start_d||end_d)
    {let year1=(start_d.slice(0,4))
     let mounth1=start_d.slice(5,7)
@@ -191,9 +218,15 @@ this.image_file=file
  
 
   }
+  rejected_orders(){
+    const headers =this.headers
+    return this.httpclient.post(`${environment.apiURL}seller/unpaid_orders?os=android`,{},{headers})
+    
+
+  }
   recently_view(){
     const headers =this.headers
-    return this.httpclient.get(`${environment.apiURL}recently_view?os=android`,{headers})
+    return this.httpclient.get(`${environment.apiURL}view_history?os=android&country_id=1&city_id=1`,{headers})
  
   }
   ////////////////////////////////user store////////////////////
@@ -207,7 +240,7 @@ this.image_file=file
     return this.httpclient.post(`${environment.apiURL}best_seller/stores?os=android`,{'store_id':id},{headers})
   }
   followers(id:number){
-    return this.httpclient.get(`${environment.apiURL}store/followers?os=android&store_id=${id}`)
+    return this.httpclient.get(`${environment.apiURL}store/followers?os=android&store_id=${localStorage.getItem('id')}`)
   }
   products(id:number){
     return this.httpclient.get(`${environment.apiURL}store/products?os=android&store_id=${id}&country_id=1&page=1`)
@@ -274,6 +307,11 @@ this.image_file=file
     return this.httpclient.post(`${environment.apiURL}store/sales?os=android`,{'store_id':id},{headers})
  
   }
+  store_order_detailes(store_id:number,order_id:number){
+    const headers =this.headers
+    return this.httpclient.post(`${environment.apiURL}store/order?os=android`,{'store_id':store_id,'order_id':order_id},{headers})
+ 
+  }
   delete_store(id:number){
     const headers =this.headers
     return this.httpclient.post(`${environment.apiURL}store/delete?os=android`,{'store_id':id},{headers})
@@ -289,6 +327,16 @@ this.image_file=file
   //  console.log(this.image_file)
   //   return this.httpclient.post(`${environment.apiURL}upload/${4}`,fd)
   // }
+  /////////////////////notifications functions/////////////////
+  allnotification(object_type:string){
+    const headers =this.headers
+    return this.httpclient.get<any>(`${environment.apiURL}notifications?os=android&object_type=${object_type}&in_app_popup=`,{headers})
+  }
+  set_as_seen(noty_id:number){
+    const headers =this.headers
+    return  this.httpclient.get(`${environment.apiURL}notification?os=android&id=${noty_id}os=android`,{headers})
+ 
+  }
   
 }
 

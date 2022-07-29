@@ -35,6 +35,11 @@ import { CitiesComponent } from './cities/cities.component';
 import { RegionsComponent } from './cities/regions/regions.component';
 import { AddofferComponent } from './modules/me/profile/profile-components/offers/addoffer/addoffer.component';
 import { AddpackagesComponent } from './modules/me/profile/profile-components/offers/addpackages/addpackages.component';
+import { ProperitiesComponent } from './modules/me/profile/profile-components/edit-products/properities/properities.component';
+import { DoubleViewComponent } from './modules/store/sotre-details/components/store-profile/double-view/double-view.component';
+import { ViewcodeComponent } from './viewcode/viewcode.component';
+import { SalesdetailesComponent } from './modules/me/profile/profile-components/sales/salesdetailes/salesdetailes.component';
+import { StoreorderdetailesComponent } from './modules/store/sotre-details/components/store-paid-sales/storeorderdetailes/storeorderdetailes.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -56,7 +61,13 @@ import { AddpackagesComponent } from './modules/me/profile/profile-components/of
     CitiesComponent,
     RegionsComponent,
     AddofferComponent,
-    AddpackagesComponent
+    AddpackagesComponent,
+    ProperitiesComponent,
+    DoubleViewComponent,
+    ViewcodeComponent,
+    SalesdetailesComponent,
+    StoreorderdetailesComponent,
+    
     
    
     // OrderComponent,

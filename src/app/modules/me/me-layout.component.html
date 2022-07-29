@@ -1,6 +1,16 @@
 <!-- <app-profile-cover></app-profile-cover> -->
 
 <div class="container me">
+    <div class='d-flex justify-content-start  links'>
+       <a (click)="redirect(profile_data.Response.facebook)"> <i  class="fab fa-facebook-f m-1  " style="color: #8c1434;" id="dropdownMenuButton" data-toggle="dropdown" aria-expanded="false">
+        </i></a>
+        <a (click)="redirect(profile_data.Response.instagram)">  <i class="fab fa-instagram m-1" style="color: #8c1434;" id="dropdownMenuButton" data-toggle="dropdown" aria-expanded="false">
+        </i></a>
+        <a (click)="redirect(profile_data.Response.twitter)"> <i class="fab fa-twitter m-1" style="color: #8c1434;" id="dropdownMenuButton" data-toggle="dropdown" aria-expanded="false">
+        </i></a>
+        <a (click)="redirect(profile_data.Response.youtube)">  <i class="fab fa-youtube m-1" style="color: #8c1434;" id="dropdownMenuButton" data-toggle="dropdown" aria-expanded="false">
+        </i></a>
+    </div>
     <div class="me-tabs">
         <ul>
             <li class=''> <a routerLink="profile/my-profile" [routerLinkActive]="'active'"

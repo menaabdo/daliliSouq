@@ -32,7 +32,7 @@
                     <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
                         <a class="dropdown-item" routerLink="edit-product"><i class="fas fa-pen-square"></i> edit product</a>
                         <a class="dropdown-item"><i class="fas fa-newspaper"></i>repost product</a>
-                        <a class="dropdown-item"><i class="fas fa-trash-alt"></i> delete product</a>
+                        <a (click)='delete(ad.id)' class="dropdown-item"><i class="fas fa-trash-alt"></i> delete product</a>
                         <a class="dropdown-item"><i class="fas fa-shopping-cart"></i> set out of stock</a>
                         <a class="dropdown-item"><i class="fas fa-file"></i> report product</a>
                     </div>
@@ -65,7 +65,7 @@
                         <li> <a><i class="fas fa-tag"></i>{{ad.offers}}</a></li>
                     </ul>
                 </div>
-                <button class="btn btn-primary w-100">double the view</button>
+                <a class="btn btn-primary w-100" routerLink="/home/me/store/284/doupleview">double the view</a>
             </div>
         </div>
         

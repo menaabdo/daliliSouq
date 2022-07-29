@@ -37,7 +37,15 @@ export interface Order {
     vat_amount:number
     service_amount:number
     is_complete:boolean
-    store:Store
+    stores:Store[]
+    users:any[]
     driver:User[]
     name:string
+    qr:string
+    code:string
+    total_price:number
+    points_redeem:number
+    products:any[]
+    
+    
 }

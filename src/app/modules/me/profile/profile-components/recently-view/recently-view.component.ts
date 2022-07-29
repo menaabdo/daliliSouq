@@ -12,7 +12,7 @@ views:any
   constructor(private recentview:UserService) { }
 
   ngOnInit(): void {
-   this.recentview.recently_view().subscribe((res)=>{this.response=res;this.views=this.response.products.data;console.log(this.views)})
+   this.recentview.recently_view().subscribe((res)=>{this.response=res;this.views=this.response.Response.data;console.log(res)})
   }
 
 }

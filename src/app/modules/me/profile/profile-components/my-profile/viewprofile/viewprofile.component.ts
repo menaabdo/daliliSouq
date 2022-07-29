@@ -16,8 +16,8 @@ packages!:Package[]
   constructor(private packageserve:CategoryService,private activeroute:ActivatedRoute) { }
 country_id=this.activeroute.snapshot.params['country_id']
   ngOnInit(): void {
-    this.packageserve.profile_packages(this.country_id,0).subscribe((res)=>{this.response=res;this.packages=this.response.Response})
-
+    this.packageserve.profile_packages(this.country_id,0).subscribe((res)=>{this.response=res;this.packages=this.response.Response; console.log(res)})
+    
   }
 
 }

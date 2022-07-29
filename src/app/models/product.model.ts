@@ -35,12 +35,13 @@ import { Color } from './color.model'
      link?:string
     lat?:number
     lng?:number
+    edit?:number
 
     mobile?:number
     store_name:string
     store_id?:number
-    category_name:[]
-    category_ids:[]
+    category_name:any[]
+    category_ids:any[]
     properties?:properity[]
     colors?:Color[]
     is_color?:number

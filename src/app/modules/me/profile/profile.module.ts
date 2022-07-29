@@ -28,6 +28,7 @@ import { OrderComponent } from '../../../order/order.component';
 
 @NgModule({
   declarations: [
+   
     ProfileLayoutComponent,
     MyProfileComponent,
     FollowersComponent,
@@ -48,6 +49,7 @@ import { OrderComponent } from '../../../order/order.component';
     EditOfferComponent,
     CategoriesComponent,
     OrderComponent,
+   
     
     
   

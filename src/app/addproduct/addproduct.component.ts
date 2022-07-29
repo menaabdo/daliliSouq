@@ -166,35 +166,7 @@ marker!:any
     //if(value.slice(value.indexOf('+')+1)=='true'){
       this.route.navigateByUrl(`/home/me/profile/my-profile/select-category/${JSON.stringify(this.data)}`)
 
-      // console.log(value.slice(0,value.indexOf('+')))
-      // this.catserve.sub_categories(value.slice(0,value.indexOf('+'))).subscribe(
-      //   (res)=>{this.response1=res;this.subcategories=this.response1.Response
-      //     var col=document.createElement('div')
-      //     col.setAttribute('class','col-md-6')
-      //     col.setAttribute('id','new')
-      //     var formGroup=document.createElement('div')
-      //     formGroup.setAttribute('class',"form-group")
-      //      col.appendChild(formGroup)
-      //      var label=document.createElement('label')
-      //      label.innerHTML='subcategories'
-      //      formGroup.appendChild(label)
-           
-      //     var newElement = document.createElement("select");
-      //     newElement.setAttribute('class',"form-control")
-      //     formGroup.appendChild(newElement)
-      //     for(let i=0 ; i<this.subcategories.length;i++)
-      //     {
-      //       let option=document.createElement('option')
-      //       option.innerHTML=this.subcategories[i].name
-      //       newElement.appendChild(option)
-      //     }
-         
-      //    // col.appendChild(newElement)
-      //  let  city_ele=document.getElementById('city')
-      //  form?.appendChild(col)
-      //       city_ele?.after(col)
-      //   })
-   // }
+      
   }
   deleteitem(obj:any){
     console.log(this.data.colors)

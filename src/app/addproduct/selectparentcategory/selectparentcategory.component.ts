@@ -33,7 +33,7 @@ selectedcolorid?:number
   ngOnInit(): void {
    
     this.data=this.active.snapshot.params['data']
-  
+  console.log(this.data)
    
     this.data=JSON.parse(this.data)
   //   if(this.data.store_flag==1)
@@ -55,7 +55,8 @@ if(this.data.update2==0&&(this.data.update==0||this.data.category_ids[0]==this.d
       this.respose=res
       this.categories=this.respose.Response
     })
-  }}else{if(this.data.update2!=0){this.catserve.sub_categories(this.data.category_ids[(this.data.category_ids).indexOf(this.data.update2)-1]).subscribe(
+  }}else{if(this.data.update2!=0){
+    this.catserve.sub_categories(this.data.category_ids[(this.data.category_ids).indexOf(this.data.update2)-1]).subscribe(
     (res)=>{this.respose=res;
       let categories:Category[]
       categories=this.respose.Response
@@ -160,6 +161,7 @@ this.data=JSON.stringify(this.data)
 
 //}
 submit(){
+  console.log(this.data)
   let properities=[]
   let values=[]
   let options=[]
@@ -216,9 +218,16 @@ submit(){
     this.data=JSON.stringify(this.data)
      this.route.navigateByUrl(`home/me/profile/my-profile/properity-color/${this.data}`)
   }
-  else { this.data=JSON.stringify(this.data)
-    this.route.navigateByUrl(`home/me/profile/my-profile/add_product/${this.data}`)
- }
+  else { if(this.data.edit)
+   { let id=this.data.edit
+     this.data=JSON.stringify(this.data)
+    this.route.navigateByUrl(`home/me/profile/my-profile/edit-product/${id}/${this.data}`)
+ 
+  }
+    else
+    {this.data=JSON.stringify(this.data)
+      this.route.navigateByUrl(`home/me/profile/my-profile/add_product/${this.data}`)
+} }
   }
   
  

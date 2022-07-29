@@ -4,20 +4,35 @@
         <div class="card">
             <div class="card-header d-flex justify-content-between align-items-center">
                 <p  class='m-0'>
-                    <span class="badge badge-warning">
+                    <span class="badge badge-warning" *ngIf='sale.status==0'>
                         pending
                     </span>
+                    <span class="badge badge-warning" *ngIf='sale.status==1'>
+                       shipped
+                    </span>
+                    <span class="badge badge-warning" *ngIf='sale.status==2'>
+                        delivered
+                     </span>
+                     <span class="badge badge-warning" *ngIf='sale.status==3'>
+                        out of stock
+                     </span>
+                     <span class="badge badge-warning" *ngIf='sale.status==3'>
+                        out of stock
+                     </span>
+                     <span class="badge badge-warning" *ngIf='sale.status==4'>
+                        rejected
+                     </span>
                 </p>
                 <p class='m-0'>
-                    order (24)
+                    order ({{sale.id}}) 
                 </p>
                 <p class='m-0 d-flex flex-column'>
-                    <span>18-02-2022</span>
-                    <span>12:09 AM</span>
+                    <span>{{sale.date}}</span>
+                    <span>{{sale.time}}</span>
                 </p>
             </div>
-            <div class="card-body">
-                <i class="fa fa-store"></i>
+            <div class="card-body" (click)='details(sale.id)'>
+                <i class="fa fa-store"></i><span class='mx-1'>{{sale.f_name}} {{sale.s_name}}</span>
                 <p class='m-0'>
                     cash on delivery
                 </p>
