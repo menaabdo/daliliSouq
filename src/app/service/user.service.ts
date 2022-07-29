@@ -21,6 +21,10 @@ image_file?:any
 token!:string
  headers=new HttpHeaders({
   Authorization: `Bearer ${localStorage.getItem('token')}`,
+  'Access-Control-Allow-Origin':'*',
+  'Access-Control-Allow-Methods': 'GET, POST, PATCH, PUT, DELETE, OPTIONS',
+  'Access-Control-Allow-Headers': 'Origin, Content-Type, X-Auth-Token'
+
   
 });
   activeroute: any;
@@ -28,12 +32,10 @@ token!:string
   constructor(private httpclient: HttpClient,private cookieService: CookieService,private route:Router ) { }
  getimage(file:object){
 this.image_file=file
-this.headers.append('Access-Control-Allow-Methods','*')
-this.headers.append('Access-Control-Allow-Origin','*')
- }
+}
  
   login(user:any){
-   
+     
     return this.httpclient.post(`${environment.apiURL}login?os=android`,user)
     .subscribe(
        (res)=>{this.logininfo=res;this.token=this.logininfo.Response.access_token; 
@@ -337,6 +339,7 @@ this.headers.append('Access-Control-Allow-Origin','*')
     return  this.httpclient.get(`${environment.apiURL}notification?os=android&id=${noty_id}os=android`,{headers})
  
   }
+ 
   
 }
 

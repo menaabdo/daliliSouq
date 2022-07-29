@@ -54,9 +54,9 @@ orders_notification!:notification[]
  }
 //  if(order_id)
 console.log(order_id)
-window.location.replace(`/home/me/profile/my-profile/notification/${order_id}`)
+window.open(`/home/me/profile/my-profile/notification/${order_id}`,'_self')
 //this.route.navigate([`home/notification/${order_id}`])
- //this.route.navigateByUrl(`/home/me/profile/my-profile/notification/${order_id}`)
+ //this.route.navigate([`home/me/profile/my-profile/notification/${order_id}`,])
  }
 
 }

@@ -12,7 +12,7 @@ export class AppComponent {
   title = 'app';
   browserRefresh!:boolean
   subscription: Subscription;
-
+img?:any
   constructor(private router: Router,private userserve:UserService) {
     this.subscription = router.events.subscribe((event) => {
         if (event instanceof NavigationStart) {
@@ -24,5 +24,5 @@ export class AppComponent {
   ngOnInit(): void {
     if(this.browserRefresh==true)
     {this.userserve.refresh_token().subscribe((res)=>{})}
-  }
+     }
 }
