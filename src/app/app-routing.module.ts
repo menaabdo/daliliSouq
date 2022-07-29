@@ -9,6 +9,7 @@ import { StoresComponent } from './modules/pages/stores/stores.component';
 import { OffersComponent } from './modules/pages/offers/offers.component';
 import { LoginFormComponent } from './login-form/login-form.component';
 import { RegisterFormComponent } from './register-form/register-form.component';
+import { SalesdetailesComponent } from './modules/me/profile/profile-components/sales/salesdetailes/salesdetailes.component';
 
 const routes: Routes = [
   {
@@ -47,11 +48,16 @@ const routes: Routes = [
       {
         path: "all-ads",
         component: AllAdsComponent
+      },
+      {
+        path:'notification/:id',
+        component:SalesdetailesComponent
       }
     ]
   },
   { path: '', component: LoginFormComponent },
-  {path:'regist',component:RegisterFormComponent}
+  {path:'regist',component:RegisterFormComponent},
+  
 
 ];
 

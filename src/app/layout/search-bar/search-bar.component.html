@@ -45,6 +45,7 @@
                         <div class="dropdown-cart-products">
                         <div class="product d-flex justify-content-left row" *ngFor='let noty of orders_notification'>
                             <div class=' rounded' [ngClass]='noty.is_open!=1?"active":""' (click)='set_as_open(noty.notification_id,noty.is_open,noty.object_id)'> 
+                                
                             <div class='row d-flex justify-content-between'>
                             <figure class="product-image-container img-notify col-md-5 ">
                                 <a  class="product-image ">

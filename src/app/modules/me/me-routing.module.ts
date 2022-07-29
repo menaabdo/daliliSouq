@@ -3,6 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { MeLayoutComponent } from './me-layout.component';
 //import { StoreLayoutComponent } from './store/store-layout.component';
 import { AuthGuard } from 'src/app/core/guards/auth.guard';
+import { SalesdetailesComponent } from './profile/profile-components/sales/salesdetailes/salesdetailes.component';
 
 const routes: Routes = [
   {
@@ -26,6 +27,7 @@ const routes: Routes = [
         path: "my-wallet",
         loadChildren: () => import("./my-wallet/my-wallet.module").then(m => m.MyWalletModule)
       },
+     
      
       
     ]

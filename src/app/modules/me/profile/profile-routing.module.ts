@@ -63,7 +63,12 @@ const routes: Routes = [
           {
             path: "edit-product/:id/:data",
             component: EditProductsComponent
+          },
+          {
+            path:'notification/:id',
+            component:SalesdetailesComponent
           }
+          
         ]
       },
       
