@@ -339,7 +339,25 @@ this.image_file=file
     return  this.httpclient.get(`${environment.apiURL}notification?os=android&id=${noty_id}os=android`,{headers})
  
   }
+  mymess(){
+    const headers =this.headers
+    return this.httpclient.post(`${environment.apiURL}chat?os=android`,{'is_company':0,'user_id':0},{headers})
  
+  }
+ sendmess(mess:string,img:any){
+   console.log(img.get('image'))
+  const headers =this.headers
+  let obj={
+    'receiver_id':0,
+    'message':mess,
+    'is_company':0,
+    'product_id':0,
+    'store_id':0,
+    'image':img.get('image')
+  }
+  return this.httpclient.post(`${environment.apiURL}send?os=android`,obj,{headers})
+ 
+ }
   
 }
 

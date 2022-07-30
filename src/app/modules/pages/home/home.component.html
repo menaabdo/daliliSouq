@@ -1,3 +1,67 @@
+<div  class="popup leftFixedBtn"  >
+    <a   >
+        <span class="popuptext" id="myPopup">
+            <section class='rounded'>
+                <div class="">
+              
+                  <div class="row d-flex justify-content-center">
+                    <div class="col-md-12 col-lg-12 col-xl-12">
+              
+                      <div class="card" id="chat2">
+                        <div class="card-header d-flex justify-content-between align-items-center p-3">
+                            <!-- <button type="button" class="btn btn-primary btn-sm" data-mdb-ripple-color="dark">Let's Chat
+                                App</button> -->
+                            <h5 class="mb-0">DALILI Souq Admin</h5>
+                         
+                        </div>
+                        <div class="card-body" data-mdb-perfect-scrollbar="true" style="position: relative; height: 400px">
+                           <div *ngFor=' let mess of messages'>
+                          <div class="d-flex flex-row justify-content-start " [ngClass]='!mess.sender_id?"justify-content-start":"justify-content-end"'>
+                             <div class='contentmess'>
+                              <p class="small p-2 ms-3 mb-1 rounded"  [ngClass]='!mess.sender_id?"mymess ":"adminmess"'   >{{mess.message}}</p>
+                              <p class="small p-2 ms-3 mb-1 rounded" *ngIf='mess.image'><img src='https://dalilisouq.com/{{mess.image}}'></p>
+                              <p class="small ms-3 mb-3 rounded-3 text-muted " [ngClass]='mess.sender_id?"text-right":"text-left"'>23:58</p>
+                            </div>
+                          </div>
+                        </div>
+                        
+              
+                        </div>
+                        
+                        <div class="card-footer text-muted d-flex align-items-center p-2 justify-content-between">
+                           <textarea  *ngIf='!imageSrc' type="text" class="form-control form-control-lg" id="exampleFormControlInput1" name='mess' [(ngModel)]=mymess
+                            placeholder="Type message"></textarea>
+                            <div *ngIf='imageSrc' class=" rounded-circle">
+                                <i class="fa fa-times ml-5" (click)='ignoreimg()'></i>
+                            <img  src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-chat/ava3-bg.webp"
+                alt="avatar 1" style="width: 45px; height: 100%;"  >
+                            </div>
+                          <a class="ms-1 m-1 text-muted" *ngIf='!imageSrc'>
+                              
+                              <div class="image-upload" >
+                                <label for="file-input">
+                                    <i class="fas fa-paperclip fa-x "></i>
+                                </label>
+                            
+                                <input id="file-input" type="file" accept="image/*" (change)="selectedFile($event)">
+                            </div>
+                            </a>
+                          <a class="ms-3 m-1" *ngIf='mymess ||imageSrc' (click)='send()'><i class="fa fa-paper-plane fa-x border rounded-circle"></i></a>
+                        </div>
+                      </div>
+              
+                    </div>
+                  </div>
+              
+                </div>
+              </section>
+        </span>
+
+      <i class="fa fa-comments  " (click)="open()"></i>
+    </a>
+    
+    
+</div>
 <div class="container">
     <ngb-carousel *ngIf="images">
         <ng-template ngbSlide>

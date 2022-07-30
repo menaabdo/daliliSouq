@@ -3,6 +3,11 @@
         width: 100%;
     }
 }
+.contentmess{
+    width: 60%;
+   
+    text-align: left;
+}
 
 @mixin home-btn() {
     position: absolute;
@@ -62,3 +67,197 @@
         width: 100%;
     }
 }
+.leftFixedBtn {
+    position: fixed;
+    top: 540px;
+   right:10px;
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.2);
+    background-color: #0d284b;
+     border-radius: 50%;
+    padding: 15px;
+    z-index: 9999999999999999999999999;
+  }
+  
+  .leftFixedBtn:nth-child(2){
+    top: 270px;
+  }
+  
+  .leftFixedBtn:nth-child(3){
+    top: 340px;
+  }
+  
+  .leftFixedBtn a {
+    color: white !important;
+  }
+  
+  .leftFixedBtn .tooltiptext {
+    visibility: hidden;
+    width: 120px;
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.2);
+    background-color: #FFF;
+    color: #163e73 !important;
+    text-align: center;
+    border-radius: 6px;
+    padding: 10px 0;
+    position: absolute;
+    z-index: 1;
+    bottom: 13%;
+    right:  100%;
+    margin-left: 20px;
+    opacity: 0;
+    transition: opacity 0.3s;
+    font-weight: bold;
+  }
+  
+  .leftFixedBtn .tooltiptext::after {
+    content: "";
+    position: absolute;
+    top: 34%;
+   right:  10px;
+    /* margin-left: -5px; */
+    border-width: 5px;
+    border-style: solid;
+    border-color: transparent #FFF transparent transparent;
+  }
+  
+  .leftFixedBtn:hover .tooltiptext {
+    visibility: visible;
+    opacity: 1;
+  }
+  /* Popup container - can be anything you want */
+.popup {
+    position: relative;
+    display: inline-block;
+    cursor: pointer;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    position: fixed;
+    top: 540px;
+   right:10px;
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.2);
+    background-color: #0d284b;
+     border-radius: 50%;
+    padding: 15px;
+    z-index: 9999999999999999999999999;
+  }
+  
+  /* The actual popup */
+  .popup .popuptext {
+    visibility: hidden;
+    width: 260px;
+    background-color: #555;
+    color: #fff;
+    text-align: center;
+    border-radius: 6px;
+    padding: 0;
+    position: absolute;
+    z-index: 1;
+    bottom: 0;
+    
+    left: 50%;
+    margin-left: -280px;
+   
+    
+  }
+  .card-body{ max-height:350px;/* you can change as you need it */
+    overflow: auto ;/* to get scroll */
+}
+  
+  /* Popup arrow */
+  .popup .popuptext::after {
+    content: "";
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    margin-left: -5px;
+    border-width: 5px;
+    border-style: solid;
+    border-color: #555 transparent transparent transparent;
+  }
+  
+  /* Toggle this class - hide and show the popup */
+  .popup .show {
+    visibility: visible;
+    -webkit-animation: fadeIn 1s;
+    animation: fadeIn 1s;
+  }
+  
+  /* Add animation (fade in the popup) */
+  @-webkit-keyframes fadeIn {
+    from {opacity: 0;} 
+    to {opacity: 1;}
+  }
+  
+  @keyframes fadeIn {
+    from {opacity: 0;}
+    to {opacity:1 ;}
+  }
+  #chat2 .form-control {
+    border-color: transparent;
+    }
+    
+    #chat2 .form-control:focus {
+    border-color: transparent;
+    box-shadow: inset 0px 0px 0px 1px transparent;
+    }
+    
+    .divider:after,
+    .divider:before {
+    content: "";
+    flex: 1;
+    height: 1px;
+    background: #eee;
+    }
+   
+      .adminmess{
+          background-color: #0d284b;
+          color: white;
+          text-align: right;
+      }
+      .mymess{
+        background-color:#b3b3b4;
+        color: rgb(49, 48, 48);
+        text-align: left;
+      }
+    //   input {
+          
+    //       padding:0;
+    //       margin-bottom: 0;
+    //   }
+    .fa-paper-plane,.fa-paperclip{color: #0d284b;}
+    textarea{
+        word-break: break-word;
+        max-height:100px;/* you can change as you need it */
+    overflow: auto ;
+    min-height: 0px;
+
+    }
+    // .image-upload {
+    //     // height: 170px;
+    //     // width: 170px;
+    //     // border-radius: 50%;
+    //     // box-shadow: rgb(0 0 0 / 16%) 0px 3px 6px, rgb(0 0 0 / 23%) 0px 3px 6px;
+    //     // margin: auto;
+    //     overflow-y: hidden;
+    //     //background-color: rgb(233, 229, 229);
+    //     //background-size: auto;
+    //     // background-size: 100% 100%;
+    //     //   background-repeat: no-repeat;
+    //     //  margin-bottom: 15px ;
+    // }
+    .image-upload > input
+    {
+        display: none;
+    }
+    
+    .image-upload i
+    {   // width: 80px;
+        cursor: pointer;
+       
+       
+    }
+    
+
+  
