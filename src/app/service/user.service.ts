@@ -21,7 +21,7 @@ image_file?:any
 token!:string
  headers=new HttpHeaders({
   Authorization: `Bearer ${localStorage.getItem('token')}`,
-  // 
+  
   
 });
   activeroute: any;
