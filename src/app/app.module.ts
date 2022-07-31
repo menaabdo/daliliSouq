@@ -40,7 +40,7 @@ import { DoubleViewComponent } from './modules/store/sotre-details/components/st
 import { ViewcodeComponent } from './viewcode/viewcode.component';
 import { SalesdetailesComponent } from './modules/me/profile/profile-components/sales/salesdetailes/salesdetailes.component';
 import { StoreorderdetailesComponent } from './modules/store/sotre-details/components/store-paid-sales/storeorderdetailes/storeorderdetailes.component';
-import { NewComponent } from './new/new.component';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -68,7 +68,7 @@ import { NewComponent } from './new/new.component';
     ViewcodeComponent,
     SalesdetailesComponent,
     StoreorderdetailesComponent,
-    NewComponent,
+    
     
     
    
