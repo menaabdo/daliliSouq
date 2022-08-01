@@ -18,9 +18,15 @@ export class ProfileLayoutComponent implements OnInit {
   
   }
   logout(){
-   localStorage.removeItem('token')
+    this.userserve.logout().subscribe((res)=>{
+      localStorage.removeItem('token')
+   localStorage.removeItem('id')
+   localStorage.removeItem('lat')
+   localStorage.removeItem('long')
    this.router.navigateByUrl('/')
-   
-  }
+   this.userserve.headers.delete('Authorization')
+   console.log(this.userserve.headers)
+
+    })}
 
 }

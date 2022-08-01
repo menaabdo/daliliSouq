@@ -27,11 +27,13 @@ profile_data:any
     this.loginservice.profile({country_id:1    
     }).subscribe((res)=>{
   this.profile_data=res
+  console.log(res)
   this.loginservice.id=this.profile_data.Response.id
   localStorage.setItem('lat',this.profile_data.Response.address.lat)
   localStorage.setItem('long',this.profile_data.Response.address.long)
+  
  
- //this.route.navigateByUrl('/home/me/profile/my-profile')
+//  this.route.navigateByUrl('/home/me/profile/my-profile')
   })
 
 

@@ -15,13 +15,41 @@
                          
                         </div>
                         <div class="card-body" data-mdb-perfect-scrollbar="true" style="position: relative; height: 400px">
-                           <div *ngFor=' let mess of messages'>
-                          <div class="d-flex flex-row justify-content-start " [ngClass]='!mess.sender_id?"justify-content-start":"justify-content-end"'>
-                             <div class='contentmess'>
+                           <div *ngFor=' let mess of messages' style="word-break: break-word;">
+                          <!-- <div class="d-flex flex-row  " [ngClass]='!mess.sender_id?"justify-content-start":"justify-content-end"'>
+                             <div class='contentmess '  [ngClass]='mess.sender_id?"text-right":"text-left"'>
+                                <img  src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-chat/ava3-bg.webp"
+                                alt="avatar 1" style="width: 45px; height: 10%;">
+                            
                               <p class="small p-2 ms-3 mb-1 rounded"  [ngClass]='!mess.sender_id?"mymess ":"adminmess"'   >{{mess.message}}</p>
-                              <p class="small p-2 ms-3 mb-1 rounded" *ngIf='mess.image'><img src='https://dalilisouq.com/{{mess.image}}'></p>
-                              <p class="small ms-3 mb-3 rounded-3 text-muted " [ngClass]='mess.sender_id?"text-right":"text-left"'>23:58</p>
+                              <img *ngIf='mess.sender_id' src="https://dalilisouq.com/{{mess.sender.image}}"
+                              alt="avatar 1" style="width: 45px; height: 100%;">
+                             
+                               <p class="small p-2 ms-3 mb-1 rounded" *ngIf='mess.image'><img src='https://dalilisouq.com/{{mess.image}}'></p>
+                              
+                              <p class="small ms-3 mb-3 rounded-3 text-muted " >23:58</p>
                             </div>
+                          </div> -->
+                          <div *ngIf='!mess.sender_id' class=" d-flex flex-row justify-content-start">
+                            <img src="../../../../assets/images/admin.jpg"
+                              alt="avatar 1" style="width: 25px;height: 25px; " class="rounded-circle">
+                            <div>
+                              <p class="small p-2 ms-3 mb-1 rounded-3 text-dark" >{{mess.message}}</p>
+                              <p class="small p-2 ms-3 mb-1 rounded" *ngIf='mess.image'><img src='https://dalilisouq.com/{{mess.image}}'></p>
+                              
+                              <p class="small ms-3 mb-3 rounded-3 text-muted">23:58</p>
+                            </div>
+                          </div>
+
+                          <div *ngIf='mess.sender_id' class=" d-flex  flex-row justify-content-end mb-4 pt-1">
+                            <div >
+                              <p class="small p-2 me-3 mb-1 text-white rounded bg-primary">{{mess.message}}</p>
+                              <p class="small p-2 ms-3 mb-1 rounded" *ngIf='mess.image'><img src='https://dalilisouq.com/{{mess.image}}'></p>
+                              
+                              <p class="small me-3 mb-3 rounded-3 text-muted d-flex justify-content-end">00:06</p>
+                            </div>
+                            <img src="https://dalilisouq.com/{{mess.sender.image}}"
+                              alt="img" style="width: 11%;height: 25px" class="rounded-circle ">
                           </div>
                         </div>
                         

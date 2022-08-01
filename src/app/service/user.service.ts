@@ -19,11 +19,7 @@ id!:string
 logininfo?:any
 image_file?:any
 token!:string
- headers=new HttpHeaders({
-  Authorization: `Bearer ${localStorage.getItem('token')}`,
-  
-  
-});
+ headers!:any;
   activeroute: any;
   
   constructor(private httpclient: HttpClient,private cookieService: CookieService,private route:Router ) { }
@@ -39,6 +35,9 @@ this.image_file=file
       this.id=this.logininfo.Response.user.id
        localStorage.setItem('token',this.token)
        localStorage.setItem('id',this.id)
+       this.headers=new HttpHeaders({
+        Authorization: `Bearer ${localStorage.getItem('token')}`,})
+        
         this.route.navigateByUrl('/home');
       
 
@@ -316,8 +315,9 @@ this.image_file=file
     return this.httpclient.post(`${environment.apiURL}store/delete?os=android`,{'store_id':id},{headers})
   }
   logout(){
-    this.cookieService
-    console.log(this.token)
+    const headers =this.headers
+    return this.httpclient.post(`${environment.apiURL}logout?os=android`,{},{headers})
+ 
   }
   // uploadimg(id:number){
   //   const fd=new FormData();

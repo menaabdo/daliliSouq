@@ -166,16 +166,16 @@
 }
   
   /* Popup arrow */
-  .popup .popuptext::after {
-    content: "";
-    position: absolute;
-    top: 100%;
-    left: 50%;
-    margin-left: -5px;
-    border-width: 5px;
-    border-style: solid;
-    border-color: #555 transparent transparent transparent;
-  }
+  // .popup .popuptext::after {
+  //   content: "";
+  //   position: absolute;
+  //   top: 100%;
+  //   left: 50%;
+  //   margin-left: -5px;
+  //   border-width: 5px;
+  //   border-style: solid;
+  //   border-color: #555 transparent transparent transparent;
+  // }
   
   /* Toggle this class - hide and show the popup */
   .popup .show {
@@ -214,12 +214,12 @@
       .adminmess{
           background-color: #0d284b;
           color: white;
-          text-align: right;
+          // text-align: right;
       }
       .mymess{
-        background-color:#b3b3b4;
+       // background-color:#b3b3b4;
         color: rgb(49, 48, 48);
-        text-align: left;
+        // text-align: left;
       }
     //   input {
           

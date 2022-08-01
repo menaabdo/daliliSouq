@@ -26,8 +26,8 @@ export class HomeComponent implements OnInit {
    }
   send(){
    
-    this.chatservice.sendmess(this.mymess,this.fd).subscribe((res)=>{console.log(res)})
-    this.get_messages()
+    this.chatservice.sendmess(this.mymess,this.fd).subscribe((res)=>{ this.get_messages()})
+   
     this.mymess=''
   }
   get_messages(){
