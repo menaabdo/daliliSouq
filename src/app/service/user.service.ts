@@ -6,7 +6,6 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { environment } from 'src/environments/environment';
 import { User } from '../models/user.model';
 import { CookieService } from 'ngx-cookie-service';
-import { JSDocTagName } from '@angular/compiler/src/output/output_ast';
 
 
 
@@ -169,14 +168,15 @@ this.image_file=file
     return this.httpclient.post(`${environment.apiURL}offers/like?os=android`,{'offer_id':offer_id},{headers})
  
   }
-  offer_create(data:any){
-    const fd=new FormData();
-    fd.append('image',this.image_file,'image')
+  offer_create(fd:any){
    
-   data.image=fd.getAll('image')
+   
+    fd.append('image',this.image_file)
+  //  fd.append( 'en_name',data.name)
+  //  data.image=fd.getAll('image')
    
     const headers =this.headers
-    return this.httpclient.post(`${environment.apiURL}offers/create?os=android`,data,{headers})
+    return this.httpclient.post(`${environment.apiURL}offers/create?os=android`,fd,{headers})
  
   }
   offers(){

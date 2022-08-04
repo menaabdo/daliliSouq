@@ -153,13 +153,25 @@ map:any
       category_id:this.data.category_id,
       store_id:this.data.store_id,
       is_active:0,
+     
       
      }
-     this.storessserve.offer_create(obj).subscribe((res)=>{
+     const fd=new FormData();
+     fd.append('en_name',this.data.name)
+     fd.append(' ar_name',this.data.name)
+     fd.append('region_id',this.data.region_id as unknown as string)
+     fd.append(' city_id',this.data.city_id as unknown as string)
+     fd.append(' en_desc',this.data.desc)
+     fd.append('ar_desc',this.data.desc)
+     fd.append('category_id',this.data.category_id as unknown as string)
+     fd.append(' store_id',this.data.store_id as unknown as string)
+     fd.append('is_active',0 as unknown as string)
+     this.storessserve.offer_create(fd).subscribe((res)=>{
       
        console.log(res)
-       this.route.navigateByUrl('/home/me/profile/offers/add-package')
-      })
+         })
+    this.route.navigateByUrl('/home/me/profile/offers/add-package')
+    
     
    }
    getcity(){

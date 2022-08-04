@@ -76,5 +76,13 @@ button{
     background-color: #8c1434;
     border: 1px solid #8c1434;
     color: white;
-    border-radius: 1.4rem !important;
+    //border-radius: 1.4rem !important;
+}
+
+a{
+    cursor: pointer;
+}
+
+.active{
+    background-color: #113859 !important;
 }

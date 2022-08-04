@@ -257,6 +257,10 @@ this.route.navigateByUrl(`/home/me/profile/my-profile/select-category/${(JSON.st
 
 
     }
+    let fd=new FormData();
+    // for(let ele in obj ){
+    //   fd.append(ele)
+    // }
 
   }
  

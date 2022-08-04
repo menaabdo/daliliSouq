@@ -2,7 +2,7 @@
     
     <div class="row ">
         <div class="  col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xs-offset-3 bg">
-            <form id="contact-form" class="form mt-0"#f='ngForm' (ngSubmit)='create()' enctype="multipart/form-data"> 
+            <form id="contact-form" class="form mt-0" #f='ngForm' (ngSubmit)='create()' enctype="multipart/form-data"> 
                
           <div class='bg1 w-100 border-bottom  border-secondary' style="height: 200px;padding-top: 10px;margin-bottom: 5px;margin-top: 2px;">
                 
@@ -11,7 +11,7 @@
                     <i class="fa fa-camera fa-2x"></i>
                 </label>
                     
-                <input id="file-input" type="file" accept="image/*" (change)="selectedFile($event)"/>
+                <input required id="file-input" type="file" accept="image/*" (change)="selectedFile($event)"/>
             </div>
             
        
@@ -19,7 +19,7 @@
                     
             <div class="form-group mt-3">      
                 <label class="form-label" [ngClass]="data.store_name!='' ? '' : 'js-hide-label select1'" class=''>Select account</label>
-               <select  id='select1'  required [ngClass]='select1.touched&&select1.errors?.["required"]?"danger":""' #select1="ngModel" class=" form-control select1 "  [(ngModel)]=data.store_name name='name' (change)='getstore("select1",$event)' (blur)='hidelabel("select1")' (click)='displaylabel("select1")' (focus)='displaylabel("select1")'>
+               <select required id='select1'  required [ngClass]='select1.touched&&select1.errors?.["required"]?"danger":""' #select1="ngModel" class=" form-control select1 "  [(ngModel)]=data.store_name name='name' (change)='getstore("select1",$event)' (blur)='hidelabel("select1")' (click)='displaylabel("select1")' (focus)='displaylabel("select1")'>
                       <option  class="text-dark " [selected]='data.store_name=="my account"' >My account</option>
                       <option class="text-dark" id={{store.id}} [selected]='data.store_name==store.name'
                        *ngFor='let store of stores' >{{store?.name}}</option>
@@ -71,7 +71,7 @@
 
                 <div class="text-center col-md-12 d-flex justify-content-between">
                     <!-- <a class="btn btn-primary">Reset</a> -->
-        <button type="submit" class="btn btn-primary" >Add</button>
+        <button type="submit" class="mybtn btn  border rounded btn-primary" [disabled]='f.invalid'>Add</button>
        
         </div>
     </form>
