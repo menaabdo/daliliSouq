@@ -29,7 +29,7 @@
                   
                 </p>
             </div>
-            <div class="card-body">
+            <a class="card-body" (click)='getdetailes(s.id)'>
                 <i class="fa fa-store"></i><span class='name mx-3'>{{s.f_name}} {{s.s_name}}</span>
                 <p class='m-0 d-flex justify-content-between'>
                     cash on delivery
@@ -37,7 +37,7 @@
                     <span>{{s.time}}</span>
                 </p>
                 
-            </div>
+            </a>
         </div>
     </div>
 </div>

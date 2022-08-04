@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Order } from 'src/app/models/order.model';
 import { UserService } from 'src/app/service/user.service';
 
@@ -14,12 +14,16 @@ export class StoreMySalesComponent implements OnInit {
   orders?:Order[]
  
   id!:number
-    constructor(private sales:UserService,private activeroute:ActivatedRoute) {
+    constructor(private sales:UserService,private activeroute:ActivatedRoute,private route:Router) {
       this.id=this.activeroute.snapshot.params['id']
      }
   
     ngOnInit(): void {
     this.sales.orders_store(this.id).subscribe((res)=>{this.response=res;this.orders=this.response.Response.orders.data ;console.log(this.orders)})
+    }
+    getdetailes(id:number){
+      
+       this.route.navigateByUrl(`/home/me/store/${this.id}/order-detailes/${id}/${this.id}`)
     }
 
 }
