@@ -108,6 +108,7 @@ getid(id:number,has_category:boolean,name:string,prop:[],is_color:number,is_size
        
 
 } this.data=JSON.stringify(this.data)
+////////case(sup_category)////////////
     if(has_category==true){
     this.data=JSON.parse(this.data)
 this.data.category_ids.push(id)
@@ -118,9 +119,10 @@ this.data=JSON.stringify(this.data)
      // this.i++  
    //this.route.navigateByUrl(`home/me/profile/my-profile/select-category/${id}/${this.data}`)
   }
+  //////////////////////(case has no sub and no properity)
   else 
- { 
-   if(prop.length==0){
+ { console.log(prop)
+   if(!prop||prop.length==0){
    console.log(this.categories)
    this.data=JSON.parse(this.data)
   this.data.category_name.push(name)
@@ -130,7 +132,7 @@ this.data=JSON.stringify(this.data)
   this.data.is_size=is_size
   this.data.is_online=is_online
   this.data=JSON.stringify(this.data)
-  if(is_color!=0||is_size!=0)
+  if((is_color&&is_color!=0)||(is_size&&is_size!=0))
  { 
     this.route.navigateByUrl(`home/me/profile/my-profile/properity-color/${this.data}`)
  }
