@@ -3,6 +3,8 @@ import { Product } from "./product.model";
 import { User } from "./user.model";
 
 export interface Store {
+    offline_note:string
+    note:string
     id:number
     name:string;
     s_name:string

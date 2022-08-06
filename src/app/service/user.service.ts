@@ -247,6 +247,7 @@ this.image_file=file
   }
   create_product(data:any){
     const headers =this.headers
+    data.append('image',this.image_file)
     return this.httpclient.post(`${environment.apiURL}product/create?os=android`,data,{headers})
  
   }

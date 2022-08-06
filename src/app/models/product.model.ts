@@ -67,5 +67,6 @@ import { Color } from './color.model'
     store_img?:object
     ///////////////////////////////////keys used in add offer///
     offer_flag?:number
+    product_flag?:number
  }
  

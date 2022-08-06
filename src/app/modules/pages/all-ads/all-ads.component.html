@@ -1,7 +1,61 @@
 <div class="container mt-3">
   <div class="row">
-    <div class="col-md-3" *ngFor="let item of items; let i = index" >
-        <app-advertising></app-advertising>
+    <div class="col-md-3" *ngFor="let ad of items; let i = index" >
+     <div class="card shadow border-0 rounded">
+            <div (click)='getproduct(1)' class="card-header bg-white rounded  remove-after" style="background-image: url(../../../../assets/images/ads/ads.jpg);height: 217px;" >
+               
+                <div class="d-flex justify-content-end align-items-start ">
+                    <img src='../../../../assets/images/admin.jpg'  class="border rounded-circle m-3" width="30px" height="30px">
+                </div>
+                <div style="height: 47px;background-color:#00000073;margin-top: 120px;" class="d-flex justify-content-between align-items-end p-2">
+                  <div class='d-flex align-items-center mb-1 text-light '>
+                    <p class="mb-0"> <i class="fa fa-camera mr-1"></i></p>
+                    </div>
+                    <div class='d-flex align-items-center mb-1 text-light '>
+                   
+                    <p class="mb-0"> <i class="fa fa-star fa-x mr-1" style="color: rgb(252, 232, 119);"></i>{{ad.created_at}}</p>
+                   </div>
+                    <div class='d-flex align-items-center mb-1 text-light '>
+                   
+                    <p class="mb-0"> <i class="fa fa-eye mr-1"></i>{{ad.city.name}},{{ad.city.country.name}}</p>
+                </div>
+                </div>
+                
+                </div>
+                
+                
+            <!-- <img src="https://dalilisouq.com/{{ad.image}}" class="card-img-top" alt="..."> -->
+            <div class="card-body border-0">
+                <div class='d-flex justify-content-between align-items-center mb-1'>
+                    <p class="mb-0" *ngIf='ad.quantity!=0'>{{ad.quantity}} items left</p>
+                    <p class="mb-0"> <i class="fas fa-calendar mr-1"></i>{{ad.created_at}}</p>
+                    <p class="mb-0"> <i class="fas fa-map-marker mr-1"></i>{{ad.city.name}},{{ad.city.country.name}}</p>
+                </div>
+                <p class="mb-0 text-danger" *ngIf='ad.quantity==0'>out of stock</p>
+                   
+                <div class='d-flex justify-content-between align-items-center mb-2'>
+                    <h2 class="m-0">{{ad.price}}<small>EGP</small></h2>
+                    
+                    <i class="far fa-heart favourite-icon " [ngClass]="{'text-danger' : ad.favourite}" ></i>
+                </div>
+                <!-- <p class="mb-1">online for : {{ad.online_for}}</p>
+                <p class="mb-1">expire in: {{ad.expire_in}}</p> -->
+            </div>
+            <div class="card-footer border-0 p-0 bg-white">
+                <div class="advertising-info-footer">
+                    <ul>
+                        <li> <a><i class="fa fa-eye"></i>{{ad.viewers}}</a></li>
+                        <li> <a><i class="fa fa-phone"></i></a>{{ad.calls}}</li>
+                        <li> <a><i class="fa fa-comment"></i></a>{{ad.chats}}</li>
+                        <li> <a><i class="fas fa-comment-alt"></i></a>{{ad.comments}}</li>
+                        <li> <a><i class="fas fa-tag"></i>{{ad.offers}}</a></li>
+                    </ul>
+                </div>
+                
+            </div>
+        </div>
+        
+    
     </div>
 
   </div>

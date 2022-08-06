@@ -158,6 +158,7 @@ map:any
     
    }
    getcity(){
+     this.data.store_flag=1
     this.route.navigateByUrl(`/home/me/profile/cities/${JSON.stringify(this.data)}`)
  
    }

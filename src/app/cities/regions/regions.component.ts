@@ -41,6 +41,11 @@ data!:any
   if(this.data.store_flag==1)
   this.route.navigateByUrl(`/home/me/profile/stores/add-store/${JSON.stringify(this.data)}`)
   else
-  this.route.navigateByUrl(`/home/me/profile/offers/offer-add/${JSON.stringify(this.data)}`)}
+  {
+    if(this.data.product_flag==1)
+        this.route.navigateByUrl(`/home/me/profile/my-profile/add_product/${JSON.stringify(this.data)}`)
+         else
+        this.route.navigateByUrl(`/home/me/profile/offers/offer-add/${JSON.stringify(this.data)}`)
      
+  }}
 }

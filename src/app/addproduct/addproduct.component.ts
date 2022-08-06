@@ -58,6 +58,7 @@ marker!:any
     // store:null,
     title: '',
     desc: '',
+   
     
   store_id:0,
     store_name:'my account',
@@ -65,13 +66,15 @@ marker!:any
     update:0,
     update2:0
    
+   
       
   }
+  temp!:number //used for toggle online input
   myLatlng !:any
   flag!:boolean
   response2: any;
   infoWindow:any
-  
+  note!:string
   constructor(private route:Router,private storessserve:UserService,private catserve:CategoryService,private active:ActivatedRoute) { 
     
    
@@ -79,11 +82,12 @@ marker!:any
 
 
   ngOnInit(): void {
+    
     this.storessserve.cities().subscribe((res)=>{this.response1=res;this.cities=this.response1.Response
       
     })
    this.storessserve.profile({country_id:1}).subscribe((res)=>{this.response2=res;this.add=this.response2.Response.address
-    this.country=this.response2.Response.country
+    this.country=this.response2.Response.country ;console.log(res)
       let loader=new Loader({apiKey:'AIzaSyCuU2Tnmy93AuQWWQ7DAGJT95OJKZYZdwY'})
       loader.load().then(() => {
     
@@ -120,8 +124,18 @@ marker!:any
     if( this.active.snapshot.params['data']!='data'){
      //this.data= this.active.snapshot.params['data'].replace('*','#')
       this.flag=false
+    
+      ////////////////////////////////////////
     console.log(( this.active.snapshot.params['data']))
     this.data=JSON.parse(this.active.snapshot.params['data'].replace('*','#'))
+   ////////////////////////////////
+   
+
+    if(this.data.city_id)
+    {
+    this.data.city_name=this.data.city_name +'-'+this.data.region_name
+    
+    }
     this.data.update2=0}
     else this.flag=true
 //     if( this.active.snapshot.params['data']!='data'){
@@ -131,7 +145,15 @@ marker!:any
 //    if(this.active.snapshot.params['colors'])
 //    console.log((this.active.snapshot.params['colors']))
 //   }else this.flag=true
-     this.storessserve.mystores('en').subscribe((res)=>{this.response=res;this.stores=this.response.Response.stores})
+     this.storessserve.mystores('en').subscribe((res)=>{
+       this.response=res;this.stores=this.response.Response.stores
+       if(this.data.is_online==1)
+   {this.temp=1
+     this.note=this.response.Response.note}
+   else {console.log(this.response.Response.offline_note)
+     this.note=this.response.Response.offline_note}
+       
+      })
     }
     // getposition(){
     //   let infoWindow = new google.maps.InfoWindow({
@@ -174,14 +196,16 @@ marker!:any
     this.data.colors.splice(this.data.colors.indexOf(obj),1)
 
   }
-  changestyle(id:string){
+  changestyle(id:string,city_id:number){
     document.getElementById(id)!.style.color='black'
    console.log(this.data.store_name)
+   this.data.store_city_id
   }
   style(event:any){
     event.target.classList.add('removeborder')
 
   }
+
   displaylabel(id:string,store_id:number=0){
  let label=document.getElementsByClassName(id)[0].classList.remove('js-hide-label')
  let input= document.getElementsByClassName(id)[1]as HTMLInputElement
@@ -209,8 +233,21 @@ marker!:any
     // this.data.store_id=id
   for(let i=0;i<e.target.childNodes.length;i++){
    if(e.target.value==e.target.childNodes[i].value)
-          this.data.store_id=e.target.childNodes[i].id
-  }
+         {let mobile=(this.response2.Response.mobile).toString()
+               mobile= mobile.slice(2)
+                console.log((this.country.phone_code).toString().length)
+            this.data.store_id=e.target.childNodes[i].id
+          if(e.target.value=='my account')
+         {let mobile=(this.response2.Response.mobile).toString()
+          mobile= mobile.slice((this.country.phone_code).toString().length)
+            this.data.mobile=mobile}
+         else{ 
+           
+           mobile =(this.stores[i-1].mobile).toString();
+           mobile= mobile.slice((this.country.phone_code).toString().length)
+          this.data.mobile=mobile
+       }
+ } }
    this.flag=true
     this.data.store_name=e.target.value
     this.data.properties=[]
@@ -233,7 +270,17 @@ this.route.navigateByUrl(`/home/me/profile/my-profile/select-category/${(JSON.st
     this.route.navigateByUrl(`home/me/profile/my-profile/properity-color/${(JSON.stringify(this.data )).replaceAll('#','*')}`)
 
   }
+  getcity(){
+    this.data.product_flag=1
+    this.route.navigateByUrl(`/home/me/profile/cities/${(JSON.stringify(this.data )).replaceAll('#','*')}`)
+   }
+   toggleonline(){
+    if(this.data.is_online==1)
+    this.data.is_online=0
+    else this.data.is_online=1 
+   }
   create(){
+    console.log(this.data.city_id)
       let obj={
     en_name:this.data.title,
     ar_name:this.data.title,
@@ -258,10 +305,43 @@ this.route.navigateByUrl(`/home/me/profile/my-profile/select-category/${(JSON.st
 
     }
     let fd=new FormData();
-    // for(let ele in obj ){
-    //   fd.append(ele)
-    // }
+    fd.append('en_name',this.data.title)
+    fd.append('ar_name',this.data.title,)
+    fd.append('price',this.data.price as unknown as string)
+    fd.append('category_id',this.data.category_ids[(this.data.category_ids.length)-1],
+    )
+    fd.append('parent_id',this.data.category_ids[(this.data.category_ids.length)-(this.data.category_ids.length)],
+    )
+     fd.append( 'country_id',this.country.id as unknown as string)
+    fd.append('store_id',this.data.store_id as unknown as string)
+    fd.append( 'city_id',this.data.city_id as unknown as string)
+    fd.append('region_id',this.data.region_id as unknown as string)
+    fd.append('region_id',this.data.region_id as unknown as string)
+    fd.append( 'en_desc',this.data.desc)
+    fd.append( 'ar_desc',this.data.desc)
+    fd.append( "valid_to", "2022-11-22 02:50:37")
+    fd.append('is_online',this.data.is_online as unknown as string)
+    if(this.data.properties)
+    fd.append('properties',JSON.stringify(this.data.properties))
+    if(this.data.colors)
+   {this.data.quantity=0
+     for(let i=0 ;i< this.data.colors.length;i++ ){
+     this.data.quantity  +=this.data.colors[i].quantity
+   }
+   console.log(this.data.quantity)
+   
+      fd.append('colors',JSON.stringify(this.data.colors ))
+      fd.append('quantity',this.data.quantity as unknown as string)
+   
+    }
+    else
+   fd.append('quantity',this.data.quantity as unknown as string)
+   
+    fd.append('latitude',this.data.lat as unknown as string)
+    fd.append('longitude',this.data.lng as unknown as string)
+    fd.append('mobile',this.data.mobile as unknown as string)
 
+this.storessserve.create_product(fd).subscribe((res)=>{console.log(res)})
   }
  
 }

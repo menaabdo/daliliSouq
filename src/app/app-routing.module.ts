@@ -10,6 +10,7 @@ import { OffersComponent } from './modules/pages/offers/offers.component';
 import { LoginFormComponent } from './login-form/login-form.component';
 import { RegisterFormComponent } from './register-form/register-form.component';
 import { SalesdetailesComponent } from './modules/me/profile/profile-components/sales/salesdetailes/salesdetailes.component';
+import { OneAdComponent } from './modules/pages/one-ad/one-ad.component';
 
 const routes: Routes = [
   {
@@ -47,7 +48,13 @@ const routes: Routes = [
       ,
       {
         path: "all-ads",
-        component: AllAdsComponent
+        component: AllAdsComponent,
+        children:[
+          {
+            path:'product/:id',
+            component:OneAdComponent
+          }
+        ]
       },
       {
         path:'notification/:id',

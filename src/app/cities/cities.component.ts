@@ -30,7 +30,10 @@ hasregion!:boolean
      if(data.store_flag==1)
       this.route.navigateByUrl(`/home/me/profile/stores/add-store/${JSON.stringify(data)}`)
       else
-      this.route.navigateByUrl(`/home/me/profile/offers/offer-add/${JSON.stringify(data)}`)
+        if(data.product_flag==1)
+        this.route.navigateByUrl(`/home/me/profile/my-profile/add_product/${JSON.stringify(data)}`)
+         else
+        this.route.navigateByUrl(`/home/me/profile/offers/offer-add/${JSON.stringify(data)}`)
      
 }
   }

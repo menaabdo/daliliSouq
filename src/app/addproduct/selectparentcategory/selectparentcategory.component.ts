@@ -5,6 +5,7 @@ import { properity } from 'src/app/models/properity.model';
 import { CategoryService } from 'src/app/service/category.service';
 import { FormGroup, FormControl, Validators} from '@angular/forms';
 import { Color } from 'src/app/models/color.model';
+import { JsonpClientBackend } from '@angular/common/http';
    
 
 @Component({
@@ -176,14 +177,14 @@ submit(){
      if(input!=null)
    {  if(input.checked){
        test.push(1)
-      option={id:this.properties[i].options[j].id,"mandatory":0,name:this.properties[i].options[j].name,selected:1,type_id:this.properties[i].type_id}
+      option={'id':this.properties[i].options[j].id,"mandatory":0,'name':this.properties[i].options[j].name,'selected':1,'type_id':this.properties[i].type_id}
       options.push(option)  
       values.push(this.properties[i].options[j].id) 
   //  { let p={id:this.properties[i].id,"mandatory":0,name:this.properties[i].name,
   //           options:{id:this.properties[i].options[j].id,"mandatory":0,name:this.properties[i].options[j].name,selected:1,type_id:this.properties[i].type_id},
   //           selected:1,type_id:this.properties[i].type_id,values:values.push(this.properties[i].options[j].id)}
   }else{
-    option={id:this.properties[i].options[j].id,"mandatory":0,name:this.properties[i].options[j].name,selected:0,type_id:this.properties[i].type_id}
+    option={'id':this.properties[i].options[j].id,"mandatory":0,'name':this.properties[i].options[j].name,'selected':0,'type_id':this.properties[i].type_id}
     options.push(option)  
    // values.push(this.properties[i].options[j].id) 
   }
@@ -192,9 +193,9 @@ submit(){
   
   }
   
-   let p={id:this.properties[i].id,"mandatory":0,name:this.properties[i].name,
-            options:options,
-             selected:0,type_id:this.properties[i].type_id,value:values
+   let p={'id':this.properties[i].id,"mandatory":0,'name':this.properties[i].name,
+            'options':options,
+             'selected':0,'type_id':this.properties[i].type_id,'value':JSON.stringify(values)
           }
   properities.push(p)
   options=[]
