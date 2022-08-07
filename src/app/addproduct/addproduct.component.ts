@@ -20,7 +20,8 @@ import { Country } from '../models/country.model';
 })
 
 export class AddproductComponent implements OnInit {
-  items=['file-input0','file-input1','file-input2','file-input3','file-input4','file-input5','file-input6','file-input7','file-input8','file-input9']
+  //items=['file-input0','file-input1','file-input2','file-input3','file-input4','file-input5','file-input6','file-input7','file-input8','file-input9']
+ counter=0
   country!:Country
   result:any 
 map:any
@@ -128,7 +129,13 @@ marker!:any
     if( this.active.snapshot.params['data']!='data'){
      //this.data= this.active.snapshot.params['data'].replace('*','#')
       this.flag=false
-       console.log(this.data.is_online)
+       ////////////////////////////////
+       if(localStorage.getItem('imgs'))
+    {this.imageSrc=JSON.parse(localStorage.getItem('imgs')||'{}')
+    for(let i=0;i<this.imageSrc.length;i++)
+    document.getElementById(`img${i}`)!.style.display='block'
+     
+  }
       ////////////////////////////////////////
     console.log(( this.active.snapshot.params['data']))
     this.data=JSON.parse(this.active.snapshot.params['data'].replace('*','#'))
@@ -141,7 +148,7 @@ marker!:any
     
     }
     this.data.update2=0}
-    else this.flag=true
+    else {this.flag=true;localStorage.removeItem('imgs')}
 //     if( this.active.snapshot.params['data']!='data'){
 //           console.log( (this.active.snapshot.params['data']))
   console.log((this.data))
@@ -283,37 +290,52 @@ this.route.navigateByUrl(`/home/me/profile/my-profile/select-category/${(JSON.st
     this.data.is_online=0
     else this.data.is_online=1 
    }
-   selectedFile(event:any,index:number){
+   selectedFile(event:any){
     this.selectedfile= <File> event.target.files[0]
-  
+   let image
   //this.storessserve.getimage(this.selectedfile)
-  this.storessserve.files[index]=this.selectedfile
+  this.storessserve.files.push(this.selectedfile)
    if (event.target.files && event.target.files[0]) {
     const file = event.target.files[0];
 
     const reader = new FileReader();
-    reader.onload = e => {this.imageSrc[index] = reader.result;
-   // this.data.store_img=this.selectedfile
-    this.imageSrc[index]=URL.createObjectURL(event.target.files[0])
-    localStorage.setItem(`img${index}`,this.imageSrc[index])
-   
+    reader.onload = e => {image = reader.result;
+   console.log(image)
+    image=URL.createObjectURL(event.target.files[0])
+    this.imageSrc.push(image)
+    for(let i=0;i<this.imageSrc.length;i++)
+  document.getElementById(`img${i}`)!.style.display='block'
+    localStorage.setItem('imgs',JSON.stringify(this.imageSrc))
+    let imgs=localStorage.getItem('imgs')
+  
 }
     reader.readAsDataURL(file);
 }
 
   }
+  count(){
+    this.counter++
+  }
   delete(index:number){
-    console.log(index)
-    this.imageSrc.splice(index,1)
-    localStorage.removeItem(`img${index}`)
+    
     this.storessserve.files.splice(index,1)
-    console.log( this.storessserve.files)
+    
+     if(index==this.imageSrc.length-1)
+     
+    document.getElementById(`img${index}`)!.style.display='none'
+       else document.getElementById(`img${this.imageSrc.length-1}`)!.style.display='none'
+       this.imageSrc.splice(index,1)
+       localStorage.setItem('imgs',JSON.stringify(this.imageSrc))
+   
+   
+   
   }
 
   
 
 
   create(){
+   
     console.log(this.data.city_id)
       let obj={
     en_name:this.data.title,

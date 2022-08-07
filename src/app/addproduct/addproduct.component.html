@@ -3,42 +3,97 @@
     <div class="row ">
         <div class=" col-xs-12  col-sm-12 col-md-12 col-lg-12 col-xs-offset-3 bg">
             <form id="contact-form" class="form"#f='ngForm' (ngSubmit)='create()' > 
-                <div class='bg1  w-100 border-bottom  border-secondary' style="height: 200px;padding-top: 10px;margin-bottom: 5px;margin-top: 2px;">
-                   <div class='d-flex justify-content-center '>  <h3 class="">up to 10 images</h3></div>
-
-                       <div class='d-flex justify-content-between '>
-                    <div id='img2' class=" image-upload text-center" [ngStyle]="{'background-image': 'url(' + imageSrc[0]+ ')'}">
-                        <label for='file-input0' class="text-center">
-                            <i *ngIf='!imageSrc[0]' class="fa fa-camera fa-2x" ></i>
-                            <i *ngIf='imageSrc[0]' (click)='delete(0)' class="fa fa-times fa-2x"></i>
-                       
+                <div class="row d-flex justify-content-left m-2"><h3>up to 10 images</h3></div>
+                 
+                <div class='bg1 w-100 border-bottom d-flex justify-content-left border-secondary' style="height: 200px;;margin-bottom: 5px;">
+                   <div class="image-upload text-center mr-3" >
+                        <label for="file-input0" class="text-center">
+                            <i class="d-flex justify-content-center fa fa-camera fa-3x"></i>
                         </label>
                             
-                        <input required id='file-input0' type="file"  accept="image/*" (change)="selectedFile($event,0)"/>
-                    </div> 
-                    <div id='img2' class=" image-upload text-center" [ngStyle]="{'background-image': 'url(' + imageSrc[1]+ ')'}">
-                        <label for='file-input1' class="text-center">
-                            <i *ngIf='!imageSrc[1]' class="fa fa-camera fa-2x" ></i>
-                            <i *ngIf='imageSrc[1]' style="width: 80px;" (click)='delete(1)' class="fa fa-times fa-2x"></i>
-                       
-                        </label>
-                            
-                        <input required id='file-input1' type="file"  accept="image/*" (change)="selectedFile($event,1)"/>
-                    </div> 
-                    <div id='img2' class=" image-upload text-center" [ngStyle]="{'background-image': 'url(' + imageSrc[2]+ ')'}">
-                        <label for='file-input2' class="text-center">
-                            <i *ngIf='!imageSrc[2]' class="fa fa-camera fa-2x" ></i>
-                            <i *ngIf='imageSrc[2]' style="width: 80px;margin: 10px;" (click)='delete(2)' class="fa fa-times fa-2x"></i>
-                       
-                        </label>
-                            
-                        <input required id='file-input2' type="file"  accept="image/*" (change)="selectedFile($event,2)"/>
-                    </div> 
-                
-                </div>
-               
+                        <input required id="file-input0" type="file" accept="image/*" (change)="selectedFile($event)"/>
                     </div>
-                <div class="form-group mt-3">      
+                   
+                    <div id='img0' class="image-upload text-center mr-3" style='display: none;' [ngStyle]="{'background-image': 'url(' + imageSrc[0]+ ')'}">
+                        <label for="file-input1" class="text-center">
+                            <i (click)='delete(0)' class="fa fa-times fa-2x"></i>
+                        </label>
+                            
+                    </div>
+                   
+                    <div id='img1' class="image-upload text-center mr-3" style='display: none;' [ngStyle]="{'background-image': 'url(' + imageSrc[1]+ ')'}">
+                        <label for="file-input2" class="text-center">
+                            <i (click)='delete(1)' class="fa fa-times fa-2x"></i>
+                        </label>
+                            
+                    </div>
+                    <!-- img3 -->
+                    <div id='img2' class="image-upload text-center mr-3" style='display: none;' [ngStyle]="{'background-image': 'url(' + imageSrc[2]+ ')'}">
+                        <label for="file-input3" class="text-center">
+                            <i (click)='delete(2)' class="fa fa-times fa-2x"></i>
+                        </label>
+                            
+                    </div>
+                    <!-- end img3 -->
+                    <!-- img4 -->
+                    <div id='img3' class="image-upload text-center mr-3" style='display: none;' [ngStyle]="{'background-image': 'url(' + imageSrc[3]+ ')'}">
+                        <label for="file-input4" class="text-center">
+                            <i (click)='delete(3)' class="fa fa-times fa-2x"></i>
+                        </label>
+                            
+                    </div>
+                    <!--end img4 -->
+                    <!-- img5 -->
+                    <div id='img4' class="image-upload text-center mr-3" style='display: none;' [ngStyle]="{'background-image': 'url(' + imageSrc[4]+ ')'}">
+                        <label for="file-input5" class="text-center">
+                            <i (click)='delete(4)' class="fa fa-times fa-2x"></i>
+                        </label>
+                            
+                    </div>
+                    <!-- end img5 -->
+                    <!-- img6 -->
+                    <div id='img5' class="image-upload text-center mr-3" style='display: none;' [ngStyle]="{'background-image': 'url(' + imageSrc[5]+ ')'}">
+                        <label for="file-input6" class="text-center">
+                            <i (click)='delete(5)' class="fa fa-times fa-2x"></i>
+                        </label>
+                            
+                    </div>
+                    <!-- emdimg6 -->
+                    <!-- img7 -->
+                    <div id='img6' class="image-upload text-center mr-3" style='display: none;' [ngStyle]="{'background-image': 'url(' + imageSrc[6]+ ')'}">
+                        <label for="file-input7" class="text-center">
+                            <i (click)='delete(6)' class="fa fa-times fa-2x"></i>
+                        </label>
+                            
+                    </div>
+                    <!-- end img7 -->
+                    <!-- img8 -->
+                    <div id='img7' class="image-upload text-center mr-3" style='display: none;' [ngStyle]="{'background-image': 'url(' + imageSrc[7]+ ')'}">
+                        <label for="file-input8" class="text-center">
+                            <i (click)='delete(7)' class="fa fa-times fa-2x"></i>
+                        </label>
+                            
+                    </div>
+                    <!-- end img8 -->
+                    <!-- img9 -->
+                    <div id='img8' class="image-upload text-center mr-3" style='display: none;' [ngStyle]="{'background-image': 'url(' + imageSrc[8]+ ')'}">
+                        <label for="file-input9" class="text-center">
+                            <i (click)='delete(8)' class="fa fa-times fa-2x"></i>
+                        </label>
+                            
+                    </div>
+                    <!--  end img9 -->
+                    <!-- img10 -->
+                    <div id='img9' class="image-upload text-center mr-3" style='display: none;' [ngStyle]="{'background-image': 'url(' + imageSrc[9]+ ')'}">
+                        <label for="file-input10" class="text-center">
+                            <i (click)='delete(9)' class="fa fa-times fa-2x"></i>
+                        </label>
+                            
+                    </div>
+                    <!-- end img 10 -->
+               
+                    </div>    
+                    <div class="form-group mt-3">      
                   <label class="form-label" class='js-hide-label select1'>Select account</label>
                  <select  id='select1'  required [ngClass]='select1.touched&&select1.errors?.["required"]?"danger":""' #select1="ngModel" class=" form-control select1 "  [(ngModel)]=data.store_name name='name' (change)='getstore("select1",$event)' (blur)='hidelabel("select1")' (click)='displaylabel("select1")' (focus)='displaylabel("select1")'>
                         <option  class="text-dark " [selected]='data.store_name=="my account"' >My account</option>

@@ -32,9 +32,13 @@ return this.httpclient.get<{stores:Store []}>(`${environment.apiURL}stores_categ
   ////////////////////end//////////////////
   //////////////////////categories in each store//////////////////////
   categories_store(store_id:number){
+    if(store_id!=0)
     return this.httpclient.get(`${environment.apiURL}list_categories?os=android&country_id=1&store_id=${store_id}&page=1`)
- 
-  }
+      else
+      return this.httpclient.get(`${environment.apiURL}list_categories?os=android&country_id=1&page=1`)
+     
+
+    }
 
   ///////////////////////////end///////////////
   ///////////////////////////packages/////////

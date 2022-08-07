@@ -49,7 +49,7 @@ if(this.data.update2==0&&(this.data.update==0||this.data.category_ids[0]==this.d
   delete(this.data.properties)
   if(this.data.store_id==0)
   { 
-     this.catserve.all().subscribe((res)=>{this.respose=res
+     this.catserve.categories_store(this.data.store_id).subscribe((res)=>{this.respose=res
       this.categories=this.respose.Response
   })}
   else{this.catserve.categories_store(this.data.store_id).subscribe((res)=>{

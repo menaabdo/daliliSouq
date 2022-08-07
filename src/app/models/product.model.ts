@@ -68,5 +68,6 @@ import { Color } from './color.model'
     ///////////////////////////////////keys used in add offer///
     offer_flag?:number
     product_flag?:number
+    imgs?:any
  }
  

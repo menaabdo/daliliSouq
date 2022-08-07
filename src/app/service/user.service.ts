@@ -248,10 +248,14 @@ this.image_file=file
 
   }
   create_product(data:any){
+   localStorage.removeItem('imgs')
     const headers =this.headers
-    for(let i=0;i<this.files.length;i++)
+    console.log(this.files)
+    if(this.files.length>0)
+    {for(let i=0;i<this.files.length;i++)
     data.append(`image${i+1}`,this.files[i])
-    data.append('image',this.files[0])
+    data.append('image',this.files[0])}
+    else  data.append('image',this.files[0])
     return this.httpclient.post(`${environment.apiURL}product/create?os=android`,data,{headers})
  
   }
