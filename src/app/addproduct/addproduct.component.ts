@@ -20,6 +20,7 @@ import { Country } from '../models/country.model';
 })
 
 export class AddproductComponent implements OnInit {
+  items=['file-input0','file-input1','file-input2','file-input3','file-input4','file-input5','file-input6','file-input7','file-input8','file-input9']
   country!:Country
   result:any 
 map:any
@@ -75,6 +76,9 @@ marker!:any
   response2: any;
   infoWindow:any
   note!:string
+  selectedfile!: File;
+  imageSrc:any[]=[]
+ 
   constructor(private route:Router,private storessserve:UserService,private catserve:CategoryService,private active:ActivatedRoute) { 
     
    
@@ -124,7 +128,7 @@ marker!:any
     if( this.active.snapshot.params['data']!='data'){
      //this.data= this.active.snapshot.params['data'].replace('*','#')
       this.flag=false
-    
+       console.log(this.data.is_online)
       ////////////////////////////////////////
     console.log(( this.active.snapshot.params['data']))
     this.data=JSON.parse(this.active.snapshot.params['data'].replace('*','#'))
@@ -279,6 +283,36 @@ this.route.navigateByUrl(`/home/me/profile/my-profile/select-category/${(JSON.st
     this.data.is_online=0
     else this.data.is_online=1 
    }
+   selectedFile(event:any,index:number){
+    this.selectedfile= <File> event.target.files[0]
+  
+  //this.storessserve.getimage(this.selectedfile)
+  this.storessserve.files[index]=this.selectedfile
+   if (event.target.files && event.target.files[0]) {
+    const file = event.target.files[0];
+
+    const reader = new FileReader();
+    reader.onload = e => {this.imageSrc[index] = reader.result;
+   // this.data.store_img=this.selectedfile
+    this.imageSrc[index]=URL.createObjectURL(event.target.files[0])
+    localStorage.setItem(`img${index}`,this.imageSrc[index])
+   
+}
+    reader.readAsDataURL(file);
+}
+
+  }
+  delete(index:number){
+    console.log(index)
+    this.imageSrc.splice(index,1)
+    localStorage.removeItem(`img${index}`)
+    this.storessserve.files.splice(index,1)
+    console.log( this.storessserve.files)
+  }
+
+  
+
+
   create(){
     console.log(this.data.city_id)
       let obj={

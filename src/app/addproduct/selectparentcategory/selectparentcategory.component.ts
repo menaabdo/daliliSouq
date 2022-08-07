@@ -130,7 +130,9 @@ this.data=JSON.stringify(this.data)
   this.data.properties=[]
   this.data.is_color=is_color
   this.data.is_size=is_size
+  this.catserve.category(id).subscribe((res)=>{let response=res;})
   this.data.is_online=is_online
+  console.log(this.data.is_online)
   this.data=JSON.stringify(this.data)
   if((is_color&&is_color!=0)||(is_size&&is_size!=0))
  { 

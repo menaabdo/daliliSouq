@@ -1,8 +1,43 @@
 <div class="container">
     
     <div class="row ">
-        <div class=" col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xs-offset-3 bg">
+        <div class=" col-xs-12  col-sm-12 col-md-12 col-lg-12 col-xs-offset-3 bg">
             <form id="contact-form" class="form"#f='ngForm' (ngSubmit)='create()' > 
+                <div class='bg1  w-100 border-bottom  border-secondary' style="height: 200px;padding-top: 10px;margin-bottom: 5px;margin-top: 2px;">
+                   <div class='d-flex justify-content-center '>  <h3 class="">up to 10 images</h3></div>
+
+                       <div class='d-flex justify-content-between '>
+                    <div id='img2' class=" image-upload text-center" [ngStyle]="{'background-image': 'url(' + imageSrc[0]+ ')'}">
+                        <label for='file-input0' class="text-center">
+                            <i *ngIf='!imageSrc[0]' class="fa fa-camera fa-2x" ></i>
+                            <i *ngIf='imageSrc[0]' (click)='delete(0)' class="fa fa-times fa-2x"></i>
+                       
+                        </label>
+                            
+                        <input required id='file-input0' type="file"  accept="image/*" (change)="selectedFile($event,0)"/>
+                    </div> 
+                    <div id='img2' class=" image-upload text-center" [ngStyle]="{'background-image': 'url(' + imageSrc[1]+ ')'}">
+                        <label for='file-input1' class="text-center">
+                            <i *ngIf='!imageSrc[1]' class="fa fa-camera fa-2x" ></i>
+                            <i *ngIf='imageSrc[1]' style="width: 80px;" (click)='delete(1)' class="fa fa-times fa-2x"></i>
+                       
+                        </label>
+                            
+                        <input required id='file-input1' type="file"  accept="image/*" (change)="selectedFile($event,1)"/>
+                    </div> 
+                    <div id='img2' class=" image-upload text-center" [ngStyle]="{'background-image': 'url(' + imageSrc[2]+ ')'}">
+                        <label for='file-input2' class="text-center">
+                            <i *ngIf='!imageSrc[2]' class="fa fa-camera fa-2x" ></i>
+                            <i *ngIf='imageSrc[2]' style="width: 80px;margin: 10px;" (click)='delete(2)' class="fa fa-times fa-2x"></i>
+                       
+                        </label>
+                            
+                        <input required id='file-input2' type="file"  accept="image/*" (change)="selectedFile($event,2)"/>
+                    </div> 
+                
+                </div>
+               
+                    </div>
                 <div class="form-group mt-3">      
                   <label class="form-label" class='js-hide-label select1'>Select account</label>
                  <select  id='select1'  required [ngClass]='select1.touched&&select1.errors?.["required"]?"danger":""' #select1="ngModel" class=" form-control select1 "  [(ngModel)]=data.store_name name='name' (change)='getstore("select1",$event)' (blur)='hidelabel("select1")' (click)='displaylabel("select1")' (focus)='displaylabel("select1")'>
@@ -102,7 +137,7 @@
                 </div>
            
             
-                <div class="form-group" *ngIf='!data.colors'>
+                <div class="form-group" *ngIf='!data.colors||!data.is_online'>
                     <label for="quantity"class='js-hide-label quantity' >product quantity</label>
                     <input id='quantity' type='number' required [ngClass]='quantity.touched&&quantity.errors?.["required"]?"danger":""' #quantity="ngModel"  placeholder="Product quantity" class="form-control quantity"  aria-describedby="emailHelp" [(ngModel)]=data.quantity name='quantity' (change)='displaylabel("mobile")' (blur)='hidelabel("quantity")' (click)='displaylabel("quantity")' (focus)='displaylabel("quantity")'>
                 </div>
@@ -110,7 +145,7 @@
             
                 <div class="form-group">
                     <label class="form-label" class='js-hide-label link' for="link">youtube link</label>
-                    <input required [ngClass]='link.touched&&link.errors?.["required"]?"danger":""' type="text" placeholder=" youtube link" class="form-control link " id="link" #link="ngModel" aria-describedby="emailHelp"  [(ngModel)]=data.link name='link' (change)='displaylabel("link")' (blur)='hidelabel("link")' (click)='displaylabel("link")' (focus)='displaylabel("link")'>
+                    <input  type="text" placeholder=" youtube link" class="form-control link " id="link" #link="ngModel" aria-describedby="emailHelp"  [(ngModel)]=data.link name='link' (change)='displaylabel("link")' (blur)='hidelabel("link")' (click)='displaylabel("link")' (focus)='displaylabel("link")'>
                     
 
                 </div>

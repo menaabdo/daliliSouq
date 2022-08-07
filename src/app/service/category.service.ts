@@ -64,5 +64,8 @@ return this.httpclient.get<{stores:Store []}>(`${environment.apiURL}stores_categ
     return this.httpclient.get(`${environment.apiURL}category/properties?os=android&category_id=${category_id}`)
  
   }
-
+  category(id:number){
+    return this.httpclient.get(`${environment.apiURL}category?os=android&category_id=${id}`)
+ 
+  }
 }

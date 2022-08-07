@@ -17,6 +17,7 @@ user?:any
 id!:string
 logininfo?:any
 image_file?:any
+files:any[]=[]
 token!:string
  headers!:any;
   activeroute: any;
@@ -24,6 +25,7 @@ token!:string
   constructor(private httpclient: HttpClient,private cookieService: CookieService,private route:Router ) { }
  getimage(file:object){
 this.image_file=file
+
 }
  
   login(user:any){
@@ -247,7 +249,9 @@ this.image_file=file
   }
   create_product(data:any){
     const headers =this.headers
-    data.append('image',this.image_file)
+    for(let i=0;i<this.files.length;i++)
+    data.append(`image${i+1}`,this.files[i])
+    data.append('image',this.files[0])
     return this.httpclient.post(`${environment.apiURL}product/create?os=android`,data,{headers})
  
   }
