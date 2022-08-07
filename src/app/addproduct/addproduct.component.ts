@@ -383,7 +383,7 @@ this.route.navigateByUrl(`/home/me/profile/my-profile/select-category/${(JSON.st
    {this.data.quantity=0
      for(let i=0 ;i< this.data.colors.length;i++ ){
      this.data.quantity  +=this.data.colors[i].quantity
-   }
+   } 
    console.log(this.data.quantity)
    
       fd.append('colors',JSON.stringify(this.data.colors ))
@@ -391,7 +391,9 @@ this.route.navigateByUrl(`/home/me/profile/my-profile/select-category/${(JSON.st
    
     }
     else
-   fd.append('quantity',this.data.quantity as unknown as string)
+    if(this.data.is_online==1) fd.append('quantity',this.data.quantity as unknown as string)
+   
+   fd.append('quantity',1 as unknown as string)
    
     fd.append('latitude',this.data.lat as unknown as string)
     fd.append('longitude',this.data.lng as unknown as string)
