@@ -148,7 +148,7 @@ marker!:any
     
     }
     this.data.update2=0}
-    else {this.flag=true;localStorage.removeItem('imgs')}
+    else {this.flag=true;localStorage.removeItem('imgs');this.storessserve.files=[]}
 //     if( this.active.snapshot.params['data']!='data'){
 //           console.log( (this.active.snapshot.params['data']))
   console.log((this.data))
