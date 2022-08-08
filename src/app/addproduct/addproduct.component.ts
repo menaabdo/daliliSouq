@@ -139,7 +139,7 @@ marker!:any
   }
       ////////////////////////////////////////
     console.log(( this.active.snapshot.params['data']))
-    this.data=JSON.parse(this.active.snapshot.params['data'].replace('*','#'))
+    this.data=JSON.parse(this.active.snapshot.params['data'].replaceAll('*','#'))
    ////////////////////////////////
    if(this.data.category_ids.length!=0)
    {console.log(this.data.category_ids)
