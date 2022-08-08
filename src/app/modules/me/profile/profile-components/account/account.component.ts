@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 import { Account } from 'src/app/models/account.model';
 import { Category } from 'src/app/models/category.model';
 import { UserService } from 'src/app/service/user.service';
@@ -18,9 +19,10 @@ export class AccountComponent implements OnInit {
   response!:any
   accounts!:Account[]
   cats!:any
-  constructor(private accountserve:UserService) { }
+  constructor(private accountserve:UserService,private activeroute :ActivatedRoute ) { }
 
   ngOnInit(): void {
+    console.log(this.activeroute.snapshot.params['data'])
     this.activePlan=0
     this.activePackage=0
     this.accountserve.myaccount().subscribe((res)=>{this.response=res;this.accounts=this.response.Response.accounts;this.cats=this.response.Response.categories_packages;console.log(this.accounts)})

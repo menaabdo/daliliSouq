@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Account } from 'src/app/models/account.model';
 import { Category } from 'src/app/models/category.model';
 import { CategoryService } from 'src/app/service/category.service';
@@ -17,8 +17,10 @@ export class AllcatComponent implements OnInit {
   respose!:any
   accounts!:Account[]
   country_id!:number
-  
-    constructor(private catserve:CategoryService,private route:Router) { }
+  data!:any
+    constructor(private catserve:CategoryService,private route:Router,private active:ActivatedRoute) { 
+this.data=this.active.snapshot.params['data']
+    }
   
     ngOnInit(): void {
       this.catserve.all().subscribe((res)=>{this.respose=res
@@ -39,7 +41,18 @@ iscategory(){
     this.categories=this.respose.Response })
 
 }
+upgradespecificcategory(category_id:number){
+  if(this.data!='data')
+  this.route.navigateByUrl(`/home/me/profile/account/${this.data.replace('#','*')}/packages/${category_id}`)
+  else
+  this.route.navigateByUrl(`/home/me/profile/account/data/packages/${category_id}`)
+
+}
 upgrade(id:number,price:number){
-this.catserve.upgrade_account(id,price).subscribe((res)=>{this.route.navigateByUrl('/home/me/profile/account')})
+  if(this.data!='data')
+this.catserve.upgrade_account(id,price).subscribe((res)=>{this.route.navigateByUrl(`/home/me/profile/account/${this.data.replace('#','*')}`)})
+else
+this.catserve.upgrade_account(id,price).subscribe((res)=>{this.route.navigateByUrl(`/home/me/profile/account/data`)})
+
 }
 }

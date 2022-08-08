@@ -16,8 +16,11 @@ response!:any
 packages!:Package[]
 mess?:string
 error!:any
-  constructor(private packgeeserve:CategoryService,private activeroute: ActivatedRoute,private route:Router) {
+data!:any
+  constructor(private active :ActivatedRoute,private packgeeserve:CategoryService,private activeroute: ActivatedRoute,private route:Router) {
     this.id=this.activeroute.snapshot.params['id'] 
+    this.data=this.active.snapshot.params['data']
+ console.log(this.data)
    }
 
 
@@ -29,8 +32,10 @@ this.packgeeserve.subscribe_package(category_id,package_id).subscribe((res)=>{
   this.error=res
    if(this.error.Error.code==402)
    this.mess=this.error.Error.desc
-
-  this.route.navigateByUrl('/home/me/profile/account')
+if(this.data!='data')
+  this.route.navigateByUrl(`/home/me/profile/my-profile/add_product/${this.data.replace('#','*')}`)
+  else
+  this.route.navigateByUrl(`/home/me/profile/account/data`)
 })
 }
 }

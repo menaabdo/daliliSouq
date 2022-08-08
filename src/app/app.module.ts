@@ -41,6 +41,7 @@ import { ViewcodeComponent } from './viewcode/viewcode.component';
 import { SalesdetailesComponent } from './modules/me/profile/profile-components/sales/salesdetailes/salesdetailes.component';
 import { StoreorderdetailesComponent } from './modules/store/sotre-details/components/store-paid-sales/storeorderdetailes/storeorderdetailes.component';
 import { OneAdComponent } from './modules/pages/one-ad/one-ad.component';
+import { ConfirmpageComponent } from './addproduct/confirmpage/confirmpage.component';
 
 @NgModule({
   declarations: [
@@ -70,6 +71,7 @@ import { OneAdComponent } from './modules/pages/one-ad/one-ad.component';
     SalesdetailesComponent,
     StoreorderdetailesComponent,
     OneAdComponent,
+    ConfirmpageComponent,
     
     
     

@@ -38,6 +38,11 @@ data!:any
   this.data.city_name=city_name
   this.data.region_id=region_id
   this.data.region_name=region_name
+  if(this.data.city_id)
+    {
+    this.data.city_name=this.data.city_name +'-'+this.data.region_name
+    
+    }
   if(this.data.store_flag==1)
   this.route.navigateByUrl(`/home/me/profile/stores/add-store/${JSON.stringify(this.data)}`)
   else

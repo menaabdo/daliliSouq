@@ -250,7 +250,7 @@ this.image_file=file
   create_product(data:any){
    localStorage.removeItem('imgs')
     const headers =this.headers
-    console.log(this.files)
+    
     if(this.files.length>0)
     {for(let i=0;i<this.files.length;i++)
     data.append(`image${i+1}`,this.files[i])

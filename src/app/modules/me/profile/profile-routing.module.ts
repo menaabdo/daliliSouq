@@ -35,6 +35,7 @@ import { AddofferComponent } from './profile-components/offers/addoffer/addoffer
 import { AddpackagesComponent } from './profile-components/offers/addpackages/addpackages.component';
 import { ViewcodeComponent } from 'src/app/viewcode/viewcode.component';
 import { SalesdetailesComponent } from './profile-components/sales/salesdetailes/salesdetailes.component';
+import { ConfirmpageComponent } from 'src/app/addproduct/confirmpage/confirmpage.component';
 const routes: Routes = [
   {
     path: "",
@@ -48,7 +49,7 @@ const routes: Routes = [
             component: MyProfileComponent
           },
           {
-                path:'view',
+                path:'view/:num',
                 component:ViewprofileComponent
           },
           {
@@ -59,6 +60,10 @@ const routes: Routes = [
           {
             path:'add_product/:data',
             component:AddproductComponent
+          },
+          {
+            path:'confirm',
+            component:ConfirmpageComponent
           },
           {
             path: "edit-product/:id/:data",
@@ -89,7 +94,7 @@ const routes: Routes = [
         component: AddressesComponent
       },
       {
-        path: "account",
+        path: "account/:data",
         children: [
           {
             path: "",

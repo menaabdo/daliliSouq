@@ -79,15 +79,16 @@ marker!:any
   note!:string
   selectedfile!: File;
   imageSrc:any[]=[]
- 
-  constructor(private route:Router,private storessserve:UserService,private catserve:CategoryService,private active:ActivatedRoute) { 
+  can_post!:any
+  response_canpost!:any
+  constructor(private categoryserve:CategoryService,private route:Router,private storessserve:UserService,private catserve:CategoryService,private active:ActivatedRoute) { 
     
    
   }
 
 
   ngOnInit(): void {
-    
+    console.log(this.data)
     this.storessserve.cities().subscribe((res)=>{this.response1=res;this.cities=this.response1.Response
       
     })
@@ -140,13 +141,18 @@ marker!:any
     console.log(( this.active.snapshot.params['data']))
     this.data=JSON.parse(this.active.snapshot.params['data'].replace('*','#'))
    ////////////////////////////////
-   
+   if(this.data.category_ids.length!=0)
+   {console.log(this.data.category_ids)
+     this.categoryserve.can_post(this.data.category_ids[0],1).subscribe((res)=>{
+     this.response_canpost=res;this.can_post=this.response_canpost.Response;
+     console.log(this.can_post)
+   })}
 
-    if(this.data.city_id)
-    {
-    this.data.city_name=this.data.city_name +'-'+this.data.region_name
+    // if(this.data.city_id)
+    // {
+    // this.data.city_name=this.data.city_name +'-'+this.data.region_name
     
-    }
+    // }
     this.data.update2=0}
     else {this.flag=true;localStorage.removeItem('imgs');this.storessserve.files=[]}
 //     if( this.active.snapshot.params['data']!='data'){
@@ -336,30 +342,7 @@ this.route.navigateByUrl(`/home/me/profile/my-profile/select-category/${(JSON.st
 
   create(){
    
-    console.log(this.data.city_id)
-      let obj={
-    en_name:this.data.title,
-    ar_name:this.data.title,
-    price:this.data.price,
-    category_id:this.data.category_ids[(this.data.category_ids.length)-1],
-    parent_id:this.data.category_ids[(this.data.category_ids.length)-(this.data.category_ids.length)],
-    country_id:this.country.id,
-    store_id:this.data.store_id,
-    city_id:this.data.city_id,
-    region_id:this.data.region_id,
-    en_desc:this.data.desc,
-    ar_desc:this.data.desc,
-    is_online:this.data.is_online,
-    properties:this.data.properties,
-    colors:this.data.colors,
-    latitude:this.data.lat,
-    longitude:this.data.lng,
-    mobile:this.data.mobile,
-
-
-
-
-    }
+   
     let fd=new FormData();
     fd.append('en_name',this.data.title)
     fd.append('ar_name',this.data.title,)
@@ -384,22 +367,42 @@ this.route.navigateByUrl(`/home/me/profile/my-profile/select-category/${(JSON.st
      for(let i=0 ;i< this.data.colors.length;i++ ){
      this.data.quantity  +=this.data.colors[i].quantity
    } 
-   console.log(this.data.quantity)
+  
    
       fd.append('colors',JSON.stringify(this.data.colors ))
       fd.append('quantity',this.data.quantity as unknown as string)
    
     }
     else
-    if(this.data.is_online==1) fd.append('quantity',this.data.quantity as unknown as string)
+    {if(this.data.is_online==1) fd.append('quantity',this.data.quantity as unknown as string)
    
-   fd.append('quantity',1 as unknown as string)
-   
+     else fd.append('quantity',1 as unknown as string  )
+   }
     fd.append('latitude',this.data.lat as unknown as string)
     fd.append('longitude',this.data.lng as unknown as string)
     fd.append('mobile',this.data.mobile as unknown as string)
-
-this.storessserve.create_product(fd).subscribe((res)=>{console.log(res)})
+       console.log(this.can_post)
+          if(this.can_post==true)
+         {console.log('can')
+            this.storessserve.create_product(fd).subscribe((res)=>{
+              console.log(res)
+              this.route.navigateByUrl('home/me/profile/my-profile/view/1')
+            })
+        
+          }
+          if(this.can_post==false)
+          {var modal = document.getElementById("myModal")!;
+          modal.style.display = "block";}
+        
+  }
+  close(){
+    var modal = document.getElementById("myModal")!;
+          
+  var span = document.getElementsByClassName("close")[0];
+  modal.style.display = "none";
+  }
+  upgrade(){
+    this.route.navigateByUrl(`/home/me/profile/account/${(JSON.stringify(this.data)).replace('#','*')}`)
   }
  
 }

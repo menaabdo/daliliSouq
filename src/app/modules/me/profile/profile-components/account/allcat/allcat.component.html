@@ -7,7 +7,7 @@
 <div class="row card-body" *ngIf='is_category'>
     <div class='me card-header col-md-6 header rounded d-flex justify-content-between align-items-center' *ngFor='let category of categories '>
         <img  src="https://dalilisouq.com/{{category.image}}" width='60px' height="20px">
-        <a routerLink='/home/me/profile/account/packages/{{category.id}}' class='d-flex h3'>{{category.name}} </a>  
+        <a (click)='upgradespecificcategory(category.id)' class='d-flex h3'>{{category.name}} </a>  
     </div>
 </div>
 <div class="row mt-2" *ngIf='is_account'>

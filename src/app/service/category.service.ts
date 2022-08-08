@@ -72,4 +72,9 @@ return this.httpclient.get<{stores:Store []}>(`${environment.apiURL}stores_categ
     return this.httpclient.get(`${environment.apiURL}category?os=android&category_id=${id}`)
  
   }
+  can_post(category_id:number,country_id:number){
+    const headers =this.headers
+    return this.httpclient.get(`${environment.apiURL}profile/can_post?os=android&category_id=${category_id}&country_id=${country_id}`,{headers})
+ 
+  }
 }
