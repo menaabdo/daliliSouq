@@ -17,6 +17,7 @@ check_num!:number
   constructor(private packageserve:CategoryService,private activeroute:ActivatedRoute,private route:Router) { }
 country_id=this.activeroute.snapshot.params['country_id']
 
+
   ngOnInit(): void {
     this.check_num=this.activeroute.snapshot.params['num']
     this.packageserve.profile_packages(this.country_id,0).subscribe((res)=>{this.response=res;this.packages=this.response.Response; console.log(res)})
@@ -25,6 +26,19 @@ country_id=this.activeroute.snapshot.params['country_id']
   continueo(){
     this.route.navigateByUrl('/home/me/profile/my-profile/confirm')
   
+  }
+  select(){
+    this.route.navigateByUrl('/home/me/profile/my-profile/confirm')
+  
+  }
+  detectme(id:number){
+  
+   let all= document.getElementsByClassName('active')
+    for(let i=0; i< all.length;i++){
+      all[i].classList.remove('active')
+    }
+    document.getElementById(id as unknown as string)!.classList.add('active')
+    
   }
 
 }

@@ -11,16 +11,16 @@
     <!-- <div class='h4 m-2 p-1 ml-4 basiccolor'><i class="fa fa-dollar-sign dollar  text-center"></i>{{p.types[0].price.price}} EGP</div>
     -->
         <div class='d-flex justify-content-around mb-3' > 
-    <span class='bg-secondary rounded text-light h4 m-2 p-2  py-2  text-center' *ngFor='let type of p.types'>{{type.days}} days</span>
+    <span (click)='detectme(type.id)' id={{type.id}} class='bg-secondary rounded text-light h4 m-2 p-2  py-2  text-center' *ngFor='let type of p.types'>{{type.days}} days</span>
    
     </div>
     <div class='d-flex justify-content-center align-items-end '>
-        <button class="text-cennter  btn btn-lg rounded mb-1 " > Select</button>
+        <button (click)='select()' class="text-cennter  btn btn-lg rounded mb-1 " > Select</button>
         </div>  
    </div>
    </div>
    </div>
    <div  class='row d-flex justify-content-center p-5 m-3'>
-    <button (click)=' continueo()'>continue without packages </button>
+    <button *ngIf='check_num==1' (click)=' continueo()'>continue without packages </button>
     
     </div>
