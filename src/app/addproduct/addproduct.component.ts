@@ -402,7 +402,7 @@ this.route.navigateByUrl(`/home/me/profile/my-profile/select-category/${(JSON.st
   modal.style.display = "none";
   }
   upgrade(){
-    this.route.navigateByUrl(`/home/me/profile/account/${(JSON.stringify(this.data)).replace('#','*')}`)
+    this.route.navigateByUrl(`/home/me/profile/account/${(JSON.stringify(this.data)).replace('#','*')}/packages/${this.data.category_ids[0]}`)
   }
  
 }

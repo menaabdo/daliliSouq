@@ -173,7 +173,7 @@
            
                 <div class="form-group"  >
                     <label for="exampleInputEmail1" class='js-hide-label desc'>product details</label>
-                    <input required type="text" id='desc' placeholder="product detailes" class="form-control desc" [ngClass]='desc.touched&&desc.errors?.["required"]?"danger":""' #desc='ngModel' aria-describedby="emailHelp" [(ngModel)]=data.desc name='desc'  (change)='displaylabel("desc")' (blur)='hidelabel("desc")' (click)='displaylabel("desc")' (focus)='displaylabel("desc")'>
+                    <textarea required type="text" id='desc' placeholder="product detailes" class="form-control desc" [ngClass]='desc.touched&&desc.errors?.["required"]?"danger":""' #desc='ngModel' aria-describedby="emailHelp" [(ngModel)]=data.desc name='desc'  (change)='displaylabel("desc")' (blur)='hidelabel("desc")' (click)='displaylabel("desc")' (focus)='displaylabel("desc")'></textarea>
                 </div>
             
                 <div class="form-group">

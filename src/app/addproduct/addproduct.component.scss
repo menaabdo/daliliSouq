@@ -226,4 +226,11 @@ thead, tfoot,tfoot,#link1{
   text-decoration: none;
   cursor: pointer;
 }
+#desc{
+  word-break: break-word !important;
+  max-height:100px !important;/* you can change as you need it */
+  overflow: auto !important;
+  min-height: 0px !important;
+  max-width: 480px !important;
+}
 
