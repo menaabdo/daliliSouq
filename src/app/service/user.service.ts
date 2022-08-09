@@ -39,8 +39,9 @@ this.image_file=file
        this.headers=new HttpHeaders({
         Authorization: `Bearer ${localStorage.getItem('token')}`,})
         if(this.headers)
-        this.route.navigateByUrl('/home');
-      
+        {console.log(this.headers)
+          this.route.navigateByUrl('/home');
+      }
 
        })
   }
