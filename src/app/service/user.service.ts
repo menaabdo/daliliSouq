@@ -94,6 +94,11 @@ this.image_file=file
   
   }
   ////////////////////////////////end/////////////////
+  select_offer(offer_id:number,package_type_category_id:number){
+    const headers =this.headers
+    return this.httpclient.post( `${environment.apiURL}offer/package?os=android`,{'offer_id':offer_id,'package_type_category_id':package_type_category_id},{headers})
+  
+  }
   ///////////////////////followers/////////////////////
   follwers(){
     const headers =this.headers

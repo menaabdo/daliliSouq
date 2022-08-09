@@ -81,6 +81,8 @@ marker!:any
   imageSrc:any[]=[]
   can_post!:any
   response_canpost!:any
+  response_add_new!:any
+  added_data!:any
   constructor(private categoryserve:CategoryService,private route:Router,private storessserve:UserService,private catserve:CategoryService,private active:ActivatedRoute) { 
     
    
@@ -397,8 +399,8 @@ this.route.navigateByUrl(`/home/me/profile/my-profile/select-category/${(JSON.st
           if(this.can_post==true)
          {console.log('can')
             this.storessserve.create_product(fd).subscribe((res)=>{
-              console.log(res)
-              this.route.navigateByUrl('home/me/profile/my-profile/view/1')
+             this.response_add_new=res ;this.added_data=this.response_add_new.Response
+              this.route.navigateByUrl(`home/me/profile/my-profile/view/1/${this.added_data.id}`)
             })
         
           }

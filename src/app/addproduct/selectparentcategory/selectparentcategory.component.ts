@@ -5,7 +5,8 @@ import { properity } from 'src/app/models/properity.model';
 import { CategoryService } from 'src/app/service/category.service';
 import { FormGroup, FormControl, Validators} from '@angular/forms';
 import { Color } from 'src/app/models/color.model';
-import { JsonpClientBackend } from '@angular/common/http';
+import {Location} from '@angular/common';
+
    
 
 @Component({
@@ -27,10 +28,12 @@ selectedcolorid?:number
   properties!:properity[]
   i:number=0
  
-  constructor(private catserve:CategoryService,private route:Router,private active:ActivatedRoute) {
+  constructor(private _location: Location,private catserve:CategoryService,private route:Router,private active:ActivatedRoute) {
      }
   
-
+     backClicked() {
+      this._location.back();
+    }
   ngOnInit(): void {
    
     this.data=this.active.snapshot.params['data']

@@ -49,7 +49,7 @@ const routes: Routes = [
             component: MyProfileComponent
           },
           {
-                path:'view/:num',
+                path:'view/:num/:product_id',
                 component:ViewprofileComponent
           },
           {
