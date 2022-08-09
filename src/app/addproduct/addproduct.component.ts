@@ -94,6 +94,12 @@ marker!:any
     })
    this.storessserve.profile({country_id:1}).subscribe((res)=>{this.response2=res;this.add=this.response2.Response.address
     this.country=this.response2.Response.country ;console.log(res)
+    if( this.active.snapshot.params['data']=='data')
+  
+    { console.log('ttjtjtjjtjt',this.response2.Response.mobile)
+      let mobile=(this.response2.Response.mobile).toString()
+      mobile= mobile.slice((this.country.phone_code).toString().length)
+        this.data.mobile=mobile}
       let loader=new Loader({apiKey:'AIzaSyCuU2Tnmy93AuQWWQ7DAGJT95OJKZYZdwY'})
       loader.load().then(() => {
     
@@ -130,6 +136,9 @@ marker!:any
     if( this.active.snapshot.params['data']!='data'){
      //this.data= this.active.snapshot.params['data'].replace('*','#')
       this.flag=false
+      ///////////////////////
+     
+      
        ////////////////////////////////
        if(localStorage.getItem('imgs'))
     {this.imageSrc=JSON.parse(localStorage.getItem('imgs')||'{}')
@@ -250,19 +259,22 @@ marker!:any
     // this.data.store_id=id
   for(let i=0;i<e.target.childNodes.length;i++){
    if(e.target.value==e.target.childNodes[i].value)
-         {let mobile=(this.response2.Response.mobile).toString()
-               mobile= mobile.slice(2)
+         {
+           //let mobile=(this.response2.Response.mobile).toString()
+              // mobile= mobile.slice(2)
                 console.log((this.country.phone_code).toString().length)
             this.data.store_id=e.target.childNodes[i].id
-          if(e.target.value=='my account')
-         {let mobile=(this.response2.Response.mobile).toString()
+            console.log(e.target.value)
+          if(e.target.value=='My account')
+         {console.log('jhiiiiiiiiiii')
+           let mobile=(this.response2.Response.mobile).toString()
           mobile= mobile.slice((this.country.phone_code).toString().length)
             this.data.mobile=mobile}
          else{ 
            
-           mobile =(this.stores[i-1].mobile).toString();
+          let mobile =(this.stores[i-1].mobile).toString();
            mobile= mobile.slice((this.country.phone_code).toString().length)
-          this.data.mobile=mobile
+          this.data.mobile=mobile as unknown as number
        }
  } }
    this.flag=true
