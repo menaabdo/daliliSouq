@@ -19,7 +19,9 @@ logininfo?:any
 image_file?:any
 files:any[]=[]
 token!:string
- headers!:any;
+ headers= new HttpHeaders({
+  Authorization: `Bearer ${localStorage.getItem('token')}`,})
+ 
   activeroute: any;
   
   constructor(private httpclient: HttpClient,private cookieService: CookieService,private route:Router ) { }
