@@ -38,7 +38,7 @@ this.image_file=file
        localStorage.setItem('id',this.id)
        this.headers=new HttpHeaders({
         Authorization: `Bearer ${localStorage.getItem('token')}`,})
-        
+        if(this.headers)
         this.route.navigateByUrl('/home');
       
 
