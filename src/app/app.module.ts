@@ -42,6 +42,8 @@ import { SalesdetailesComponent } from './modules/me/profile/profile-components/
 import { StoreorderdetailesComponent } from './modules/store/sotre-details/components/store-paid-sales/storeorderdetailes/storeorderdetailes.component';
 import { OneAdComponent } from './modules/pages/one-ad/one-ad.component';
 import { ConfirmpageComponent } from './addproduct/confirmpage/confirmpage.component';
+import { EditColorsSizesComponent } from './modules/me/profile/profile-components/edit-products/edit-colors-sizes/edit-colors-sizes.component';
+
 
 @NgModule({
   declarations: [
@@ -72,6 +74,9 @@ import { ConfirmpageComponent } from './addproduct/confirmpage/confirmpage.compo
     StoreorderdetailesComponent,
     OneAdComponent,
     ConfirmpageComponent,
+    EditColorsSizesComponent,
+    
+
     
     
     

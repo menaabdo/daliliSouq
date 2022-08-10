@@ -7,4 +7,5 @@ export interface properity{
     type:type
     type_id:number
     options:option[]
+    
 }

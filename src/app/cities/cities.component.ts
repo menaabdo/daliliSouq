@@ -15,18 +15,28 @@ hasregion!:boolean
   constructor(private storessserve:UserService,private route:Router,private active:ActivatedRoute) { }
 
   ngOnInit(): void {
-    console.log(this.storessserve.image_file)
+  console.log(this.storessserve.product_data)
     this.storessserve.cities().subscribe((res)=>{this.response=res;this.cities=this.response.Response})
      }
   getregion(id:number,l:number,name:string){
-    
-  
-    let data=JSON.parse(this.active.snapshot.params['data'])
+    if(this.active.snapshot.params['data']!='data')
+    {let data
+
+    data=JSON.parse(this.active.snapshot.params['data'])
+   
      if(l!=0)
-   {data.city_id=id
+   { if(this.active.snapshot.params['data']!='data')
+   
+     data.city_id=id
+     else
+       this.storessserve.product_data.city_id=id
       this.route.navigateByUrl(`/home/me/profile/regions/${JSON.stringify(data)}`)
     }else {
      data.city_name=name;data.city_id=id
+     this.storessserve.product_data.city_name=name;this.storessserve.product_data.city_id=id
+     if(this.active.snapshot.params['data']=='data')
+     this.route.navigateByUrl(`/home/me/profile/my-profile/edit-product/${this.storessserve.product_data.id}`)
+     
      if(data.store_flag==1)
       this.route.navigateByUrl(`/home/me/profile/stores/add-store/${JSON.stringify(data)}`)
       else
@@ -35,7 +45,18 @@ hasregion!:boolean
          else
         this.route.navigateByUrl(`/home/me/profile/offers/offer-add/${JSON.stringify(data)}`)
      
-}
+}}else{
+  if(l!=0)
+   {
+       this.storessserve.product_data.city_id=id
+      this.route.navigateByUrl(`/home/me/profile/regions/data`)
+    }else {
+    
+     this.storessserve.product_data.city_name=name;this.storessserve.product_data.city_id=id
+    this.route.navigateByUrl(`/home/me/profile/my-profile/edit-product/${this.storessserve.product_data.id}`)
+     
+     
+}}
   }
 
 }

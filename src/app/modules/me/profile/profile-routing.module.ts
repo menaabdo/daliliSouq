@@ -36,6 +36,8 @@ import { AddpackagesComponent } from './profile-components/offers/addpackages/ad
 import { ViewcodeComponent } from 'src/app/viewcode/viewcode.component';
 import { SalesdetailesComponent } from './profile-components/sales/salesdetailes/salesdetailes.component';
 import { ConfirmpageComponent } from 'src/app/addproduct/confirmpage/confirmpage.component';
+import { ProperitiesComponent } from './profile-components/edit-products/properities/properities.component';
+import { EditColorsSizesComponent } from './profile-components/edit-products/edit-colors-sizes/edit-colors-sizes.component';
 const routes: Routes = [
   {
     path: "",
@@ -66,9 +68,11 @@ const routes: Routes = [
             component:ConfirmpageComponent
           },
           {
-            path: "edit-product/:id/:data",
+            path: "edit-product/:id",
             component: EditProductsComponent
           },
+          {path:'edit-properities',component:ProperitiesComponent},
+          {path:'edit-color_size',component:EditColorsSizesComponent},
           {
             path:'notification/:id',
             component:SalesdetailesComponent

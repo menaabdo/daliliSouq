@@ -42,7 +42,7 @@ import { Color } from './color.model'
     store_id?:number
     category_name:any[]
     category_ids:any[]
-    properties?:properity[]
+    properties?:any[]
     colors?:Color[]
     is_color?:number
     is_size?:number

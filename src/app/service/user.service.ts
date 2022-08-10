@@ -6,6 +6,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { environment } from 'src/environments/environment';
 import { User } from '../models/user.model';
 import { CookieService } from 'ngx-cookie-service';
+import { Product } from '../models/product.model';
 
 
 
@@ -13,11 +14,13 @@ import { CookieService } from 'ngx-cookie-service';
   providedIn: 'root'
 })
 export class UserService {
+
 user?:any
 id!:string
 logininfo?:any
 image_file?:any
 files:any[]=[]
+product_data!:Product
 token!:string
  headers= new HttpHeaders({
   Authorization: `Bearer ${localStorage.getItem('token')}`,})
@@ -90,10 +93,21 @@ this.image_file=file
   update_product(data:any){
     console.log(data)
     const headers =this.headers
-    return this.httpclient.post( `${environment.apiURL}product/edit?os=android`,(data),{headers})
+    let start=(JSON.parse(localStorage.getItem('imgs')||'{}')).length-this.files.length
+ 
+   for(let i=0;i<this.files.length;i++){
+     data.append(`image${start++}`,this.files[i])
+   }
+        return this.httpclient.post( `${environment.apiURL}product/edit?os=android`,(data),{headers})
   
   }
   ////////////////////////////////end/////////////////
+  delete_image(id:number){
+    const headers =this.headers
+    return this.httpclient.post( `${environment.apiURL}product/delete_image?os=android`,{'id':id},{headers})
+  
+  }
+  //////////////////////////////
   select_offer(offer_id:number,package_type_category_id:number){
     const headers =this.headers
     return this.httpclient.post( `${environment.apiURL}offer/package?os=android`,{'offer_id':offer_id,'package_type_category_id':package_type_category_id},{headers})

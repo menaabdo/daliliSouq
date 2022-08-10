@@ -32,7 +32,8 @@ img.card-img-top {
     .dropdown > i {
         width: 35px;
         height: 35px;
-        background: #ccc;
+       // background: #ccc;
+        color: rgb(24, 23, 23) !important;
         border-radius: 50%;
         text-align: center;
         line-height: 35px;
@@ -59,6 +60,7 @@ img.card-img-top {
     &:hover {
         transform: scale(1.2);
     }
+  a.dropdown-item:hover{  color: black !important;}
     
 }
 ::placeholder {

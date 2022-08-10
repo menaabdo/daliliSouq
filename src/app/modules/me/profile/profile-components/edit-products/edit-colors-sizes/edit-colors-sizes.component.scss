@@ -79,12 +79,39 @@ a:hover{
     border:2px solid silver;
     border-radius: 50%
   }
-  .active{
-     border:1px solid black
+  .activecolor{
+     border:1px solid black !important
   }
- #prop .card-header::after{
-    content: none !important;
+  .activesize{
+    color:black;
+    font-weight: bold;
+
+ }
+ .plus{
+     font-size: large;
+    color: #8c1434; 
+    cursor: pointer;
+     
+ }
+ .form-control{
+     height: 0!important;
+ }
+ thead, tfoot,tfoot,#link1{
+    color: white;
+    background-color:#8c1434 ;
 }
-.activediv{
-    border:1px solid red;
+.circle {
+    width: 20px;
+    height: 20px;
+    border:2px solid silver;
+    border-radius: 50%
+  }
+  .del{
+    border: 2px solid #8c1434 !important;
+  }
+  a{
+    cursor: pointer;
+  }
+#prop .card-header::after{
+    content: none !important;
 }

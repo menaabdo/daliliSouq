@@ -18,23 +18,33 @@ data!:any
   constructor(private storessserve:UserService,private route:Router,private activeroute:ActivatedRoute) { }
 
   ngOnInit(): void {
+    if(this.activeroute.snapshot.params['data']!='data')
     this.data=JSON.parse(this.activeroute.snapshot.params['data'])
-    console.log(this.data)
+  
     this.storessserve.cities().subscribe((res)=>{this.response=res;this.cities=this.response.Response
     if(this.cities)
-    {
+    {console.log('dkdkdkkdkd')
       for(let i=0;i<this.cities.length;i++){
-        if(this.cities[i].id==this.data.city_id){
+        if(this.activeroute.snapshot.params['data']!='data')
+         {if(this.cities[i].id==this.data.city_id){
+          this.city=this.cities[i]
+          break
+        }}else{if(this.cities[i].id==this.storessserve.product_data.city_id){
           this.city=this.cities[i]
           break
         }
+
+        }
+        
+      
       }
     }
     })
       
   }
   selectregion(city_id:number,region_id:number,city_name:string,region_name:string){
-  this.data.city_id=city_id
+ if(this.activeroute.snapshot.params['data']!='data'){ 
+   this.data.city_id=city_id
   this.data.city_name=city_name
   this.data.region_id=region_id
   this.data.region_name=region_name
@@ -52,5 +62,17 @@ data!:any
          else
         this.route.navigateByUrl(`/home/me/profile/offers/offer-add/${JSON.stringify(this.data)}`)
      
-  }}
+  }}else{
+    if(this.storessserve.product_data.city_id)
+    { this.storessserve.product_data.city_id=city_id
+      this.storessserve.product_data.city_name=city_name
+      this.storessserve.product_data.region_id=region_id
+      this.storessserve.product_data.region_name=region_name
+    this.storessserve.product_data.city_name=this.storessserve.product_data.city_name +'-'+this.storessserve.product_data.region_name
+    this.route.navigateByUrl(`/home/me/profile/my-profile/edit-product/${this.storessserve.product_data.id}`)
+        
+    }
+
+  }
+}
 }

@@ -64,6 +64,9 @@ this.flag=0
   document.getElementById('icon')?.classList.add('porto-icon-search-3') 
 
    }
+  
  }
-
+ change(e:any){
+   e.target.style.color='black'
+ }
 }
