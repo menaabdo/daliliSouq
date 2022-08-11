@@ -6,6 +6,7 @@ import { CookieService } from 'ngx-cookie-service';
 import { Observable } from 'rxjs';
 import { Category } from '../models/category.model';
 import { Store } from '../models/store.model';
+import { Country } from '../models/country.model';
 @Injectable({
   providedIn: 'root'
 })
@@ -14,10 +15,15 @@ export class CategoryService {
     Authorization: `Bearer ${localStorage.getItem('token')}`,
     
   })
+
  
   constructor(private httpclient: HttpClient,private cookieService: CookieService) { }
  //////////getallcategorries/////////////////
-  all(){
+ countries(){
+  return this.httpclient.get<{ cateories: Country }>(`${environment.apiURL}countries?os=android&lang=en`)
+ 
+ }
+ all(){
     return this.httpclient.get<{ cateories: Category }>(`${environment.apiURL}categories?os=android&country_id=1`)
   }
   //////////////////////////////////////////////////

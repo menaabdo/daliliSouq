@@ -22,8 +22,8 @@
                 <ul class="list-group">
                     <li class="list-group-item"><i class="fa fa-user"></i> <span class="ml-2">{{profile_data?.Response.url}}</span> </li>
                     <li class="list-group-item"><i class="fa fa-envelope"></i> <span class="ml-2">{{profile_data?.Response.email}}</span> </li>
-                    <li class="list-group-item"><i class="fa fa-phone"></i> <span class="ml-2">{{profile_data?.Response.mobile}}</span> </li>
-                    <li class="list-group-item"><i class="fas fa-venus-mars"></i> <span class="ml-2">{{profile_data?.Response.gender}}</span> </li>
+                    <li class="list-group-item"><i class="fa fa-phone"></i> <span class="ml-2">{{profile_data?.Response.mobile}}</span><i class="fa fa-check bg-success text-light p-1 mx-5 rounded-circle border"></i> </li>
+                    <li class="list-group-item"><i class="fas fa-venus-mars"></i> <span class="ml-2" *ngIf='profile_data?.Response.gender'>male</span><span class="ml-2" *ngIf='!profile_data?.Response.gender'>female</span> </li>
                     <li class="list-group-item"><i class="fa fa-calendar"></i> <span class="ml-2">{{profile_data?.Response.birth_date}}</span> </li>
                     <li class="list-group-item">
                         <div class="form-group form-check m-0">
