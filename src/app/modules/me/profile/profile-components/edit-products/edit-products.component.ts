@@ -120,12 +120,13 @@ else{
   localStorage.removeItem('imgs')
 this.setdata()
 console.log(this.data)
-}   if(localStorage.getItem('imgs'))
-{this.imageSrc=JSON.parse(localStorage.getItem('imgs')||'{}')
-for(let i=0;i<this.imageSrc.length;i++)
-document.getElementById(`img${i}`)!.style.display='block'
+}  
+//  if(localStorage.getItem('imgs'))
+// {this.imageSrc=JSON.parse(localStorage.getItem('imgs')||'{}')
+// for(let i=0;i<this.imageSrc.length;i++)
+// document.getElementById(`img${i}`)!.style.display='block'
  
-}
+// }
     // this.storessserve.cities().subscribe((res)=>{this.response1=res;this.cities=this.response1.Response
       
     // })
@@ -314,6 +315,8 @@ setdata(){
 // document.getElementById(`img${0}`)!.style.display='block'
 this.storessserve.product_detailes(this.active.snapshot.params['id']) .subscribe((res)=>{this.response2=res;
   console.log(res)
+  //this.imageSrc.push(`https://dalilisouq.com/${this.response2.Response.image}`)
+
 for(let i=0;i<10;i++){
 
 if(this.response2.Response.images.length>i)

@@ -93,11 +93,11 @@ this.image_file=file
   update_product(data:any){
     console.log(data)
     const headers =this.headers
-    let start=(JSON.parse(localStorage.getItem('imgs')||'{}')).length-this.files.length
- 
-   for(let i=0;i<this.files.length;i++){
-     data.append(`image${start++}`,this.files[i])
-   }
+    //means doesnt has image 
+   {for(let i=0;i<this.files.length;i++){
+     data.append(`image${i+1}`,this.files[i])
+     
+   }}
         return this.httpclient.post( `${environment.apiURL}product/edit?os=android`,(data),{headers})
   
   }
