@@ -17,7 +17,7 @@
     <div class="row container mt-3">
     <div class="col-md-3 h-100" *ngFor="let ad of selectedcountry.products.data; let i = index" >
      <div class="card  shadow border-0 rounded">
-            <div (click)='getproduct(1)'  class="card-header  bg-white rounded  remove-after" [ngStyle]="{'background-image': 'url(https://dalilisouq.com/' + ad.image+ ')'}" style=" object-fit: cover;">
+            <div (click)='getproduct(1)'  class="card-header  bg-white rounded  remove-after" [ngStyle]="{'background-image': 'url(https://dalilisouq.com/' + ad.image+ ')'}" style=" background-size: 100% 100%;background-repeat: no-repeat;">
                
                 <div class="d-flex justify-content-between align-items-start " style="max-height: 50px;">
                     <span [ngClass]='ad.package.name?"package":""' class=" rounded " >{{ad.package.name}}</span>
