@@ -81,3 +81,21 @@
   ::-webkit-scrollbar-thumb:hover {
     background: #555; 
   }
+//   menu button
+.dropdown > i{
+    background-color: #163e73 !important;
+    font-size: 18px;
+    color: white;
+    border-radius: 0%;
+    padding: 4px;
+}
+.dropdown-item{
+    border-bottom: solid 1px ghostwhite;
+}
+.dropdown-item:hover{
+    color: #163e73 !important;
+}
+
+.dropdown-menu{
+    min-width: 170px;
+}

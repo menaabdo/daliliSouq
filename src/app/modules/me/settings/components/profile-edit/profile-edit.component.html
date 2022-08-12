@@ -43,9 +43,12 @@
                 <div class="form-group ">
                     <label for="exampleInputEmail1">phone</label>
                     <div class="form-control border-bottom-0 d-flex justify-content-left align-items-center">
-                   
+                   <select><option *ngFor='let country of allcountries' [ngStyle]="{'background-image': 'url(' + country.image+ ')'}">
+
                     <img src='https://dalilisouq.com/{{country.image}}'><span class='pl-2'>+{{country?.phone_code}}</span>
                  
+                   </option></select>
+                   
                     <input type="text" class="form-control border-0" id="exampleInputEmail1" aria-describedby="emailHelp" name='phone' [(ngModel)]=profile_data?.Response.mobile>
                   </div>
                 </div>

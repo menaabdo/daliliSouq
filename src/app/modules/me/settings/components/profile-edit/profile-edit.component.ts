@@ -17,6 +17,7 @@ export class ProfileEditComponent implements OnInit {
   gender!:number
   country!:Country
   allcountries:any
+  countries!:Country[]
 
   constructor(private profile:UserService,private categoryserve:CategoryService,private route:Router) { }
    fd=new FormData();
@@ -43,7 +44,7 @@ export class ProfileEditComponent implements OnInit {
    
   }
   getallcountries(){
- this.categoryserve.countries().subscribe((res)=>{this.allcountries=res.cateories;console.log(this.allcountries)})
+ this.categoryserve.countries().subscribe((res)=>{this.allcountries=res.Response.countries;console.log(this.allcountries)})
   }
 
 

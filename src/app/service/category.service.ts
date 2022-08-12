@@ -20,7 +20,7 @@ export class CategoryService {
   constructor(private httpclient: HttpClient,private cookieService: CookieService) { }
  //////////getallcategorries/////////////////
  countries(){
-  return this.httpclient.get<{ cateories: Country }>(`${environment.apiURL}countries?os=android&lang=en`)
+  return this.httpclient.get<{ Response: any }>(`${environment.apiURL}countries?os=android&lang=en`)
  
  }
  all(){

@@ -22,6 +22,8 @@ image_file?:any
 files:any[]=[]
 product_data!:Product
 token!:string
+country_id!:string
+
  headers= new HttpHeaders({
   Authorization: `Bearer ${localStorage.getItem('token')}`,})
  
@@ -34,13 +36,16 @@ this.image_file=file
 }
  
   login(user:any){
-     
+     localStorage.removeItem('index')
     return this.httpclient.post(`${environment.apiURL}login?os=android`,user)
     .subscribe(
        (res)=>{this.logininfo=res;this.token=this.logininfo.Response.access_token; 
       this.id=this.logininfo.Response.user.id
        localStorage.setItem('token',this.token)
        localStorage.setItem('id',this.id)
+       console.log(this.logininfo)
+       localStorage.setItem('country_id',this.logininfo.Response.user.country_id)
+      this.country_id=this.logininfo.Response.user.country_id
        this.headers=new HttpHeaders({
         Authorization: `Bearer ${localStorage.getItem('token')}`,})
         if(this.headers)
@@ -138,8 +143,8 @@ this.image_file=file
  
   }
   cities(){
-    
-    return this.httpclient.get(`${environment.apiURL}cities?os=android&lang=en&country_id=1`)
+    this.country_id=localStorage.getItem('country_id') as string
+    return this.httpclient.get(`${environment.apiURL}cities?os=android&lang=en&country_id=${this.country_id}`)
 
 
   }
@@ -151,9 +156,9 @@ this.image_file=file
   //////////////////endfavourite////////////////
   ////////////////////////////myprofile///////////
   mystores(lang:string){
-   
+   this.country_id=localStorage.getItem('country_id') as string
     const headers =this.headers
-    return this.httpclient.get(`${environment.apiURL}user/stores?os=android`,{headers})
+    return this.httpclient.get(`${environment.apiURL}user/stores?os=android&country_id=${this.country_id}`,{headers})
 
   }
   create_store(data:any){
@@ -184,7 +189,8 @@ this.image_file=file
   }
   myaccount(){
     const headers =this.headers
-    return this.httpclient.post(`${environment.apiURL}profile/account?os=android`,{'country_id':1},{headers})
+    this.country_id=localStorage.getItem('country_id') as string
+    return this.httpclient.post(`${environment.apiURL}profile/account?os=android`,{'country_id':this.country_id},{headers})
  
   }
  offer_like(offer_id:number){
@@ -205,7 +211,9 @@ this.image_file=file
   }
   offers(){
     //const headers =this.headers
-    return this.httpclient.get(`${environment.apiURL}offers?os=android&country_id=1`)
+    this.country_id=localStorage.getItem('country_id') as string
+
+     return this.httpclient.get(`${environment.apiURL}offers?os=android&country_id=${this.country_id}`)
   }
   mysales(){
     const headers =this.headers
@@ -248,14 +256,15 @@ this.image_file=file
   }
   recently_view(){
     const headers =this.headers
-    return this.httpclient.get(`${environment.apiURL}view_history?os=android&country_id=1&city_id=1`,{headers})
+    this.country_id=localStorage.getItem('country_id') as string
+    return this.httpclient.get(`${environment.apiURL}view_history?os=android&country_id=${this.country_id}&city_id=1`,{headers})
  
   }
   ////////////////////////////////user store////////////////////
   store_profile(id:number){
-     console.log(id)
+     console.log(this.country_id)
     const headers =this.headers
-    return this.httpclient.get(`${environment.apiURL}store?os=android&store_id=${id}&country_id=1&page=1`,{headers})
+    return this.httpclient.get(`${environment.apiURL}store?os=android&store_id=${id}&country_id=${this.country_id}&page=1`,{headers})
   }
   best_seller(id:number){
     const headers =this.headers
@@ -265,7 +274,8 @@ this.image_file=file
     return this.httpclient.get(`${environment.apiURL}store/followers?os=android&store_id=${localStorage.getItem('id')}`)
   }
   products(id:number){
-    return this.httpclient.get(`${environment.apiURL}store/products?os=android&store_id=${id}&country_id=1&page=1`)
+    this.country_id=localStorage.getItem('country_id') as string
+    return this.httpclient.get(`${environment.apiURL}store/products?os=android&store_id=${id}&country_id=${this.country_id}&page=1`)
 
 
   }

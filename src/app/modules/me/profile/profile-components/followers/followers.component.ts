@@ -17,12 +17,12 @@ action?:string
   ngOnInit(): void {
     
     this.followersserve.follwers().subscribe((res)=>{this.response=res;this.followers=this.response.Response
-     })
+     console.log(res)})
     }
-  isOdd(num:number) {
-    if(num % 2 === 0) return false;
-    return true;
-  }
+  // isOdd(num:number) {
+  //   if(num % 2 === 0) return false;
+  //   return true;
+  // }
   follow(id:number){
     
    this.followersserve.follow(id).subscribe((res)=>{

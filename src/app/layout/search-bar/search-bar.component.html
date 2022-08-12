@@ -1,12 +1,27 @@
 <div class="header-middle">
     <div class="container">
         <div class="header-left">
-            <button class="mobile-menu-toggler" type="button">
+            <!-- <button class="mobile-menu-toggler" type="button">
                 <i class="icon-menu"></i>
-            </button>
+               
+
+            </button> -->
             <a href="index.html" class="logo">
                 <img src="assets/images/logo.png" alt="Porto Logo">
             </a>
+            <div class="dropdown">
+                       
+                   <img id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" src='https://dalilisouq.com/{{country.image}}'>
+                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                    <ul>
+                        <li (click)='selectcountry(i)' *ngFor='let c of allcountries ;let i=index' class='dropdown-item '> <a routerLink="profile/my-profile" [routerLinkActive]="'active'"
+                                [routerLinkActiveOptions]="{exact: false}"> <div class="d-flex justify-content-between row m-2"> <img src='https://dalilisouq.com/{{c.image}}'><span class="d-flex col-6 justify-content-start">{{c.name}}</span> </div></a> </li>
+                           </ul>
+                    <!-- <a class="dropdown-item" href="#">Action</a>
+                  <a class="dropdown-item" href="#">Another action</a>
+                  <a class="dropdown-item" href="#">Something else here</a> -->
+                </div>
+              </div>
         </div>
         <div class="header-right d-flex justify-content-between">
             <div class="header-search">
@@ -24,12 +39,12 @@
             
             <div class="horizontal_bar"></div>
             <a routerLink="/home/me/profile/my-profile" class="header-user">
-                <img class="profilephoto mr-3" src="../../../../assets/images/profile/person.png" />
+                <img class="profilephoto mr-3" src="https://dalilisouq.com/{{profile_data?.Response.image}}" />
 
-                <div class="header-userinfo">
+                <!-- <div class="header-userinfo">
                     <span>Hello!</span>
                     <h4>My Account</h4>
-                </div>
+                </div> -->
             </a>
             <!-- start order notification -->
             <div class="d-flex justify-content-between">
@@ -37,7 +52,7 @@
                 <a  class="dropdown-toggle main-link" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" data-display="static">
                  
                 <i class="minicart-icon"></i>
-                <span class="cart-count notify-count">{{counter_order}}</span>
+                <span class="cart-count notify-count" *ngIf='counter_order!=0'>{{counter_order}}</span>
                 </a>
                 <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
                     <div class="dropdownmenu-wrapper">

@@ -43,6 +43,7 @@ import { StoreorderdetailesComponent } from './modules/store/sotre-details/compo
 import { OneAdComponent } from './modules/pages/one-ad/one-ad.component';
 import { ConfirmpageComponent } from './addproduct/confirmpage/confirmpage.component';
 import { EditColorsSizesComponent } from './modules/me/profile/profile-components/edit-products/edit-colors-sizes/edit-colors-sizes.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 
 @NgModule({
@@ -97,9 +98,11 @@ import { EditColorsSizesComponent } from './modules/me/profile/profile-component
     FormsModule,
     RouterModule,
     Ng2SearchPipeModule,
+    BrowserAnimationsModule,
     // ShareButtonsModule.withConfig({debug:true}
     //   ),
     //  ShareIconsModule,
+
     
   ],
   providers: [],

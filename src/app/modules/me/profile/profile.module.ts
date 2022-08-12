@@ -24,7 +24,7 @@ import { EditOfferComponent } from './profile-components/edit-offer/edit-offer.c
 import { CategoriesComponent } from './profile-components/account/categories/categories.component';
 import { Ng2SearchPipeModule } from 'ng2-search-filter';
 import { OrderComponent } from '../../../order/order.component';
-
+ 
 
 @NgModule({
   declarations: [
@@ -62,6 +62,9 @@ import { OrderComponent } from '../../../order/order.component';
     ProfileRoutingModule,
     SharedModule,
     Ng2SearchPipeModule,
+ 
+    
+
     
   ]
 })
