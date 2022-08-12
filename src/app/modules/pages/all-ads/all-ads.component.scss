@@ -124,5 +124,15 @@ img.card-img-top {
 
 .card-header{
     padding: 0;
+    border-top-left-radius: 50px 20px !important;
 }
-      
+    .package{
+      background-color: #8c1434;
+      color: white;
+      padding: 6px;
+      font-size: 12px;
+      border-top-left-radius: 15px 15px !important;
+    }  
+    .card{ border-top-left-radius: 50px 70px !important;
+    }
+    
