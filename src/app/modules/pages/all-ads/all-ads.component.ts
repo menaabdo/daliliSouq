@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { Category } from 'src/app/models/category.model';
+import { Country } from 'src/app/models/country.model';
+import { CategoryService } from 'src/app/service/category.service';
 
 @Component({
   selector: 'app-all-ads',
@@ -8,15 +11,29 @@ import { Router } from '@angular/router';
 })
 export class AllAdsComponent implements OnInit {
   items:any;
-
-  constructor(private route:Router) { }
+ categories!:Category[]
+ response!:any
+ index=0
+ selectedcountry!:Category
+  constructor(private route:Router,private categoryserve:CategoryService) { }
 
   ngOnInit(): void {
-    this.items=[1,,3,4,4,2,6]
-
+    
+  
+       this.home_categories()
+  }
+  home_categories(){
+this.categoryserve.categories_home().subscribe((res)=>{
+  this.response=res;this.categories=this.response.Response
+  this.selectedcountry=this.categories[this.index]
+})
   }
   getproduct(id:number){
     this.route.navigateByUrl('home/all-ads/product/id')
 
+  }
+  getselected(index:number){
+this.index=index
+this.selectedcountry=this.categories[index]
   }
 }

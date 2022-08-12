@@ -1,13 +1,28 @@
 <div class="container mt-3">
-  <div class="row">
-    <div class="col-md-3" *ngFor="let ad of items; let i = index" >
-     <div class="card shadow border-0 rounded">
-            <div (click)='getproduct(1)' class="card-header bg-white rounded  remove-after" style="background-image: url(/src/assets/images/admin.jpg);height: 217px;" >
+ <!-- header with all category -->
+ <div class="header-bottom sticky-header " >
+    <div class="header-menu carousel slide" id="carouselExampleControls"  data-ride="carousel" >
+        <div  class="">
+            <ul class="nav-categories ">
+                <li class=""  *ngFor='let category of categories;let i=index'>
+                    
+                    <a class=" " (click)='getselected(i)' ><img class=" rounded-circle" src='https://dalilisouq.com/{{category.image}}'></a>
+                   
+                     </ul>
+        </div>
+    </div>
+</div>
+ 
+ <!-- end header of all categories -->
+    <div class="row container mt-3">
+    <div class="col-md-3 h-100" *ngFor="let ad of selectedcountry.products.data; let i = index" >
+     <div class="card  shadow border-0 rounded">
+            <div (click)='getproduct(1)'  class="card-header  bg-white rounded  remove-after" [ngStyle]="{'background-image': 'url(https://dalilisouq.com/' + ad.image+ ')'}" style=" object-fit: cover;">
                
-                <div class="d-flex justify-content-between align-items-start ">
-                    <span  class=" rounded package" >package</span>
+                <div class="d-flex justify-content-between align-items-start " style="max-height: 50px;">
+                    <span [ngClass]='ad.package.name?"package":""' class=" rounded " >{{ad.package.name}}</span>
               
-                    <img src='../../../../assets/images/admin.jpg'  class="border rounded-circle m-3" width="30px" height="30px">
+                    <img src='https://dalilisouq.com/{{ad.profile.image}}'  class="border rounded-circle m-3 logoimg" width="30px" height="30px;max-height:30px">
                 </div>
                 <div style="height: 47px;background-color:#00000073;margin-top: 120px;" class="d-flex justify-content-between align-items-end p-2">
                   <div class='d-flex align-items-center mb-1 text-light '>
@@ -15,11 +30,11 @@
                     </div>
                     <div class='d-flex align-items-center mb-1 text-light '>
                    
-                    <p class="mb-0"> <i class="fa fa-star fa-x mr-1" style="color: rgb(252, 232, 119);"></i>{{ad.created_at}}</p>
+                    <p class="mb-0"> <i class="fa fa-star fa-x mr-1" style="color: rgb(252, 232, 119);"></i></p>
                    </div>
                     <div class='d-flex align-items-center mb-1 text-light '>
                    
-                    <p class="mb-0"> <i class="fa fa-eye mr-1"></i>{{ad.city.name}},{{ad.city.country.name}}</p>
+                    <p class="mb-0"> <i class="fa fa-eye mr-1"></i></p>
                 </div>
                 </div>
                 
@@ -29,14 +44,14 @@
             <!-- <img src="https://dalilisouq.com/{{ad.image}}" class="card-img-top" alt="..."> -->
             <div class="card-body border-0">
                 <div class='d-flex justify-content-between align-items-center mb-1'>
-                   <p class="mb-0"> <i class="fas fa-calendar mr-1"></i>{{ad.name}}</p>
+                   <p class="mb-0"> {{ad.name}}</p>
                     <p class="mb-0"><span class="h2">{{ad.price}}<small>EGP</small></span> </p>
                 </div>
   
                 <div class='d-flex justify-content-between align-items-center mb-2'>
-                    <h2 class="m-0">{{ad.address}}<small></small></h2>
+                    <h2 class="m-0">{{ad.city.country.name}} ,<small>{{ad.city.name}}</small></h2>
                     
-                    <i class="far fa-heart favourite-icon " [ngClass]="{'text-danger' : ad.favourite}" ></i>
+                    <i class="far fa-heart favourite-icon "  ></i>
                 </div>
                 <!-- <p class="mb-1">online for : {{ad.online_for}}</p>
                 <p class="mb-1">expire in: {{ad.expire_in}}</p> -->
