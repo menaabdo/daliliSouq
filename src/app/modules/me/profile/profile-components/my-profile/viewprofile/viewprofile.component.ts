@@ -31,14 +31,16 @@ product_id!:number
     this.route.navigateByUrl('/home/me/profile/my-profile/confirm')
   
   }
+
   select(){
+    console.log(this.selectedprice, this.product_id)
     this.userservese.update_product({'id':this.product_id,'package_type_country_id':this.selectedprice}).subscribe((res)=>{console.log(res)
          if(this.check_num==1)
          this.route.navigateByUrl('/home/me/profile/my-profile/confirm')
          else
          this.route.navigateByUrl('/home/me/profile/my-profile')
         
-  
+  console.log(res)
     })
     
   }

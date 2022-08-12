@@ -46,7 +46,7 @@
     background-color: white;
     cursor:default !important;
 }
-.dropdownmenu-wrapper{
+.dropdown-item{
     
     max-height:450px;/* you can change as you need it */
     overflow: auto ;/* to get scroll */
@@ -98,4 +98,12 @@
 
 .dropdown-menu{
     min-width: 170px;
+}
+.dropdownmenu-wrapper {padding-right: 0;padding-top: 0;    padding-bottom: 40px;}
+.more{
+position:fixed;
+color:#163e73 !important ;
+font-size: 14px;
+cursor: pointer;
+
 }

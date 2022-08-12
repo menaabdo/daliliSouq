@@ -99,11 +99,11 @@ this.image_file=file
     console.log(data)
     const headers =this.headers
     //means doesnt has image 
-   {for(let i=0;i<this.files.length;i++){
-     data.append(`image${i+1}`,this.files[i])
+  //  {for(let i=0;i<this.files.length;i++){
+  //    data.append(`image${i+1}`,this.files[i])
      
-   }}
-        return this.httpclient.post( `${environment.apiURL}product/edit?os=android`,(data),{headers})
+  //  }}
+        return this.httpclient.post( `${environment.apiURL}product/edit?os=android`,data,{headers})
   
   }
   ////////////////////////////////end/////////////////
@@ -368,9 +368,9 @@ this.image_file=file
   //   return this.httpclient.post(`${environment.apiURL}upload/${4}`,fd)
   // }
   /////////////////////notifications functions/////////////////
-  allnotification(object_type:string){
+  allnotification(object_type:string,page:number){
     const headers =this.headers
-    return this.httpclient.get<any>(`${environment.apiURL}notifications?os=android&object_type=${object_type}&in_app_popup=`,{headers})
+    return this.httpclient.get<any>(`${environment.apiURL}notifications?os=android&object_type=${object_type}&page=${page}`,{headers})
   }
   set_as_seen(noty_id:number){
     const headers =this.headers

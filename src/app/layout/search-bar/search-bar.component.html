@@ -103,6 +103,8 @@
                 </a>
                 <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
                     <div class="dropdownmenu-wrapper">
+                       
+              
                     <a class="dropdown-item" >
                         <div class="dropdown-cart-products">
                         <div class="product d-flex justify-content-left row" *ngFor='let noty of notifications'>
@@ -129,14 +131,18 @@
                                
                             </div>
                             <!-- End .product-details -->
-
+                            
                         </div>  
+                       
                         </div>
-                    </div>
+                        </div>
+                       
                     </a>
-                  
+                   <div class="d-flex  mt-2 justify-content-center" > <a class="more " (click)='more()'>Older notification</a>
+                   </div>
                 </div>
-                </div>
+                 </div>
+                   
                 </div>
             <!-- end notification -->
              

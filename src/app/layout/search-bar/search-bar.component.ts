@@ -1,3 +1,4 @@
+import { not } from '@angular/compiler/src/output/output_ast';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Country } from 'src/app/models/country.model';
@@ -21,6 +22,8 @@ orders_notification!:notification[]
 country!:Country
 allcountries:any
 countries!:Country[]
+num_offernoty_page=1
+num_ordernoty_page=1
   constructor(private notifserve:UserService,private route:Router,private categoryserve:CategoryService) { }
   profile_data:any
   ngOnInit(): void {
@@ -38,11 +41,12 @@ countries!:Country[]
         }
         getallcountries(){
           this.categoryserve.countries().subscribe((res)=>{this.allcountries=res.Response.countries;
-          
-            this.country=this.allcountries[localStorage.getItem('index') as unknown as number]})
+          if(localStorage.getItem('index'))
+            this.country=this.allcountries[localStorage.getItem('index') ||{} as number]
+          })
            }
  notification_offer(){
-  this.notifserve.allnotification('offer').subscribe((res)=>{
+  this.notifserve.allnotification('offer',this.num_offernoty_page).subscribe((res)=>{
     this.response=res
     console.log(this.response)
     this.notifications=this.response.Response.data
@@ -55,8 +59,26 @@ countries!:Country[]
     
   })
  }
+ //////////////////////////////////more_offer_notification/////////////
+ more(){
+   this.num_offernoty_page++;
+  this.notifserve.allnotification('offer',this.num_offernoty_page).subscribe((res)=>{
+    this.response=res
+    console.log(this.response.Response.data)
+    let notifications=this.response.Response.data
+    this.notifications=this.notifications.concat(notifications)
+    if(this.notifications){
+      for(this.i of this.notifications){
+             if(this.i.is_open==0)
+             this.counter_noty++
+      }
+    }
+    
+  })
+ }
+ /////////////////////////////////////////
  notification_order(){
-  this.notifserve.allnotification('order').subscribe((res)=>{
+  this.notifserve.allnotification('order',this.num_ordernoty_page).subscribe((res)=>{
     this.response=res
     this.orders_notification=this.response.Response.data
     if(this.orders_notification){

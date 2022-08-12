@@ -395,6 +395,7 @@ this.route.navigateByUrl(`/home/me/profile/my-profile/select-category/${(JSON.st
     fd.append('latitude',this.data.lat as unknown as string)
     fd.append('longitude',this.data.lng as unknown as string)
     fd.append('mobile',this.data.mobile as unknown as string)
+    
        console.log(this.can_post)
           if(this.can_post==true)
          {console.log('can')
