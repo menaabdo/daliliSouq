@@ -4,11 +4,12 @@
     <div class="header-menu carousel slide" id="carouselExampleControls"  data-ride="carousel" >
         <div  class="">
             <ul class="nav-categories ">
-                <li class=""  *ngFor='let category of categories;let i=index'>
-                    
-                    <a class=" " (click)='getselected(i)' ><img class=" rounded-circle" src='https://dalilisouq.com/{{category.image}}'></a>
-                   
-                     </ul>
+                <li class="text-center ml-5"  *ngFor='let category of categories;let i=index'>
+                    <a class=" row" (click)='getselected(i)' ><img class=" rounded-circle" src='https://dalilisouq.com/{{category.image}}' width="50px"></a>
+                     <div class="row d-flex justify-content-center ">
+                    <p class="row text-dark ">{{category.name}}</p>
+                </div>    
+                </ul>
         </div>
     </div>
 </div>
@@ -17,7 +18,7 @@
     <div class="row container mt-3">
     <div class="col-md-3 h-100" *ngFor="let ad of selectedcountry.products.data; let i = index" >
      <div class="card  shadow border-0 rounded">
-            <div (click)='getproduct(1)'  class="card-header  bg-white rounded  remove-after" [ngStyle]="{'background-image': 'url(https://dalilisouq.com/' + ad.image+ ')'}" style=" background-size: 100% 100%;background-repeat: no-repeat;">
+            <div (click)='getproduct(ad.id)'  class="card-header  bg-white rounded  remove-after" [ngStyle]="{'background-image': 'url(https://dalilisouq.com/' + ad.image+ ')'}" style=" background-size: 100% 100%;background-repeat: no-repeat;">
                
                 <div class="d-flex justify-content-between align-items-start " style="max-height: 50px;">
                     <span [ngClass]='ad.package.name?"package":""' class=" rounded " >{{ad.package.name}}</span>
@@ -26,11 +27,11 @@
                 </div>
                 <div style="height: 47px;background-color:#00000073;margin-top: 120px;" class="d-flex justify-content-between align-items-end p-2">
                   <div class='d-flex align-items-center mb-1 text-light '>
-                    <p class="mb-0"> <i class="fa fa-camera mr-1"></i></p>
+                    <p class="mb-0"> <i class="fa fa-camera mr-1"></i>{{ad.num_image}}</p>
                     </div>
                     <div class='d-flex align-items-center mb-1 text-light '>
                    
-                    <p class="mb-0"> <i class="fa fa-star fa-x mr-1" style="color: rgb(252, 232, 119);"></i></p>
+                    <p class="mb-0"> <i class="fa fa-star fa-x mr-1" style="color: rgb(252, 232, 119);">{{ad.rate}}</i></p>
                    </div>
                     <div class='d-flex align-items-center mb-1 text-light '>
                    

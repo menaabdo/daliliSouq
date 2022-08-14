@@ -49,12 +49,11 @@ const routes: Routes = [
       {
         path: "all-ads",
         component: AllAdsComponent,
-        children:[
-          {
-            path:'product/:id',
-            component:OneAdComponent
-          }
-        ]
+       
+      },
+      {
+        path:'product/:id',
+        component:OneAdComponent
       },
       {
         path:'notification/:id',

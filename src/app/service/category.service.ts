@@ -89,4 +89,8 @@ return this.httpclient.get<{stores:Store []}>(`${environment.apiURL}stores_categ
     return this.httpclient.get(`${environment.apiURL}home-categories?os=android&country_id=${this.country_id}`)
  
   }
+  getoneproduct(id:number){
+  
+    return this.httpclient.get(`${environment.apiURL}product?os=android&product_id=${id}`)
+  }
 }

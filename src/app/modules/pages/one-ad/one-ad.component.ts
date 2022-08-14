@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
+import { Product } from 'src/app/models/product.model';
+import { CategoryService } from 'src/app/service/category.service';
 
 @Component({
   selector: 'app-one-ad',
@@ -6,10 +9,45 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./one-ad.component.scss']
 })
 export class OneAdComponent implements OnInit {
-
-  constructor() { }
+product_id!:number
+response!:any
+product!:Product
+categories!:string[]
+selectedimg!:any
+date!:number
+  constructor(private categoryserve:CategoryService,private route:Router,private active:ActivatedRoute) { 
+  this.product_id=this.active.snapshot.params['id']
+  }
+f!:number[]
 
   ngOnInit(): void {
+    this.f=[1,2,3,4,5,6,7]
+    this.categoryserve.getoneproduct(this.product_id).subscribe((res)=>{
+      console.log(res);this.response=res;this.product=this.response.Response
+      let ids:any
+ let ids2:any[]=[]
+ if(this.product.category){
+   ids=this.product.category
+   
+  
+   while(ids.hasOwnProperty('category')){
+    
+     ids2.push(ids.name)
+   
+     ids=ids.category
+     if(ids.category&&Object.keys(ids.category).length === 0)
+     break
+     
+   }
+   ids2.push(ids.name)
+  
+ }this.categories=ids2
+
+      
+  })}
+  changeimg(index:number){
+       this.selectedimg=this.product.images[index]
+       console.log(this.selectedimg)
   }
 
 }

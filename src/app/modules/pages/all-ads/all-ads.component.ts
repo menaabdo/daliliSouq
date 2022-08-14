@@ -29,11 +29,12 @@ this.categoryserve.categories_home().subscribe((res)=>{
 })
   }
   getproduct(id:number){
-    this.route.navigateByUrl('home/all-ads/product/id')
+    this.route.navigateByUrl(`/home/product/${id}`)
 
   }
   getselected(index:number){
 this.index=index
 this.selectedcountry=this.categories[index]
+console.log(this.selectedcountry)
   }
 }
