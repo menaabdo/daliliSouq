@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Product } from 'src/app/models/product.model';
 import { CategoryService } from 'src/app/service/category.service';
+import { UserService } from 'src/app/service/user.service';
 
 @Component({
   selector: 'app-one-ad',
@@ -17,15 +18,17 @@ selectedimg!:any
 date!:number
 user_id=localStorage.getItem('id')
 clicked!:string
-prevclick=''
-  constructor(private categoryserve:CategoryService,private route:Router,private active:ActivatedRoute) { 
+clickedcolor!:any
+size!:any
+indexofcolor!:number
+  constructor(private categoryserve:CategoryService,private route:Router,private active:ActivatedRoute,private userserve:UserService) { 
   this.product_id=this.active.snapshot.params['id']
 
   }
 f!:number[]
 
   ngOnInit(): void {
-    this.f=[1,2,3,4,5,6,7]
+  
     this.categoryserve.getoneproduct(this.product_id).subscribe((res)=>{
       console.log(res);this.response=res;this.product=this.response.Response
       let ids:any
@@ -85,5 +88,55 @@ f!:number[]
     document.getElementById(`plus${key}`)!.classList.remove('fa-minus')
    this.clicked=''
    }
+  }
+  getcolor(colorobj:any,index:number){
+    this.clickedcolor=colorobj
+    this.indexofcolor=index
+    let eles= document.getElementsByClassName('divcolor')!
+    for(let i=0;i<eles.length;i++){
+      if(eles[i].classList.contains('activecolor'))
+      eles[i].classList.remove('activecolor')}
+      eles[index].classList.add('activecolor')
+  }
+  getsize(size:any,index:number){
+  this.size=size
+  let eles= document.getElementsByClassName('divsize')!
+    for(let i=0;i<eles.length;i++){
+      if(eles[i].classList.contains('activesize'))
+      eles[i].classList.remove('activesize')}
+      eles[index].classList.add('activesize')
+  }
+  add_to_cart(){
+    let fd=new FormData();
+    fd.append('product_id',this.product.id as unknown as string)
+    fd.append('quantity','1')
+    
+    if(this.product.category?.is_color!=0&&this.product.category?.is_size!=0){
+      if(this.clickedcolor&&this.size)
+    { console.log(this.size.id)
+   
+     fd.append('color_id',this.clickedcolor.color)
+     fd.append('size_id',this.size.size)
+     this.userserve.add_to_cart(fd).subscribe((res)=>{console.log(res); this.userserve.products_cart().subscribe((res)=>{window.location.reload()}) })
+  
+   }else{
+    if(this.product.category?.is_color!=0&&this.product.category?.is_size==0)
+    if(this.clickedcolor) { 
+       fd.append('color_id',this.clickedcolor.color)
+       this.userserve.add_to_cart(fd).subscribe((res)=>{console.log(res);  })
+  
+      }
+      if(this.product.category?.is_color==0&&this.product.category?.is_size!=0)
+      
+      if(this.size){  
+        fd.append('size_id',this.size.size)
+        this.userserve.add_to_cart(fd).subscribe((res)=>{console.log(res);  })
+  
+      }
+ 
+    }
+  }
+
+
   }
 }

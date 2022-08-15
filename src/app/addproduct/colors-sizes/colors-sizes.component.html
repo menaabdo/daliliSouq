@@ -14,7 +14,7 @@
                     
                     <div   class=' d-flex justify-content-start m-1' *ngFor='let color of colors '>
                     <span (click)='getcolor(color.color,color.id)' id={{color.id}}  class="p-1 circle d-flex justify-content-between" [style.background]="color.color">    
-                    
+                      
                     </span>
                       </div>
                     </div>
@@ -30,8 +30,7 @@
                     </span>
                       </div>
                     </div>
-                    <div *ngIf='data?.is_color==1&&data?.is_size==1||data?.is_online==0' class="d-flex justify-content-center text-center row"><a (click)='addplus()' class="d-flex justify-content-center btn btn-primary border col-md-6 rounded-top ">add</a>    
-                    </div>
+                    
                      </div>
                      <div *ngIf='data.is_online==1&&(data?.is_color==2||data.is_size==2)' class='me card-body col-md-6 m-2 mx-5 header rounded ' > 
                         <a  class='card-header d-flex h3'> Add quantity </a>
@@ -41,7 +40,9 @@
                          <a (click)='add()' class=" d-flex justify-content-center btn btn-primary button border mb-0 rounded-top ">add</a>    
                         
                     </div>
+                    <div *ngIf='data?.is_color==1||data?.is_size==1&&data?.is_online==0' class='me card-body col-md-6 m-2 mx-5 rounded '><a (click)='addplus()'  class="d-flex justify-content-center btn btn-primary border col-md-6 rounded-top ">add</a>    
                    
+                    </div>
                     <div  class="myborder ml-5 col-xs-12 col-sm-12 col-md-6 col-lg-6 col-xs-offset-3 form">
                  
                     <div *ngIf='objectofcolor.length!=0' class="form-group">

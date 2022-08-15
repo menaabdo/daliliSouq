@@ -30,6 +30,7 @@ data=this.userserve.product_data
     console.log(this.userserve.product_data)
     this.catserve.properities(this.data.category_ids[(this.userserve.product_data.category_ids.length)-1]).subscribe(
       (res)=>{this.respose=res;
+        console.log(res)
         this.sizes=this.respose.Response.sizes
         this.colors=this.respose.Response.colors
         
@@ -85,7 +86,7 @@ this.quantity++
     if(this.userserve.product_data.is_color==0){
       if(this.selectedsize){
    
-        this.colorobject={color:this.selectedcolor,quantity:this.quantity,size:this.selectedsize}
+        this.colorobject={color:'',quantity:this.quantity,size:this.selectedsize}
          this.objectofcolor.push(this.colorobject)
          document.getElementsByClassName('activesize')[0].classList.remove('activesize')
   
@@ -94,7 +95,7 @@ this.quantity++
     if(this.userserve.product_data.is_size==0){
       if(this.selectedcolor){
    
-        this.colorobject={color:this.selectedcolor,quantity:this.quantity,size:this.selectedsize}
+        this.colorobject={color:this.selectedcolor,quantity:this.quantity,size:''}
          this.objectofcolor.push(this.colorobject)
          document.getElementsByClassName('activecolor')[0].classList.remove('activecolor')
         
@@ -106,24 +107,33 @@ this.quantity++
 addplus(){
     
   
-  if(this.selectedsize){
-   
-   this.colorobject={color:this.selectedcolor,quantity:this.quantity,size:this.selectedsize}
+  if(this.data.is_color!=0&&this.data.is_size!=0){
+    this.colorobject={color:this.selectedcolor,quantity:this.quantity,size:this.selectedsize}
    this.objectofcolor=[]
    this.objectofcolor.push(this.colorobject)
     document.getElementsByClassName('activesize')[0].classList.remove('activesize')
-    
    
   }
-  else {if(this.selectedcolor){
+ else
+  {if(this.data.is_color==0){
+    
+   {this.colorobject={color:'',quantity:this.quantity,size:this.selectedsize}
+   this.objectofcolor=[]
+   this.objectofcolor.push(this.colorobject)
+    document.getElementsByClassName('activesize')[0].classList.remove('activesize')
+    }
    
-    this.colorobject={color:this.selectedcolor,quantity:this.quantity,size:this.selectedsize}
+  }
+  else {if(this.data.is_size==0){
+   
+    this.colorobject={color:this.selectedcolor,quantity:this.quantity,size:''}
     this.objectofcolor=[]
     this.objectofcolor.push(this.colorobject)
     
      document.getElementsByClassName('activecolor')[0].classList.remove('activecolor')
     
    }}
+  }
   
 }
 deleteitem(obj:object){

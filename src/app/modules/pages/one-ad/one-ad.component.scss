@@ -1,5 +1,5 @@
 .active{color:gold}
-#spec,#rev,#desc,#change,a{
+#spec,#rev,#desc,#change,a,.color,.size{
     cursor: pointer;
 }
 .activetab{
@@ -19,3 +19,5 @@
 
 
 }
+.activecolor{background-color: rgb(95, 33, 33);}
+.activesize{background-color: rgb(95, 33, 33);}

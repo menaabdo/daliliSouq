@@ -1,6 +1,6 @@
 import { City } from "./city.model";
-
 export interface Address {
+
     id:number;
     address:string;
     name:string;

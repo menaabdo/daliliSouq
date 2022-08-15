@@ -1,6 +1,7 @@
 import { not } from '@angular/compiler/src/output/output_ast';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { Cart } from 'src/app/models/cart.model';
 import { Country } from 'src/app/models/country.model';
 import { notification } from 'src/app/models/notification.model';
 import { CategoryService } from 'src/app/service/category.service';
@@ -24,14 +25,22 @@ allcountries:any
 countries!:Country[]
 num_offernoty_page=1
 num_ordernoty_page=1
+///////////////variables for cart/////////
+response_cart!:any
+cart_products!:any
+cart_data!:Cart
+
+//////////////////////////////////
   constructor(private notifserve:UserService,private route:Router,private categoryserve:CategoryService) { }
   profile_data:any
   ngOnInit(): void {
+    
     this.notification_offer()
     this.notification_order()
    
     this.myprofiledata()
     this.getallcountries()
+    this.cart()
   }
   myprofiledata(){this.notifserve.profile({country_id:1}).subscribe((res)=>{
          this.profile_data=res
@@ -107,5 +116,21 @@ this.country=this.allcountries[index]
 localStorage.setItem('country_id',this.allcountries[index].id)
 window.location.reload()
  }
+  /////////////////////cart//////////////////////////////
+  /////////////////get_product/////////////////////
+cart(){
+  this.notifserve.products_cart().subscribe((res)=>{
+    console.log(res)
+    this.response_cart=res
+    this.cart_data=this.response_cart.Response
+    this.cart_products=this.cart_data.cart
+  })
+}
+  /////////////end get_product/////////////////////
+delete_item_cart(cart_id:number){
+  console.log(cart_id)
+  this.notifserve.delete_item_cart(cart_id).subscribe((res)=>{console.log(res)
+   window.location.reload() })
+}
 
 }

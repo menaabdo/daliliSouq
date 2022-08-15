@@ -97,18 +97,32 @@
           </div>
        
       </div>
-      <div class="row">
-        <p class=" text-muted  d-flex justify-content-start">Colors </p>
+      <div class="row" *ngIf='product.colors_sizes'>
+        <p class=" text-muted  ml-4">Colors </p>
         <div class="col-md-12 mb-3  d-flex flex-wrap">
-          <div style="height: 50px; width: 50px;" class=" m-1 border d-flex justify-content-center align-items-center" *ngFor='let color of product.colors'>
-          <p style="height: 25px; width: 25px;" class="   rounded-circle"  [style.background]="color.color" ></p>
+          <div  (click)='getcolor(color,i)' style="height: 50px; width: 50px;" class="divcolor m-1 border d-flex justify-content-center align-items-center" *ngFor='let color of product.colors_sizes;let i=index'>
+          <p style="height: 25px; width: 25px;" class=" color  rounded-circle"  [style.background]="color.color" ></p>
+        </div>
+         </div>
+       
+       
+      </div>
+      <div class="row" *ngIf='clickedcolor&&product.category?.is_size!=0'>
+        <p class=" text-muted  ml-4">Sizes </p>
+        <div class="col-md-12 mb-3  d-flex flex-wrap">
+            <div (click)='getsize(size,i)' style="height: 50px; width: 50px;" class="divsize m-1 border d-flex justify-content-center align-items-center" *ngFor='let size of product.colors_sizes[indexofcolor].sizes_quantity;let i=index'>
+              <p style="height: 25px; width: 25px;" class=" color  rounded-circle"   >
+              {{size.size}}
+              </p>
+           
+          
         </div>
          </div>
        
        
       </div>
       <div class="row" *ngIf='product.user.id!=user_id&&product.is_online!=0'>
-        <div class="col-md-6 mb-1 p-3 px-5  d-flex justify-content-center align-items-center" style="background-color: rgb(102, 22, 22);"><a class="" >ADD To Cart</a></div> 
+        <div class="col-md-6 mb-1 p-3 px-5  d-flex justify-content-center align-items-center" style="background-color: rgb(102, 22, 22);"><a (click)='add_to_cart()' class="" >ADD To Cart</a></div> 
         <div class="col-md-6  mb-1 d-flex justify-content-between ">
             <a class="p-3 px-5" style="background-color: rgb(102, 22, 22);">Report</a>
         <div class="row">
@@ -169,12 +183,16 @@
 </div>
 </div>
 <div *ngIf='clicked&&clicked=="spec"' class=' mt-3 row d-flex justify-content-center'>
-    <div class="col-md-10 bg-white text-dark p-3 d-flex mx-5 justify-content-start" style="min-height: 150px m-2;">
+    <div class="col-md-10 bg-white text-dark p-3 d-flex mx-5 justify-content-between" style="min-height: 150px m-2;">
         <div *ngFor='let prop of product.properties'>
-            <label style="color: rgb(105, 21, 21);">{{prop.name}}</label>
+              <ul class="prop " >
+                <label style="color: rgb(105, 21, 21);">{{prop.name}}</label>
+             
                          <span *ngFor='let option of prop.options'>
-                              <ul class="prop d-flex justify-content-between" ><li>{{option.name}}</li> </ul>
+                                <li *ngIf='option.selected!=0'>{{option.name}}</li> 
+                             
                          </span>
+                        </ul>
         </div>
     </div>
     </div>

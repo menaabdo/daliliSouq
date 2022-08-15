@@ -98,10 +98,11 @@ marker!:any
     this.country=this.response2.Response.country ;console.log(res)
     if( this.active.snapshot.params['data']=='data')
   
-    { console.log('ttjtjtjjtjt',this.response2.Response.mobile)
+    { 
       let mobile=(this.response2.Response.mobile).toString()
       mobile= mobile.slice((this.country.phone_code).toString().length)
         this.data.mobile=mobile}
+        
       let loader=new Loader({apiKey:'AIzaSyCuU2Tnmy93AuQWWQ7DAGJT95OJKZYZdwY'})
       loader.load().then(() => {
     
@@ -139,7 +140,6 @@ marker!:any
      //this.data= this.active.snapshot.params['data'].replace('*','#')
       this.flag=false
       ///////////////////////
-     
       
        ////////////////////////////////
        if(localStorage.getItem('imgs'))
@@ -151,7 +151,9 @@ marker!:any
       ////////////////////////////////////////
     console.log(( this.active.snapshot.params['data']))
     this.data=JSON.parse(this.active.snapshot.params['data'].replaceAll('*','#'))
-   ////////////////////////////////
+    console.log(this.data)
+      
+    ////////////////////////////////
    if(this.data.category_ids.length!=0)
    {console.log(this.data.category_ids)
      this.categoryserve.can_post(this.data.category_ids[0],1).subscribe((res)=>{
@@ -288,12 +290,12 @@ marker!:any
   changecategory(id:number){
 this.data.update=id
 console.log(this.data.update)
-this.route.navigateByUrl(`/home/me/profile/my-profile/select-category/${(JSON.stringify(this.data)).replace('#','*')}`)
+this.route.navigateByUrl(`/home/me/profile/my-profile/select-category/${(JSON.stringify(this.data)).replaceAll('#','*')}`)
 
   }
   changepro(){
     this.data.update2=this.data.category_ids[(this.data.category_ids.length)-1]
-    this.route.navigateByUrl(`/home/me/profile/my-profile/select-category/${(JSON.stringify(this.data)).replace('#','*')}`)
+    this.route.navigateByUrl(`/home/me/profile/my-profile/select-category/${(JSON.stringify(this.data)).replaceAll('#','*')}`)
 
   }
   navme(){

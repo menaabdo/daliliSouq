@@ -23,6 +23,7 @@ files:any[]=[]
 product_data!:Product
 token!:string
 country_id!:string
+flagoncart=0
 
  headers= new HttpHeaders({
   Authorization: `Bearer ${localStorage.getItem('token')}`,})
@@ -394,6 +395,26 @@ this.image_file=file
     'image':img.get('image')
   }
   return this.httpclient.post(`${environment.apiURL}send?os=android`,obj,{headers})
+ 
+ }
+ /////////////////////CART ENTITY//////////////////////////
+ products_cart(){
+  const headers =this.headers
+  this.country_id=localStorage.getItem('country_id') as string
+  
+  return this.httpclient.get(`${environment.apiURL}cart?os=android&country_id=${this.country_id}`,{headers})
+ 
+ }
+ add_to_cart(data:any){
+  const headers =this.headers
+  this.country_id=localStorage.getItem('country_id') as string
+  
+  return this.httpclient.post(`${environment.apiURL}cart/add?os=android`,data,{headers})
+ 
+ }
+ delete_item_cart(cart_id:number){
+  const headers =this.headers
+  return this.httpclient.post(`${environment.apiURL}cart/delete?os=android`,{'cart_id':cart_id},{headers})
  
  }
   

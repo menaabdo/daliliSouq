@@ -18,7 +18,13 @@ export class HomeComponent implements OnInit {
   constructor(private chatservice:UserService) { }
 
   ngOnInit(): void {
+   
   }
+
+
+
+
+
   open(){
     let popup = document.getElementById("myPopup")!;
   popup.classList.toggle("show");
@@ -56,5 +62,5 @@ export class HomeComponent implements OnInit {
   ignoreimg(){
     this.imageSrc=''
   }
-
+ 
 }

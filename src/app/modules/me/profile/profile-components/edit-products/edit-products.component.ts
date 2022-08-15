@@ -336,8 +336,10 @@ localStorage.setItem('imgs',JSON.stringify(this.imageSrc))
  this.data.price=(this.response2.Response.price) 
  this.data.mobile=this.response2.Response.mobile
  this.data.city_id=this.response2.Response.city.id
- this.data.is_color=this.response2.Response.is_color
- this.data.is_size=this.response2.Response.is_size
+ this.data.is_color=this.response2.Response.category.is_color
+ this.data.is_size=this.response2.Response.category.is_size
+ this.data.is_online=this.response2.Response.is_online
+ 
  //this.data.link=this.response2.Response.video
  this.data.city_name=this.response2.Response.city.name + '-' +this.response2.Response.region.name
  this.data.category_name.push(this.response2.Response.category.name)
