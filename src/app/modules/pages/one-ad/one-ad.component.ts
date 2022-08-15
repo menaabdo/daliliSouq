@@ -15,8 +15,12 @@ product!:Product
 categories!:string[]
 selectedimg!:any
 date!:number
+user_id=localStorage.getItem('id')
+clicked!:string
+prevclick=''
   constructor(private categoryserve:CategoryService,private route:Router,private active:ActivatedRoute) { 
   this.product_id=this.active.snapshot.params['id']
+
   }
 f!:number[]
 
@@ -49,5 +53,37 @@ f!:number[]
        this.selectedimg=this.product.images[index]
        console.log(this.selectedimg)
   }
+  getclicked(key:string){
+   
+    let icons=document.getElementsByClassName('fa-minus')!
+    
+  if(document.getElementById(`plus${key}`)!.classList.contains('fa-plus'))
 
+  {
+    this.clicked=key
+   // document.getElementById(`plus${key}`)!.classList.add('fa-minus')
+
+     document.getElementById(`plus${key}`)!.classList.remove('fa-plus')
+  
+  document.getElementById(key)?.classList.add('activetab')
+  let eles= document.getElementsByClassName('activetab')!
+   for(let i=0;i<eles.length;i++){
+     eles[i].classList.remove('activetab')
+     if(icons[i])
+     { icons[i].classList.add('fa-plus')
+    
+       icons[i].classList.remove('fa-minus')     
+      }
+     
+     document.getElementById(key)?.classList.add('activetab')
+   } 
+   document.getElementById(`plus${key}`)!.classList.add('fa-minus')
+
+   
+  }else{ document.getElementById(`plus${key}`)!.classList.add('fa-plus')
+
+    document.getElementById(`plus${key}`)!.classList.remove('fa-minus')
+   this.clicked=''
+   }
+  }
 }

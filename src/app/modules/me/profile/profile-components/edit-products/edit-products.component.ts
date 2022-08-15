@@ -305,7 +305,7 @@ console.log(this.data)
   fd.append('mobile',this.data.mobile as unknown as string)
   fd.append('id',this.active.snapshot.params['id'])
   {for(let i=0;i<this.storessserve.files.length;i++){
-   this. data.append(`image${i+1}`,this.storessserve.files[i])
+   fd.append(`image${i+1}`,this.storessserve.files[i])
     
   }}
   this.storessserve.update_product(fd).subscribe((res)=>{console.log(res)

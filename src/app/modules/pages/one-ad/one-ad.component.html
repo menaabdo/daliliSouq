@@ -5,25 +5,45 @@
     <div class="row h-100 ">
         <div class="col-md-2 col-sm-2  col-xs-2 col-lg-2  d-flex flex-wrap h-100 "  >
             <div  *ngFor='let image of product.images;let i=index' class="m-2">
-        <img (click)='changeimg(i)' src='https://dalilisouq.com/{{image.image}}' style="max-height: 200px;width: 50px;height: 50px;" >
+        <img id='change' (click)='changeimg(i)' src='https://dalilisouq.com/{{image.image}}' style="max-height: 200px;width: 50px;height: 50px;" >
           
     </div>
 
     </div>
     <div class='col-md-12 col-sm-6 col-xs-12 col-lg-10 text-center'>
-    <img id='change' *ngIf='!selectedimg' src='https://dalilisouq.com/{{product.image}}' >
-    <img id='change' *ngIf='selectedimg' src='https://dalilisouq.com/{{selectedimg.image}}' >
+    <img  *ngIf='!selectedimg' src='https://dalilisouq.com/{{product.image}}' style="height: 450px !important; width: 100%;" >
+    <img  *ngIf='selectedimg' src='https://dalilisouq.com/{{selectedimg.image}}' >
         
 </div>
 </div>
 </div>
 <div class="col-md-6  ">
-    <p class="lead mt-3 mb-5 h5" style="color: rgb(105, 21, 21);">*/{{product.note}}/*</p>
+    <div class="row">
+        <div class="col-md-3  text-center mt-1 ">
+    <p class="p-1 " style="background-color: rgb(22, 22, 92); color: white;" *ngIf='product.store'><a>{{product.store?.name}} </a></p>
+    <p  class="p-1" style="background-color: rgb(22, 22, 92); color: white;" *ngIf='!product.store'><a>{{product.user.name}} </a></p>
+   </div>
+   </div>
+    <p class="lead  mb-2 h5" style="color: rgb(105, 21, 21);">*/{{product.note}}/*</p>
 
     <div class="row">
       <div class="col mb-3">
-        <p class="small text-muted mb-1">{{product.name}}</p>
+        <p class="small text-muted mb-1 h5">{{product.name}}</p>
+        <p class="small text-muted mb-1">
+            <i class="fa fa-star " [ngClass]='product.rate>1?"active":""'></i>
+            <i class="fa fa-star  "[ngClass]='product.rate>2?"active":""'></i>
+            <i class="fa fa-star  "[ngClass]='product.rate>3?"active":""'></i>
+            <i class="fa fa-star  "[ngClass]='product.rate>4?"active":""'></i>
+            <i class="fa fa-star"></i>
+        </p>
         <!-- <p>10 April 2021</p> -->
+      </div>
+      <div class="col mb-3">
+        
+            <p class="small text-muted mb-1" >Cash on deliver
+                <span *ngIf='product.online==1'>&online</span>
+            </p>
+      
       </div>
       
     </div>
@@ -62,19 +82,44 @@
         </div>
       </div> -->
 
-      <div class="row">
-        <div class="col-3 mb-3">
-          <p class="small text-muted mb-1">PRICE</p>
-          <p style="color: rgb(61, 16, 16);">{{product.price}}</p>
+      <div class="row" style="font-size: 17px;">
+        <div class="col-3 mb-3 text-center d-flex justify-content-start">
+          <p class="small text-muted  mr-2">PRICE</p>
+          <p style="color: rgb(61, 16, 16);">{{product.price}}$</p>
         </div>
-        <div class="col-3 mb-3 text-center">
-          <p class="small text-muted mb-1">ADS No.</p>
+        <div class="col-3 mb-3 text-center d-flex justify-content-start">
+          <p class="small text-muted  mr-2">No. </p>
           <p style="color: rgb(61, 16, 16);">{{product.id}}</p>
         </div>
-        <div class="col-3 mb-3 text-center">
-            <p class="small text-muted mb-1">DATE</p>
-            <p style="color: rgb(61, 16, 16);">{{product.created_at}}</p>
+        <div class="col-3 mb-3 d-flex justify-content-start">
+            <p class="small text-muted  mr-2">CITY </p>
+            <p style="color: rgb(61, 16, 16);">{{product.city?.name}},{{product.country?.name}}</p>
           </div>
+       
+      </div>
+      <div class="row">
+        <p class=" text-muted  d-flex justify-content-start">Colors </p>
+        <div class="col-md-12 mb-3  d-flex flex-wrap">
+          <div style="height: 50px; width: 50px;" class=" m-1 border d-flex justify-content-center align-items-center" *ngFor='let color of product.colors'>
+          <p style="height: 25px; width: 25px;" class="   rounded-circle"  [style.background]="color.color" ></p>
+        </div>
+         </div>
+       
+       
+      </div>
+      <div class="row" *ngIf='product.user.id!=user_id&&product.is_online!=0'>
+        <div class="col-md-6 mb-1 p-3 px-5  d-flex justify-content-center align-items-center" style="background-color: rgb(102, 22, 22);"><a class="" >ADD To Cart</a></div> 
+        <div class="col-md-6  mb-1 d-flex justify-content-between ">
+            <a class="p-3 px-5" style="background-color: rgb(102, 22, 22);">Report</a>
+        <div class="row">
+            <div class="col-3 mr-3 text-center rounded"> <i class="bg-light p-2 far fa-heart fa-2x favourite-icon "></i></div> 
+            <div class="col-3  text-center rounded"> <i class="bg-light p-2 fas fa-2x fa-share-alt"></i></div> 
+           
+        </div>
+        </div> 
+      
+       
+       
       </div>
       <!-- <div class="row my-4 mx-5">
         
@@ -87,4 +132,68 @@
 
 </div>
 </div>
+</div>
+<div class="row mt-3">
+<div class="container d-flex justify-content-center bg-light border-light  ">
+    
+   
+
+    <div id='desc' (click)='getclicked("desc")' class="col-md-4 p-3 text-center fw-bold  d-flex justify-content-center align-items-center">
+        <i id='plusdesc' class="fa fa-plus mr-2 border rounded-circle text-light p-1" style="background-color: rgb(104, 28, 28);" ></i>Descriptipon
+        
+      
+               
+    
+    
+    </div>
+    <div id='spec' (click)='getclicked("spec")' class="col-md-4 text-center p-3 d-flex justify-content-center align-items-center">
+        <i id='plusspec' class="fa fa-plus mr-2 border rounded-circle text-light p-1" style="background-color: rgb(104, 28, 28);" ></i>
+        
+        Specifications
+       
+    </div>
+    
+    
+    <div id='rev' class="col-md-4 text-center p-3  d-flex justify-content-center align-items-center">
+        <i id='plusrev' class="fa fa-plus mr-2 border rounded-circle text-light p-1" style="background-color: rgb(104, 28, 28);" ></i>
+                Reviews
+       
+    </div>
+</div>
+</div>
+
+<div *ngIf='clicked&&clicked=="desc"' class='mt-3  row  d-flex justify-content-center'>
+<div class="col-md-10 bg-white text-dark p-3 mx-5 container d-flex  justify-content-start" style="min-height: 150px ;">
+    {{product.desc}}
+    
+</div>
+</div>
+<div *ngIf='clicked&&clicked=="spec"' class=' mt-3 row d-flex justify-content-center'>
+    <div class="col-md-10 bg-white text-dark p-3 d-flex mx-5 justify-content-start" style="min-height: 150px m-2;">
+        <div *ngFor='let prop of product.properties'>
+            <label style="color: rgb(105, 21, 21);">{{prop.name}}</label>
+                         <span *ngFor='let option of prop.options'>
+                              <ul class="prop d-flex justify-content-between" ><li>{{option.name}}</li> </ul>
+                         </span>
+        </div>
+    </div>
+    </div>
+    <div class="mx-5 row my-3 d-flex justify-content-center bg-white">
+    <h3 class="fw-5 ">Similar products</h3>
+    <div class="row container bg-light pt-3 mb-3">
+       
+        
+            <div class="col-md-2 m-3" *ngFor='let simi of product.similar.data'>
+                <div class="card me h-100 m-3 rounded border-0">
+                    <img class="card-img-top" src='https://dalilisouq.com/{{simi.image}}' alt="Card image cap" style="max-height: 150px;">
+                    <div class="card-body">
+                        <div class="d-flex mx-2 justify-content-between ">
+                      <p class="card-text">{{simi.name}}</p>
+                      <p class="card-text" style="color: rgb(105, 21, 21);">$ {{simi.price}}</p>
+                    </div>
+                    </div>
+                  </div>
+        
+        </div>
+    </div>
 </div>
