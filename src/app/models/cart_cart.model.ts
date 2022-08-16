@@ -6,5 +6,6 @@ export interface Cart_cart {
     product:Product
     total:number
     quantity:number
+   
     
 }

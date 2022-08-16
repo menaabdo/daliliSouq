@@ -8,6 +8,6 @@ export interface Cart {
     "total": number,
     quantites:number
     cart:Cart_cart[]
-    
+    times:any[]
 
 }
