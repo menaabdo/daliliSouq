@@ -11,6 +11,7 @@ import { LoginFormComponent } from './login-form/login-form.component';
 import { RegisterFormComponent } from './register-form/register-form.component';
 import { SalesdetailesComponent } from './modules/me/profile/profile-components/sales/salesdetailes/salesdetailes.component';
 import { OneAdComponent } from './modules/pages/one-ad/one-ad.component';
+import { CartcheckoutComponent } from './modules/pages/cartcheckout/cartcheckout.component';
 
 const routes: Routes = [
   {
@@ -58,6 +59,10 @@ const routes: Routes = [
       {
         path:'notification/:id',
         component:SalesdetailesComponent
+      },
+      {
+        path:'checkout/:id',
+        component:CartcheckoutComponent
       }
     ]
   },

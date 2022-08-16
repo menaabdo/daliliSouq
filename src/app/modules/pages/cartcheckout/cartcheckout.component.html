@@ -1,0 +1,268 @@
+<div class="mt-0 container-fluid my-5 fontsize">
+    <div class="row justify-content-center ">
+        <div class="col-md-12">
+            <div class="card  ">
+                <!-- <div class="row p-2 mt-3 justify-content-between mx-sm-2">
+                    <div class="col">
+                        <p class="text-muted space mb-0 shop"> Shop No.78618K</p> 
+                        <p class="text-muted space mb-0 shop">Store Locator</p>   
+                    </div>
+                    <div class="col">
+                        <div class="row justify-content-start ">
+                            <div class="col">
+                                <img class="irc_mi img-fluid cursor-pointer " src="https://i.imgur.com/jFQo2lD.png"  width="70" height="70" >
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-auto">
+                        <img class="irc_mi img-fluid bell" src="https://i.imgur.com/uSHMClk.jpg" width="30" height="30"  >
+                    </div>
+                </div> -->
+                <div class="row  mx-auto justify-content-center text-center">
+                    <div class="col-12 mt-3 ">
+                        <nav aria-label="breadcrumb" class="second ">
+                            <ol class="breadcrumb indigo lighten-6 first  ">
+                                <li class="breadcrumb-item font-weight-bold "><a class="black-text text-uppercase " href="#"><span class="mr-md-3 mr-1">BACK TO SHOPPING</span></a><i class="fa fa-angle-double-right " aria-hidden="true"></i></li>
+                                  </ol>
+                        </nav>
+                    </div>
+                </div>
+            
+                <div class="row justify-content-around">
+                    <div class="col-md-5">
+                        <div class="card border-0">
+                            <div class="card-header pb-0">
+                                <h2 class="card-title space mt-4">Checkout</h2>
+                                
+                                <hr class="my-0">
+                            </div>
+                            <div class="card-body">
+                                <!-- <div class="row justify-content-between">
+                                    <div class="col-auto mt-0"><p><b>BBBootstrap Team Vasant Vihar  110020 New Delhi India</b></p></div>
+                                    <div class="col-auto"><p><b>BBBootstrap@gmail.com</b> </p></div>
+                                </div> -->
+                                <div class="form ">
+                                    <div class="col "><p class="text-muted ">Select PAYMENT Method</p>
+                                    </div>
+                                    <div class="form-check checkbox checkbox-circle">
+                                        <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1">
+                                        <label class="form-check-label" for="flexRadioDefault1">
+                                         Cash on Deliver
+                                        </label>
+                                      </div>
+                                      <div class="form-check">
+                                        <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2" >
+                                        <label class="form-check-label" for="flexRadioDefault2">
+                                         Payment Method
+                                        </label>
+                                      </div>
+                                      <div class="form-check">
+                                        <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2" checked>
+                                        <label class="form-check-label" for="flexRadioDefault2">
+                                        Internal Tranfer
+                                        </label>
+                                      </div>
+                                      <!-- address -->
+                                      <div class="col mt-4"><p class="text-muted ">Select Address</p>
+                                      </div>
+                                      <div class="form-check  ">
+                                          <div class="d-flex  my-3 justify-content-between bg-light" *ngFor='let addr of  addresses'>
+                                        <label class="form-check-label" >
+                                           <div class="font-weight-bold">{{addr.name}}</div>
+                                           <div>{{addr.address}}</div>
+                                        </label>
+                                        <div>
+                                        <div class=" my-2 d-flex align-content-end   border rounded-circle p-1"style="border:1px solid rgb(100, 28, 28);">
+                                          <input  type="radio" name="add1" id="" >
+                                        </div>
+                                        <div class="d-flex align-content-end ">
+                                          <i class="fa fa-pen rounded-circle border p-2 text-white" style="font-size: 10px;background-color: rgb(100, 28, 28);"></i>
+                                        </div> 
+                                    </div> 
+                                  
+                                </div>
+                                 <div class="d-flex  my-5 justify-content-start " (click)='newaddress()'>
+                                       
+                               <i class="fa fa-plus mx-2" style="color: rgb(100, 28, 28);"></i><div class="mx-2" style="color: rgb(12, 12, 63);">Add new address</div>
+                               </div>
+                                        </div>
+                                      <!-- end address -->
+                                </div>
+                                <!-- <div class="form-group">
+                                    <label for="NAME" class="small text-muted mb-1">NAME ON CARD</label>
+                                    <input type="text" class="form-control form-control-sm" name="NAME" id="NAME" aria-describedby="helpId" placeholder="BBBootstrap Team">
+                                </div>
+                                <div class="form-group">
+                                    <label for="NAME" class="small text-muted mb-1">CARD NUMBER</label>
+                                    <input type="text" class="form-control form-control-sm" name="NAME" id="NAME" aria-describedby="helpId" placeholder="4534 5555 5555 5555">
+                                </div>
+                                <div class="row no-gutters">
+                                    <div class="col-sm-6 pr-sm-2">
+                                        <div class="form-group">
+                                            <label for="NAME" class="small text-muted mb-1">VALID THROUGH</label>
+                                            <input type="text" class="form-control form-control-sm" name="NAME" id="NAME" aria-describedby="helpId" placeholder="06/21">
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <div class="form-group">
+                                            <label for="NAME" class="small text-muted mb-1">CVC CODE</label>
+                                            <input type="text" class="form-control form-control-sm" name="NAME" id="NAME" aria-describedby="helpId" placeholder="183">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row mb-md-5">
+                                    <div class="col">
+                                        <button type="button" name="" id="" class="btn  btn-lg btn-block ">PURCHASE $37 SEK</button>
+                                    </div>
+                                </div>     -->
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-5">
+                        <div class="card border-0 ">
+                            <div class="card-header card-2">
+                                <p class="card-text text-muted mt-md-4  mb-2 space">YOUR ORDER  </p>
+                                <hr class="my-2">
+                            </div>
+                            <div class="card-body pt-0">
+                                
+                               
+                                <div class="row  justify-content-between" *ngFor='let product of cart_products'>
+                                    <div class="col-auto col-md-7">
+                                        <div class="media flex-column flex-sm-row">
+                                            <img class=" img-fluid mr-2" src="https://dalilisouq.com/{{product.product.image}}" style="width: 62px;height: 64px;">
+                                            <div class="media-body  my-auto">
+                                                <div class="row ">
+                                                    <div class="col mx-2"><p class="mb-0"><b>{{product.product.name}}</b></p><small class="mx-2 mt-2 text-muted d-flex   ">
+                                                      
+                                                        <p style="height: 20px; width: 20px;" class=" bg-light border mx-3 d-flex justify-content-center align-items-center p-3  rounded-circle"  >{{product.size_id}}</p>
+                                                         
+                                                           <p style="height: 20px; width: 20px;" class="   rounded-circle"  [style.background]="product.color_id" ></p>
+                                                       
+                                                    </small></div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="pl-0 flex-sm-col col-auto  my-auto"> <p class="boxed">{{product.quantity}}</p></div>
+                                    <div class="pl-0 flex-sm-col col-auto my-auto"><p><b>${{product.product.price}} SEK</b></p></div>
+                                </div>
+                              
+                               
+                                <hr class="my-2">
+                                <div class="row ">
+                                    <div class="col">
+                                        <div class="row justify-content-between">
+                                            <div class="col-4"><p class="mb-1"><b>Items</b></p></div>
+                                            <div class="flex-sm-col col-auto"><p class="mb-1"><b>{{cart_data?.quantites}} SEK</b></p></div>
+                                        </div>
+                                        <div class="row justify-content-between">
+                                            <div class="col-4"><p class="mb-1"><b>Subtotal</b></p></div>
+                                            <div class="flex-sm-col col-auto"><p class="mb-1"><b>{{cart_data?.total}} SEK</b></p></div>
+                                        </div>
+                                        <div class="row justify-content-between">
+                                            <div class="col"><p class="mb-1"><b>Delivery fees</b></p></div>
+                                            <div class="flex-sm-col col-auto"><p class="mb-1"><b>0 SEK</b></p></div>
+                                        </div>
+                                        <div class="row justify-content-between">
+                                            <div class="col"><p class="mb-1"><b>total reward points</b></p></div>
+                                            <div class="flex-sm-col col-auto"><p class="mb-1"><b>0 SEK</b></p></div>
+                                        </div>
+                                        <div class="row justify-content-between">
+                                            <div class="col"><p class="mb-1"><b>tax</b></p></div>
+                                            <div class="flex-sm-col col-auto"><p class="mb-1"><b>0 SEK</b></p></div>
+                                        </div>
+                                        <div class="row justify-content-between">
+                                            <div class="col"><p class="mb-1"><b>Services</b></p></div>
+                                            <div class="flex-sm-col col-auto"><p class="mb-1"><b>0 SEK</b></p></div>
+                                        </div>
+                                        <div class=" mx-3 row justify-content-between align-items-center bg-light text-dark">
+                                            <div class="col-4 d-flex "><p ><b>Total</b></p></div>
+                                            <div class="flex-sm-col col-auto"><p  class="mb-1 text-danger"><b>537 SEK</b></p> </div>
+                                        </div><hr class="my-0">
+                                    </div>
+                                </div>
+                                <div class="row  mt-4 text-center">
+                                    <div class="col-md-12 p-3 " style="background-color: rgb(228, 226, 226);"><i class="fas fa-shipping-fast  mx-3" style="color: rgb(170, 36, 36);"></i>you will recieve your order in 48 hours .</div>
+                                </div>
+                                <div class="row mb-1 mt-4  text-center">
+                                     
+                                     <div class=" col-md-12 py-3" style="background-color: rgb(228, 226, 226);">
+                                        <input (click)='getstatus($event)' class="mx-3 " type="checkbox" id="flexSwitchCheckDefault">
+                                        <label class="form-check-label"  for="flexSwitchCheckDefault">fast deliver costs (pay exta cost -0 EGP)</label>
+                                      </div>
+                                </div>
+                                <div class="row mb-1 mt-4 text-center " *ngIf='deliver_fast==1'>
+                                    <div class="col-md-12">
+                                        <label class="sr-only" for="inlineFormInputGroup"></label>
+                                        <div class="input-group mb-2 "  style="border-radius: 20px 30px;">
+                                         
+                                          <input  type="date" class="form-control border-0 shadow-lg rounded" id="inlineFormInputGroup" placeholder="Username">
+                                          <div class="input-group-prepend">
+                                            <div class="input-group-text" style="font-size: 15px; background-color: rgb(170, 36, 36); color: white;border-top-right-radius:10px ;border-bottom-right-radius: 10px;padding: 4px;">Select Date</div>
+                                          </div>
+                                        </div>
+                                      </div>
+                                      
+                                      <div class="col-md-12">
+                                       <div class="d-flex flex-wrap" style="font-size: 10px;">
+                                           <span *ngFor='let time of f' class="p-2 px-4 m-2 " style="border:1px solid rgb(170, 36, 36);color: rgb(170, 36, 36);border-radius: 20px;">48 am:57 pn</span>
+                                       </div>
+                                      </div>
+                                </div>
+                                <div class="row mb-1 mt-4 text-center " >
+                                    <div class="col-md-12">
+                                        <label class="sr-only" for="inlineFormInputGroup"></label>
+                                        <div class="input-group mb-2 "  style="border-radius: 20px 30px;">
+                                         
+                                          <input  type="text" class="form-control border-0 shadow-lg rounded" id="inlineFormInputGroup" placeholder="Enter Coupon">
+                                          <div class="input-group-prepend">
+                                            <div class="input-group-text" style="font-size: 15px; background-color: rgb(170, 36, 36); color: white;border-top-right-radius:10px ;border-bottom-right-radius: 10px;padding: 4px;">Apply Coupon</div>
+                                          </div>
+                                        </div>
+                                      </div>
+                                      </div>
+                                      <div class="row   text-center">
+                                        <div class="col-md-12 p-3 d-flex justify-content-start" style="font-size: 13px;" >
+                                           *note: you will recieve your order in 48 hours .</div>
+                                           <div class="col-md-12 p-3 d-flex justify-content-start" style="font-size: 13px;" >
+                                           Current Balance: <span style="color: rgb(170, 36, 36);">1000 points</span></div>
+                                            
+                                     
+                                        </div>
+
+                                    <div class="row mb-1 mt-4 text-center " >
+                                        <div class="col-md-12">
+                                            <label class="sr-only" for="inlineFormInputGroup"></label>
+                                            <div class="input-group mb-2 "  style="border-radius: 20px 30px;">
+                                             
+                                              <input  type="text" class="form-control border-0 shadow-lg rounded" id="inlineFormInputGroup" placeholder="Enter redeemed points">
+                                              <div class="input-group-prepend">
+                                                <div class="input-group-text" style="font-size: 15px; background-color: rgb(170, 36, 36); color: white;border-top-right-radius:10px ;border-bottom-right-radius: 10px;padding: 4px;">Apply Redeem</div>
+                                              </div>
+                                            </div>
+                                          </div>
+                                          </div>
+                                          <div class="row mb-1 mt-4 text-center " >
+                                            <div class="col-md-12">
+                                                <label class="sr-only" for="inlineFormInputGroup"></label>
+                                                <div class="input-group mb-2 "  style="border-radius: 20px 30px;">
+                                                 
+                                                  <input  type="text" class="form-control border-0 shadow-lg rounded" id="inlineFormInputGroup" placeholder="Enter redeemed points">
+                                                  <div class="input-group-prepend">
+                                                    <div class="input-group-text" style="font-size: 15px; background-color: rgb(170, 36, 36); color: white;border-top-right-radius:10px ;border-bottom-right-radius: 10px;padding: 4px;">Apply Redeem</div>
+                                                  </div>
+                                                </div>
+                                              </div>
+                                              </div>
+                                <div class="row mb-1 mt-4 ">
+                                    <div class="col-md-7 col-lg-6 mx-auto"><button type="button" class="btn btn-block btn-outline-primary btn-lg">continue order</button></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

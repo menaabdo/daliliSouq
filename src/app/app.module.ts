@@ -44,6 +44,7 @@ import { OneAdComponent } from './modules/pages/one-ad/one-ad.component';
 import { ConfirmpageComponent } from './addproduct/confirmpage/confirmpage.component';
 import { EditColorsSizesComponent } from './modules/me/profile/profile-components/edit-products/edit-colors-sizes/edit-colors-sizes.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { CartcheckoutComponent } from './modules/pages/cartcheckout/cartcheckout.component';
 
 
 @NgModule({
@@ -76,6 +77,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     OneAdComponent,
     ConfirmpageComponent,
     EditColorsSizesComponent,
+    CartcheckoutComponent,
     
 
     

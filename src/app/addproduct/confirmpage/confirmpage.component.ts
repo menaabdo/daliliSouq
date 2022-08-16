@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
 import { UserService } from 'src/app/service/user.service';
 
 @Component({
@@ -10,7 +11,7 @@ export class ConfirmpageComponent implements OnInit {
   selectedfile: any;
   imageSrc: any;
 
-  constructor(private userserve:UserService) { }
+  constructor(private userserve:UserService,private route:Router,private active:ActivatedRoute) { }
 
   ngOnInit(): void {
     console.log(this.userserve.files.length)
@@ -36,6 +37,8 @@ export class ConfirmpageComponent implements OnInit {
     }
     
   
-  
+    getproductdetailes(){
+      this.route.navigateByUrl(`/home/product/${this.active.snapshot.params['id']}`)
+    }
 
 }

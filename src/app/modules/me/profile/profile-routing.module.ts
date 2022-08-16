@@ -64,7 +64,7 @@ const routes: Routes = [
             component:AddproductComponent
           },
           {
-            path:'confirm',
+            path:'confirm/:id',
             component:ConfirmpageComponent
           },
           {

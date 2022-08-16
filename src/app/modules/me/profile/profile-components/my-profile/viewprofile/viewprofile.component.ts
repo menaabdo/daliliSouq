@@ -22,6 +22,7 @@ product_id!:number
 
 
   ngOnInit(): void {
+    //this num as a flag to check if come from addproduct or none
     this.check_num=this.activeroute.snapshot.params['num']
     this.product_id=this.activeroute.snapshot.params['product_id']
     this.packageserve.profile_packages(1,0).subscribe((res)=>{this.response=res;this.packages=this.response.Response; console.log(res)})
@@ -36,7 +37,7 @@ product_id!:number
     console.log(this.selectedprice, this.product_id)
     this.userservese.update_product({'id':this.product_id,'package_type_country_id':this.selectedprice}).subscribe((res)=>{console.log(res)
          if(this.check_num==1)
-         this.route.navigateByUrl('/home/me/profile/my-profile/confirm')
+         this.route.navigateByUrl(`/home/me/profile/my-profile/confirm/${this.product_id}`)
          else
          this.route.navigateByUrl('/home/me/profile/my-profile')
         
