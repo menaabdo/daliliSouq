@@ -47,6 +47,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { CartcheckoutComponent } from './modules/pages/cartcheckout/cartcheckout.component';
 import { AddaddressComponent } from './modules/me/profile/profile-components/addaddress/addaddress.component';
 import { CheckoutwithoutaddressComponent } from './checkoutwithoutaddress/checkoutwithoutaddress.component';
+import { FortestComponent } from './fortest/fortest.component';
 
 
 @NgModule({
@@ -82,6 +83,7 @@ import { CheckoutwithoutaddressComponent } from './checkoutwithoutaddress/checko
     CartcheckoutComponent,
     AddaddressComponent,
     CheckoutwithoutaddressComponent,
+    FortestComponent,
     
 
     
