@@ -13,7 +13,6 @@ import { SalesdetailesComponent } from './modules/me/profile/profile-components/
 import { OneAdComponent } from './modules/pages/one-ad/one-ad.component';
 import { CartcheckoutComponent } from './modules/pages/cartcheckout/cartcheckout.component';
 import { CheckoutwithoutaddressComponent } from './checkoutwithoutaddress/checkoutwithoutaddress.component';
-import { FortestComponent } from './fortest/fortest.component';
 
 const routes: Routes = [
   {
@@ -72,7 +71,7 @@ const routes: Routes = [
       }
     ]
   },
-  { path: '', component: FortestComponent },
+  { path: '', component: LoginFormComponent },
   {path:'regist',component:RegisterFormComponent},
   
 
