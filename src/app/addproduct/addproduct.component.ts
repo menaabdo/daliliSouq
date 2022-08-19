@@ -155,7 +155,7 @@ marker!:any
       
     ////////////////////////////////
    if(this.data.category_ids.length!=0)
-   {console.log(this.data.category_ids)
+   {console.log(this.data.category_ids[0])
      this.categoryserve.can_post(this.data.category_ids[0],1).subscribe((res)=>{
      this.response_canpost=res;this.can_post=this.response_canpost.Response;
      console.log(this.can_post)

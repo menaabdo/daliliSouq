@@ -195,7 +195,7 @@
                         <!-- End .dropdown-cart-total -->
 
                         <div class="dropdown-cart-action">
-                            <a routerLink='checkout/1' class="btn btn-block">Checkout</a>
+                            <a *ngIf='cart_products.length!=0' routerLink='checkout/1' class="btn btn-block">Checkout</a>
                         </div>
                         <!-- End .dropdown-cart-total -->
                     </div>

@@ -36,5 +36,12 @@ this.categoryserve.categories_home().subscribe((res)=>{
 this.index=index
 this.selectedcountry=this.categories[index]
 console.log(this.selectedcountry)
+let all=document.getElementsByClassName('category')!
+for(let i=0;i<all.length;i++){
+  {
+    all[i].classList.remove('shadow-lg')
+  }
+  document.getElementById(index as unknown as string)!.classList.add('shadow-lg')
+}
   }
 }

@@ -122,7 +122,7 @@
        
       </div>
       <div class="row" *ngIf='product.user.id!=user_id&&product.is_online!=0'>
-        <div class="col-md-6 mb-1 p-3 px-5  d-flex justify-content-center align-items-center" style="background-color: rgb(102, 22, 22);"><a (click)='add_to_cart()' class="" >ADD To Cart</a></div> 
+        <div class="col-md-6 mb-1 p-3 px-5  d-flex justify-content-center align-items-center" style="background-color: rgb(102, 22, 22);"><a *ngIf='product.quantity!=0' (click)='add_to_cart()' class="" >ADD To Cart</a> <a *ngIf='product.quantity==0'>Out of stock</a></div> 
         <div class="col-md-6  mb-1 d-flex justify-content-between ">
             <a class="p-3 px-5" style="background-color: rgb(102, 22, 22);">Report</a>
         <div class="row">

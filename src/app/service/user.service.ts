@@ -143,6 +143,11 @@ this.image_file=file
     return this.httpclient.post(`${environment.apiURL}user/delete_address?os=android`,{'address_id':id},{headers})
  
   }
+  addaddress(address:any){
+    const headers =this.headers
+    return this.httpclient.post(`${environment.apiURL}user/add_address?os=android`,address,{headers})
+ 
+  }
   cities(){
     this.country_id=localStorage.getItem('country_id') as string
     return this.httpclient.get(`${environment.apiURL}cities?os=android&lang=en&country_id=${this.country_id}`)
@@ -415,6 +420,16 @@ this.image_file=file
  delete_item_cart(cart_id:number){
   const headers =this.headers
   return this.httpclient.post(`${environment.apiURL}cart/delete?os=android`,{'cart_id':cart_id},{headers})
+ 
+ }
+ calc_delivery(data:any){
+  const headers =this.headers
+  return this.httpclient.post(`${environment.apiURL}calc_delivery?os=android`,data,{headers})
+ 
+ }
+ checkout(data:any){
+  const headers =this.headers
+  return this.httpclient.post(`${environment.apiURL}checkout?os=android`,data,{headers})
  
  }
   

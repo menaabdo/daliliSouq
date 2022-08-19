@@ -15,4 +15,5 @@ export interface Address {
     long:number
     city:City
     image:string
+    is_default:number
 }

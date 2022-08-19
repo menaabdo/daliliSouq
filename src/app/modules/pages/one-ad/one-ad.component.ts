@@ -31,6 +31,7 @@ f!:number[]
   
     this.categoryserve.getoneproduct(this.product_id).subscribe((res)=>{
       console.log(res);this.response=res;this.product=this.response.Response
+     
       let ids:any
  let ids2:any[]=[]
  if(this.product.category){
@@ -117,22 +118,24 @@ f!:number[]
    
      fd.append('color_id',this.clickedcolor.color)
      fd.append('size_id',this.size.size)
-     this.userserve.add_to_cart(fd).subscribe((res)=>{console.log(res); this.userserve.products_cart().subscribe((res)=>{window.location.reload()}) })
+     this.userserve.add_to_cart(fd).subscribe((res)=>{console.log(res); this.userserve.products_cart().subscribe((res)=>{//window.location.reload()
+    }) 
+    })
   
    }else{
     if(this.product.category?.is_color!=0&&this.product.category?.is_size==0)
-    if(this.clickedcolor) { 
+   { if(this.clickedcolor) { 
        fd.append('color_id',this.clickedcolor.color)
        this.userserve.add_to_cart(fd).subscribe((res)=>{console.log(res);  })
   
-      }
+      }}
       if(this.product.category?.is_color==0&&this.product.category?.is_size!=0)
       
-      if(this.size){  
+    {  if(this.size){  
         fd.append('size_id',this.size.size)
         this.userserve.add_to_cart(fd).subscribe((res)=>{console.log(res);  })
   
-      }
+      }}
  
     }
   }

@@ -29,7 +29,7 @@ product_id!:number
     
   }
   continueo(){
-    this.route.navigateByUrl('/home/me/profile/my-profile/confirm')
+    this.route.navigateByUrl(`/home/me/profile/my-profile/confirm/${this.product_id}`)
   
   }
 

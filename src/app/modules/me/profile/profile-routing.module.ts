@@ -38,6 +38,7 @@ import { SalesdetailesComponent } from './profile-components/sales/salesdetailes
 import { ConfirmpageComponent } from 'src/app/addproduct/confirmpage/confirmpage.component';
 import { ProperitiesComponent } from './profile-components/edit-products/properities/properities.component';
 import { EditColorsSizesComponent } from './profile-components/edit-products/edit-colors-sizes/edit-colors-sizes.component';
+import { AddaddressComponent } from './profile-components/addaddress/addaddress.component';
 const routes: Routes = [
   {
     path: "",
@@ -95,8 +96,20 @@ const routes: Routes = [
       },
       {
         path: "addresses",
-        component: AddressesComponent
+        component: AddressesComponent,
+       
+         
+         
+        
+        
+         
+        
       },
+      {
+        path:'newaddress',
+        component:AddaddressComponent
+      },
+     
       {
         path: "account/:data",
         children: [

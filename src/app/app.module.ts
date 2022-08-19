@@ -45,6 +45,8 @@ import { ConfirmpageComponent } from './addproduct/confirmpage/confirmpage.compo
 import { EditColorsSizesComponent } from './modules/me/profile/profile-components/edit-products/edit-colors-sizes/edit-colors-sizes.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { CartcheckoutComponent } from './modules/pages/cartcheckout/cartcheckout.component';
+import { AddaddressComponent } from './modules/me/profile/profile-components/addaddress/addaddress.component';
+import { CheckoutwithoutaddressComponent } from './checkoutwithoutaddress/checkoutwithoutaddress.component';
 
 
 @NgModule({
@@ -78,6 +80,8 @@ import { CartcheckoutComponent } from './modules/pages/cartcheckout/cartcheckout
     ConfirmpageComponent,
     EditColorsSizesComponent,
     CartcheckoutComponent,
+    AddaddressComponent,
+    CheckoutwithoutaddressComponent,
     
 
     

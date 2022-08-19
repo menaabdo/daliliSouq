@@ -1,35 +1,58 @@
-
-
-// .address-card {
-//     // overflow: hidden;
-//     position: relative;
-//     &:hover {
-//         .buttons {
-//             transform: translateY(-50%) translateX(0%);
-//         }
-//     }
-//     .card-body {
-//         height: auto;
-//         min-height: auto;
-//         padding: 2.5rem 1.5rem;
-//     }
-//     .buttons {
-//         display: flex;
-//         flex-direction: column;
-//         position: absolute;
-//         top: 50%;
-//         transform: translateY(-50%) translateX(100%);
-//         right: 0;
-//         transition: 0.3s ease-in-out;
-//         i {
-//             width: 30px;
-//             height: 30px;
-//             line-height: 30px;
-//             border: 1px solid #ccc;
-//             border-radius: 50%;
-//             text-align: center;
-//             font-size: 1.2rem;
-//             cursor: pointer;
-//         }
-//     }
-// }
+.leftFixedBtn {
+    position: fixed;
+    top: 540px;
+   right:10px;
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.2);
+    background-color: #0d284b;
+     border-radius: 50%;
+    padding: 15px;
+    z-index: 9999999999999999999999999;
+  }
+  
+  .leftFixedBtn:nth-child(2){
+    top: 270px;
+  }
+  
+  .leftFixedBtn:nth-child(3){
+    top: 340px;
+  }
+  
+  .leftFixedBtn a {
+    color: white !important;
+  }
+  
+  .leftFixedBtn .tooltiptext {
+    visibility: hidden;
+    width: 120px;
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.2);
+    background-color: #FFF;
+    color: #163e73 !important;
+    text-align: center;
+    border-radius: 6px;
+    padding: 10px 0;
+    position: absolute;
+    z-index: 1;
+    bottom: 13%;
+    right:  100%;
+    margin-left: 20px;
+    opacity: 0;
+    transition: opacity 0.3s;
+    font-weight: bold;
+  }
+  
+  .leftFixedBtn .tooltiptext::after {
+    content: "";
+    position: absolute;
+    top: 34%;
+   right:  10px;
+    /* margin-left: -5px; */
+    border-width: 5px;
+    border-style: solid;
+    border-color: transparent #FFF transparent transparent;
+  }
+  
+  .leftFixedBtn:hover .tooltiptext {
+    visibility: visible;
+    opacity: 1;
+  }
+  

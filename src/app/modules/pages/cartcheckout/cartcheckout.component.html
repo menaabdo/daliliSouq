@@ -22,7 +22,7 @@
                     <div class="col-12 mt-3 ">
                         <nav aria-label="breadcrumb" class="second ">
                             <ol class="breadcrumb indigo lighten-6 first  ">
-                                <li class="breadcrumb-item font-weight-bold "><a class="black-text text-uppercase " href="#"><span class="mr-md-3 mr-1">BACK TO SHOPPING</span></a><i class="fa fa-angle-double-right " aria-hidden="true"></i></li>
+                                <li class="breadcrumb-item font-weight-bold "><a class="black-text text-uppercase " routerLink='/home/all-ads'><span class="mr-md-3 mr-1">BACK TO SHOPPING</span></a><i class="fa fa-angle-double-right " aria-hidden="true"></i></li>
                                   </ol>
                         </nav>
                     </div>
@@ -45,19 +45,19 @@
                                     <div class="col "><p class="text-muted ">Select PAYMENT Method</p>
                                     </div>
                                     <div class="form-check checkbox checkbox-circle">
-                                        <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1">
+                                        <input (click)='getpay("cash")' class="form-check-input" type="radio" name="cash" id="cash">
                                         <label class="form-check-label" for="flexRadioDefault1">
                                          Cash on Deliver
                                         </label>
                                       </div>
                                       <div class="form-check">
-                                        <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2" >
+                                        <input (click)='getpay("online")' class="form-check-input" type="radio" name="method" id="method" >
                                         <label class="form-check-label" for="flexRadioDefault2">
                                          Payment Method
                                         </label>
                                       </div>
                                       <div class="form-check">
-                                        <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2" checked>
+                                        <input (click)='getpay("online")' class="form-check-input" type="radio" name="bank" id="bank" >
                                         <label class="form-check-label" for="flexRadioDefault2">
                                         Internal Tranfer
                                         </label>
@@ -66,14 +66,14 @@
                                       <div class="col mt-4"><p class="text-muted ">Select Address</p>
                                       </div>
                                       <div class="form-check  ">
-                                          <div class="d-flex  my-3 justify-content-between bg-light" *ngFor='let addr of  addresses'>
+                                          <div class="d-flex  my-3 justify-content-between bg-light" *ngFor='let addr of  addresses;let i=index'>
                                         <label class="form-check-label" >
                                            <div class="font-weight-bold">{{addr.name}}</div>
                                            <div>{{addr.address}}</div>
                                         </label>
                                         <div>
                                         <div class=" my-2 d-flex align-content-end   border rounded-circle p-1"style="border:1px solid rgb(100, 28, 28);">
-                                          <input  type="radio" name="add1" id="" >
+                                          <input (change)='getaddress(addr.id)' type="radio" name="address" id={{addr.id}} [checked]='addr.is_default==1||i==0' value={{addr.id}}>
                                         </div>
                                         <div class="d-flex align-content-end ">
                                           <i class="fa fa-pen rounded-circle border p-2 text-white" style="font-size: 10px;background-color: rgb(100, 28, 28);"></i>
@@ -81,12 +81,13 @@
                                     </div> 
                                   
                                 </div>
-                                 <div class="d-flex  my-5 justify-content-start " (click)='newaddress()'>
-                                       
-                               <i class="fa fa-plus mx-2" style="color: rgb(100, 28, 28);"></i><div class="mx-2" style="color: rgb(12, 12, 63);">Add new address</div>
-                               </div>
+                                
                                         </div>
                                       <!-- end address -->
+                                      <div  class="col d-flex  my-5 justify-content-start " (click)='newaddress()'>
+                                       
+                                        <i id='plusicon' class="fa fa-plus mx-2" style="color: rgb(100, 28, 28);"></i><div class="mx-2" style="color: rgb(12, 12, 63);">Add new address</div>
+                                        </div>
                                 </div>
                                 <!-- <div class="form-group">
                                     <label for="NAME" class="small text-muted mb-1">NAME ON CARD</label>
@@ -115,11 +116,91 @@
                                         <button type="button" name="" id="" class="btn  btn-lg btn-block ">PURCHASE $37 SEK</button>
                                     </div>
                                 </div>     -->
+                                <div class="col" *ngIf='opened==1'>
+                                    <div class="form-group">
+                                    <div id="map" style="height: 100px"></div>
+                                     </div>
+                                <div class="form-group">
+                                    <label for="NAME" class="small text-muted mb-1">Title</label>
+                                    <input type="text" class="form-control form-control-sm" name="NAME" id="NAME" aria-describedby="helpId" placeholder="Title" [(ngModel)]=title>
+                                </div>
+                                <div class="form-group">
+                                    <div class="">
+                                        <label for="NAME" class="small text-muted mb-1">City</label>
+                                  
+                                    <select (change)='getcityid($event)' class="form-control form-control-sm" id="validationDefault04" required>
+                                      <option selected disabled value="">Choose...</option>
+                                      <option id={{city.id}} *ngFor='let city of cities;let i=index'>{{city.name}}</option>
+                                    </select>
+                                    </div>
+                                </div>
+                                <!-- region -->
+                                <div class="form-group" *ngIf='city_id'>
+                                    <div class="">
+                                        <label for="NAME" class="small text-muted mb-1">Region</label>
+                                  
+                                    <select (change)='getregionid($event)' class="form-control form-control-sm" id="validationDefault04" required>
+                                      <option selected disabled value="">Choose...</option>
+                                      <option  id={{region.id}} *ngFor='let region of selected_city'>{{region.name}}</option>
+                                    </select>
+                                    </div>
+                                </div>
+                                <!-- end region -->
+                                <div class="form-group ">
+                                    <label for="exampleInputEmail1" class='js-hide-label mobile' >phone</label>
+                                    <div class="form-control border-bottom-0 d-flex justify-content-left align-items-center">
+                                        <img src='https://dalilisouq.com/{{country?.image}}'><span class='pl-2'>+{{country?.phone_code}}</span>
+                                    <input id='mobile' class=' form-control mobile'  required #mobile='ngModel' [ngClass]='mobile.touched&&mobile.errors?.["required"]?"danger":""' type="number"  placeholder="mobile"   aria-describedby="emailHelp" [(ngModel)]=fmobile name='phone'>
+                                  
+                               
+                            </div> 
+                                </div>
+                                <div class="form-group ">
+                                    <label for="exampleInputEmail1" class='js-hide-label mobile' >Alternate phone</label>
+                                    <div class="form-control border-bottom-0 d-flex justify-content-left align-items-center">
+                                        <img src='https://dalilisouq.com/{{country?.image}}'><span class='pl-2'>+{{country?.phone_code}}</span>
+                                    <input id='mobile2' class=' form-control mobile'  required #mobile='ngModel' [ngClass]='mobile.touched&&mobile.errors?.["required"]?"danger":""' type="number"  placeholder="mobile"   aria-describedby="emailHelp" [(ngModel)]=smobile name='phone2'>
+                                  
+                               
+                            </div> 
+                                </div>
+                                <div class="form-group">
+                                    <label for="NAME" class="small text-muted mb-1">Street</label>
+                                    <input type="text" class="form-control form-control-sm" name="streetNAME" id="streetNAME" aria-describedby="helpId" placeholder="Street Name" [(ngModel)]=street>
+                                </div>
+                                <div class="form-group">
+                                    <label for="NAME" class="small text-muted mb-1">Building</label>
+                                    <input type="text" class="form-control form-control-sm" name="buildingNAME" id="streetNAME" aria-describedby="helpId" placeholder="Building number" [(ngModel)]=building>
+                                </div>
+                                <div class="form-group">
+                                    <label for="NAME" class="small text-muted mb-1">Floor</label>
+                                    <input type="text" class="form-control form-control-sm" name="floorNAME" id="streetNAME" aria-describedby="helpId" placeholder="Floor number" [(ngModel)]=floor>
+                                </div>
+                                <div class="form-group">
+                                    <label for="NAME" class="small text-muted mb-1">Apartment(optional)</label>
+                                    <input type="text" class="form-control form-control-sm" name="apartementNAME" id="streetNAME" aria-describedby="helpId" placeholder="Apartement number" [(ngModel)]=apartment>
+                                </div>
+                                <div class="form-group">
+                                    <label for="NAME" class="small text-muted mb-1">Postal code(optional)</label>
+                                    <input type="text" class="form-control form-control-sm" name="buildingNAME" id="postal" aria-describedby="helpId" placeholder="Postal code"  [(ngModel)]=postalcode>
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input" (change)='setasdefault()' type="checkbox" value="" id="invalidCheck2" required>
+                                    <label class="form-check-label" for="invalidCheck2">
+                                      Set as default
+                                    </label>
+                                  </div>
+                           
+                                  <div class="row mb-1 mt-4 ">
+                                    <div class="col-md-7 col-lg-6 mx-auto"><button (click)=' addnewaddress()' type="button" class="btn btn-block btn-outline-primary btn-lg">Add</button></div>
+                                </div>
+                                </div>
+                                
                             </div>
                         </div>
                     </div>
                     <div class="col-md-5">
-                        <div class="card border-0 ">
+                        <div class="card border-0 " >
                             <div class="card-header card-2">
                                 <p class="card-text text-muted mt-md-4  mb-2 space">YOUR ORDER  </p>
                                 <hr class="my-2">
@@ -158,38 +239,53 @@
                                         </div>
                                         <div class="row justify-content-between">
                                             <div class="col-4"><p class="mb-1"><b>Subtotal</b></p></div>
-                                            <div class="flex-sm-col col-auto"><p class="mb-1"><b>{{cart_data?.total}} SEK</b></p></div>
+                                            <div class="flex-sm-col col-auto"><p class="mb-1"><b>{{fees?.total}} </b></p></div>
                                         </div>
                                         <div class="row justify-content-between">
                                             <div class="col"><p class="mb-1"><b>Delivery fees</b></p></div>
-                                            <div class="flex-sm-col col-auto"><p class="mb-1"><b>0 SEK</b></p></div>
+                                            <div class="flex-sm-col col-auto"><p class="mb-1"><b>{{fees.total_delivery}} </b></p></div>
                                         </div>
+                                        <div *ngIf='fees.total_fast' class="row justify-content-between">
+                                            <div class="col"><p class="mb-1"><b>fast_delivery</b></p></div>
+                                            <div class="flex-sm-col col-auto"><p class="mb-1"><b>{{fees.total_fast}} </b></p></div>
+                                        </div>
+                                        
                                         <div class="row justify-content-between">
                                             <div class="col"><p class="mb-1"><b>total reward points</b></p></div>
-                                            <div class="flex-sm-col col-auto"><p class="mb-1"><b>0 SEK</b></p></div>
+                                            <div class="flex-sm-col col-auto"><p class="mb-1"><b>{{fees?.total_points}} points</b></p></div>
                                         </div>
+                                        <div class="row justify-content-between" *ngIf='fees.redeem_value'>
+                                            <div class="col"><p class="mb-1"><b>redeem_value</b></p></div>
+                                            <div class="flex-sm-col col-auto"><p class="mb-1"><b>{{fees?.redeem_value}} points</b></p></div>
+                                        </div>
+                                       
                                         <div class="row justify-content-between">
                                             <div class="col"><p class="mb-1"><b>tax</b></p></div>
-                                            <div class="flex-sm-col col-auto"><p class="mb-1"><b>0 SEK</b></p></div>
+                                            <div class="flex-sm-col col-auto"><p class="mb-1"><b>{{fees.vat_amount}}</b></p></div>
                                         </div>
                                         <div class="row justify-content-between">
                                             <div class="col"><p class="mb-1"><b>Services</b></p></div>
-                                            <div class="flex-sm-col col-auto"><p class="mb-1"><b>0 SEK</b></p></div>
+                                            <div class="flex-sm-col col-auto"><p class="mb-1"><b>{{fees?.service_amount}}</b></p></div>
                                         </div>
                                         <div class=" mx-3 row justify-content-between align-items-center bg-light text-dark">
                                             <div class="col-4 d-flex "><p ><b>Total</b></p></div>
-                                            <div class="flex-sm-col col-auto"><p  class="mb-1 text-danger"><b>537 SEK</b></p> </div>
-                                        </div><hr class="my-0">
+                                            <div class="flex-sm-col col-auto"><p  class="mb-1 text-danger">
+                                                <b >{{fees.total_price}}</b>
+
+                                                   </p></div>
+                                                </div>
+                                                
+                                        <hr class="my-0">
                                     </div>
                                 </div>
                                 <div class="row  mt-4 text-center">
-                                    <div class="col-md-12 p-3 " style="background-color: rgb(228, 226, 226);"><i class="fas fa-shipping-fast  mx-3" style="color: rgb(170, 36, 36);"></i>you will recieve your order in 48 hours .</div>
+                                    <div class="col-md-12 p-3 " style="background-color: rgb(228, 226, 226);"><i class="fas fa-shipping-fast  mx-3" style="color: rgb(170, 36, 36);"></i>you will recieve your order {{fees.fast_days}} .</div>
                                 </div>
                                 <div class="row mb-1 mt-4  text-center">
                                      
                                      <div class=" col-md-12 py-3" style="background-color: rgb(228, 226, 226);">
                                         <input (click)='getstatus($event)' class="mx-3 " type="checkbox" id="flexSwitchCheckDefault">
-                                        <label class="form-check-label"  for="flexSwitchCheckDefault">fast deliver costs (pay exta cost -0 EGP)</label>
+                                        <label class="form-check-label"  for="flexSwitchCheckDefault">fast deliver costs (pay extra cost -{{fees.total_fast}} EGP)</label>
                                       </div>
                                 </div>
                                 <div class="row mb-1 mt-4 text-center " *ngIf='deliver_fast==1'>
@@ -206,7 +302,7 @@
                                       
                                       <div class="col-md-12">
                                        <div class="d-flex flex-wrap" style="font-size: 10px;">
-                                           <span *ngFor='let time of cart_data.times' class="p-2 px-4 m-2 " style="border:1px solid rgb(170, 36, 36);color: rgb(170, 36, 36);border-radius: 20px;">{{time}}</span>
+                                           <span (click)=gettime(time,i) id=t{{i}} *ngFor='let time of cart_data.times;let i=index' class="p-2 px-4 m-2 " style="cursor: pointer;;border:1px solid rgb(170, 36, 36);color: rgb(170, 36, 36);border-radius: 20px;">{{time}}</span>
                                        </div>
                                       </div>
                                 </div>
@@ -215,18 +311,22 @@
                                         <label class="sr-only" for="inlineFormInputGroup"></label>
                                         <div class="input-group mb-2 "  style="border-radius: 20px 30px;">
                                          
-                                          <input  type="text" class="form-control border-0 shadow-lg rounded" id="inlineFormInputGroup" placeholder="Enter Coupon">
+                                          <input [readonly]='toggletocancel2==1' type="text" class="form-control border-0 shadow-lg rounded" id="inlineFormInputGroup" placeholder="Enter Copoun" name="copoun" [(ngModel)]='copoun'>
                                           <div class="input-group-prepend">
-                                            <div class="input-group-text" style="font-size: 15px; background-color: rgb(170, 36, 36); color: white;border-top-right-radius:10px ;border-bottom-right-radius: 10px;padding: 4px;">Apply Coupon</div>
-                                          </div>
+                                            <div *ngIf='toggletocancel2==0' (click)='applycopoun()' class="input-group-text" style="cursor: pointer;;font-size: 15px; background-color: rgb(170, 36, 36); color: white;border-top-right-radius:10px ;border-bottom-right-radius: 10px;padding: 4px;">Apply Copoun</div>
+                                            <div *ngIf='toggletocancel2==1' (click)='cancelcopoun()' class="input-group-text" style="cursor: pointer;;font-size: 15px; background-color: rgb(170, 36, 36); color: white;border-top-right-radius:10px ;border-bottom-right-radius: 10px;padding: 4px;">Cancel Copoun</div>
+                                             
                                         </div>
+                                           </div>
+                                           <div *ngIf='message&&message!=""'><small class="text-danger">{{message}}</small></div>  
+                                    
                                       </div>
                                       </div>
                                       <div class="row   text-center">
                                         <div class="col-md-12 p-3 d-flex justify-content-start" style="font-size: 13px;" >
-                                           *note: you will recieve your order in 48 hours .</div>
+                                           *note: Each {{fees.reward_points}} points will deduct<span class="text-danger"></span> 20 EGP .</div>
                                            <div class="col-md-12 p-3 d-flex justify-content-start" style="font-size: 13px;" >
-                                           Current Balance: <span style="color: rgb(170, 36, 36);">1000 points</span></div>
+                                           Current Balance: <span style="color: rgb(170, 36, 36);">{{fees.balance_points}} points</span></div>
                                             
                                      
                                         </div>
@@ -236,10 +336,12 @@
                                             <label class="sr-only" for="inlineFormInputGroup"></label>
                                             <div class="input-group mb-2 "  style="border-radius: 20px 30px;">
                                              
-                                              <input  type="text" class="form-control border-0 shadow-lg rounded" id="inlineFormInputGroup" placeholder="Enter redeemed points">
+                                              <input [readonly]='toggletocancel==1' type="text" class="form-control border-0 shadow-lg rounded" id="inlineFormInputGroup" placeholder="Enter redeemed points" name='points' [(ngModel)]=points>
                                               <div class="input-group-prepend">
-                                                <div class="input-group-text" style="font-size: 15px; background-color: rgb(170, 36, 36); color: white;border-top-right-radius:10px ;border-bottom-right-radius: 10px;padding: 4px;">Apply Redeem</div>
-                                              </div>
+                                                <div  *ngIf='toggletocancel==0' (click)='applyreedem()' class="input-group-text" style="font-size: 15px; background-color: rgb(170, 36, 36); color: white;border-top-right-radius:10px ;border-bottom-right-radius: 10px;padding: 4px;cursor: pointer;">Apply Redeem</div>
+                                                <div *ngIf='toggletocancel==1' (click)='cancelreedem()' class="input-group-text" style="font-size: 15px; background-color: rgb(170, 36, 36); color: white;border-top-right-radius:10px ;border-bottom-right-radius: 10px;padding: 4px;cursor: pointer;">Cancel Redeem</div>
+                                               
+                                            </div>
                                             </div>
                                           </div>
                                           </div>
@@ -248,15 +350,18 @@
                                                 <label class="sr-only" for="inlineFormInputGroup"></label>
                                                 <div class="input-group mb-2 "  style="border-radius: 20px 30px;">
                                                  
-                                                  <input  type="text" class="form-control border-0 shadow-lg rounded" id="inlineFormInputGroup" placeholder="Enter redeemed points">
-                                                  <div class="input-group-prepend">
-                                                    <div class="input-group-text" style="font-size: 15px; background-color: rgb(170, 36, 36); color: white;border-top-right-radius:10px ;border-bottom-right-radius: 10px;padding: 4px;">Apply Redeem</div>
-                                                  </div>
+                                                  <input  type="text" class="form-control border-0 shadow-lg rounded" id="inlineFormInputGroup" placeholder="Add comment to driver" name='comment' [(ngModel)]=user_comment>
+                                                 
                                                 </div>
                                               </div>
                                               </div>
+                                              <div class="row mb-1 mt-4 text-left " >
+                                                <div class="col-md-12">
+                                                    <p class='text-danger ' style="font-size: small;">{{fees.note}} .</p>
+                                                 </div>
+                                                 </div>    
                                 <div class="row mb-1 mt-4 ">
-                                    <div class="col-md-7 col-lg-6 mx-auto"><button type="button" class="btn btn-block btn-outline-primary btn-lg">continue order</button></div>
+                                    <div class="col-md-7 col-lg-6 mx-auto"><button (click)=' checkout() ' type="button" class="btn btn-block btn-outline-primary btn-lg">continue order</button></div>
                                 </div>
                             </div>
                         </div>

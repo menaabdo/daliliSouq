@@ -4,11 +4,13 @@
     <div class="header-menu carousel slide" id="carouselExampleControls"  data-ride="carousel" >
         <div  class="">
             <ul class="nav-categories ">
-                <li class="text-center ml-5"  *ngFor='let category of categories;let i=index'>
-                    <a class=" row" (click)='getselected(i)' ><img class=" rounded-circle" src='https://dalilisouq.com/{{category.image}}' width="50px"></a>
+                <li (click)='getselected(i)' style="cursor: pointer;" class=" text-center ml-5"  *ngFor='let category of categories;let i=index' >
+                   <div >
+                    <a id={{i}} [ngClass]='i==0?"shadow-lg":""'  class="row category"  ><img  class=" p-1 bg-white rounded-circle" src='https://dalilisouq.com/{{category.image}}' width="50px"></a>
                      <div class="row d-flex justify-content-center ">
-                    <p class="row text-dark ">{{category.name}}</p>
-                </div>    
+                    <p class="row text-dark " >{{category.name}}</p>
+                </div>  
+            </div>  
                 </ul>
         </div>
     </div>

@@ -12,6 +12,7 @@ import { RegisterFormComponent } from './register-form/register-form.component';
 import { SalesdetailesComponent } from './modules/me/profile/profile-components/sales/salesdetailes/salesdetailes.component';
 import { OneAdComponent } from './modules/pages/one-ad/one-ad.component';
 import { CartcheckoutComponent } from './modules/pages/cartcheckout/cartcheckout.component';
+import { CheckoutwithoutaddressComponent } from './checkoutwithoutaddress/checkoutwithoutaddress.component';
 
 const routes: Routes = [
   {
@@ -63,6 +64,10 @@ const routes: Routes = [
       {
         path:'checkout/:id',
         component:CartcheckoutComponent
+      },
+      {
+        path:'Address',
+        component:CheckoutwithoutaddressComponent
       }
     ]
   },
