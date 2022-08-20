@@ -26,7 +26,9 @@ export interface Store {
     delivery_price:number
     speed_fees:number
     total_user:number
-    
+    longitude:number
+    latitude:number
+
     
 
 }

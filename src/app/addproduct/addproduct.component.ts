@@ -12,6 +12,7 @@ import {} from 'googlemaps';
 import { ViewChild } from '@angular/core';
 import { Loader } from '@googlemaps/js-api-loader';
 import { City } from '../models/city.model';
+import * as L from 'leaflet';
 import { Country } from '../models/country.model';
 @Component({
   selector: 'app-addproduct',
@@ -94,7 +95,10 @@ marker!:any
     this.storessserve.cities().subscribe((res)=>{this.response1=res;this.cities=this.response1.Response
       
     })
-   this.storessserve.profile({country_id:1}).subscribe((res)=>{this.response2=res;this.add=this.response2.Response.address
+   this.storessserve.profile({country_id:1}).subscribe((res)=>{this.response2=res;this.add=this.response2.Response
+   this.data.lat=this.add.lat
+   this.data.lng=this.add.long
+   this.getmap()
     this.country=this.response2.Response.country ;console.log(res)
     if( this.active.snapshot.params['data']=='data')
   
@@ -102,35 +106,37 @@ marker!:any
       let mobile=(this.response2.Response.mobile).toString()
       mobile= mobile.slice((this.country.phone_code).toString().length)
         this.data.mobile=mobile}
-        
-      let loader=new Loader({apiKey:'AIzaSyCuU2Tnmy93AuQWWQ7DAGJT95OJKZYZdwY'})
-      loader.load().then(() => {
+        console.log(this.add.lat,this.add.long)
+       
+  
+    //   let loader=new Loader({apiKey:'AIzaSyCuU2Tnmy93AuQWWQ7DAGJT95OJKZYZdwY'})
+    //   loader.load().then(() => {
     
        
-      this. myLatlng = { lat:this.add.lat, lng:this.add.long };
+    //   this. myLatlng = { lat:this.add.lat, lng:this.add.long };
 
-       const map= this.map = new google.maps.Map(document.getElementById("map") as HTMLElement, {
-          center: this.myLatlng,    zoom: 4,
+    //    const map= this.map = new google.maps.Map(document.getElementById("map") as HTMLElement, {
+    //       center: this.myLatlng,    zoom: 4,
        
-       });
-      const marker= this. marker = new google.maps.Marker({
-        position:this. myLatlng,
-         map,
-        title: "Click to zoom",
-      });
-      map.addListener("click", (mapsMouseEvent:any) => {
+    //    });
+    //   const marker= this. marker = new google.maps.Marker({
+    //     position:this. myLatlng,
+    //      map,
+    //     title: "Click to zoom",
+    //   });
+    //   map.addListener("click", (mapsMouseEvent:any) => {
       
-        this.data.lat= mapsMouseEvent.latLng.lat()
-        this.data.lng=mapsMouseEvent.latLng.lng()
-        this.marker.setPosition({lat:this.data.lat,lng:this.data.lng});
+    //     this.data.lat= mapsMouseEvent.latLng.lat()
+    //     this.data.lng=mapsMouseEvent.latLng.lng()
+    //     this.marker.setPosition({lat:this.data.lat,lng:this.data.lng});
       
-      });
-     this. marker.addListener("click", () => {
-        map.setZoom(8);
-        map.setCenter(this.marker.getPosition() as google.maps.LatLng);
-      });
+    //   });
+    //  this. marker.addListener("click", () => {
+    //     map.setZoom(8);
+    //     map.setCenter(this.marker.getPosition() as google.maps.LatLng);
+    //   });
       
-     });
+    //  });
      
     })
    
@@ -184,6 +190,7 @@ marker!:any
      this.note=this.response.Response.offline_note}
        
       })
+     
     }
     // getposition(){
     //   let infoWindow = new google.maps.InfoWindow({
@@ -270,12 +277,14 @@ marker!:any
             this.data.store_id=e.target.childNodes[i].id
             console.log(e.target.value)
           if(e.target.value=='My account')
-         {console.log('jhiiiiiiiiiii')
+         {
            let mobile=(this.response2.Response.mobile).toString()
           mobile= mobile.slice((this.country.phone_code).toString().length)
             this.data.mobile=mobile}
          else{ 
-           
+          this.data.lng=this.stores[i-1].longitude;
+          this.data.lat=this.stores[i-1].latitude
+          this.movemarker()
           let mobile =(this.stores[i-1].mobile).toString();
            mobile= mobile.slice((this.country.phone_code).toString().length)
           this.data.mobile=mobile as unknown as number
@@ -394,7 +403,10 @@ this.route.navigateByUrl(`/home/me/profile/my-profile/select-category/${(JSON.st
    
      else fd.append('quantity',1 as unknown as string  )
    }
+    if(this.data.lat)
     fd.append('latitude',this.data.lat as unknown as string)
+    if(this.data.lng)
+    
     fd.append('longitude',this.data.lng as unknown as string)
     fd.append('mobile',this.data.mobile as unknown as string)
     
@@ -421,5 +433,51 @@ this.route.navigateByUrl(`/home/me/profile/my-profile/select-category/${(JSON.st
   upgrade(){
     this.route.navigateByUrl(`/home/me/profile/account/${(JSON.stringify(this.data)).replace('#','*')}/packages/${this.data.category_ids[0]}`)
   }
+  getmap(){
+    let map=this.map= new L.Map('map').setView([this.data.lat ||0, this.data.lng||0],10);
+    var marker=this.marker = L.marker([this.add.lat, this.add.long]).addTo(map)
+  console.log(this.data.lng,this.data.lat)
+
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+    maxZoom: 19,
+    attribution: '© OpenStreetMap'
+  }).addTo(map)
+  map.on('click', (e:any) =>{
+    var lat,
+    lon,
+    zoom;
+
+lat = e.latlng.lat;
+lon = e.latlng.lng;
+zoom = map.getZoom();
+console.log("You clicked the map at LAT: "+ lat+" and LONG: "+lon );
+if (marker != undefined) {
+  map.removeLayer(marker);
+};
+marker =  L.marker([lat,lon]).addTo(map); 
+this.data.lat=lat,
+this.data.lng=lon
+
+     })
+  
+  }
+  movemarker(){
+    this.map.remove()
+    let map=this.map= new L.Map('map').setView([this.data.lat ||0, this.data.lng||0],10);
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+      maxZoom: 10,
+      attribution: '© OpenStreetMap'
+    }).addTo(this.map)
+   this. map.removeLayer(this.marker);
+    let lat=0;let lng=0
+   lat =this.data.lat ||0
+    lng=this.data.lng ||0
+    console.log(lat,lng)
+  this.marker =  L.marker([lat,lng]).addTo(this.map); 
  
+  
+       
+  
+  } 
 }
+

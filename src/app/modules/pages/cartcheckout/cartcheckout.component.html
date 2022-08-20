@@ -116,10 +116,11 @@
                                         <button type="button" name="" id="" class="btn  btn-lg btn-block ">PURCHASE $37 SEK</button>
                                     </div>
                                 </div>     -->
-                                <div class="col" *ngIf='opened==1'>
+                                <div class="col" >
                                     <div class="form-group">
-                                    <div id="map" style="height: 100px"></div>
-                                     </div>
+                                    <div id='map' style="height: 500px">
+                                         </div>
+                                         </div>
                                 <div class="form-group">
                                     <label for="NAME" class="small text-muted mb-1">Title</label>
                                     <input type="text" class="form-control form-control-sm" name="NAME" id="NAME" aria-describedby="helpId" placeholder="Title" [(ngModel)]=title>
@@ -243,7 +244,7 @@
                                         </div>
                                         <div class="row justify-content-between">
                                             <div class="col"><p class="mb-1"><b>Delivery fees</b></p></div>
-                                            <div class="flex-sm-col col-auto"><p class="mb-1"><b>{{fees.total_delivery}} </b></p></div>
+                                            <div class="flex-sm-col col-auto"><p class="mb-1"><b>{{fees?.total_delivery}} </b></p></div>
                                         </div>
                                         <div *ngIf='fees.total_fast' class="row justify-content-between">
                                             <div class="col"><p class="mb-1"><b>fast_delivery</b></p></div>

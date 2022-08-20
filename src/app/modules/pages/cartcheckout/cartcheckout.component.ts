@@ -8,14 +8,19 @@ import { Country } from 'src/app/models/country.model';
 import { Product } from 'src/app/models/product.model';
 import { Region } from 'src/app/models/region.model';
 
+import * as L from 'leaflet';
+import{AfterViewInit} from '@angular/core';
+
+
 import { UserService } from 'src/app/service/user.service';
 
 @Component({
   selector: 'app-cartcheckout',
   templateUrl: './cartcheckout.component.html',
-  styleUrls: ['./cartcheckout.component.scss']
+  styleUrls: ['./cartcheckout.component.scss'],
+ 
 })
-export class CartcheckoutComponent implements OnInit {
+export class CartcheckoutComponent implements OnInit{
 f=[0,9,9,3,4,3]
   response!:any
   addresses!:Address[]
@@ -51,6 +56,8 @@ f=[0,9,9,3,4,3]
     response2: any;
     country!:Country
     add!:Address
+    lat!:number
+    lng!:number
   ///////////////////////////////////////////////
   ///////////////variables for cart/////////
 response_cart!:any
@@ -68,6 +75,7 @@ time!:string
 payment_type!:number
 user_comment!:string
 checkout_res!:any
+map!:any
 //////////////////////////////////
 //////////////////calcaluation for all fees////////////////
 response_fees!:any
@@ -75,14 +83,11 @@ fees!:Checkout
 
 /////////////////
     constructor(private addressserve:UserService,private activeroute:Router,private route:Router) { }
-  
+ 
     ngOnInit(): void {
-      if (navigator.geolocation) {
-        navigator.geolocation.getCurrentPosition(this.showPosition);
-      } else { 
-        document.getElementById('map')!.innerHTML = "Geolocation is not supported by this browser.";
-      }
-      //get all address
+     
+     this.map=document.getElementById('map')!
+        //get all address
       this.getalladdress()
      //////////
      this.cart()
@@ -92,7 +97,7 @@ fees!:Checkout
       this.getcitites()
       /////calc delivery
       //this.calc_delivery()
-  
+     
   
     }
     getalladdress(){
@@ -119,18 +124,24 @@ fees!:Checkout
      if(this.opened==0){
        document.getElementById('plusicon')!.classList.add('fa-minus')
        document.getElementById('plusicon')!.classList.remove('fa-plus')  
+     
        this.opened=1  
+      
      }
      else{
       document.getElementById('plusicon')!.classList.add('fa-plus')
       document.getElementById('plusicon')!.classList.remove('fa-minus')  
+      
       this.opened=0  
      }
+     
+     
       
     }
     address_profile(){
-      this.addressserve.profile({country_id:1}).subscribe((res)=>{this.response2=res;this.add=this.response2.Response.address
+      this.addressserve.profile({country_id:1}).subscribe((res)=>{this.response2=res;this.add=this.response2.Response
         this.country=this.response2.Response.country ;console.log(res)
+        this.getmap()
       })
     }
     /////////////////////////////////////////////////
@@ -330,5 +341,35 @@ getregionid(e:any){
        }
      })
   }
+ 
+ getmap(){
+ 
+  const map= new L.Map('map').setView([this.add.lat, this.add.long], 5);
+  var marker = L.marker([this.add.lat, this.add.long]).addTo(map)
+      
+  L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+  maxZoom: 19,
+  attribution: '© OpenStreetMap'
+}).addTo(map)
+map.on('click', (e:any) =>{
+  var lat,
+  lon,
+  zoom;
+
+lat = e.latlng.lat;
+lon = e.latlng.lng;
+zoom = map.getZoom();
+console.log("You clicked the map at LAT: "+ lat+" and LONG: "+lon );
+if (marker != undefined) {
+map.removeLayer(marker);
+};
+marker =  L.marker([lat,lon]).addTo(map); 
+
+
+   })
+
+
+ }
+
      
 }

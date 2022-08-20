@@ -19,6 +19,7 @@ token?:any
   ngOnInit(): void {
   }
 login(){
+  console.log('kkkkkkkkkkkkkkkkkkkk')
  
   this.loginservice.login(this.user)
   // .subscribe(
