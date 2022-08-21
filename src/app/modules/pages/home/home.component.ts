@@ -96,6 +96,8 @@ scrollup(e:any){
      this.messages=newmess.concat(this.messages);
      //this.messages.reverse()
      console.log(this.messages)
+     //document.getElementsByClassName('card-body')[0]!.scrollTop=document.getElementsByClassName('card-body')[0]!.scrollHeight/this.page
+
     })
 }
   
