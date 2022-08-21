@@ -14,6 +14,7 @@ export class HomeComponent implements OnInit {
   mymess!:string
   selectedfile?:any
   imageSrc?: any;
+  page:number=1
    fd=new FormData();
   constructor(private chatservice:UserService) { }
 
@@ -53,7 +54,7 @@ export class HomeComponent implements OnInit {
     this.imageSrc=''
   }
   get_messages(){
-    this.chatservice.mymess().subscribe((res)=>{this.response=res;this.messages=this.response.Response.messages.data;this.messages.reverse()})
+    this.chatservice.mymess(this.page).subscribe((res)=>{this.response=res;console.log(res);this.messages=this.response.Response.messages.data;this.messages.reverse()})
 
   }
   selectedFile(event:any){
@@ -79,5 +80,25 @@ export class HomeComponent implements OnInit {
   ignoreimg(){
     this.imageSrc=''
   }
+
+scrollup(e:any){
+  console.log(e.target.scrollTop,e.target.scrollHeight)
+ if(e.target.scrollTop==0)
+ { this.page++
+  console.log(this.page)
+   this.chatservice.mymess(this.page).subscribe((res)=>{
+     this.response=res;
+     console.log(res);
+     let newmess=this.response.Response.messages.data;
+     newmess.reverse();
+     console.log(newmess)
+    //this.messages.reverse()
+     this.messages=newmess.concat(this.messages);
+     //this.messages.reverse()
+     console.log(this.messages)
+    })
+}
+  
+}
  
 }

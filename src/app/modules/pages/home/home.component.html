@@ -14,7 +14,7 @@
                             <h5 class="mb-0">DALILI Souq Admin</h5>
                          
                         </div>
-                        <div class="card-body" data-mdb-perfect-scrollbar="true" style="position: relative; height: 300px">
+                        <div class="card-body" (scroll)='scrollup($event)' data-mdb-perfect-scrollbar="true" style="position: relative; height: 300px">
                            <div *ngFor=' let mess of messages' style="word-break: break-word;">
                           <!-- <div class="d-flex flex-row  " [ngClass]='!mess.sender_id?"justify-content-start":"justify-content-end"'>
                              <div class='contentmess '  [ngClass]='mess.sender_id?"text-right":"text-left"'>

@@ -383,9 +383,9 @@ this.image_file=file
     return  this.httpclient.get(`${environment.apiURL}notification?os=android&id=${noty_id}os=android`,{headers})
  
   }
-  mymess(){
+  mymess(page:number){
     const headers =this.headers
-    return this.httpclient.post(`${environment.apiURL}chat?os=android`,{'is_company':0,'user_id':0},{headers})
+    return this.httpclient.post(`${environment.apiURL}chat?os=android`,{'is_company':0,'user_id':0,'page':page},{headers})
  
   }
  sendmess(mess:any){
