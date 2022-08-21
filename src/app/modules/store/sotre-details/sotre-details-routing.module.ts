@@ -28,7 +28,7 @@ const routes: Routes = [
         
       },
        {
-            path:'doupleview',
+            path:'doupleview/:product_id/:id',
             component:DoubleViewComponent
       },
       {
