@@ -264,7 +264,7 @@ getregionid(e:any){
     fd.append('points',this.points as unknown as string)
     if(this.copoun)
     fd.append('coupon',this.copoun)
-    console.log(this.copoun)
+  
    this.addressserve.calc_delivery(fd).subscribe((res)=>{
      this.response_fees=res
      this.fees=this.response_fees.Response

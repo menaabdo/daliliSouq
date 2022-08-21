@@ -18,7 +18,9 @@ export class HomeComponent implements OnInit {
   constructor(private chatservice:UserService) { }
 
   ngOnInit(): void {
-   
+    this.get_messages()
+    document.getElementsByClassName('card-body')[0]!.scrollTop=document.getElementsByClassName('card-body')[0]!.scrollHeight
+  
   }
 
 
@@ -26,15 +28,29 @@ export class HomeComponent implements OnInit {
 
 
   open(){
+    
     let popup = document.getElementById("myPopup")!;
   popup.classList.toggle("show");
+  //hide textarea
+ // document.getElementById('myinput')! .classList.toggle("fademe")
+ console.log( document.getElementsByClassName('card-body')[0]!.scrollHeight)
+ document.getElementsByClassName('card-body')[0]!.scrollTop=document.getElementsByClassName('card-body')[0]!.scrollHeight
   this.get_messages()
-   }
+ 
+    }
   send(){
+    
+   this.fd.append('receiver_id','0')
+   this.fd.append('is_company','0')
+   this.fd.append('product_id','0')
+   this.fd.append('store_id','0')
+   if(this.mymess)
+   this.fd.append('message',this.mymess)
    
-    this.chatservice.sendmess(this.mymess,this.fd).subscribe((res)=>{ this.get_messages()})
+    this.chatservice.sendmess(this.fd).subscribe((res)=>{console.log(res); this.get_messages()})
    
     this.mymess=''
+    this.imageSrc=''
   }
   get_messages(){
     this.chatservice.mymess().subscribe((res)=>{this.response=res;this.messages=this.response.Response.messages.data;this.messages.reverse()})
@@ -54,6 +70,7 @@ export class HomeComponent implements OnInit {
    // this.data.store_img=this.selectedfile
     this.imageSrc=URL.createObjectURL(event.target.files[0])
   
+    console.log(this.imageSrc)
 }
     reader.readAsDataURL(file);
 }

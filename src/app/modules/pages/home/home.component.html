@@ -1,6 +1,6 @@
-<div  class="popup leftFixedBtn"  >
-    <a   >
-        <span class="popuptext" id="myPopup">
+<div  class="popup leftFixedBtn" >
+    
+        <span class="popuptext" id="myPopup"  >
             <section class='rounded'>
                 <div class="">
               
@@ -14,7 +14,7 @@
                             <h5 class="mb-0">DALILI Souq Admin</h5>
                          
                         </div>
-                        <div class="card-body" data-mdb-perfect-scrollbar="true" style="position: relative; height: 400px">
+                        <div class="card-body" data-mdb-perfect-scrollbar="true" style="position: relative; height: 300px">
                            <div *ngFor=' let mess of messages' style="word-break: break-word;">
                           <!-- <div class="d-flex flex-row  " [ngClass]='!mess.sender_id?"justify-content-start":"justify-content-end"'>
                              <div class='contentmess '  [ngClass]='mess.sender_id?"text-right":"text-left"'>
@@ -34,7 +34,7 @@
                             <img src="../../../../assets/images/admin.jpg"
                               alt="avatar 1" style="width: 25px;height: 25px; " class="rounded-circle">
                             <div>
-                              <p class="small p-2 ms-3 mb-1 rounded-3 text-dark" >{{mess.message}}</p>
+                              <p class="small p-2 ms-3 mb-1 rounded-3 text-dark" *ngIf='mess.message' >{{mess.message}}</p>
                               <p class="small p-2 ms-3 mb-1 rounded" *ngIf='mess.image'><img src='https://dalilisouq.com/{{mess.image}}'></p>
                               
                               <p class="small ms-3 mb-3 rounded-3 text-muted">23:58</p>
@@ -43,7 +43,7 @@
 
                           <div *ngIf='mess.sender_id' class=" d-flex  flex-row justify-content-end mb-4 pt-1">
                             <div >
-                              <p class="small p-2 me-3 mb-1 text-white rounded bg-primary">{{mess.message}}</p>
+                              <p class="small p-2 me-3 mb-1 text-white rounded bg-primary" *ngIf='mess.message' >{{mess.message}}</p>
                               <p class="small p-2 ms-3 mb-1 rounded" *ngIf='mess.image'><img src='https://dalilisouq.com/{{mess.image}}'></p>
                               
                               <p class="small me-3 mb-3 rounded-3 text-muted d-flex justify-content-end">00:06</p>
@@ -56,15 +56,14 @@
               
                         </div>
                         
-                        <div class="card-footer text-muted d-flex align-items-center p-2 justify-content-between">
-                           <textarea  *ngIf='!imageSrc' type="text" class="form-control form-control-lg" id="exampleFormControlInput1" name='mess' [(ngModel)]=mymess
+                        <div   class=" card-footer text-muted d-flex align-items-center p-2 justify-content-between">
+                           <textarea id='myinput' *ngIf='!imageSrc||imageSrc==""' type="text" class="form-control form-control-lg" id="exampleFormControlInput1" name='mess' [(ngModel)]=mymess
                             placeholder="Type message"></textarea>
                             <div *ngIf='imageSrc' class=" rounded-circle">
                                 <i class="fa fa-times ml-5" (click)='ignoreimg()'></i>
-                            <img  src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-chat/ava3-bg.webp"
-                alt="avatar 1" style="width: 45px; height: 100%;"  >
+                                <div class="image-upload myimage" [ngStyle]="{'background-image': 'url(' + imageSrc+ ')'}"alt="avatar 1"   ></div>
                             </div>
-                          <a class="ms-1 m-1 text-muted" *ngIf='!imageSrc'>
+                          <a class="ms-1 m-1 text-muted" *ngIf='!imageSrc||imageSrc==""'>
                               
                               <div class="image-upload" >
                                 <label for="file-input">
@@ -74,7 +73,7 @@
                                 <input id="file-input" type="file" accept="image/*" (change)="selectedFile($event)">
                             </div>
                             </a>
-                          <a class="ms-3 m-1" *ngIf='mymess ||imageSrc' (click)='send()'><i class="fa fa-paper-plane fa-x border rounded-circle"></i></a>
+                          <a class="ms-3 m-1" *ngIf='mymess ||(imageSrc&&imageSrc!="")' (click)='send()'><i class="fa fa-paper-plane fa-x border rounded-circle"></i></a>
                         </div>
                       </div>
               
@@ -85,8 +84,8 @@
               </section>
         </span>
 
-      <i class="fa fa-comments  " (click)="open()"></i>
-    </a>
+      <i class="fa fa-comments" (click)="open()"></i>
+    
     
     
 </div>

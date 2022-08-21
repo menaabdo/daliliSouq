@@ -388,19 +388,15 @@ this.image_file=file
     return this.httpclient.post(`${environment.apiURL}chat?os=android`,{'is_company':0,'user_id':0},{headers})
  
   }
- sendmess(mess:string,img:any){
-   console.log(img.get('image'))
+ sendmess(mess:any){
+  
   const headers =this.headers
-  let obj={
-    'receiver_id':0,
-    'message':mess,
-    'is_company':0,
-    'product_id':0,
-    'store_id':0,
-    'image':img.get('image')
-  }
-  return this.httpclient.post(`${environment.apiURL}send?os=android`,obj,{headers})
- 
+   
+  
+  return this.httpclient.post(`${environment.apiURL}send?os=android`,mess,{headers})
+   
+
+
  }
  /////////////////////CART ENTITY//////////////////////////
  products_cart(){
