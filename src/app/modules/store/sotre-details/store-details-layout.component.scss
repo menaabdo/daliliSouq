@@ -13,6 +13,7 @@
     position: -webkit-sticky;
     position: sticky;
     top: 80px;
+  
 
     li {
         a {
@@ -23,6 +24,7 @@
             margin: 0.5rem 0;
             transition: 0.4s ease-in-out;
             border-radius: 1rem;
+            max-height: 40px;
             &:hover, &.active {
                 background-color: #8c1434;
                 cursor: pointer;

@@ -48,6 +48,8 @@ import { CartcheckoutComponent } from './modules/pages/cartcheckout/cartcheckout
 import { AddaddressComponent } from './modules/me/profile/profile-components/addaddress/addaddress.component';
 import { CheckoutwithoutaddressComponent } from './checkoutwithoutaddress/checkoutwithoutaddress.component';
 import { FortestComponent } from './fortest/fortest.component';
+import { OrdersellerdetailesComponent } from './ordersellerdetailes/ordersellerdetailes.component';
+import { OrdersellerviewcodeComponent } from './ordersellerviewcode/ordersellerviewcode.component';
 
 
 
@@ -85,6 +87,8 @@ import { FortestComponent } from './fortest/fortest.component';
     AddaddressComponent,
     CheckoutwithoutaddressComponent,
     FortestComponent,
+    OrdersellerdetailesComponent,
+    OrdersellerviewcodeComponent,
     
 
     

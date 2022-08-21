@@ -5,7 +5,7 @@
         
     </div>
     <div class='row d-flex justify-content-center' >
-    <div class='col-md-10 ' *ngFor='let product of order.products'>
+    <div class='col-md-10 ' >
     <div class="store container  mt-1 p-2 border-bottom rounded border-2">
        
             <div class="row px-5" >
@@ -30,7 +30,7 @@
 </div>
 <div >
     <div class="store container ">
-        <section class="orders">
+        <section class="orders border-bottom" *ngFor='let product of order.products'>
    
     
             <div class='row' >
@@ -74,14 +74,14 @@
                                 <span  id='color-product' [style.background-color]='product.color_id' ></span>
                                 
                               </div>
-                                <p>Rate this product:</p>
+                                <!-- <p>Rate this product:</p>
                                 <p class="ratings">
                                     <i class="fa fa-star " [ngClass]='1 ?"active":" "'></i>
                                     <i class="fa fa-star "></i> 
                                     <i class="fa fa-star "></i>
                                     <i class="fa fa-star "></i>
                                     <i class="fa fa-star"></i>
-                                </p>
+                                </p> -->
                             </div>
                         </div>
                         <!-- <div class=" row text-center" style="background-color: white;">
@@ -101,7 +101,7 @@
                 <div class="row m-3">
                    
                     <h3 class='col-md-3 mx-3'>sub total</h3>
-                    <h3 class=' mx-2 basiccolor'>{{product.price}} EGP</h3>
+                    <h3 class=' mx-2 basiccolor'>{{order.total}} EGP</h3>
                     <h4 class='col-md-2'></h4>
                    
                     <h3  class='col-md-3 mx-3'>commission</h3>

@@ -1,6 +1,7 @@
 <div class=" card-header">
     <div class="row">
-    <h3 class='col-md-3'>paid sales</h3><div class="col-md-6"></div><div class='total col-md-2 pt-2 border rounded text-center'>{{response.Response.total}} EGP</div></div>
+    <h3 class='col-md-3'>Rejected sales</h3>
+    <div class="col-md-6"></div><div class='total col-md-2 pt-2 border rounded text-center'>{{response.Response.total}} EGP</div></div>
    <div class="row text-center my-3">
        <div class="  container   mx-5   text-center ">
        <!-- <h3 class=' p-3 border-right '></h3>
@@ -19,7 +20,7 @@
    </div>    
 </div>
     <div class="row">
-    <div class="col-md-6" *ngFor="let s of orders" >
+    <div class="col-md-4" *ngFor="let s of orders" >
         <div class="card">
             <div class="card-header d-flex justify-content-between align-items-center">
                 <p  class='m-0'>
@@ -29,6 +30,16 @@
                     <span class="badge badge-warning" *ngIf='s.status==1'>
                         Shipped
                     </span>
+                    <span class="badge badge-warning" *ngIf='s.status==2'>
+                       Delivered
+                    </span>
+                    <span class="badge badge-warning" *ngIf='s.status==3'>
+                        out of stock
+                     </span>
+                     <span class="badge badge-warning" *ngIf='s.status==6'>
+                        cancelled
+                     </span>
+
                 </p>
                 <p class='m-0'>
                     order ({{s.id}})
@@ -38,7 +49,7 @@
                     <span>{{s.time}}</span>
                 </p>
             </div>
-            <div class="card-body ">
+            <div class="card-body " (click)='details(s.id)'>
                 <div class='d-flex justify-content-between align-items-center'>
                     <div style="min-width: 80px;">
                         <img src="https://dalilisouq.com/{{s.driver[0].image}}" width="60px" height="60px" style="border-radius: 50%;width: 60px;height: 60px;" />
@@ -50,9 +61,10 @@
                         <h3 class='m-0'>{{s.total}} EGP</h3>
                     </div>
                 </div>
-                <div class="text-center">
-                    <button class="btn btn-sm btn-primary mt-4">view code</button>
-                </div>
+              
+            </div>
+            <div class="text-center">
+                <a routerLink='/home/me/profile/viewcode/{{s.id}}' class="btn btn-sm btn-primary mt-4">view code</a>
             </div>
         </div>
     </div>

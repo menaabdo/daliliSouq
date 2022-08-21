@@ -8,7 +8,7 @@
                         Out of stock
                     </span>
                     <span class="badge badge-warning" *ngIf='s.status==4||s.status==5'>
-                       Rejected
+                       Returned
                     </span>
                     <span class="badge badge-warning" *ngIf='s.status==6'>
                         Cancelled
@@ -22,20 +22,20 @@
                     <span>12:09 AM</span>
                 </p>
             </div>
-            <div class="card-body ">
+            <div class="card-body " (click)='details(s.id)'>
                 <div class='d-flex justify-content-between align-items-center'>
                     <div style="min-width: 80px;">
-                        <img src="../../../../../../assets/images/profile/person.png" width="60px" height="60px" style="border-radius: 50%;width: 60px;height: 60px;" />
-                        <h4 class='m-0 mt-2'>madmoud</h4>
+                        <img src="https://dalilisouq.com/{{s.driver[0].image}}" width="60px" height="60px" style="border-radius: 50%;width: 60px;height: 60px;" />
+                        <h4 class='m-0 mt-2'>Driver</h4>
                     </div>
                     <div>
-                        <h4 class='m-0'>waell bitar</h4>
+                        <h4 class='m-0'>{{s.f_name}} {{s.s_name}}</h4>
                         <p class='my-3 d-block'>cash on delivery</p>
-                        <h3 class='m-0'>810 EGP</h3>
+                        <h3 class='m-0'>{{s.total}} EGP</h3>
                     </div>
                 </div>
                 <div class="text-center">
-                    <button class="btn btn-sm btn-primary mt-4">view code</button>
+                    <a routerLink='/home/me/profile/viewcodeseller//{{s.id}}' class="btn btn-sm btn-primary mt-4">view code</a>
                 </div>
             </div>
         </div>

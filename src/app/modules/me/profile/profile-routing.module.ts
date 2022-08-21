@@ -39,6 +39,8 @@ import { ConfirmpageComponent } from 'src/app/addproduct/confirmpage/confirmpage
 import { ProperitiesComponent } from './profile-components/edit-products/properities/properities.component';
 import { EditColorsSizesComponent } from './profile-components/edit-products/edit-colors-sizes/edit-colors-sizes.component';
 import { AddaddressComponent } from './profile-components/addaddress/addaddress.component';
+import { OrdersellerdetailesComponent } from 'src/app/ordersellerdetailes/ordersellerdetailes.component';
+import { OrdersellerviewcodeComponent } from 'src/app/ordersellerviewcode/ordersellerviewcode.component';
 const routes: Routes = [
   {
     path: "",
@@ -194,6 +196,14 @@ const routes: Routes = [
       }, {path:'order/:id',component:OrderComponent},
         { path:'viewcode/:id',
           component:ViewcodeComponent
+        },
+        {
+              path:'seller-order/:id',
+              component:OrdersellerdetailesComponent
+        },
+        {
+            path:'viewcodeseller/:id',
+            component:OrdersellerviewcodeComponent
         },
       
    

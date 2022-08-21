@@ -166,7 +166,7 @@ height: 380px; background-size: 100% 100%; top:0 ">
                     <a class="d-flex justify-content-between" routerLink="my-sales/{{store.id}}" [routerLinkActive]="'active'" [routerLinkActiveOptions]="{exact: false}">
                         <span> <i class="fas fa-shopping-basket"></i>
                         my sales</span>
-                        <span class="total  border p-1  rounded-circle">{{store.sales_count}}</span>
+                        <span style="font-size: 10px;" class="total  border p-1 d-flex justify-content-center align-items-center rounded-circle">{{store.sales_count}}</span>
                     
                     </a>
                 </li>
@@ -174,7 +174,7 @@ height: 380px; background-size: 100% 100%; top:0 ">
                     <a class="d-flex justify-content-between" routerLink="followers/{{store.id}}" [routerLinkActive]="'active'" [routerLinkActiveOptions]="{exact: false}">
                         <span> <i class="fa fa-users"></i>
                         followers</span>
-                        <span class="total  border p-1 rounded-circle">{{store.followers_count}}</span>
+                        <span style="font-size: 10px;" class="total  border p-1 d-flex justify-content-center align-items-center rounded-circle">{{store.followers_count}}</span>
                     
                     </a>
                 </li>
@@ -188,7 +188,7 @@ height: 380px; background-size: 100% 100%; top:0 ">
                 <li>
                     <a class="d-flex justify-content-between" routerLink="total-views" [routerLinkActive]="'active'" [routerLinkActiveOptions]="{exact: false}">
                       
-                        <span><i class="fa fa-eye"></i> total views</span><span class="total  border p-1 rounded-circle">{{store.no_views}}</span>
+                        <span><i class="fa fa-eye"></i> total views</span><span style="font-size: 10px;" class="total p-1 d-flex justify-content-center align-items-center border  rounded-circle">{{store.no_views}}</span>
                     </a>
                 </li>
                 <li>
