@@ -33,11 +33,11 @@
                     <span class="badge badge-warning" *ngIf='s.status==2'>
                        Delivered
                     </span>
-                    <span class="badge badge-warning" *ngIf='s.status==3'>
-                        out of stock
+                    <span class="badge " *ngIf='s.status==3'>
+                        <i  class="fa fa-circle text-danger"></i> out of stock
                      </span>
-                     <span class="badge badge-warning" *ngIf='s.status==6'>
-                        cancelled
+                     <span class="badge " *ngIf='s.status==6'>
+                        <i  class="fa fa-circle text-danger"></i> cancelled
                      </span>
 
                 </p>

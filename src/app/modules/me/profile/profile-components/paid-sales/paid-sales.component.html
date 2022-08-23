@@ -23,13 +23,16 @@
         <div class="card h-100">
             <div class="card-header h-100 d-flex justify-content-between align-items-center">
                 <p  class='m-0'>
-                    <span class="badge badge-warning" *ngIf='s.status==0'>
-                        pending
+                   <span class="badge badge-warning" *ngIf='s.status==0'>
+                    <i class="fa-solid fa-circle"></i>
+                    pending
                     </span>
                     <span class="badge badge-warning" *ngIf='s.status==1'>
+                        <i class="fa-solid fa-circle"></i>
                         Shipped
                     </span>
-                    <span class="badge badge-warning" *ngIf='s.status==2'>
+                    <span class="badge " *ngIf='s.status==2'>
+                        <i  class="fa fa-circle text-success"></i>
                         Delivered
                      </span>
                 </p>

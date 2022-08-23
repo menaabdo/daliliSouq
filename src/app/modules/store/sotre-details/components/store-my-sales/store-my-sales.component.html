@@ -14,11 +14,11 @@
         <div class="card">
             <div class="card-header d-flex justify-content-between align-items-center">
                 <p  class='m-0'>
-                    <span class="badge badge-warning" *ngIf='s.status==0'>
-                        pending
+                    <span class="badge " *ngIf='s.status==0'>
+                        <i  class="fa fa-circle text-warning"></i>pending
                     </span>
-                    <span class="badge badge-warning" *ngIf='s.status==1'>
-                        Shipped
+                    <span class="badge " *ngIf='s.status==1'>
+                        <i  class="fa fa-circle text-primary"></i>Shipped
                     </span>
                 </p>
                 <p class='m-0'>
