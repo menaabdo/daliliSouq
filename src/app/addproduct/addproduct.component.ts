@@ -13,6 +13,8 @@ import { ViewChild } from '@angular/core';
 import { Loader } from '@googlemaps/js-api-loader';
 import { City } from '../models/city.model';
 import * as L from 'leaflet';
+
+
 import { Country } from '../models/country.model';
 @Component({
   selector: 'app-addproduct',
@@ -91,7 +93,7 @@ marker!:any
 
 
   ngOnInit(): void {
-    console.log(this.data)
+    L.Icon.Default.imagePath = "assets/leaflet/" 
     this.storessserve.cities().subscribe((res)=>{this.response1=res;this.cities=this.response1.Response
       
     })
@@ -436,7 +438,8 @@ this.route.navigateByUrl(`/home/me/profile/my-profile/select-category/${(JSON.st
   getmap(){
     let map=this.map= new L.Map('map').setView([this.data.lat ||0, this.data.lng||0],10);
     var marker=this.marker = L.marker([this.add.lat, this.add.long]).addTo(map)
-  console.log(this.data.lng,this.data.lat)
+  
+    console.log(this.data.lng,this.data.lat)
 
     L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
     maxZoom: 19,
