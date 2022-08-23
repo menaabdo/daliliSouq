@@ -19,7 +19,7 @@ end_d!:string
   this.paid_sales.paid_orders(this.start_d,this.end_d).subscribe((res)=>{this.response=res;this.orders=this.response.Response.orders.data ;console.log(this.orders)})
   }
   filterorders(){
-    this.paid_sales.paid_orders(this.start_d,this.end_d).subscribe((res)=>{this.response=res;this.orders=this.response.Response.orders.data ;console.log(this.orders)})
+    this.paid_sales.paid_orders().subscribe((res)=>{this.response=res;this.orders=this.response.Response.orders.data ;console.log(this.orders)})
 
   }
   reset(){

@@ -40,7 +40,11 @@ import { ProperitiesComponent } from './profile-components/edit-products/properi
 import { EditColorsSizesComponent } from './profile-components/edit-products/edit-colors-sizes/edit-colors-sizes.component';
 import { AddaddressComponent } from './profile-components/addaddress/addaddress.component';
 import { OrdersellerdetailesComponent } from 'src/app/ordersellerdetailes/ordersellerdetailes.component';
-import { OrdersellerviewcodeComponent } from 'src/app/ordersellerviewcode/ordersellerviewcode.component';
+
+import { SellercoderejectedComponent } from './profile-components/rejected-sales/sellercoderejected/sellercoderejected.component';
+import { SellercodepaidComponent } from './profile-components/paid-sales/sellercodepaid/sellercodepaid.component';
+import { StoresellercodepaidComponent } from '../../store/sotre-details/components/store-paid-sales/storesellercodepaid/storesellercodepaid.component';
+import { StoresellercoderejectedComponent } from '../../store/sotre-details/components/rejected-sales/storesellercoderejected/storesellercoderejected.component';
 const routes: Routes = [
   {
     path: "",
@@ -198,13 +202,26 @@ const routes: Routes = [
           component:ViewcodeComponent
         },
         {
+          path:'paidsalescode/:id/:index',
+          component:StoresellercodepaidComponent
+        },
+        {
+          path:'rejectedsalescode/:id/:index',
+          component:StoresellercoderejectedComponent
+        },
+        {
               path:'seller-order/:id',
               component:OrdersellerdetailesComponent
         },
+       
         {
-            path:'viewcodeseller/:id',
-            component:OrdersellerviewcodeComponent
-        },
+          path:'sellercoderejected/:id',
+          component:SellercoderejectedComponent
+      },
+      {
+        path:'sellercodepaid/:id',
+        component:SellercodepaidComponent
+    },
       
    
       {

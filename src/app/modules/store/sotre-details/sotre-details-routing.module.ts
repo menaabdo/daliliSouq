@@ -9,6 +9,7 @@ import { StoreFollowersComponent } from './components/store-followers/store-foll
 import { StoreMySalesComponent } from './components/store-my-sales/store-my-sales.component';
 import { StorePaidSalesComponent } from './components/store-paid-sales/store-paid-sales.component';
 import { StoreorderdetailesComponent } from './components/store-paid-sales/storeorderdetailes/storeorderdetailes.component';
+import { StoresellercodepaidComponent } from './components/store-paid-sales/storesellercodepaid/storesellercodepaid.component';
 import { DoubleViewComponent } from './components/store-profile/double-view/double-view.component';
 import { StoreProfileComponent } from './components/store-profile/store-profile.component';
 import { StoreTotalViewsComponent } from './components/store-total-views/store-total-views.component';
@@ -35,6 +36,7 @@ const routes: Routes = [
         path: "paid-sales/:id",
         component: StorePaidSalesComponent
       },
+      
       {path:'order-detailes/:order-id/:store-id',
       component:StoreorderdetailesComponent
     },
@@ -69,7 +71,9 @@ const routes: Routes = [
    
       },
     ]
-  }
+    
+  },
+ 
 ];
 
 @NgModule({

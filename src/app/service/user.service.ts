@@ -237,7 +237,7 @@ this.image_file=file
  
 
   }
-  paid_orders(start_d:string,end_d:string){
+  paid_orders(start_d:string=undefined as unknown as string,end_d:string=undefined as unknown as string){
     const headers =this.headers
     
     if(start_d||end_d)
@@ -257,9 +257,7 @@ this.image_file=file
   rejected_orders(){
     const headers =this.headers
     return this.httpclient.post(`${environment.apiURL}seller/unpaid_orders?os=android`,{},{headers})
-    
-
-  }
+      }
   recently_view(){
     const headers =this.headers
     this.country_id=localStorage.getItem('country_id') as string
@@ -297,7 +295,7 @@ this.image_file=file
     return this.httpclient.post(`${environment.apiURL}product/create?os=android`,data,{headers})
  
   }
-  paid_orders_store(id:number,start_d:string,end_d:string){
+  paid_orders_store(id:number,start_d:string=undefined as unknown as string,end_d:string=undefined as unknown as string){
     const headers =this.headers
     console.log(headers)
     if(start_d||end_d)
@@ -314,7 +312,7 @@ this.image_file=file
  
 
   }
-  unpaid_orders_store(id:number,start_d:string,end_d:string){
+  unpaid_orders_store(id:number,start_d:string=undefined as unknown as string,end_d:string=undefined as unknown as string){
     const headers =this.headers
     console.log(headers)
     if(start_d||end_d)

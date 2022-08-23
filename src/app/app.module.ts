@@ -49,7 +49,11 @@ import { AddaddressComponent } from './modules/me/profile/profile-components/add
 import { CheckoutwithoutaddressComponent } from './checkoutwithoutaddress/checkoutwithoutaddress.component';
 import { FortestComponent } from './fortest/fortest.component';
 import { OrdersellerdetailesComponent } from './ordersellerdetailes/ordersellerdetailes.component';
-import { OrdersellerviewcodeComponent } from './ordersellerviewcode/ordersellerviewcode.component';
+
+import { SellercoderejectedComponent } from './modules/me/profile/profile-components/rejected-sales/sellercoderejected/sellercoderejected.component';
+import { SellercodepaidComponent } from './modules/me/profile/profile-components/paid-sales/sellercodepaid/sellercodepaid.component';
+import { StoresellercodepaidComponent } from './modules/store/sotre-details/components/store-paid-sales/storesellercodepaid/storesellercodepaid.component';
+import { StoresellercoderejectedComponent } from './modules/store/sotre-details/components/rejected-sales/storesellercoderejected/storesellercoderejected.component';
 
 
 
@@ -88,7 +92,11 @@ import { OrdersellerviewcodeComponent } from './ordersellerviewcode/ordersellerv
     CheckoutwithoutaddressComponent,
     FortestComponent,
     OrdersellerdetailesComponent,
-    OrdersellerviewcodeComponent,
+    
+    SellercoderejectedComponent,
+    SellercodepaidComponent,
+    StoresellercodepaidComponent,
+    StoresellercoderejectedComponent,
     
 
     

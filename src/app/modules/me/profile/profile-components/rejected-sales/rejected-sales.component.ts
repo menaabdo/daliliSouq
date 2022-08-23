@@ -17,6 +17,7 @@ orders!:Order[]
     this.rejected.rejected_orders().subscribe((res)=>{this.response=res;this.orders=this.response.Response.orders.data})
   }
   details(order_id:number){
+    console.log(order_id)
     this.router.navigateByUrl(`/home/me/profile/seller-order/${order_id}`)
 
   }
