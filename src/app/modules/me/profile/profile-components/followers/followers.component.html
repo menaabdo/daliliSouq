@@ -9,11 +9,16 @@
                         <h4 class='m-0 ml-2'> {{follower.name}} </h4>
                     </div>
                     <div>
-                        <button class="btn btn-outline-danger" (click)='follow(follower.id)'>
+                        <button *ngIf='follower.is_follow==true' class="btn btn-outline-danger" (click)='follow(follower.id)'>
                                 
                             unfollow
               
             </button>
+            <button *ngIf='follower.is_follow==false' class="btn btn-outline-danger" (click)='follow(follower.id)'>
+                                
+                follow
+  
+</button>
                     </div>
                 </div>
             </div>

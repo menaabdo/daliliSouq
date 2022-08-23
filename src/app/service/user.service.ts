@@ -121,8 +121,9 @@ this.image_file=file
   }
   ///////////////////////followers/////////////////////
   follwers(){
+    
     const headers =this.headers
-    return this.httpclient.get(`${environment.apiURL}profile/followers?os=android&user_id=${this.id}`,{headers})
+    return this.httpclient.get(`${environment.apiURL}profile/followers?os=android&user_id=${localStorage.getItem('id')}`,{headers})
   }
   follow(id:number){
     const headers =this.headers

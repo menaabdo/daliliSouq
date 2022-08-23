@@ -10,14 +10,29 @@
                 </li>
                 <li>
                     <a routerLink="following" [routerLinkActive]="'active'" [routerLinkActiveOptions]="{exact: false}">
+                        <div class="d-flex justify-content-between">
+                    
+                        <div>
                         <i class="fa fa-users"></i>
                         <span>my following</span>
+                    </div>
+                        <div>
+                            <span *ngIf='followings.length!=0' style="font-size: 9px;" class="total  border   p-2 rounded-circle">{{followings.length}}</span>
+                        </div>
+                        </div>
                     </a>
                 </li>
                 <li>
-                    <a routerLink="followers" [routerLinkActive]="'active'" [routerLinkActiveOptions]="{exact: false}">
+                    <a  routerLink="followers" [routerLinkActive]="'active'" [routerLinkActiveOptions]="{exact: false}">
+                        <div class="d-flex justify-content-between">
+                      <div>
                         <i class="fa fa-users"></i>
                         <span>my followers</span>
+                    </div>
+                    <div>
+                        <span  *ngIf='followers.length!=0' style="font-size: 9px;" class="total  border   p-2 rounded-circle">{{followers.length}}</span>
+                    </div>
+                    </div> 
                     </a>
                 </li>
                 <li>

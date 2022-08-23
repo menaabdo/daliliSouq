@@ -10,5 +10,6 @@ export interface User {
     birth_date:string;
     country_code:number;
     gender:number;
-    country_id:number
+    country_id:number,
+    is_follow:boolean
 }

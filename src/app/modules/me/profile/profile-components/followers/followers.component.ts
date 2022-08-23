@@ -17,7 +17,7 @@ action?:string
   ngOnInit(): void {
     
     this.followersserve.follwers().subscribe((res)=>{this.response=res;this.followers=this.response.Response
-     console.log(res)})
+     console.log(this.followers)})
     }
   // isOdd(num:number) {
   //   if(num % 2 === 0) return false;
