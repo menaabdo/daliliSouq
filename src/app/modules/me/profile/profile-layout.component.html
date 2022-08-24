@@ -17,7 +17,7 @@
                         <span>my following</span>
                     </div>
                         <div>
-                            <span *ngIf='followings.length!=0' style="font-size: 9px;" class="total  border   p-2 rounded-circle">{{followings.length}}</span>
+                            <span *ngIf='followings?.length!=0' style="font-size: 9px;" class="total  border   p-2 rounded-circle">{{followings.length}}</span>
                         </div>
                         </div>
                     </a>
@@ -30,7 +30,7 @@
                         <span>my followers</span>
                     </div>
                     <div>
-                        <span  *ngIf='followers.length!=0' style="font-size: 9px;" class="total  border   p-2 rounded-circle">{{followers.length}}</span>
+                        <span  *ngIf='followers?.length!=0' style="font-size: 9px;" class="total  border   p-2 rounded-circle">{{followers.length}}</span>
                     </div>
                     </div> 
                     </a>

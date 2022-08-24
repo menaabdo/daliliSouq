@@ -48,12 +48,18 @@
                                        
                                     
                                     <div class='col-md-12 '>
-                                    <ul class=" progressbar d-flex justify-content-evenly ml-5" >
+                                    <ul *ngIf='product.status==0||product.status==1||product.status==2' class=" progressbar d-flex justify-content-evenly ml-5" >
                                         <li class="
-                                         col-md-4 " [ngClass]="order.status==0||order.status==1||order.status==2?'active':''">Processing</li>
-                                        <li class=" col-md-4" [ngClass]="order.status==1||order.status==2?'active':''">shipped</li>
-                                        <li class='col-md-4' [ngClass]="order.status==2?'active':''">delivered</li>
+                                         col-md-4 " [ngClass]="product.status==0||product.status==1||product.status==2?'active':''">Processing</li>
+                                        <li class=" col-md-4" [ngClass]="product.status==1||product.status==2?'active':''">shipped</li>
+                                        <li class='col-md-4' [ngClass]="product.status==2?'active':''">delivered</li>
+                                      
                                     </ul>
+                                    <ul class="row">
+                                        <li *ngIf='product.status==3' class='col-md-12 text-danger' >Out of stock</li>
+             
+                                    </ul>
+                                   
                                     </div>
                                 </div>
                                 </div>
@@ -89,33 +95,35 @@
             </div>
             </div>
             </section>
-            <div class="store container border-top border-bottom p-2  rounded border-2">
-                <div class="row m-3">
-                   
-                    <h3 class='col-md-3 mx-3'>sub total</h3>
-                    <h3 class=' mx-2 basiccolor'>{{product.price}} EGP</h3>
-                    <h4 class='col-md-2'></h4>
-                   
-                    <h3  class='col-md-3 mx-3'>commission</h3>
-                    <h3 class=' mx-2 basiccolor'>{{order.commission}} EGP</h3>
+        
+        
+        </div>
+       
+        </div>
+        <div class="store container border-top border-bottom p-2  rounded border-2">
+            <div class="row m-3">
                
+                <h3 class='col-md-3 mx-3'>sub total</h3>
+                <h3 class=' mx-2 basiccolor'>{{order.total}} EGP</h3>
+                <h4 class='col-md-2'></h4>
+               
+                <h3  class='col-md-3 mx-3'>commission</h3>
+                <h3 class=' mx-2 basiccolor'>{{order.commission}} EGP</h3>
+           
+            </div>
+            <div class="row m-3">
+                <!-- <h3 class='col-md-3 mx-3'>Speed order fees</h3>
+                <h3 class=' mx-2 basiccolor'>{{product}} EGP</h3>
+                <h2 class='col-md-3'></h2> -->
+                <div style="background-color: #9b1919;color: white; " class="col-md-3 border ml-5 rounded text-center">
+                <span  class='ml-2 h5  mx-2 mr-3' style="color:white">total:</span>
+                <span class='h5  ml-5' style="color:white">{{order.total_price}} EGP</span>
                 </div>
-                <div class="row m-3">
-                    <!-- <h3 class='col-md-3 mx-3'>Speed order fees</h3>
-                    <h3 class=' mx-2 basiccolor'>{{product}} EGP</h3>
-                    <h2 class='col-md-3'></h2> -->
-                    <div style="background-color: #9b1919;color: white; " class="col-md-3 border ml-5 rounded text-center">
-                    <span  class='ml-2 h5  mx-2 mr-3' style="color:white">total:</span>
-                    <span class='h5  ml-5' style="color:white">{{order.total_price}} EGP</span>
-                    </div>
         
-                </div>
-               </div>
-        
-        </div>
-        </div>
+            </div>
+           </div>
 </div>
-   
+
 
     </div>
 

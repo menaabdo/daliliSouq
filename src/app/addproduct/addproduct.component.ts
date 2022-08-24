@@ -93,7 +93,7 @@ marker!:any
 
 
   ngOnInit(): void {
-    L.Icon.Default.imagePath = "assets/leaflet/" 
+    L.Icon.Default.imagePath = "assets/marker-icon.png" 
     this.storessserve.cities().subscribe((res)=>{this.response1=res;this.cities=this.response1.Response
       
     })

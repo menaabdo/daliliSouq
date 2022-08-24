@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { Injectable, PACKAGE_ROOT_URL } from '@angular/core';
 import { Subject } from 'rxjs';
 import { Observable } from 'rxjs';
 import { Router } from '@angular/router';
@@ -182,10 +182,10 @@ this.image_file=file
  
   }
   /////////////////////////////////////////////
-  myorders(is_complete:number){
+  myorders(is_complete:number,page:number){
     console.log(is_complete)
     const headers =this.headers
-    return this.httpclient.post(`${environment.apiURL}user/orders?os=android`,{'is_complete':is_complete},{headers})
+    return this.httpclient.post(`${environment.apiURL}user/orders?os=android`,{'is_complete':is_complete,page:page},{headers})
  
 
   }
@@ -222,9 +222,9 @@ this.image_file=file
 
      return this.httpclient.get(`${environment.apiURL}offers?os=android&country_id=${this.country_id}`)
   }
-  mysales(){
+  mysales(page:number){
     const headers =this.headers
-    return this.httpclient.post(`${environment.apiURL}seller/orders?os=android`,{'page':1},{headers})
+    return this.httpclient.post(`${environment.apiURL}seller/orders?os=android`,{'page':page},{headers})
  
   }
   seller_order(id:number){
