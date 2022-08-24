@@ -330,9 +330,9 @@ this.image_file=file
  
 
   }
-  orders_store(id:number){
+  orders_store(id:number,page:number){
     const headers =this.headers
-    return this.httpclient.post(`${environment.apiURL}orders/stores?os=android`,{'store_id':id},{headers})
+    return this.httpclient.post(`${environment.apiURL}orders/stores?os=android`,{'store_id':id,'page':page},{headers})
  
   }
   total_sales(id:number,start_d:string,end_d:string){
