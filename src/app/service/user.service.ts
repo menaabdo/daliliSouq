@@ -248,16 +248,26 @@ this.image_file=file
     let year2=(end_d.slice(0,4))
     let mounth2=end_d.slice(5,7)
     let day2=end_d.slice(8)
-    
+    console.log(start_d,end_d)
      return this.httpclient.post(`${environment.apiURL}seller/paid_orders?os=android`,{'start_date':`${day1}-${mounth1}-${year1}`,'end_date':`${day2}-${mounth2}-${year2}`},{headers})
  }
     return this.httpclient.post(`${environment.apiURL}seller/paid_orders?os=android`,{},{headers})
  
 
   }
-  rejected_orders(){
+  rejected_orders(page:number,start_d:string=undefined as unknown as string,end_d:string=undefined as unknown as string){
     const headers =this.headers
-    return this.httpclient.post(`${environment.apiURL}seller/unpaid_orders?os=android`,{},{headers})
+    if(start_d||end_d)
+    {let year1=(start_d.slice(0,4))
+     let mounth1=start_d.slice(5,7)
+     let day1=start_d.slice(8)
+     let year2=(end_d.slice(0,4))
+     let mounth2=end_d.slice(5,7)
+     let day2=end_d.slice(8)
+     return this.httpclient.post(`${environment.apiURL}seller/unpaid_orders?os=android`,{'start_date':`${day1}-${mounth1}-${year1}`,'end_date':`${day2}-${mounth2}-${year2}`},{headers})
+   
+    }
+    return this.httpclient.post(`${environment.apiURL}seller/unpaid_orders?os=android`,{'page':page},{headers})
       }
   recently_view(){
     const headers =this.headers

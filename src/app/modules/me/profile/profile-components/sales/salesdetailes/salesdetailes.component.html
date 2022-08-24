@@ -101,30 +101,34 @@
         </div>
        
         </div>
-        <div class="store container border-top border-bottom p-2  rounded border-2">
-            <div class="row m-3">
-               
-                <h3 class='col-md-3 mx-3'>sub total</h3>
-                <h3 class=' mx-2 basiccolor'>{{order.total}} EGP</h3>
-                <h4 class='col-md-2'></h4>
-               
-                <h3  class='col-md-3 mx-3'>commission</h3>
-                <h3 class=' mx-2 basiccolor'>{{order.commission}} EGP</h3>
-           
-            </div>
-            <div class="row m-3">
-                <!-- <h3 class='col-md-3 mx-3'>Speed order fees</h3>
-                <h3 class=' mx-2 basiccolor'>{{product}} EGP</h3>
-                <h2 class='col-md-3'></h2> -->
-                <div style="background-color: #9b1919;color: white; " class="col-md-3 border ml-5 rounded text-center">
-                <span  class='ml-2 h5  mx-2 mr-3' style="color:white">total:</span>
-                <span class='h5  ml-5' style="color:white">{{order.total_price}} EGP</span>
-                </div>
-        
-            </div>
-           </div>
+       
 </div>
-
+<div class='col-md-10 ' >
+    <div class="store container  mt-1 p-2 border-bottom rounded border-2">
+        <div class="row">
+        <h3 class='col-md-3 mx-3'>sub total</h3>
+        <h3 class=' mx-2 basiccolor'>{{order.total}} EGP</h3>
+        <h4 class='col-md-2'></h4>
+       
+        <h3  class='col-md-3 mx-3'>commission</h3>
+        <h3 class=' mx-2 basiccolor'>{{order.commission}} EGP</h3>
+    </div>
+    <div class="row">
+        <h3 class='col-md-3 mx-3'>Total:</h3>
+        <h3 class='col-md-3 mx-3'>{{order.total_price}} EGP</h3>
+      
+    </div>
+    </div>
+    <!-- <div class='col-md-10 ' >
+        <div class="store container  mt-1 p-2 border-bottom rounded border-2">
+            
+       
+        <div style="background-color: #9b1919;color: white; " class="col-md-3 border ml-5 rounded text-center">
+        </div>
+        </div>
+    </div> -->
+    
+   </div>
 
     </div>
 

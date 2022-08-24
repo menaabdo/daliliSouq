@@ -19,7 +19,7 @@ export class SellercoderejectedComponent implements OnInit {
      }
   
     ngOnInit(): void {
-      this.orderdetailes.rejected_orders().subscribe((res)=>{
+      this.orderdetailes.rejected_orders(1).subscribe((res)=>{
         this.response=res;
         this.orders=this.response.Response.orders.data;
         this.order=this.orders[this.id]

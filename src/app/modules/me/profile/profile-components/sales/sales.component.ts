@@ -16,16 +16,16 @@ page=1
 
   ngOnInit(): void {
     this.sale.mysales(this.page).subscribe((res)=>{this.response=res;
-      this.sales=this.response.Response.orders.data;})
-     while(this.page<10)
-    { 
+      this.sales=this.response.Response.orders.data;
+    if(this.sales){ while(this.page<=10)
+    {   this.page++
    this.sale.mysales(this.page).subscribe((res)=>{this.response=res;
      let sales=this.response.Response.orders.data;
      this.sales=this.sales.concat(sales)
     
       console.log(sales)})
-  this.page++
-      }
+
+      }}})
   }
   details(id:number){
     this.route.navigateByUrl(`/home/me/profile/saledetailes/${id}`)
