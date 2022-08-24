@@ -39,7 +39,8 @@
                         
                         <div class="content">
                             <div class="imgBx">
-                                <img src="https://dalilisouq.com/{{product.image}}" alt="Watch Brand">
+                                <img *ngIf='product.image== "undefined"' src="assets/images/admin.jpg" alt="Watch Brand">
+                                <img *ngIf='product.image!="undefined"' src="https://dalilisouq.com/{{product.image}}" alt="Watch Brand">
                             
                             </div>
                             <div class="textBx ">
