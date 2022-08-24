@@ -12,7 +12,7 @@
     <div *ngIf='!p.types[0].price' class='h4 m-2 p-1 ml-4 basiccolor'><i class="fa fa-dollar-sign dollar  text-center"></i><span >price not available</span></div>
      
         <div class='d-flex justify-content-around mb-3' > 
-    <span (click)='detectme(type.id,type.price.price,p.id,p.types[0].price.id,type.price.id)' id={{type.id}} class='bg-secondary rounded text-light h4 m-2 p-2  py-2  text-center' *ngFor='let type of p.types;let i=index'>{{type.days}} days</span>
+    <span style="cursor: pointer;" (click)='detectme(type.id,type.price.price,p.id,p.types[0].price.id,type.price.id)' id={{type.id}} class='bg-secondary rounded text-light h4 m-2 p-2  py-2  text-center' *ngFor='let type of p.types;let i=index'>{{type.days}} days</span>
    
     </div>
     <div class='d-flex justify-content-center align-items-end '>
