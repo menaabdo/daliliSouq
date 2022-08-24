@@ -18,6 +18,7 @@ export class OrdersellerdetailesComponent implements OnInit {
      }
   
     ngOnInit(): void {
+      console.log('mennnnnnnnnnnnnnnnnnna')
       //this.profile.store_profile(this.id).subscribe((res)=>{this.response=res;this.store=this.response.Response;console.log(res)})
   this.orderdetailes.seller_order(this.id).subscribe((res)=>{this.response=res;this.order=this.response.Response;console.log(res)})
     }
