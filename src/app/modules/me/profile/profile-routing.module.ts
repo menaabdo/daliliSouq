@@ -45,6 +45,7 @@ import { SellercoderejectedComponent } from './profile-components/rejected-sales
 import { SellercodepaidComponent } from './profile-components/paid-sales/sellercodepaid/sellercodepaid.component';
 import { StoresellercodepaidComponent } from '../../store/sotre-details/components/store-paid-sales/storesellercodepaid/storesellercodepaid.component';
 import { StoresellercoderejectedComponent } from '../../store/sotre-details/components/rejected-sales/storesellercoderejected/storesellercoderejected.component';
+import { SellercodesalesComponent } from './profile-components/sales/sellercodesales/sellercodesales.component';
 const routes: Routes = [
   {
     path: "",
@@ -204,6 +205,10 @@ const routes: Routes = [
         {
           path:'paidsalescode/:id/:index',
           component:StoresellercodepaidComponent
+        },
+        {
+          path:'salescode/:id/:index',
+          component:SellercodesalesComponent
         },
         {
           path:'rejectedsalescode/:id/:index',

@@ -24,7 +24,7 @@ export class SalesdetailesComponent implements OnInit {
   this.orderdetailes.seller_order(this.id).subscribe((res)=>{this.response=res;this.order=this.response.Response;console.log(res)})
     }
     setoutofstock(cart_id:number){
-this.orderdetailes.setoutofstock(cart_id).subscribe((res)=>{console.log(res)})
+this.orderdetailes.setoutofstock(cart_id).subscribe((res)=>{console.log(res); window.location.reload()})
     }
 
 }
