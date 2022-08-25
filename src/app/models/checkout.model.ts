@@ -4,7 +4,7 @@ import { Store } from "./store.model";
 
 export interface Checkout{
     stores:Store[],
-   regions:Regions,
+   regions:any[],
    total:number,
    redeem_value:number
     "fast_days":string,

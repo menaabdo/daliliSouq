@@ -84,6 +84,9 @@ fees!:Checkout
 /////////////////
 validmess!:string
 validmess2!:string
+regions_cala!:any
+stores_calc!:any[]
+
     constructor(private addressserve:UserService,private activeroute:Router,private route:Router) { }
  
     ngOnInit(): void {
@@ -276,6 +279,9 @@ getregionid(e:any){
     
         
     console.log(res)
+    this.regions_cala=this.fees.regions
+    this.stores_calc=this.fees.stores
+    console.log(this.stores_calc)
   })
     
    
@@ -383,6 +389,29 @@ marker =  L.marker([lat,lon]).addTo(map);
 
 
  }
+ close(){
+  var modal = document.getElementById("myModal")!;
+        
+var span = document.getElementsByClassName("close")[0];
+modal.style.display = "none";
+}
+showpopup(cart_id:number)
+  { 
+  //   var modal = document.getElementById("myModal")!;
+  // modal.style.display = "block";
+  //window.confirm('Do you want to remove this item from your cart?')
+  let text;
+  if (confirm("Do you want to remove this item from your cart?") == true) {
 
+    this.addressserve.delete_item_cart(cart_id).subscribe((res)=>{console.log(res);window.location.reload()})
+  
+  } else {
+   return
+  }
+  
+}
+delete(){
+
+}
      
 }

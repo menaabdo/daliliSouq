@@ -206,31 +206,115 @@
                                 <p class="card-text text-muted mt-md-4  mb-2 space">YOUR ORDER  </p>
                                 <hr class="my-2">
                             </div>
-                            <div class="card-body pt-0">
+                          
+                            <div class=" pt-0">
                                 
-                               
-                                <div class="row  justify-content-between" *ngFor='let product of cart_products'>
-                                    <div class="col-auto col-md-7">
-                                        <div class="media flex-column flex-sm-row">
-                                            <img class=" img-fluid mr-2" src="https://dalilisouq.com/{{product.product.image}}" style="width: 62px;height: 64px;">
-                                            <div class="media-body  my-auto">
-                                                <div class="row ">
-                                                    <div class="col mx-2"><p class="mb-0"><b>{{product.product.name}}</b></p><small class="mx-2 mt-2 text-muted d-flex   ">
-                                                      
-                                                        <p style="height: 20px; width: 20px;" class=" bg-light border mx-3 d-flex justify-content-center align-items-center p-3  rounded-circle"  >{{product.size_id}}</p>
-                                                         
-                                                           <p style="height: 20px; width: 20px;" class="   rounded-circle"  [style.background]="product.color_id" ></p>
+                                <div class="  bg-light justify-content-between" *ngFor='let product of stores_calc'>
+                                    <div class='   pt-4' style="background-color: rgb(255, 248, 248);">
+                                    <div class="d-flex justify-content-between">
+                                        <h3 class="d-flex justify-content-start align-items-center"> <i class="fas fa-store-alt   mx-3"></i>{{product.name}}</h3>
+                                       </div>
+                                       <div class="d-flex justify-content-between mx-1 pb-4" style="font-size:14px">
+                                    
+                                        <span class="text-dark" >
+                                            <i class="fas fa-shipping-fast  ml-3 " ></i> 
+                                            Delivery fees :{{product.delivery_price}} EGP
+                                        </span>
+                                            <span class="text-dark mr-2" *ngIf='deliver_fast==1'> 
+                                                <i class="fas fa-tachometer-alt " style="color: rgb(110, 41, 41);"></i>
+                                             
+                                                Delivery Fast :{{product.fast_delivery}} EGP</span>
+                                    </div>
+                                        
+                                       
+                                     
+                                      
+                                    </div>
+                                     <div class="card-body shadow-lg mx-3 my-2 border rounded px-2 bg-white justify-content-between" *ngFor='let p of product.products'>
+                                     <div class="col-md-12 d-flex justify-content-between">
+                                         <div class="media flex-column flex-sm-row">
+                                             <img class=" img-fluid mr-2" src="https://dalilisouq.com/{{p.image}}" style="width: 62px;height: 64px;">
+                                             <div class="media-body  my-auto">
+                                                 <div class=" ">
+                                                     <div class="">
+                                                         <p class="mb-0">
+                                                             <b>{{p.name}}</b>
+                                                         </p>
+                                                         <!-- <div class="pl-0 flex-sm-col col-auto  my-auto"> <p class="boxed">{{p.quantity}}</p></div>
+                                                         <div class="pl-0 flex-sm-col col-auto my-auto"><p><b>${{p.price}} SEK</b></p></div>
+                                                      -->
+                                                         <div class=" mt-2 text-muted d-flex justify-content-between">
                                                        
-                                                    </small></div>
+                                                         <p style="height: 20px; width: 20px;" class="mr-5 bg-light border mx-3 d-flex justify-content-center align-items-center p-3  rounded-circle"  >{{p.size_id}}</p>
+                                                            <p style="height: 17px; width: 20px;" class=" mr-5  rounded-circle"  [style.background]="p.color_id" ></p>
+                                                            <p class="mr-5">Quantity :{{p.quantity}}</p>
+                                                            <p>{{p.price}} EGP</p>
+                                                         
+                                                         </div>
+                                                        
+                                                     </div>
+                                                 </div>
+                                            
+                                         </div>
+                                     </div>
+                                   
+                                    </div>
+                             </div>
+                         </div>  
+                                <div class="  bg-light justify-content-between" *ngFor='let product of regions_cala'>
+                                   <div class=' ' style="background-color: rgb(236, 222, 222);">
+                                    <div >
+                                      <h3 class="d-flex justify-content-start  align-items-center pt-4"> <i class="fas fa-store-alt   mx-3"></i>{{product.name}}</h3>
+                                      </div>
+                                      <div class="d-flex justify-content-between mx-1 pb-3" style="font-size: 14px
+                                      ;">
+                                    
+                                        <span class="text-dark" >
+                                            <i class="fas fa-shipping-fast  ml-3 " ></i> 
+                                            Delivery fees :{{product.delivery_price}} EGP
+                                        </span>
+                                            <span class="text-dark mr-2" *ngIf='deliver_fast==1'> 
+                                                <i class="fas fa-tachometer-alt " style="color: rgb(110, 41, 41);"></i>
+                                             
+                                                Delivery Fast :{{product.fast_delivery}} EGP</span>
+                                    </div>
+                                   </div>
+                                    <div class="card-body shadow-lg mx-3 my-2 border rounded px-2 bg-white justify-content-between" *ngFor='let p of product.products'>
+                                    <div class="col-md-12 d-flex justify-content-between">
+                                        <div class="media flex-column flex-sm-row">
+                                            <img *ngIf='p.image!="undefined"' class=" img-fluid mr-2" src="https://dalilisouq.com/{{p.image}}" style="width: 62px;height: 64px;">
+                                            <img *ngIf='p.image=="undefined"' class=" img-fluid mr-2" src="assets/images/admin.jpg" style="width: 62px;height: 64px;">
+                                           
+                                            <div class="media-body  my-auto">
+                                                <div class=" ">
+                                                    <div class="">
+                                                        <p class="mb-0">
+                                                            <b>{{p.name}}</b>
+                                                        </p>
+                                                        <!-- <div class="pl-0 flex-sm-col col-auto  my-auto"> <p class="boxed">{{p.quantity}}</p></div>
+                                                        <div class="pl-0 flex-sm-col col-auto my-auto"><p><b>${{p.price}} SEK</b></p></div>
+                                                     -->
+                                                        <div class=" mt-2 text-muted d-flex justify-content-between">
+                                                      
+                                                        <p style="height: 20px; width: 20px;" class="mr-5 bg-light border mx-3 d-flex justify-content-center align-items-center p-3  rounded-circle"  >{{p.size_id}}</p>
+                                                           <p style="height: 17px; width: 20px;" class=" mr-5  rounded-circle"  [style.background]="p.color_id" ></p>
+                                                           <p class="mr-5">Quantity :{{p.quantity}}</p>
+                                                           <p>{{p.price}} EGP</p>
+                                                        
+                                                        </div>
+                                                        <div (click)='showpopup(p.cart_id)' *ngIf='p.delivery_error!=""' style="cursor: pointer;font-size: 16px;" class="text-danger ">
+                                                            
+                                                            <span>{{p.delivery_error}} <i class="fa fa-times  p-1 rounded-circle" style="color: rgb(170, 36, 36);"></i></span></div>
+                                                       
+                                                    </div>
                                                 </div>
-                                            </div>
+                                           
                                         </div>
                                     </div>
-                                    <div class="pl-0 flex-sm-col col-auto  my-auto"> <p class="boxed">{{product.quantity}}</p></div>
-                                    <div class="pl-0 flex-sm-col col-auto my-auto"><p><b>${{product.product.price}} SEK</b></p></div>
-                                </div>
-                              
-                               
+                                  
+                                   </div>
+                            </div>
+                        </div>   
                                 <hr class="my-2">
                                 <div class="row ">
                                     <div class="col">
@@ -379,3 +463,16 @@
         </div>
     </div>
 </div>
+<!-- <div id="myModal" class="modal">
+
+    
+    <div class="modal-content">
+      <span (click)='close()' class="close">&times;</span>
+      <p>"Do y want to remove this product?</p>
+      <div class='row d-flex justify-content-between m-3'>
+          <a class="rouned btn btn-primary" (click)='close()'>cancel</a>
+          <a (click)='delete()' class="rounded btn btn-primary"   >delete</a>
+      </div>
+    </div>
+  
+  </div> -->
