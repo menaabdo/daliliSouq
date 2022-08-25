@@ -82,6 +82,8 @@ response_fees!:any
 fees!:Checkout
 
 /////////////////
+validmess!:string
+validmess2!:string
     constructor(private addressserve:UserService,private activeroute:Router,private route:Router) { }
  
     ngOnInit(): void {
@@ -280,9 +282,14 @@ getregionid(e:any){
 
   }
   applyreedem(){
-    this.calc_delivery()
+    if(this.points)
+   { this.calc_delivery()
    
       this.toggletocancel=1
+      this.validmess=''
+    }
+
+      else this.validmess='Enter points please'
     
   }
   cancelreedem(){
@@ -302,8 +309,14 @@ getregionid(e:any){
    
   // }
   applycopoun(){
-    this.calc_delivery()
+    console.log(this.copoun)
+    if(this.copoun)
+    
+   { this.calc_delivery()
     this.toggletocancel2=1
+    this.validmess2=''
+  }
+    else this.validmess2='Enter Copoun Please !'
   }
   cancelcopoun(){
     this.toggletocancel2=0

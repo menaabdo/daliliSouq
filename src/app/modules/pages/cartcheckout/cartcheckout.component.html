@@ -284,9 +284,12 @@
                                 </div>
                                 <div class="row mb-1 mt-4  text-center">
                                      
-                                     <div class=" col-md-12 py-3" style="background-color: rgb(228, 226, 226);">
-                                        <input (click)='getstatus($event)' class="mx-3 " type="checkbox" id="flexSwitchCheckDefault">
-                                        <label class="form-check-label"  for="flexSwitchCheckDefault">fast deliver costs (pay extra cost -{{fees.total_fast}} EGP)</label>
+                                     <div class=" col-md-12 py-3 d-flex align-items-center justify-content-center" style="background-color: rgb(228, 226, 226);">
+                                        <label class="switch form-label mx-3" style="font-size: 12px;">
+                                            <input (click)='getstatus($event)'  type="checkbox" class="mx-3 form-control" >
+                                            <span class="slider round"></span>
+                                          </label>
+                                         <label class="form-check-label"  for="flexSwitchCheckDefault">fast deliver costs (pay extra cost -{{fees.total_fast}} EGP)</label>
                                       </div>
                                 </div>
                                 <div class="row mb-1 mt-4 text-center " *ngIf='deliver_fast==1'>
@@ -312,7 +315,7 @@
                                         <label class="sr-only" for="inlineFormInputGroup"></label>
                                         <div class="input-group mb-2 "  style="border-radius: 20px 30px;">
                                          
-                                          <input [readonly]='toggletocancel2==1' type="text" class="form-control border-0 shadow-lg rounded" id="inlineFormInputGroup" placeholder="Enter Copoun" name="copoun" [(ngModel)]='copoun'>
+                                          <input [readonly]='toggletocancel2==1' type="text" class=" form-control border-0 shadow-lg rounded border border-danger"  id="validationCustom02" value="Otto" required placeholder="Enter Copoun" name="copoun" [(ngModel)]='copoun'>
                                           <div class="input-group-prepend">
                                             <div *ngIf='toggletocancel2==0' (click)='applycopoun()' class="input-group-text" style="cursor: pointer;;font-size: 15px; background-color: rgb(170, 36, 36); color: white;border-top-right-radius:10px ;border-bottom-right-radius: 10px;padding: 4px;">Apply Copoun</div>
                                             <div *ngIf='toggletocancel2==1' (click)='cancelcopoun()' class="input-group-text" style="cursor: pointer;;font-size: 15px; background-color: rgb(170, 36, 36); color: white;border-top-right-radius:10px ;border-bottom-right-radius: 10px;padding: 4px;">Cancel Copoun</div>
@@ -320,6 +323,7 @@
                                         </div>
                                            </div>
                                            <div *ngIf='message&&message!=""'><small class="text-danger">{{message}}</small></div>  
+                                           <div *ngIf='validmess2&&validmess2!=""'><small class="text-danger">{{validmess2}}</small></div>  
                                     
                                       </div>
                                       </div>
@@ -331,19 +335,21 @@
                                             
                                      
                                         </div>
-
+                                        <form class=" needs-validation" novalidate>
                                     <div class="row mb-1 mt-4 text-center " >
                                         <div class="col-md-12">
-                                            <label class="sr-only" for="inlineFormInputGroup"></label>
-                                            <div class="input-group mb-2 "  style="border-radius: 20px 30px;">
-                                             
-                                              <input [readonly]='toggletocancel==1' type="text" class="form-control border-0 shadow-lg rounded" id="inlineFormInputGroup" placeholder="Enter redeemed points" name='points' [(ngModel)]=points>
+                                            <label class="sr-only " for=" validationCustom03" ></label>
+                                            <div class="input-group mb-2 has-validation"  style="border-radius: 20px 30px;">
+                                                
+                                              <input [readonly]='toggletocancel==1' type="text" style="border:solid " class=" form-control border-0 shadow-lg rounded" id="validationCustom03" required placeholder="Enter redeemed points" name='points' [(ngModel)]=points>
                                               <div class="input-group-prepend">
                                                 <div  *ngIf='toggletocancel==0' (click)='applyreedem()' class="input-group-text" style="font-size: 15px; background-color: rgb(170, 36, 36); color: white;border-top-right-radius:10px ;border-bottom-right-radius: 10px;padding: 4px;cursor: pointer;">Apply Redeem</div>
                                                 <div *ngIf='toggletocancel==1' (click)='cancelreedem()' class="input-group-text" style="font-size: 15px; background-color: rgb(170, 36, 36); color: white;border-top-right-radius:10px ;border-bottom-right-radius: 10px;padding: 4px;cursor: pointer;">Cancel Redeem</div>
                                                
                                             </div>
                                             </div>
+                                            <div *ngIf='validmess&&validmess!=""'><small class="text-danger">{{validmess}}</small></div>  
+                                    
                                           </div>
                                           </div>
                                           <div class="row mb-1 mt-4 text-center " >
@@ -360,7 +366,8 @@
                                                 <div class="col-md-12">
                                                     <p class='text-danger ' style="font-size: small;">{{fees.note}} .</p>
                                                  </div>
-                                                 </div>    
+                                                 </div>   
+                                                </form> 
                                 <div class="row mb-1 mt-4 ">
                                     <div class="col-md-7 col-lg-6 mx-auto"><button (click)=' checkout() ' type="button" class="btn btn-block btn-outline-primary btn-lg">continue order</button></div>
                                 </div>

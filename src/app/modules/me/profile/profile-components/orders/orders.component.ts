@@ -15,16 +15,18 @@ orders!:Order[]
 is_complete=0
 page=1
   ngOnInit(): void {
-    this.ordersserve.myorders(this.is_complete,1).subscribe((res)=>{console.log(res);this.response=res;this.orders=this.response.Response.data;console.log(this.orders[0].id)})
-    while(this.page<10){
-     
+    this.ordersserve.myorders(this.is_complete,1).subscribe((res)=>{console.log(res);this.response=res;this.orders=this.response.Response.data;console.log(this.orders[0].id)
+    while(this.page<=10){
+      this.page++
       
     this.ordersserve.myorders(this.is_complete,this.page).subscribe((res)=>{console.log(res);this.response=res;
        let orders=this.response.Response.data;
       this.orders= this.orders.concat(orders)
-       console.log(this.orders)})
-       this.page++
+       console.log(this.orders.length)})
+
+       
     }
+  })
 
   }
   waitingorders(){

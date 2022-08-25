@@ -23,7 +23,7 @@ page=1
      let sales=this.response.Response.orders.data;
      this.sales=this.sales.concat(sales)
     
-      console.log(sales)})
+      console.log(sales.length)})
 
       }}})
   }
