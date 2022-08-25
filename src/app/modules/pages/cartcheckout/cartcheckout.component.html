@@ -251,6 +251,12 @@
                                                             <p>{{p.price}} EGP</p>
                                                          
                                                          </div>
+                                                         <div (click)='showpopup(p.cart_id)' *ngIf='product.delivery_error!=""' style="cursor: pointer;font-size: 16px;" class="text-danger ">
+                                                            
+                                                            <span>{{product.delivery_error}} <i class="fa fa-times  p-1 rounded-circle" style="color: rgb(170, 36, 36);"></i></span>
+                                                        </div>
+                                                       
+                                                    
                                                         
                                                      </div>
                                                  </div>
@@ -262,7 +268,7 @@
                              </div>
                          </div>  
                                 <div class="  bg-light justify-content-between" *ngFor='let product of regions_cala'>
-                                   <div class=' ' style="background-color: rgb(236, 222, 222);">
+                                   <div class=' ' style="background-color: rgb(255, 248, 248);">
                                     <div >
                                       <h3 class="d-flex justify-content-start  align-items-center pt-4"> <i class="fas fa-store-alt   mx-3"></i>{{product.name}}</h3>
                                       </div>
@@ -320,24 +326,24 @@
                                     <div class="col">
                                         <div class="row justify-content-between">
                                             <div class="col-4"><p class="mb-1"><b>Items</b></p></div>
-                                            <div class="flex-sm-col col-auto"><p class="mb-1"><b>{{cart_data?.quantites}} SEK</b></p></div>
+                                            <div class="flex-sm-col col-auto"><p class="mb-1"><b>{{cart_data?.quantites}} EGP</b></p></div>
                                         </div>
                                         <div class="row justify-content-between">
                                             <div class="col-4"><p class="mb-1"><b>Subtotal</b></p></div>
-                                            <div class="flex-sm-col col-auto"><p class="mb-1"><b>{{fees?.total}} </b></p></div>
+                                            <div class="flex-sm-col col-auto"><p class="mb-1"><b>{{fees?.total}}EGP </b></p></div>
                                         </div>
                                         <div class="row justify-content-between">
                                             <div class="col"><p class="mb-1"><b>Delivery fees</b></p></div>
-                                            <div class="flex-sm-col col-auto"><p class="mb-1"><b>{{fees?.total_delivery}} </b></p></div>
+                                            <div class="flex-sm-col col-auto"><p class="mb-1"><b>{{fees?.total_delivery}} EGP</b></p></div>
                                         </div>
                                         <div *ngIf='fees.total_fast' class="row justify-content-between">
                                             <div class="col"><p class="mb-1"><b>fast_delivery</b></p></div>
-                                            <div class="flex-sm-col col-auto"><p class="mb-1"><b>{{fees.total_fast}} </b></p></div>
+                                            <div class="flex-sm-col col-auto"><p class="mb-1"><b>{{fees.total_fast}}EGP </b></p></div>
                                         </div>
                                         
                                         <div class="row justify-content-between">
                                             <div class="col"><p class="mb-1"><b>total reward points</b></p></div>
-                                            <div class="flex-sm-col col-auto"><p class="mb-1"><b>{{fees?.total_points}} points</b></p></div>
+                                            <div class="flex-sm-col col-auto"><p class="mb-1" style="color: rgb(61, 216, 61) !important;">{{fees?.total_points}} points</p></div>
                                         </div>
                                         <div class="row justify-content-between" *ngIf='fees.redeem_value'>
                                             <div class="col"><p class="mb-1"><b>redeem_value</b></p></div>
@@ -346,16 +352,16 @@
                                        
                                         <div class="row justify-content-between">
                                             <div class="col"><p class="mb-1"><b>tax</b></p></div>
-                                            <div class="flex-sm-col col-auto"><p class="mb-1"><b>{{fees.vat_amount}}</b></p></div>
+                                            <div class="flex-sm-col col-auto"><p class="mb-1"><b>{{fees.vat_amount}} EGP</b></p></div>
                                         </div>
                                         <div class="row justify-content-between">
                                             <div class="col"><p class="mb-1"><b>Services</b></p></div>
-                                            <div class="flex-sm-col col-auto"><p class="mb-1"><b>{{fees?.service_amount}}</b></p></div>
+                                            <div class="flex-sm-col col-auto"><p class="mb-1"><b>{{fees?.service_amount}} EGP</b></p></div>
                                         </div>
                                         <div class=" mx-3 row justify-content-between align-items-center bg-light text-dark">
                                             <div class="col-4 d-flex "><p ><b>Total</b></p></div>
                                             <div class="flex-sm-col col-auto"><p  class="mb-1 text-danger">
-                                                <b >{{fees.total_price}}</b>
+                                                <b >{{fees.total_price}} EGP</b>
 
                                                    </p></div>
                                                 </div>
