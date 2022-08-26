@@ -31,7 +31,7 @@ this.flag=0
     })
  }  
  setoutofstock(id:number){
-   this.Adsserve.update_product({id:id,quantity:0,colors:'[]'}).subscribe((res)=>{console.log(res)})
+   this.Adsserve.update_product({id:id,quantity:0,colors:'[]'}).subscribe((res)=>{console.log(res) ;window.location.reload()})
    
  }   
  close(){
