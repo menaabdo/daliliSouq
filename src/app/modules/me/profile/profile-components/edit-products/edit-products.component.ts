@@ -117,13 +117,14 @@ marker!:any
     this.data.id=this.active.snapshot.params['id'] 
     if(this.storessserve.product_data&&this.data.id==this.storessserve.product_data.id){
       this.data=this.storessserve.product_data;console.log(this.data)
-      for(let i=0;i<10;i++){
+     if(localStorage.getItem('imgs'))
+      { for(let i=0;i<10;i++){
        this.imageSrc=JSON.parse(localStorage.getItem(`imgs`)as string)
        if(this.imageSrc[i])
        {
          document.getElementById(`img${i}`)!.style.display='block'
  }
-      }
+      }}
         }
 else{ 
   localStorage.removeItem('imgs')
