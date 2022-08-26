@@ -47,6 +47,7 @@ import { Color } from './color.model'
     is_color?:number
     is_size?:number
     is_online?:number
+    note?:string
     update:number
     update2:number
     /////////////////////variables used in add store///////////

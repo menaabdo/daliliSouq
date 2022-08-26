@@ -185,6 +185,7 @@ marker!:any
 //   }else this.flag=true
      this.storessserve.mystores('en').subscribe((res)=>{
        this.response=res;this.stores=this.response.Response.stores
+       console.log(res)
        if(this.data.is_online==1)
    {this.temp=1
      this.note=this.response.Response.note}

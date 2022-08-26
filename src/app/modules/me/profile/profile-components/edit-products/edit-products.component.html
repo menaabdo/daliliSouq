@@ -212,7 +212,14 @@
                 <label for="quantity"class='' >ubdate product Location</label>
                    
                 <div id='map'  style="width:100%;height:400px" class=""></div>
-
+                <label *ngIf='data.is_online==0||data.is_online==1'>{{data.note}}</label>
+                <div *ngIf='data.is_online||temp' class="form-group">
+                    
+                <label class="switch form-label">
+                    <input  (click)='toggleonline()' type="checkbox" class="form-control" [checked]='data.is_online==1'>
+                    <span class="slider round"></span>
+                  </label>
+                  </div>
                 <div class=" text-center col-md-12 d-flex justify-content-between">
                  
         <button type="submit" class="col-5 btn btn-primary" [disabled]='f.invalid'>Update</button>
@@ -222,3 +229,20 @@
 </div>
 </div>
 </div>
+<div id="myModal" class="modal">
+
+    <!-- Modal content -->
+    <div class="modal-content">
+      <span (click)='close()' class="close">&times;</span>
+      <div class="text-center">
+      <p>Successfully updated...</p>
+      <i class="fa fa-shopping-cart  fa-5x text-success"></i>
+    </div>
+      <div class='row d-flex justify-content-between m-3'>
+          <a class="rouned btn btn-primary" (click)='close()'>Cancel</a>
+          <a class="rounded btn btn-primary" (click)='upgrade()'  >continue to products</a>
+      </div>
+    </div>
+  
+  </div>
+  

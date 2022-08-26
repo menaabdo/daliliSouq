@@ -75,6 +75,8 @@ marker!:any
   country!:Country
   result:any
   myLatlng !:any 
+  temp!:number
+  note!:string
  
   constructor(private route:Router,private storessserve:UserService,private catserve:CategoryService,private active:ActivatedRoute) { }
     
@@ -115,6 +117,13 @@ marker!:any
     this.data.id=this.active.snapshot.params['id'] 
     if(this.storessserve.product_data&&this.data.id==this.storessserve.product_data.id){
       this.data=this.storessserve.product_data;console.log(this.data)
+      for(let i=0;i<10;i++){
+       this.imageSrc=JSON.parse(localStorage.getItem(`imgs`)as string)
+       if(this.imageSrc[i])
+       {
+         document.getElementById(`img${i}`)!.style.display='block'
+ }
+      }
         }
 else{ 
   localStorage.removeItem('imgs')
@@ -309,9 +318,25 @@ console.log(this.data)
     
   }}
   this.storessserve.update_product(fd).subscribe((res)=>{console.log(res)
+    var modal = document.getElementById("myModal")!;
+          modal.style.display = "block"
   })  
       
 }
+close(){
+  var modal = document.getElementById("myModal")!;
+        
+var span = document.getElementsByClassName("close")[0];
+modal.style.display = "none";
+}
+upgrade(){
+  this.route.navigateByUrl(`/home/me/profile/my-profile`)
+}
+toggleonline(){
+  if(this.data.is_online==1)
+  this.data.is_online=0
+  else this.data.is_online=1 
+ }
 setdata(){
  
     
@@ -320,7 +345,14 @@ setdata(){
 this.storessserve.product_detailes(this.active.snapshot.params['id']) .subscribe((res)=>{this.response2=res;
   console.log(res)
   //this.imageSrc.push(`https://dalilisouq.com/${this.response2.Response.image}`)
-
+  if(this.response2.Response.is_online==1)
+   {this.temp=1
+    this.data.is_online=1
+     this.data.note=this.response2.Response.note}
+   else {console.log(this.response2.Response.note)
+    this.data.is_online=0
+     this.data.note=this.response2.Response.note}
+       
 for(let i=0;i<10;i++){
 
 if(this.response2.Response.images.length>i)
