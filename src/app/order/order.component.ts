@@ -19,7 +19,13 @@ export class OrderComponent implements OnInit {
      }
   
     ngOnInit(): void {
+     
       //this.profile.store_profile(this.id).subscribe((res)=>{this.response=res;this.store=this.response.Response;console.log(res)})
   this.orderdetailes.orderdetailes(this.id).subscribe((res)=>{this.response=res;this.order=this.response.Response;console.log(res)})
-    }
+if(localStorage.getItem('check')=='0')
+{ localStorage.setItem('check','1')
+  window.location.reload() 
+
+ } 
+}
 }

@@ -18,11 +18,15 @@ img?:any
         if (event instanceof NavigationStart) {
           this.browserRefresh = !router.navigated;
           console.log(this.browserRefresh)
+        
         }
     });
   }
   ngOnInit(): void {
     if(this.browserRefresh==true)
     {this.userserve.refresh_token().subscribe((res)=>{})}
+    //else 
+   // window.location.reload()
      }
+     
 }

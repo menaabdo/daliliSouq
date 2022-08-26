@@ -1,20 +1,20 @@
 <section class="orders">
     <div class="backBtn row border-bottom rounded" >
-        <a href="#"><i class="fa fa-arrow-left"></i></a>
+        <!-- <a href="#"><i class="fa fa-arrow-left"></i></a> -->
         <span class="col-md-8">order details(#{{order.id}})</span>
         <button class='btn btn-xm ml-5 col-md-2 py-2 rounded'>reorder</button>
     </div>
     <div *ngIf='order.stores.length!=0'>
         <div *ngFor='let store of order.stores'>
     <div class="store container mt-2 p-2 border-bottom rounded border-2">
-        <div class="row p-5" >
+        <div class="row p-2" >
             <div class='col-md-8'><h3><i class="fa fa-store mr-2"></i>{{store.name}}</h3></div>
             <div class='col-md-4'><h3>{{order.created_at}}<i class="fa fa-clock ml-2"></i></h3></div>
         </div>
-        <div class="row p-5">
+        <div class="row p-2">
             <div class='col-md-8'><h3><i class="fa fa-map-marker mr-2"></i>{{store.address}}</h3></div>
             </div>
-        <div class="row p-5">
+        <div class="row p-2">
             <div class='col-md-8'><h3><i class="fa fa-phone mr-2"></i>{{store.mobile}}</h3></div>
             <button class='btn btn-xm ml-5 col-md-3 rounded'>view all products code</button>
    </div>

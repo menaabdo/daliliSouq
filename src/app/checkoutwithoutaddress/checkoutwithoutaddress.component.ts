@@ -6,7 +6,7 @@ import { City } from '../models/city.model';
 import { Country } from '../models/country.model';
 import { Region } from '../models/region.model';
 import { UserService } from '../service/user.service';
-
+import * as L from 'leaflet';
 @Component({
   selector: 'app-checkoutwithoutaddress',
   templateUrl: './checkoutwithoutaddress.component.html',
@@ -16,6 +16,7 @@ export class CheckoutwithoutaddressComponent implements OnInit {
   response_cart!:any
   cart_products!:any
   cart_data!:Cart
+  map!:any
   /////////////////variables for address////////
   
   setdefault=0
@@ -45,10 +46,17 @@ export class CheckoutwithoutaddressComponent implements OnInit {
   ////////variables for region end////////////////
   selected_city!:Region[]
   region_id!:number
+  lat?:any
+  lng?:any
 ///////////////////////////////////////////////
   constructor(private userserve:UserService,private route:Router) { }
 
   ngOnInit(): void {
+    if (navigator.geolocation)
+    navigator.geolocation.getCurrentPosition(this.showPosition);
+    console.log(navigator.geolocation.getCurrentPosition(this.showPosition))
+        
+    this.map=document.getElementById('map')!
     this.cart()
       //get last address
       this.address_profile()
@@ -67,6 +75,7 @@ export class CheckoutwithoutaddressComponent implements OnInit {
   address_profile(){
     this.userserve.profile({country_id:1}).subscribe((res)=>{this.response2=res;this.add=this.response2.Response.address
       this.country=this.response2.Response.country ;console.log(res)
+      //this.getmap()
     })
   }
   getcitites(){
@@ -142,6 +151,65 @@ export class CheckoutwithoutaddressComponent implements OnInit {
         })
   
       }
-  
-
+     
+      getmap(lat:number,lng:number){
+ 
+       
+         
+        const map= new L.Map('map').setView([lat||0, lng||0], 5);
+        var marker = L.marker([lat||0, lng||0]).addTo(map)
+            
+        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+        maxZoom: 19,
+        attribution: '© OpenStreetMap'
+      }).addTo(map)
+      map.on('click', (e:any) =>{
+        var lat,
+        lon,
+        zoom;
+      
+      lat = e.latlng.lat;
+      lon = e.latlng.lng;
+      zoom = map.getZoom();
+      console.log("You clicked the map at LAT: "+ lat+" and LONG: "+lon );
+      if (marker != undefined) {
+      map.removeLayer(marker);
+      };
+      marker =  L.marker([lat,lon]).addTo(map); 
+      
+      
+         })
+      
+      
+       }
+       showPosition(position:any) {
+        let lat= position.coords.latitude 
+       
+      let lng= position.coords.longitude;
+      const map= new L.Map('map').setView([lat||0, lng||0], 5);
+      var marker = L.marker([lat||0, lng||0]).addTo(map)
+          
+      L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+      maxZoom: 19,
+      attribution: '© OpenStreetMap'
+    }).addTo(map)
+    map.on('click', (e:any) =>{
+      var lat,
+      lon,
+      zoom;
+    
+    lat = e.latlng.lat;
+    lon = e.latlng.lng;
+    zoom = map.getZoom();
+    console.log("You clicked the map at LAT: "+ lat+" and LONG: "+lon );
+    if (marker != undefined) {
+    map.removeLayer(marker);
+    };
+    marker =  L.marker([lat,lon]).addTo(map); 
+    
+    
+       })
+    
+      }
+     
 }

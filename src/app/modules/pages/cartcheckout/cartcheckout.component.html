@@ -45,19 +45,19 @@
                                     <div class="col "><p class="text-muted ">Select PAYMENT Method</p>
                                     </div>
                                     <div class="form-check checkbox checkbox-circle">
-                                        <input (click)='getpay("cash")' class="form-check-input" type="radio" name="cash" id="cash">
+                                        <input (click)='getpay("cash")' class="form-check-input"  type="radio" name="cash" id="cash">
                                         <label class="form-check-label" for="flexRadioDefault1">
                                          Cash on Deliver
                                         </label>
                                       </div>
                                       <div class="form-check">
-                                        <input (click)='getpay("online")' class="form-check-input" type="radio" name="method" id="method" >
+                                        <input (click)='getpay("online")' class="form-check-input" type="radio" name="cash" id="method" >
                                         <label class="form-check-label" for="flexRadioDefault2">
                                          Payment Method
                                         </label>
                                       </div>
                                       <div class="form-check">
-                                        <input (click)='getpay("online")' class="form-check-input" type="radio" name="bank" id="bank" >
+                                        <input (click)='getpay("online")' class="form-check-input" type="radio" name="cash" id="bank" >
                                         <label class="form-check-label" for="flexRadioDefault2">
                                         Internal Tranfer
                                         </label>
@@ -344,6 +344,10 @@
                                         <div class="row justify-content-between">
                                             <div class="col"><p class="mb-1"><b>total reward points</b></p></div>
                                             <div class="flex-sm-col col-auto"><p class="mb-1" style="color: rgb(61, 216, 61) !important;">{{fees?.total_points}} points</p></div>
+                                        </div>
+                                        <div class="row justify-content-between" *ngIf=' copoun&&fees.coupon_value!=0'>
+                                            <div class="col"><p class="mb-1"><b>Discount Copoun</b></p></div>
+                                            <div class="flex-sm-col col-auto"><p class="mb-1" >{{fees?.coupon_value}} points</p></div>
                                         </div>
                                         <div class="row justify-content-between" *ngIf='fees.redeem_value'>
                                             <div class="col"><p class="mb-1"><b>redeem_value</b></p></div>

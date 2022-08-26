@@ -1,12 +1,12 @@
 import { not } from '@angular/compiler/src/output/output_ast';
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { Router ,NavigationStart} from '@angular/router';
 import { Cart } from 'src/app/models/cart.model';
 import { Country } from 'src/app/models/country.model';
 import { notification } from 'src/app/models/notification.model';
 import { CategoryService } from 'src/app/service/category.service';
 import { UserService } from 'src/app/service/user.service';
-
+import { Subscription } from 'rxjs';
 @Component({
   selector: 'app-search-bar',
   templateUrl: './search-bar.component.html',
@@ -29,10 +29,20 @@ num_ordernoty_page=1
 response_cart!:any
 cart_products!:any
 cart_data!:Cart
-
+browserRefresh!:boolean
+subscription: Subscription;
 //////////////////////////////////
-  constructor(private notifserve:UserService,private route:Router,private categoryserve:CategoryService) { }
+  constructor(private notifserve:UserService,private route:Router,private categoryserve:CategoryService) { 
+    this.subscription = route.events.subscribe((event) => {
+      if (event instanceof NavigationStart) {
+        this.browserRefresh = !route.navigated;
+        console.log(this.browserRefresh,'ddkkdkd')
+      
+      }
+  });
+  }
   profile_data:any
+
   ngOnInit(): void {
     
     this.notification_offer()
@@ -40,6 +50,7 @@ cart_data!:Cart
    
     this.myprofiledata()
     this.getallcountries()
+   // setInterval(()=>{this.cart()},1000)
     this.cart()
   }
   myprofiledata(){this.notifserve.profile({country_id:1}).subscribe((res)=>{

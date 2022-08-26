@@ -90,7 +90,7 @@ stores_calc!:any[]
     constructor(private addressserve:UserService,private activeroute:Router,private route:Router) { }
  
     ngOnInit(): void {
-     
+     localStorage.setItem('check','1')
      this.map=document.getElementById('map')!
         //get all address
       this.getalladdress()
@@ -355,9 +355,8 @@ getregionid(e:any){
     fd.append('total_delivery',this.fees.total_delivery as unknown as string)
      this.addressserve.checkout(fd).subscribe((res)=>{
        this.checkout_res=res
-       if(this.checkout_res.Error){
-         
-       }
+     localStorage.setItem('check','0')
+       this.route.navigateByUrl(`/home/me/profile/order/${this.checkout_res.Response.id}`)
      })
   }
  

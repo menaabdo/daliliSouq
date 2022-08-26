@@ -118,7 +118,7 @@ f!:number[]
    
      fd.append('color_id',this.clickedcolor.color)
      fd.append('size_id',this.size.size)
-     this.userserve.add_to_cart(fd).subscribe((res)=>{console.log(res); this.userserve.products_cart().subscribe((res)=>{//window.location.reload()
+     this.userserve.add_to_cart(fd).subscribe((res)=>{console.log(res); this.userserve.products_cart().subscribe((res)=>{window.location.reload()
     }) 
     })
   
