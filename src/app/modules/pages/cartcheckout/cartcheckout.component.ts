@@ -248,14 +248,15 @@ getregionid(e:any){
       this.addressserve.addaddress(fd).subscribe((res)=>{
         console.log(res)
         this.opened=0
+        window.scroll(0,300)
         this.getalladdress()
       })
 
     }
-   showPosition(position:any) {
-      console.log(position.coords.latitude + 
-      "<br>Longitude: " + position.coords.longitude);
-    }
+  //  showPosition(position:any) {
+  //     console.log(position.coords.latitude + 
+  //     "<br>Longitude: " + position.coords.longitude);
+  //   }
   calc_delivery(){
    
    
