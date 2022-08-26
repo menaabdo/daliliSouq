@@ -14,14 +14,26 @@ flag=0
 term=''
 id!:number
 response!:any
-products!:Product[]
+ads!:Product[]
   constructor(private productservice:UserService,private activeroute:ActivatedRoute) {
     this.id=this.activeroute.snapshot.params['id']
    }
 
   ngOnInit(): void {
-    this.productservice.products(this.id).subscribe((res)=>{this.response=res;this.products=this.response.Response.active.data})
+    this.productservice.products(this.id).subscribe((res)=>{this.response=res;this.ads=this.response.Response.active.data})
     
+  }
+  delete(id:number){
+    this.productservice.delete_product(id).subscribe((res)=>{
+    window.location.reload()
+     })
+  }  
+  setoutofstock(id:number){
+    this.productservice.update_product({id:id,quantity:0,colors:'[]'}).subscribe((res)=>{console.log(res)})
+    
+  }   
+  change(e:any){
+    e.target.style.color='black'
   }
   shrink(){
     this.flag=0

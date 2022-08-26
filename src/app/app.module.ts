@@ -55,6 +55,7 @@ import { SellercodepaidComponent } from './modules/me/profile/profile-components
 import { StoresellercodepaidComponent } from './modules/store/sotre-details/components/store-paid-sales/storesellercodepaid/storesellercodepaid.component';
 import { StoresellercoderejectedComponent } from './modules/store/sotre-details/components/rejected-sales/storesellercoderejected/storesellercoderejected.component';
 import { SellercodesalesComponent } from './modules/me/profile/profile-components/sales/sellercodesales/sellercodesales.component';
+import { ProductDoubleViewComponent } from './modules/store/products/components/store-product-active-ads/product-double-view/product-double-view.component';
 
 
 
@@ -99,6 +100,7 @@ import { SellercodesalesComponent } from './modules/me/profile/profile-component
     StoresellercodepaidComponent,
     StoresellercoderejectedComponent,
     SellercodesalesComponent,
+    ProductDoubleViewComponent,
     
 
     
