@@ -45,13 +45,13 @@
                                     <div class="col "><p class="text-muted ">Select PAYMENT Method</p>
                                     </div>
                                     <div class="form-check checkbox checkbox-circle">
-                                        <input (click)='getpay("cash")' class="form-check-input"  type="radio" name="cash" id="cash">
+                                        <input (click)='getpay("cash")' checked class="form-check-input"  type="radio" name="cash" id="cash">
                                         <label class="form-check-label" for="flexRadioDefault1">
                                          Cash on Deliver
                                         </label>
                                       </div>
                                       <div class="form-check">
-                                        <input (click)='getpay("online")' class="form-check-input" type="radio" name="cash" id="method" >
+                                        <input (click)='getpay("online")'  class="form-check-input" type="radio" name="cash" id="method" >
                                         <label class="form-check-label" for="flexRadioDefault2">
                                          Payment Method
                                         </label>
@@ -326,7 +326,7 @@
                                     <div class="col">
                                         <div class="row justify-content-between">
                                             <div class="col-4"><p class="mb-1"><b>Items</b></p></div>
-                                            <div class="flex-sm-col col-auto"><p class="mb-1"><b>{{cart_data?.quantites}} EGP</b></p></div>
+                                            <div class="flex-sm-col col-auto"><p class="mb-1"><b>{{cart_data?.quantites}} Item</b></p></div>
                                         </div>
                                         <div class="row justify-content-between">
                                             <div class="col-4"><p class="mb-1"><b>Subtotal</b></p></div>
@@ -336,9 +336,9 @@
                                             <div class="col"><p class="mb-1"><b>Delivery fees</b></p></div>
                                             <div class="flex-sm-col col-auto"><p class="mb-1"><b>{{fees?.total_delivery}} EGP</b></p></div>
                                         </div>
-                                        <div *ngIf='fees.total_fast' class="row justify-content-between">
+                                        <div *ngIf='fees?.total_fast' class="row justify-content-between">
                                             <div class="col"><p class="mb-1"><b>fast_delivery</b></p></div>
-                                            <div class="flex-sm-col col-auto"><p class="mb-1"><b>{{fees.total_fast}}EGP </b></p></div>
+                                            <div class="flex-sm-col col-auto"><p class="mb-1"><b>{{fees?.total_fast}}EGP </b></p></div>
                                         </div>
                                         
                                         <div class="row justify-content-between">
@@ -347,7 +347,7 @@
                                         </div>
                                         <div class="row justify-content-between" *ngIf=' copoun&&fees.coupon_value!=0'>
                                             <div class="col"><p class="mb-1"><b>Discount Copoun</b></p></div>
-                                            <div class="flex-sm-col col-auto"><p class="mb-1" >{{fees?.coupon_value}} points</p></div>
+                                            <div class="flex-sm-col col-auto"><p class="mb-1" >{{fees?.coupon_value}} EGP</p></div>
                                         </div>
                                         <div class="row justify-content-between" *ngIf='fees.redeem_value'>
                                             <div class="col"><p class="mb-1"><b>redeem_value</b></p></div>

@@ -53,7 +53,7 @@ export class CheckoutwithoutaddressComponent implements OnInit {
 
   ngOnInit(): void {
     if (navigator.geolocation)
-    navigator.geolocation.getCurrentPosition(this.showPosition);
+    navigator.geolocation.getCurrentPosition((this.showPosition));
     console.log(navigator.geolocation.getCurrentPosition(this.showPosition))
         
     this.map=document.getElementById('map')!
@@ -144,9 +144,13 @@ export class CheckoutwithoutaddressComponent implements OnInit {
        if(this.setdefault==1){
          fd.append('is_default','1')
        }
+       fd.append('lat',document.getElementById('lat')!.innerHTML)
+       fd.append('postal_code',document.getElementById('lng')!.innerHTML)
+     console.log(document.getElementById('lat')!.innerHTML,document.getElementById('lng')!.innerHTML)
        fd.append('address',address)
         this.userserve.addaddress(fd).subscribe((res)=>{
-          this.route.navigateByUrl('/home/checkout/1')
+          console.log(res)
+       this.route.navigateByUrl('/home/checkout/1')
          
         })
   
@@ -183,10 +187,17 @@ export class CheckoutwithoutaddressComponent implements OnInit {
       
        }
        showPosition(position:any) {
+      
         let lat= position.coords.latitude 
-       
+      
+        
+
+     
       let lng= position.coords.longitude;
-      const map= new L.Map('map').setView([lat||0, lng||0], 5);
+      document.getElementById('lat')!.innerHTML=lat
+      document.getElementById('lng')!.innerHTML=lng
+      
+          const map= new L.Map('map').setView([lat||0, lng||0], 5);
       var marker = L.marker([lat||0, lng||0]).addTo(map)
           
       L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
@@ -206,10 +217,11 @@ export class CheckoutwithoutaddressComponent implements OnInit {
     map.removeLayer(marker);
     };
     marker =  L.marker([lat,lon]).addTo(map); 
+    document.getElementById('lat')!.innerHTML=lat
+    document.getElementById('lng')!.innerHTML=lng
     
     
        })
     
       }
-     
 }

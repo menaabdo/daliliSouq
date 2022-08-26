@@ -355,14 +355,19 @@ getregionid(e:any){
     fd.append('total_delivery',this.fees.total_delivery as unknown as string)
      this.addressserve.checkout(fd).subscribe((res)=>{
        this.checkout_res=res
+       console.log(this.checkout_res.Error)
      localStorage.setItem('check','0')
+     if(this.checkout_res.Error.status!=false)
        this.route.navigateByUrl(`/home/me/profile/order/${this.checkout_res.Response.id}`)
-     })
+       else{
+         window.alert('your region not covered in delivery')
+       }
+      })
   }
  
  getmap(){
  
-  const map= new L.Map('map').setView([this.add.lat, this.add.long], 5);
+  const map= new L.Map('map').setView([this.add.lat , this.add.long], 5);
   var marker = L.marker([this.add.lat, this.add.long]).addTo(map)
       
   L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
