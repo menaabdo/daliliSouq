@@ -43,7 +43,7 @@
                         <a (click)='repost(i)' class="dropdown-item"><i class="fas fa-newspaper"></i>repost product</a>
                         <a (click)='delete(ad.id)' class="dropdown-item"><i class="fas fa-trash-alt"></i> delete product</a>
                         <a (click)='setoutofstock(ad.id)' class="dropdown-item"><i class="fas fa-shopping-cart"></i> set out of stock</a>
-                        <a class="dropdown-item"><i class="fas fa-file"></i> report product</a>
+                        <a routerLink='report/{{ad.id}}' class="dropdown-item"><i class="fas fa-file"></i> report product</a>
                     </div>
                 </div>
             </div>

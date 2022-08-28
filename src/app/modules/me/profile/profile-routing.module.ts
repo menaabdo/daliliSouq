@@ -47,6 +47,7 @@ import { StoresellercodepaidComponent } from '../../store/sotre-details/componen
 import { StoresellercoderejectedComponent } from '../../store/sotre-details/components/rejected-sales/storesellercoderejected/storesellercoderejected.component';
 import { SellercodesalesComponent } from './profile-components/sales/sellercodesales/sellercodesales.component';
 import { RepostproductComponent } from './profile-components/repostproduct/repostproduct.component';
+import { ReportproductComponent } from './profile-components/reportproduct/reportproduct.component';
 const routes: Routes = [
   {
     path: "",
@@ -61,6 +62,11 @@ const routes: Routes = [
           },{
                 path:'repost/:product_id/:category_id',
                 component:RepostproductComponent
+          },
+          {
+            path:'report/:product_id',
+            component:ReportproductComponent
+
           },
           {
                 path:'view/:num/:product_id',

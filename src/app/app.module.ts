@@ -59,6 +59,7 @@ import { ProductDoubleViewComponent } from './modules/store/products/components/
 import { EditaddressincartComponent } from './modules/pages/cartcheckout/editaddressincart/editaddressincart.component';
 import { RepostproductComponent } from './modules/me/profile/profile-components/repostproduct/repostproduct.component';
 import { RepostproductinstoreComponent } from './modules/store/products/components/repostproductinstore/repostproductinstore.component';
+import { ReportproductComponent } from './modules/me/profile/profile-components/reportproduct/reportproduct.component';
 
 
 
@@ -107,6 +108,7 @@ import { RepostproductinstoreComponent } from './modules/store/products/componen
     EditaddressincartComponent,
     RepostproductComponent,
     RepostproductinstoreComponent,
+    ReportproductComponent,
     
 
     

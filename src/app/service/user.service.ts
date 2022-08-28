@@ -128,6 +128,19 @@ this.image_file=file
     return this.httpclient.post( `${environment.apiURL}repost/product?os=android`,{'product_id':id,'country_id': this.country_id},{headers})
   
   }
+  allreport(id:number){
+    const headers =this.headers 
+    return this.httpclient.get(`${environment.apiURL}product/all/reports?os=android&product_id=${id}`,{headers})
+   
+  }
+  report(id:number,mess:string){
+    const headers =this.headers
+    this.country_id=localStorage.getItem('country_id') as string
+  
+    return this.httpclient.post( `${environment.apiURL}product/report?os=android`,{'product_id':id,'desc': mess},{headers})
+  
+
+  }
   ///////////////////////followers/////////////////////
   follwers(){
     
