@@ -31,7 +31,7 @@
 </div>
 
 <div class="row" >
-    <div [ngClass]="flag === 0? 'col-md-4' : 'col-md-6'" *ngFor='let ad of Ads | filter:term'>
+    <div [ngClass]="flag === 0? 'col-md-4' : 'col-md-6'" *ngFor='let ad of Ads | filter:term;let i=index'>
         <div class="card shadow border-0">
             <div class="card-header bg-white d-flex justify-content-between align-items-center remove-after">
                 <h4 class='m-0'>{{ad.name}}</h4>
@@ -40,7 +40,7 @@
                     </i>
                     <div class="dropdown-menu" aria-labelledby="dropdownMenuButton" style="margin-left: -100px">
                         <a class="dropdown-item" routerLink="edit-product/{{ad.id}}" (mouseover)='change($event)'><i class="fas fa-pen-square"></i> edit product</a>
-                        <a class="dropdown-item"><i class="fas fa-newspaper"></i>repost product</a>
+                        <a (click)='repost(i)' class="dropdown-item"><i class="fas fa-newspaper"></i>repost product</a>
                         <a (click)='delete(ad.id)' class="dropdown-item"><i class="fas fa-trash-alt"></i> delete product</a>
                         <a (click)='setoutofstock(ad.id)' class="dropdown-item"><i class="fas fa-shopping-cart"></i> set out of stock</a>
                         <a class="dropdown-item"><i class="fas fa-file"></i> report product</a>

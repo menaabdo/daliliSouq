@@ -126,19 +126,20 @@ stores_calc!:any[]
       })
     }
    newaddress(){
-     if(this.opened==0){
-       document.getElementById('plusicon')!.classList.add('fa-minus')
-       document.getElementById('plusicon')!.classList.remove('fa-plus')  
+    //  if(this.opened==0){
+    //    document.getElementById('plusicon')!.classList.add('fa-minus')
+    //    document.getElementById('plusicon')!.classList.remove('fa-plus')  
      
-       this.opened=1  
+    //    this.opened=1  
       
-     }
-     else{
-      document.getElementById('plusicon')!.classList.add('fa-plus')
-      document.getElementById('plusicon')!.classList.remove('fa-minus')  
+    //  }
+    //  else{
+    //   document.getElementById('plusicon')!.classList.add('fa-plus')
+    //   document.getElementById('plusicon')!.classList.remove('fa-minus')  
       
-      this.opened=0  
-     }
+    //   this.opened=0  
+    //  }
+    this.route.navigateByUrl('/home/Address')
      
      
       

@@ -1,4 +1,4 @@
-<div *ngIf='mess' class="alert alert-dark">{{mess}}</div>
+<!-- <div *ngIf='mess' class="alert alert-dark">{{mess}}</div> -->
 
 <div class='row '>
    
@@ -50,3 +50,21 @@
 </div>
 
 </div>
+<div  class='row d-flex justify-content-center p-5 m-3'>
+    <button style="cursor: pointer;" (click)=' continueo()'>continue without packages </button>
+    
+    </div>
+      <!-- Modal content -->
+      <div  id="myModal" class="modal">
+
+    <div  class="modal-content">
+      <span (click)='close()' class="close">&times;</span>
+      <p class="text-center">{{mess}}</p>
+      <div class='row d-flex justify-content-between m-3'>
+          <!-- <a class="rouned btn btn-primary" (click)='close()'>change</a>
+          <a class="rounded btn btn-primary" (click)='upgrade()'  >upgrade</a> -->
+      </div>
+    </div>
+    </div>
+  
+  

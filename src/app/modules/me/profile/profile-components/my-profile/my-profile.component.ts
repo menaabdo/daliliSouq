@@ -14,6 +14,7 @@ response!:any
 Ads!:Product[]
 flag=0
 term=''
+catrgory_id!:number
   constructor(private Adsserve:UserService,private route:Router) { }
 
   ngOnInit(): void {
@@ -69,4 +70,25 @@ this.flag=0
  change(e:any){
    e.target.style.color='black'
  }
+ repost(i:number){
+   let ad=(this.Ads[i])
+   let ids:any
+   if(ad.category?.hasOwnProperty('category')){
+    ids=ad.category
+    
+   
+    while(ids.hasOwnProperty('category')){
+     ids=ids.category
+     if(ids.hasOwnProperty('id'))
+    { this.catrgory_id=ids.id
+     //console.log(this.id)}
+ 
+   }
+ }
+ console.log(this.catrgory_id)
+ }
+else this.catrgory_id=ad.category?.id ||0
+this.route.navigateByUrl(`/home/me/profile/my-profile/repost/${ad.id}/${this.catrgory_id}`)
+
+}
 }

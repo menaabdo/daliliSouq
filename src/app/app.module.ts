@@ -56,6 +56,9 @@ import { StoresellercodepaidComponent } from './modules/store/sotre-details/comp
 import { StoresellercoderejectedComponent } from './modules/store/sotre-details/components/rejected-sales/storesellercoderejected/storesellercoderejected.component';
 import { SellercodesalesComponent } from './modules/me/profile/profile-components/sales/sellercodesales/sellercodesales.component';
 import { ProductDoubleViewComponent } from './modules/store/products/components/store-product-active-ads/product-double-view/product-double-view.component';
+import { EditaddressincartComponent } from './modules/pages/cartcheckout/editaddressincart/editaddressincart.component';
+import { RepostproductComponent } from './modules/me/profile/profile-components/repostproduct/repostproduct.component';
+import { RepostproductinstoreComponent } from './modules/store/products/components/repostproductinstore/repostproductinstore.component';
 
 
 
@@ -101,6 +104,9 @@ import { ProductDoubleViewComponent } from './modules/store/products/components/
     StoresellercoderejectedComponent,
     SellercodesalesComponent,
     ProductDoubleViewComponent,
+    EditaddressincartComponent,
+    RepostproductComponent,
+    RepostproductinstoreComponent,
     
 
     

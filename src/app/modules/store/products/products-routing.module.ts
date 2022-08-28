@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { EditProductsComponent } from '../../me/profile/profile-components/edit-products/edit-products.component';
+import { RepostproductinstoreComponent } from './components/repostproductinstore/repostproductinstore.component';
 import { ProductDoubleViewComponent } from './components/store-product-active-ads/product-double-view/product-double-view.component';
 import { StoreProductActiveAdsComponent } from './components/store-product-active-ads/store-product-active-ads.component';
 import { StoreProductExpiredAdsComponent } from './components/store-product-expired-ads/store-product-expired-ads.component';
@@ -30,6 +31,9 @@ const routes: Routes = [
   {
     path:'doubleview/:product_id',
     component:ProductDoubleViewComponent
+  },{
+    path:'repost/:product_id/:category_id',
+    component:RepostproductinstoreComponent
   }
 ];
 

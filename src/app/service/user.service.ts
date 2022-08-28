@@ -84,7 +84,9 @@ this.image_file=file
   /////////////////////////////////Ads///////////
   Ads(){
     const headers =this.headers
-    return this.httpclient.get(`${environment.apiURL}profile/products?os=android&user_id=${localStorage.getItem('id')}&page=1`,{headers})
+    this.country_id=localStorage.getItem('country_id') as string
+   
+    return this.httpclient.get(`${environment.apiURL}profile/products?os=android&user_id=${localStorage.getItem('id')}&page=1&country_id=${this.country_id}`,{headers})
 
   }
   product_detailes(id:number){
@@ -117,6 +119,13 @@ this.image_file=file
   select_offer(offer_id:number,package_type_category_id:number){
     const headers =this.headers
     return this.httpclient.post( `${environment.apiURL}offer/package?os=android`,{'offer_id':offer_id,'package_type_category_id':package_type_category_id},{headers})
+  
+  }
+  repost(id:number){
+    const headers =this.headers
+    this.country_id=localStorage.getItem('country_id') as string
+  
+    return this.httpclient.post( `${environment.apiURL}repost/product?os=android`,{'product_id':id,'country_id': this.country_id},{headers})
   
   }
   ///////////////////////followers/////////////////////
