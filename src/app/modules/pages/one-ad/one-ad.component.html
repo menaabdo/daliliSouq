@@ -4,7 +4,7 @@
 <div class="col-md-6 h-100 ">
     <div class="row h-100 ">
         <div class="col-md-2 col-sm-2  col-xs-2 col-lg-2  d-flex flex-wrap h-100 "  >
-          <img  (click)='changeimg(product.images.length)' src='https://dalilisouq.com/{{product.image}}' class="m-2" style="max-height: 200px;width: 50px;height: 50px;cursor: pointer;" >
+          <!-- <img  (click)='changeimg(product.images.length)' src='https://dalilisouq.com/{{product.image}}' class="m-2" style="max-height: 200px;width: 50px;height: 50px;cursor: pointer;" > -->
    
           <div  *ngFor='let image of product.images;let i=index' class="m-2">
         <img id='change' (click)='changeimg(i)' src='https://dalilisouq.com/{{image.image}}' style="max-height: 200px;width: 50px;height: 50px;" >

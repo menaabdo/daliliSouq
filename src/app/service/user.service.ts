@@ -115,6 +115,12 @@ this.image_file=file
     return this.httpclient.post( `${environment.apiURL}product/delete_image?os=android`,{'id':id},{headers})
   
   }
+  //////////////////////
+  like_product(id:number){
+    const headers =this.headers
+    return this.httpclient.post( `${environment.apiURL}product/like?os=android&product_id=${id}`,{},{headers})
+  
+  }
   //////////////////////////////
   select_offer(offer_id:number,package_type_category_id:number){
     const headers =this.headers
@@ -322,9 +328,18 @@ this.image_file=file
     
     if(this.files.length>0)
     {for(let i=0;i<this.files.length;i++)
-    data.append(`image${i+1}`,this.files[i])
-    data.append('image',this.files[0])}
-    else  data.append('image',this.files[0])
+       {  if(data.get('default')&&i==data.get('default'))
+       continue
+       else
+         data.append(`image${i+1}`,this.files[i])
+        }
+    if(data.get('default'))
+    data.append('image',this.files[data.get('default')])
+    else
+    data.append('image',this.files[0])
+  
+  }
+   // else  data.append('image',this.files[data.get('default')])
     return this.httpclient.post(`${environment.apiURL}product/create?os=android`,data,{headers})
  
   }

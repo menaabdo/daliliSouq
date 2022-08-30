@@ -59,7 +59,7 @@
                 <div class='d-flex justify-content-between align-items-center mb-2'>
                     <h2 class="m-0">{{ad.price}}<small>EGP</small></h2>
                     
-                    <i class="far fa-heart favourite-icon " [ngClass]="{'text-danger' : ad.favourite}" ></i>
+                    <i (click)='like_product(ad.id)' class="far fa-heart favourite-icon " [ngClass]="{'text-danger' : ad.favourite}" ></i>
                 </div>
                 <p class="mb-1">online for : {{ad.online_for}}</p>
                 <p class="mb-1">expire in: {{ad.online_for-1}}</p>

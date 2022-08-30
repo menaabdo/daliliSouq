@@ -86,6 +86,7 @@ marker!:any
   response_canpost!:any
   response_add_new!:any
   added_data!:any
+ //defaultimage!:number
   constructor(private categoryserve:CategoryService,private route:Router,private storessserve:UserService,private catserve:CategoryService,private active:ActivatedRoute) { 
     
    
@@ -337,8 +338,15 @@ this.route.navigateByUrl(`/home/me/profile/my-profile/select-category/${(JSON.st
    console.log(image)
     image=URL.createObjectURL(event.target.files[0])
     this.imageSrc.push(image)
+    ///////////////////to set first image as default if user still not determined
+    if(!this.data.defaultimage){
+      this.data.defaultimage=0
+      document.getElementById('0')!.style.display='block'
+    }
+    ///////////////////////////////////////////
     for(let i=0;i<this.imageSrc.length;i++)
-  document.getElementById(`img${i}`)!.style.display='block'
+  {document.getElementById(`img${i}`)!.style.display='block'
+      }
     localStorage.setItem('imgs',JSON.stringify(this.imageSrc))
     let imgs=localStorage.getItem('imgs')
   
@@ -412,7 +420,8 @@ this.route.navigateByUrl(`/home/me/profile/my-profile/select-category/${(JSON.st
     
     fd.append('longitude',this.data.lng as unknown as string)
     fd.append('mobile',this.data.mobile as unknown as string)
-    
+    if(this.data.defaultimage)
+    fd.append('default',this.data.defaultimage as unknown as string)
        console.log(this.can_post)
           if(this.can_post==true)
          {console.log('can')
@@ -483,5 +492,17 @@ this.data.lng=lon
        
   
   } 
+  setasdefault(index:number){
+    this.data.defaultimage=index
+    console.log(this.data.defaultimage)
+    for(let i=0;i<10;i++){
+     let ele= document.getElementById(i as unknown as string)!
+     ele.style.display='none'
+     let myele= document.getElementById(index as unknown as string)!
+     myele.style.display='block'
+  
+    }
+   
+  }
 }
 

@@ -50,6 +50,7 @@ import { Color } from './color.model'
     note?:string
     update:number
     update2:number
+    defaultimage?:number
     /////////////////////variables used in add store///////////
     f?:string
     y?:string
