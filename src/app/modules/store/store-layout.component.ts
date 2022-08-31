@@ -19,7 +19,7 @@ export class StoreLayoutComponent implements OnInit {
      }
   
     ngOnInit(): void {
-      this.profile.store_profile(this.id).subscribe((res)=>{this.response=res;this.store=this.response.Response;console.log(res)})
+      this.profile.store_profile(this.id,this.term).subscribe((res)=>{this.response=res;this.store=this.response.Response;console.log(res)})
   
     }
 

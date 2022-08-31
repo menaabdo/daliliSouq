@@ -82,11 +82,11 @@ this.image_file=file
   
   }
   /////////////////////////////////Ads///////////
-  Ads(){
+  Ads(keyword:string){
     const headers =this.headers
     this.country_id=localStorage.getItem('country_id') as string
    
-    return this.httpclient.get(`${environment.apiURL}profile/products?os=android&user_id=${localStorage.getItem('id')}&page=1&country_id=${this.country_id}`,{headers})
+    return this.httpclient.get(`${environment.apiURL}profile/products?os=android&user_id=${localStorage.getItem('id')}&page=1&country_id=${this.country_id}&keyword=${keyword}`,{headers})
 
   }
   product_detailes(id:number){
@@ -304,10 +304,10 @@ this.image_file=file
  
   }
   ////////////////////////////////user store////////////////////
-  store_profile(id:number){
+  store_profile(id:number,keyword:string){
      console.log(this.country_id)
     const headers =this.headers
-    return this.httpclient.get(`${environment.apiURL}store?os=android&store_id=${id}&country_id=${this.country_id}&page=1`,{headers})
+    return this.httpclient.get(`${environment.apiURL}store?os=android&store_id=${id}&country_id=${this.country_id}&page=1&keyword=${keyword}`,{headers})
   }
   best_seller(id:number){
     const headers =this.headers
@@ -316,9 +316,9 @@ this.image_file=file
   followers(id:number){
     return this.httpclient.get(`${environment.apiURL}store/followers?os=android&store_id=${localStorage.getItem('id')}`)
   }
-  products(id:number){
+  products(id:number,keyword:string){
     this.country_id=localStorage.getItem('country_id') as string
-    return this.httpclient.get(`${environment.apiURL}store/products?os=android&store_id=${id}&country_id=${this.country_id}&page=1`)
+    return this.httpclient.get(`${environment.apiURL}store/products?os=android&store_id=${id}&country_id=${this.country_id}&page=1&keyword=${keyword}`)
 
 
   }

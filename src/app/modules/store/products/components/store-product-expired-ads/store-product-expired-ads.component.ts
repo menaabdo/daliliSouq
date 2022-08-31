@@ -14,7 +14,7 @@ export class StoreProductExpiredAdsComponent implements OnInit {
 term=''
 id!:number
 response!:any
-products!:Product[]
+ads!:Product[]
 
 
 catrgory_id!:number
@@ -23,9 +23,62 @@ catrgory_id!:number
    }
 
   ngOnInit(): void {
-    this.productservice.products(this.id).subscribe((res)=>{this.response=res;this.products=this.response.Response.expired.data})
+   this.getproducts()
+  }
+  getproducts(){
+    this.productservice.products(this.id,this.term).subscribe((res)=>{this.response=res;this.ads=this.response.Response.expired.data})
     
   }
+  close(){
+    //this.getproducts()
+   if(this.term!='')
+   {document.getElementById('icon')?.classList.remove('fa-times')
+   document.getElementById('icon')?.classList.remove('fa')
+  
+   document.getElementById('icon')?.classList.add('porto-icon-search-3') 
+ }
+   else{document.getElementById('icon')?.classList.remove('porto-icon-search-3')
+   console.log(document.getElementById('icon'))
+   document.getElementById('icon')?.classList.add('fa') 
+   document.getElementById('icon')?.classList.add('fa-times') 
+ }
+  }
+  search(){
+   this.getproducts()
+    if(this.term=='')
+   {document.getElementById('icon')?.classList.remove('fa-times')
+   document.getElementById('icon')?.classList.remove('fa')
+  
+   document.getElementById('icon')?.classList.add('porto-icon-search-3') 
+ }
+ 
+  }
+  setoutofstock(id:number){
+    this.productservice.update_product({id:id,quantity:0,colors:'[]'}).subscribe((res)=>{console.log(res)})
+    
+  }   
+  delete(id:number){
+    this.productservice.delete_product(id).subscribe((res)=>{
+    window.location.reload()
+     })
+  } 
+  change(e:any){
+    e.target.style.color='black'
+  } 
+  toggle(){
+   this.getproducts()
+    if( document.getElementById('icon')?.classList.contains('fa')){
+        this.term=''
+        document.getElementById('icon')?.classList.remove('fa-times')
+   document.getElementById('icon')?.classList.remove('fa')
+  
+   document.getElementById('icon')?.classList.add('porto-icon-search-3') 
+ 
+    }
+    this.getproducts()
+   
+  }
+ 
   shrink(){
     this.flag=0
       }
@@ -34,7 +87,7 @@ catrgory_id!:number
           }
 
           repost(i:number){
-            let ad=(this.products[i])
+            let ad=(this.ads[i])
             let ids:any
             if(ad.category?.hasOwnProperty('category')){
              ids=ad.category

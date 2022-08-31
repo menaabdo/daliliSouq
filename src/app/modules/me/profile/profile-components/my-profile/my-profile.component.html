@@ -1,10 +1,10 @@
 <h3></h3>
 <div class='row ml-3 d-flex justify-content-between mb-2'>
     <div class="header-search  col-6">
-    <a href="#" class="search-toggle" role="button"><i class="porto-icon-search-3"></i></a>
+    <a  class="search-toggle" role="button"><i class="porto-icon-search-3"></i></a>
     <form action="#" method="get">
         <div class="header-search-wrapper" >
-            <input (click)='close()' (blur)='search()' type="search" class="form-control" name="q" id="q" placeholder=" Search in your ads..." required style='background-color:#990033 ;color:white;font-size:14px' [(ngModel)]="term">
+            <input (click)='close()' (blur)='search()'  (keyup)='getproducts()' type="search" class="form-control" name="q" id="q" placeholder=" Search in your ads..." required style='background-color:#990033 ;color:white;font-size:14px' [(ngModel)]="term">
             
        
             <button   class="btn" type="submit" style='background-color:#990033; color:white'><i (click)='toggle()' id='icon' class="porto-icon-search-3"></i></button>
@@ -47,8 +47,10 @@
                     </div>
                 </div>
             </div>
-            <img src="https://dalilisouq.com/{{ad.image}}" class="card-img-top" alt="...">
-            <div class="card-body border-0">
+            <div [ngClass]="flag === 0? '' : 'd-flex justify-content-between'" class=" ">
+            <img [ngClass]="flag === 0? 'w-100' : 'w-50'" src="https://dalilisouq.com/{{ad.image}}" class="card-img-top" alt="...">
+            
+                <div class="card-body border-0">
                 <div class='d-flex justify-content-between align-items-center mb-1'>
                     <p class="mb-0" *ngIf='ad.quantity!=0'>{{ad.quantity}} items left</p>
                     <p class="mb-0"> <i class="fas fa-calendar mr-1"></i>{{ad.created_at}}</p>
@@ -64,6 +66,7 @@
                 <p class="mb-1">online for : {{ad.online_for}}</p>
                 <p class="mb-1">expire in: {{ad.online_for-1}}</p>
             </div>
+        </div>
             <div class="card-footer border-0 p-0 bg-white">
                 <div class="advertising-info-footer">
                     <ul>
@@ -76,6 +79,8 @@
                 </div>
                 <a class="btn btn-primary w-100" routerLink="view/0/{{ad.id}}">double the view </a>
             </div>
+      
+            
         </div>
         
     </div>

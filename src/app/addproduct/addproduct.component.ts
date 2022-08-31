@@ -16,6 +16,7 @@ import * as L from 'leaflet';
 
 
 import { Country } from '../models/country.model';
+import { Observable, of } from 'rxjs';
 @Component({
   selector: 'app-addproduct',
   templateUrl: './addproduct.component.html',
@@ -433,7 +434,9 @@ this.route.navigateByUrl(`/home/me/profile/my-profile/select-category/${(JSON.st
           }
           if(this.can_post==false)
           {var modal = document.getElementById("myModal")!;
-          modal.style.display = "block";}
+          modal.style.display = "block";
+            document.getElementById('map')!.style.display='none'
+        }
         
   }
   close(){
@@ -441,6 +444,7 @@ this.route.navigateByUrl(`/home/me/profile/my-profile/select-category/${(JSON.st
           
   var span = document.getElementsByClassName("close")[0];
   modal.style.display = "none";
+  document.getElementById('map')!.style.display='block'
   }
   upgrade(){
     this.route.navigateByUrl(`/home/me/profile/account/${(JSON.stringify(this.data)).replace('#','*')}/packages/${this.data.category_ids[0]}`)
@@ -503,6 +507,14 @@ this.data.lng=lon
   
     }
    
+  }
+  canDeactivate(): Observable<boolean> {
+    if (!this.flag) {
+      const result = window.confirm('There are unsaved changes! Are   you sure?');
+      (window.confirm('There are unsaved changes! Are   you sure?'));
+      
+    }
+    return of(false);
   }
 }
 

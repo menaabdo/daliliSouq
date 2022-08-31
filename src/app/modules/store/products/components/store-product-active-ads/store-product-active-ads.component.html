@@ -29,7 +29,20 @@
             
         </div>
 </div> -->
-
+<div class='row ml-3 d-flex justify-content-start mb-2'>
+    <div class="header-search  col-6">
+    <a  class="search-toggle" role="button"><i class="porto-icon-search-3"></i></a>
+    <form action="#" method="get">
+        <div class="header-search-wrapper" >
+            <input (click)='close()' (blur)='search()'  (keyup)='getproducts()' type="search" class="form-control" name="q" id="q" placeholder=" Search in your ads..." required style='background-color:#990033 ;color:white;font-size:14px;height: 36px!important;' [(ngModel)]="term">
+            
+       
+            <button   class="btn" type="submit" style='background-color:#990033; color:white'><i (click)='toggle()' id='icon' class="porto-icon-search-3"></i></button>
+        </div>
+        <!-- End .header-search-wrapper -->
+    </form>
+</div>
+</div>
 <div class="row" >
     <div [ngClass]="flag === 0? 'col-md-4' : 'col-md-6'" *ngFor='let ad of ads ;let i=index'>
         <div class="card shadow border-0">

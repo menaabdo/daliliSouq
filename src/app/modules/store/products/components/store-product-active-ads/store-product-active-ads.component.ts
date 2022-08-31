@@ -21,9 +21,50 @@ catrgory_id!:number
    }
 
   ngOnInit(): void {
-    this.productservice.products(this.id).subscribe((res)=>{this.response=res;this.ads=this.response.Response.active.data})
+   this.getproducts()
+  }
+  getproducts(){
+    this.productservice.products(this.id,this.term).subscribe((res)=>{this.response=res;this.ads=this.response.Response.active.data})
     
   }
+  close(){
+    //this.getproducts()
+   if(this.term!='')
+   {document.getElementById('icon')?.classList.remove('fa-times')
+   document.getElementById('icon')?.classList.remove('fa')
+  
+   document.getElementById('icon')?.classList.add('porto-icon-search-3') 
+ }
+   else{document.getElementById('icon')?.classList.remove('porto-icon-search-3')
+   console.log(document.getElementById('icon'))
+   document.getElementById('icon')?.classList.add('fa') 
+   document.getElementById('icon')?.classList.add('fa-times') 
+ }
+  }
+  search(){
+   this.getproducts()
+    if(this.term=='')
+   {document.getElementById('icon')?.classList.remove('fa-times')
+   document.getElementById('icon')?.classList.remove('fa')
+  
+   document.getElementById('icon')?.classList.add('porto-icon-search-3') 
+ }
+ 
+  }
+  toggle(){
+   this.getproducts()
+    if( document.getElementById('icon')?.classList.contains('fa')){
+        this.term=''
+        document.getElementById('icon')?.classList.remove('fa-times')
+   document.getElementById('icon')?.classList.remove('fa')
+  
+   document.getElementById('icon')?.classList.add('porto-icon-search-3') 
+ 
+    }
+    this.getproducts()
+   
+  }
+ 
   delete(id:number){
     this.productservice.delete_product(id).subscribe((res)=>{
     window.location.reload()

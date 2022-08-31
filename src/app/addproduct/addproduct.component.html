@@ -17,7 +17,7 @@
                     <div (click)='setasdefault(0)' id='img0' class="image-upload text-center mr-3" style='display: none;' [ngStyle]="{'background-image': 'url(' + imageSrc[0]+ ')'}">
                         <label for="file-input1" class="text-center">
                             <i (click)='delete(0)' class="fa fa-times fa-x text-white rounded-circle p-2" style="margin: -17px 8px; background-color: rgb(121, 24, 24)"></i>
-                             <i id='0' class="fa fa-check rounded-circle text-white p-2" style="margin: 40px;margin-left: 10px;background-color: rgb(121, 24, 24);display: none;"></i>
+                             <i id='0' [ngClass]=' data.defaultimage==0?"show":"hide"' class="fa fa-check rounded-circle text-white p-2" style="margin: 40px;margin-left: 10px;background-color: rgb(121, 24, 24);"></i>
                         </label>
                             
                     </div>
@@ -25,7 +25,7 @@
                     <div (click)=setasdefault(1) id='img1' class="image-upload text-center mr-3" style='display: none;' [ngStyle]="{'background-image': 'url(' + imageSrc[1]+ ')'}">
                         <label for="file-input2" class="text-center">
                             <i (click)='delete(1)' class="fa fa-times p-2 rounded-circle text-white" style="margin: -17px 8px; background-color: rgb(121, 24, 24)"></i>
-                            <i id='1' class="fa fa-check rounded-circle text-white p-2" style="margin: 40px;margin-left: 10px;background-color: rgb(121, 24, 24);display: none;"></i>
+                            <i id='1' [ngClass]=' data.defaultimage==1?"show":"hide"' class="fa fa-check rounded-circle text-white p-2" style="margin: 40px;margin-left: 10px;background-color: rgb(121, 24, 24);"></i>
            
                         </label>
                             
@@ -34,7 +34,7 @@
                     <div (click)=setasdefault(2) id='img2' class="image-upload text-center mr-3" style='display: none;' [ngStyle]="{'background-image': 'url(' + imageSrc[2]+ ')'}">
                         <label for="file-input3" class="text-center">
                             <i (click)='delete(2)' class="fa fa-times text-white rounded-circle p-2" style="margin: -17px 8px; background-color: rgb(121, 24, 24)"></i>
-                            <i id='2' class="fa fa-check rounded-circle text-white p-2" style="margin: 40px;margin-left: 10px;background-color: rgb(121, 24, 24);display: none;"></i>
+                            <i id='2' [ngClass]=' data.defaultimage==2?"show":"hide"' class="fa fa-check rounded-circle text-white p-2" style="margin: 40px;margin-left: 10px;background-color: rgb(121, 24, 24);"></i>
            
                         </label>
                             
@@ -44,7 +44,7 @@
                     <div (click)=setasdefault(3) id='img3' class="image-upload text-center mr-3" style='display: none;' [ngStyle]="{'background-image': 'url(' + imageSrc[3]+ ')'}">
                         <label for="file-input4" class="text-center">
                             <i (click)='delete(3)' class="fa fa-times text-white rounded-circle p-2" style="margin: -17px 8px; background-color: rgb(121, 24, 24)"></i>
-                            <i id='3' class="fa fa-check rounded-circle text-white p-2" style="margin: 40px;margin-left: 10px;background-color: rgb(121, 24, 24);display: none;"></i>
+                            <i id='3' [ngClass]=' data.defaultimage==3?"show":"hide"' class="fa fa-check rounded-circle text-white p-2" style="margin: 40px;margin-left: 10px;background-color: rgb(121, 24, 24);"></i>
            
                         </label>
                             
@@ -54,7 +54,7 @@
                     <div (click)='setasdefault(4)' id='img4' class="image-upload text-center mr-3" style='display: none;' [ngStyle]="{'background-image': 'url(' + imageSrc[4]+ ')'}">
                         <label for="file-input5" class="text-center">
                             <i (click)='delete(4)' class="fa fa-times text-white rounded-circle p-2" style="margin: -17px 8px; background-color: rgb(121, 24, 24)"></i>
-                            <i id='4' class="fa fa-check rounded-circle text-white p-2" style="margin: 40px;margin-left: 10px;background-color: rgb(121, 24, 24);display: none;"></i>
+                            <i id='4' [ngClass]=' data.defaultimage==4?"show":"hide"' class="fa fa-check rounded-circle text-white p-2" style="margin: 40px;margin-left: 10px;background-color: rgb(121, 24, 24);"></i>
            
                         </label>
                             
@@ -64,7 +64,7 @@
                     <div (click)='setasdefault(5)' id='img5' class="image-upload text-center mr-3" style='display: none;' [ngStyle]="{'background-image': 'url(' + imageSrc[5]+ ')'}">
                         <label for="file-input6" class="text-center">
                             <i (click)='delete(5)' class="fa fa-times text-white rounded-circle p-2" style="margin: -17px 8px; background-color: rgb(121, 24, 24)"></i>
-                            <i id='5' class="fa fa-check rounded-circle text-white p-2" style="margin: 40px;margin-left: 10px;background-color: rgb(121, 24, 24);display: none;"></i>
+                            <i id='5' [ngClass]=' data.defaultimage==5?"show":"hide"' class="fa fa-check rounded-circle text-white p-2" style="margin: 40px;margin-left: 10px;background-color: rgb(121, 24, 24);"></i>
            
                         </label>
                             
@@ -74,7 +74,7 @@
                     <div (click)='setasdefault(6)' id='img6' class="image-upload text-center mr-3" style='display: none;' [ngStyle]="{'background-image': 'url(' + imageSrc[6]+ ')'}">
                         <label for="file-input7" class="text-center">
                             <i (click)='delete(6)' class="fa fa-times text-white rounded-circle p-2" style="margin: -17px 8px; background-color: rgb(121, 24, 24)"></i>
-                            <i id='6' class="fa fa-check rounded-circle text-white p-2" style="margin: 40px;margin-left: 10px;background-color: rgb(121, 24, 24);display: none;"></i>
+                            <i id='6' [ngClass]=' data.defaultimage==6?"show":"hide"' class="fa fa-check rounded-circle text-white p-2" style="margin: 40px;margin-left: 10px;background-color: rgb(121, 24, 24);"></i>
            
                         </label>
                             
@@ -84,7 +84,7 @@
                     <div (click)='setasdefault(7)' id='img7' class="image-upload text-center mr-3" style='display: none;' [ngStyle]="{'background-image': 'url(' + imageSrc[7]+ ')'}">
                         <label for="file-input8" class="text-center">
                             <i (click)='delete(7)' class="fa fa-times text-white rounded-circle p-2" style="margin: -17px 8px; background-color: rgb(121, 24, 24)"></i>
-                            <i id='7' class="fa fa-check rounded-circle text-white p-2" style="margin: 40px;margin-left: 10px;background-color: rgb(121, 24, 24);display: none;"></i>
+                            <i id='7' [ngClass]=' data.defaultimage==7?"show":"hide"' class="fa fa-check rounded-circle text-white p-2" style="margin: 40px;margin-left: 10px;background-color: rgb(121, 24, 24)"></i>
            
                         </label>
                             
@@ -94,7 +94,7 @@
                     <div (click)='setasdefault(8)' id='img8' class="image-upload text-center mr-3" style='display: none;' [ngStyle]="{'background-image': 'url(' + imageSrc[8]+ ')'}">
                         <label for="file-input9" class="text-center">
                             <i (click)='delete(8)' class="fa fa-times text-white rounded-circle p-2" style="margin: -17px 8px; background-color: rgb(121, 24, 24)"></i>
-                            <i id='8' class="fa fa-check rounded-circle text-white p-2" style="margin: 40px;margin-left: 10px;background-color: rgb(121, 24, 24);display: none;"></i>
+                            <i id='8' [ngClass]=' data.defaultimage==8?"show":"hide"' class="fa fa-check rounded-circle text-white p-2" style="margin: 40px;margin-left: 10px;background-color: rgb(121, 24, 24);"></i>
            
                         </label>
                             
@@ -104,6 +104,8 @@
                     <div (click)='setasdefault(9)' id='img9' class="image-upload text-center mr-3" style='display: none;' [ngStyle]="{'background-image': 'url(' + imageSrc[9]+ ')'}">
                         <label for="file-input10" class="text-center">
                             <i (click)='delete(9)' class="fa fa-times fa-2x"></i>
+                            <i id='9' [ngClass]=' data.defaultimage==9?"show":"hide"' class="fa fa-check rounded-circle text-white p-2" style="margin: 40px;margin-left: 10px;background-color: rgb(121, 24, 24);"></i>
+           
                         </label>
                             
                     </div>

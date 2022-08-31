@@ -18,7 +18,48 @@ export class ExpiredAdsComponent implements OnInit {
     constructor(private Adsserve:UserService,private route:Router) { }
   
     ngOnInit(): void {
-      this.Adsserve.Ads().subscribe((res)=>{console.log(res); this.response=res;this.Ads=this.response.Response.expired.data;})
+      this.getproducts()
+         }
+    getproducts(){
+      this.Adsserve.Ads(this.term).subscribe((res)=>{console.log(res); this.response=res;this.Ads=this.response.Response.expired.data;})
+
+    }
+    close(){
+      //this.getproducts()
+     if(this.term!='')
+     {document.getElementById('icon')?.classList.remove('fa-times')
+     document.getElementById('icon')?.classList.remove('fa')
+    
+     document.getElementById('icon')?.classList.add('porto-icon-search-3') 
+   }
+     else{document.getElementById('icon')?.classList.remove('porto-icon-search-3')
+     console.log(document.getElementById('icon'))
+     document.getElementById('icon')?.classList.add('fa') 
+     document.getElementById('icon')?.classList.add('fa-times') 
+   }
+    }
+    search(){
+     //this.getproducts()
+      if(this.term=='')
+     {document.getElementById('icon')?.classList.remove('fa-times')
+     document.getElementById('icon')?.classList.remove('fa')
+    
+     document.getElementById('icon')?.classList.add('porto-icon-search-3') 
+   }
+   
+    }
+    toggle(){
+     this.getproducts()
+      if( document.getElementById('icon')?.classList.contains('fa')){
+          this.term=''
+          document.getElementById('icon')?.classList.remove('fa-times')
+     document.getElementById('icon')?.classList.remove('fa')
+    
+     document.getElementById('icon')?.classList.add('porto-icon-search-3') 
+   
+      }
+      this.getproducts()
+     
     }
     shrink(){
   this.flag=0

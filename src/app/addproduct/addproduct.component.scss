@@ -186,6 +186,12 @@ thead, tfoot,tfoot,#link1{
    color: silver;
    
 }
+.hide{
+  display:none
+}
+.show{
+  display: block;
+}
 // pop up window////////////////////////////
 .modal {
   display: none; /* Hidden by default */

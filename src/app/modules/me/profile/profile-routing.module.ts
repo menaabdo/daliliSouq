@@ -48,6 +48,8 @@ import { StoresellercoderejectedComponent } from '../../store/sotre-details/comp
 import { SellercodesalesComponent } from './profile-components/sales/sellercodesales/sellercodesales.component';
 import { RepostproductComponent } from './profile-components/repostproduct/repostproduct.component';
 import { ReportproductComponent } from './profile-components/reportproduct/reportproduct.component';
+import { CanDeactivateGuard } from 'src/app/guards/can-deactivate.guard';
+
 const routes: Routes = [
   {
     path: "",
@@ -79,7 +81,8 @@ const routes: Routes = [
           {path:'properity-color/:data',component:ColorsSizesComponent},
           {
             path:'add_product/:data',
-            component:AddproductComponent
+            component:AddproductComponent,
+            
           },
           {
             path:'confirm/:id',

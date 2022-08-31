@@ -18,7 +18,12 @@ catrgory_id!:number
   constructor(private Adsserve:UserService,private route:Router) { }
 
   ngOnInit(): void {
-    this.Adsserve.Ads().subscribe((res)=>{console.log(res); this.response=res;this.Ads=this.response.Response.active.data;console.log(this.Ads)})
+    this.getproducts()
+      }
+  getproducts(){
+        console.log(this.term)
+    this.Adsserve.Ads(this.term).subscribe((res)=>{console.log(res); this.response=res;this.Ads=this.response.Response.active.data;console.log(this.Ads)})
+
   }
   shrink(){
 this.flag=0
@@ -36,6 +41,7 @@ this.flag=0
    
  }   
  close(){
+   //this.getproducts()
   if(this.term!='')
   {document.getElementById('icon')?.classList.remove('fa-times')
   document.getElementById('icon')?.classList.remove('fa')
@@ -49,14 +55,17 @@ this.flag=0
 }
  }
  search(){
+  this.getproducts()
    if(this.term=='')
   {document.getElementById('icon')?.classList.remove('fa-times')
   document.getElementById('icon')?.classList.remove('fa')
  
   document.getElementById('icon')?.classList.add('porto-icon-search-3') 
 }
+
  }
  toggle(){
+  this.getproducts()
    if( document.getElementById('icon')?.classList.contains('fa')){
        this.term=''
        document.getElementById('icon')?.classList.remove('fa-times')
@@ -65,6 +74,7 @@ this.flag=0
   document.getElementById('icon')?.classList.add('porto-icon-search-3') 
 
    }
+   this.getproducts()
   
  }
  change(e:any){
