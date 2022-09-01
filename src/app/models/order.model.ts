@@ -47,6 +47,6 @@ export interface Order {
     points_redeem:number
     products:any[]
     customer_note:string
-    
+    last_page:number
     
 }

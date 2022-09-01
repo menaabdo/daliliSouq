@@ -98,17 +98,17 @@
             </div>
             <div class="content">
                 <div class="imgBx">
-                    <img src="https://dalilisouq.com/{{order.product.image}}" alt="Watch Brand">
+                    <img src="https://dalilisouq.com/{{order.product?.image}}" alt="Watch Brand">
                 </div>
                 <div class="textBx">
-                    <h3 class="title">{{order.product.name}}</h3>
-                    <p class="price">{{order.product.price}} EGP</p>
+                    <h3 class="title">{{order.product?.name}}</h3>
+                    <p class="price">{{order.product?.price}} EGP</p>
                     <p>Rate this product:</p>
                     <p class="ratings">
-                        <i class="fa fa-star " [ngClass]='order.product.rate>1?"active":""'></i>
-                        <i class="fa fa-star  "[ngClass]='order.product.rate>2?"active":""'></i>
-                        <i class="fa fa-star  "[ngClass]='order.product.rate>3?"active":""'></i>
-                        <i class="fa fa-star  " [ngClass]='order.product.rate>4?"active":""'></i>
+                        <i class="fa fa-star " ></i>
+                        <i class="fa fa-star  "></i>
+                        <i class="fa fa-star  "></i>
+                        <i class="fa fa-star  "></i>
                         <i class="fa fa-star"></i>
                     </p>
                 </div>
@@ -123,3 +123,18 @@
 </div>
 </div>
 </section>
+<nav aria-label="Page navigation example" class="m-3">
+    <ul class="pagination">
+      <!-- <li class="page-item">
+        <a class="page-link" href="#" aria-label="Previous">
+          <span aria-hidden="true">&laquo;</span>
+        </a>
+      </li> -->
+      <li class="page-item" *ngFor='let mypage of pages'><a [ngClass]='mypage==page?"activepage":""' class="page-link " (click)='paginate(mypage)'>{{mypage}}</a></li>
+       <li class="page-item">
+        <!-- <a class="page-link" href="#" aria-label="Next">
+          <span aria-hidden="true">&raquo;</span>
+        </a>
+      </li> -->
+    </ul>
+  </nav>

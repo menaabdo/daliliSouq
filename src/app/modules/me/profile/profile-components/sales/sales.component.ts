@@ -11,21 +11,39 @@ export class SalesComponent implements OnInit {
 response!:any
 sales!:any 
 page=1
+pages!:number[]
 
   constructor(private sale:UserService,private route:Router) { }
 
   ngOnInit(): void {
     this.sale.mysales(this.page).subscribe((res)=>{this.response=res;
       this.sales=this.response.Response.orders.data;
-    if(this.sales){ while(this.page<=10)
-    {   this.page++
-   this.sale.mysales(this.page).subscribe((res)=>{this.response=res;
-     let sales=this.response.Response.orders.data;
-     this.sales=this.sales.concat(sales)
+      console.log(res)
+      this.pages=[]
+      for(let i =0;i<  this.response.Response.orders.last_page;i++){
+        this.pages.push(i+1)
+      }
+  //   if(this.sales){ while(this.page<=10)
+  //   {   this.page++
+  //  this.sale.mysales(this.page).subscribe((res)=>{this.response=res;
+  //    let sales=this.response.Response.orders.data;
+  //    this.sales=this.sales.concat(sales)
     
-      console.log(sales.length)})
+  //     console.log(sales.length)})
 
-      }}})
+  //     }}
+    })
+  }
+  paginate(page:number){
+    this.page=page
+    this.sale.mysales(this.page).subscribe((res)=>{this.response=res;
+      this.sales=this.response.Response.orders.data;
+      this.pages=[]
+      for(let i =0;i<  this.response.Response.orders.last_page;i++){
+        this.pages.push(i+1)
+      }
+    })
+
   }
   details(id:number){
     this.route.navigateByUrl(`/home/me/profile/saledetailes/${id}`)
