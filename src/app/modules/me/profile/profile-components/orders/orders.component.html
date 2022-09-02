@@ -5,8 +5,8 @@
     <span>My orders</span>
 </div>
 <div class="tabs">
-    <button class="tablinks waiting " [ngClass]='is_complete==0?"active":""' (click)='waitingorders()' >Waiting</button>
-    <button class="tablinks delivered" [ngClass]='is_complete==1?"active":""'  (click)='deliveredorders()' >Delivered</button>
+    <button class="tablinks waiting " [ngClass]='is_complete==0?"activebtn":"nonactivebtn"'   (click)='waitingorders()' >Waiting</button>
+    <button class="tablinks delivered" [ngClass]='is_complete==0?"nonactivebtn":"activebtn"'  (click)='deliveredorders()' >Delivered</button>
 </div>
 <div class='row d-flex justify-content-around' >
     <div class='col-md-5 ' *ngFor='let order of orders'>

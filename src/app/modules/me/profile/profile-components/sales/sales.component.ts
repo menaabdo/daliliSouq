@@ -35,9 +35,13 @@ pages!:number[]
     })
   }
   paginate(page:number){
+    document.getElementById('load')!.style.display='block'
+    
     this.page=page
     this.sale.mysales(this.page).subscribe((res)=>{this.response=res;
       this.sales=this.response.Response.orders.data;
+      document.getElementById('load')!.style.display='none'
+    
       this.pages=[]
       for(let i =0;i<  this.response.Response.orders.last_page;i++){
         this.pages.push(i+1)
