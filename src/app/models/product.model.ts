@@ -28,6 +28,7 @@ import { Color } from './color.model'
      comments:number
      is_complete:boolean
      created_at:string
+     customer_note?:any
      rate:number
      store?:Store
      title:string

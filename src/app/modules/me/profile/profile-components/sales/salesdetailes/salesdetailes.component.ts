@@ -14,6 +14,7 @@ export class SalesdetailesComponent implements OnInit {
   id!:number
   response!:any
   order!:Order
+  flag=0
     constructor(private orderdetailes:UserService,private activeroute: ActivatedRoute,) {
       }
   
@@ -24,6 +25,7 @@ export class SalesdetailesComponent implements OnInit {
   this.orderdetailes.seller_order(this.id).subscribe((res)=>{this.response=res;this.order=this.response.Response;console.log(res)})
     }
     setoutofstock(cart_id:number){
+      this.flag=1
 this.orderdetailes.setoutofstock(cart_id).subscribe((res)=>{console.log(res); window.location.reload()})
     }
 
