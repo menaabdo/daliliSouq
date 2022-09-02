@@ -37,8 +37,11 @@
                 </li>
                 <li>
                     <a routerLink="favourites" [routerLinkActive]="'active'" [routerLinkActiveOptions]="{exact: false}">
+                       
                         <i class="fa fa-heart"></i>
+                
                         <span> my favourites </span>
+                        
                     </a>
                 </li>
                 <li>
@@ -79,14 +82,34 @@
                 </li>
                 <li>
                     <a routerLink="paid-sales" [routerLinkActive]="'active'" [routerLinkActiveOptions]="{exact: false}">
+                        <div class="d-flex justify-content-between">
+                  
+                            <div>
                         <i class="fas fa-credit-card"></i>
+
                         <span> paid sales </span>
+                        </div>
+                       
+                       
+                    
+                        <div>
+                            <span  *ngIf='count_paid!=0' style="font-size: 9px;" class="total  border   p-2 rounded-circle">{{count_paid}}</span>
+                        </div>
+                        </div>
                     </a>
                 </li>
                 <li>
                     <a routerLink="rejected-sales" [routerLinkActive]="'active'" [routerLinkActiveOptions]="{exact: false}">
+                        <div class="d-flex justify-content-between">
+                  
+                            <div>
                         <i class="fas fa-receipt"></i>
                         <span> rejected sales </span>
+                        </div>
+                        <div>
+                            <span  *ngIf='count_rejected!=0' style="font-size: 9px;" class="total  border   p-2 rounded-circle">{{count_rejected}}</span>
+                        </div>
+                        </div>
                     </a>
                 </li>
                 <li>

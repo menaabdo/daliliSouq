@@ -14,12 +14,13 @@ export class SellercodepaidComponent implements OnInit {
   response!:any
   order!:Order
   orders!:Order[]
+  page=1
     constructor(private orderdetailes:UserService,private activeroute: ActivatedRoute,) {
       this.id=this.activeroute.snapshot.params['id'] 
      }
   
     ngOnInit(): void {
-      this.orderdetailes.paid_orders(undefined as unknown  as string,undefined as unknown  as string).subscribe((res)=>{
+      this.orderdetailes.paid_orders(this.page,undefined as unknown  as string,undefined as unknown  as string).subscribe((res)=>{
         this.response=res;
         this.orders=this.response.Response.orders.data;
         this.order=this.orders[this.id]

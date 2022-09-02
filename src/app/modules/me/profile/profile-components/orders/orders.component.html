@@ -5,8 +5,8 @@
     <span>My orders</span>
 </div>
 <div class="tabs">
-    <button class="tablinks waiting active" (click)='waitingorders()' >Waiting</button>
-    <button class="tablinks delivered" (click)='deliveredorders()' >Delivered</button>
+    <button class="tablinks waiting " [ngClass]='is_complete==0?"active":""' (click)='waitingorders()' >Waiting</button>
+    <button class="tablinks delivered" [ngClass]='is_complete==1?"active":""'  (click)='deliveredorders()' >Delivered</button>
 </div>
 <div class='row d-flex justify-content-around' >
     <div class='col-md-5 ' *ngFor='let order of orders'>
@@ -123,6 +123,9 @@
 </div>
 </div>
 </section>
+<div id='load' class="fa-3x " style="display: none;">
+    <i class="fas fa-spinner fa-spin" ></i>
+    </div>
 <nav aria-label="Page navigation example" class="m-3">
     <ul class="pagination">
       <!-- <li class="page-item">

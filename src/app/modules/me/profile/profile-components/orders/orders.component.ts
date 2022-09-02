@@ -41,9 +41,11 @@ pages?:number[]
  
   }
   waitingorders(){
+    
   this.page=1
     this.is_complete=0
     this.ordersserve.myorders(this.is_complete,this.page).subscribe((res)=>{console.log(res);this.response=res;this.orders=this.response.Response.data;
+     
       this.pages=[]
                 for(let i =0;i<  this.response.Response.last_page;i++){
                   this.pages.push(i+1)
@@ -81,9 +83,13 @@ pages?:number[]
   }
   
 paginate(page:number){
+  document.getElementById('load')!.style.display='block'
+    
   this.page=page
  
   this.ordersserve.myorders(this.is_complete,this.page).subscribe((res)=>{console.log(res);this.response=res;this.orders=this.response.Response.data;
+    document.getElementById('load')!.style.display='none'
+    
     this.pages=[]
                 for(let i =0;i<  this.response.Response.last_page;i++){
                   this.pages.push(i+1)

@@ -266,7 +266,7 @@ this.image_file=file
  
 
   }
-  paid_orders(start_d:string=undefined as unknown as string,end_d:string=undefined as unknown as string){
+  paid_orders(page:number,start_d:string=undefined as unknown as string,end_d:string=undefined as unknown as string){
     const headers =this.headers
     
     if(start_d||end_d)
@@ -277,9 +277,9 @@ this.image_file=file
     let mounth2=end_d.slice(5,7)
     let day2=end_d.slice(8)
     console.log(start_d,end_d)
-     return this.httpclient.post(`${environment.apiURL}seller/paid_orders?os=android`,{'start_date':`${day1}-${mounth1}-${year1}`,'end_date':`${day2}-${mounth2}-${year2}`},{headers})
+     return this.httpclient.post(`${environment.apiURL}seller/paid_orders?os=android`,{'start_date':`${day1}-${mounth1}-${year1}`,'end_date':`${day2}-${mounth2}-${year2},page:${page}`},{headers})
  }
-    return this.httpclient.post(`${environment.apiURL}seller/paid_orders?os=android`,{},{headers})
+    return this.httpclient.post(`${environment.apiURL}seller/paid_orders?os=android`,{page:`${page}`},{headers})
  
 
   }

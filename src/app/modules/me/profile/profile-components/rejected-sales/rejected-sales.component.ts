@@ -14,24 +14,39 @@ orders!:Order[]
 start_d!:string
 end_d!:string
 page=1
+pages:number[]=[]
   constructor(private router:Router,private rejected:UserService) { }
 
   ngOnInit(): void {
     this.rejected.rejected_orders(this.page).subscribe((res)=>{this.response=res;this.orders=this.response.Response.orders.data
-       if(this.orders)
-       {while(this.page<11){
-        this.page++
-        this.rejected.rejected_orders(this.page).subscribe((res)=>{
-          this.response=res;
-          let orders=this.response.Response.orders.data
-          this.orders=this.orders.concat(orders)
+       for(let i =0;i<  this.response.Response.orders.last_page;i++){
+        this.pages.push(i+1)
+      }
+      //  if(this.orders)
+      //  {while(this.page<11){
+      //   this.page++
+      //   this.rejected.rejected_orders(this.page).subscribe((res)=>{
+      //     this.response=res;
+      //     let orders=this.response.Response.orders.data
+      //     this.orders=this.orders.concat(orders)
           
-        })
-        if(this.page==10)
-        break;
-       }}
+      //   })
+      //   if(this.page==10)
+      //   break;
+      //  }}
       })
   }
+  paginate(page:number){
+    document.getElementById('load')!.style.display='block'
+    
+    this.page=page
+    this.rejected.rejected_orders(this.page).subscribe((res)=>{
+      this.response=res;this.orders=this.response.Response.orders.data
+      document.getElementById('load')!.style.display='none'
+    
+    })
+  }
+
   details(order_id:number){
     console.log(order_id)
     this.router.navigateByUrl(`/home/me/profile/seller-order/${order_id}`)

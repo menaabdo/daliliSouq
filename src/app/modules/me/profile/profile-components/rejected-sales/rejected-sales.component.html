@@ -1,6 +1,7 @@
+
 <div class='mx-3 bg-white d-flex justify-content-between'>
 <h3 class="px-3">rejected sales</h3>
-<h3 class="mb-2 pr-3 text-danger">{{response.Response.total}} EGP</h3>
+<h3 class="mb-2 pr-3 text-danger">{{response?.Response.total}} EGP</h3>
 </div>
 <div class='mx-3 bg-white d-flex justify-content-between'>
 
@@ -73,3 +74,21 @@
         </div>
     </div>
 </div>
+<div id='load' class="fa-3x " style="display: none;">
+    <i class="fas fa-spinner fa-spin"></i>
+    </div>
+<nav aria-label="Page navigation example" class="m-3">
+    <ul class="pagination">
+      <!-- <li class="page-item">
+        <a class="page-link" href="#" aria-label="Previous">
+          <span aria-hidden="true">&laquo;</span>
+        </a>
+      </li> -->
+      <li class="page-item" *ngFor='let mypage of pages'><a [ngClass]='mypage==page?"activepage":""' class="page-link " (click)='paginate(mypage)'>{{mypage}}</a></li>
+       <li class="page-item">
+        <!-- <a class="page-link" href="#" aria-label="Next">
+          <span aria-hidden="true">&raquo;</span>
+        </a>
+      </li> -->
+    </ul>
+  </nav>
