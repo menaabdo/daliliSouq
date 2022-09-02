@@ -3,8 +3,8 @@
         <div class="card">
             <div class="card-body text-center">
                 <h5>current balance</h5>
-                <h2>7734 <small>points</small> </h2>
-<button class="btn btn-primary"> BUY BALANCE</button>
+                <h2>{{profile_data?.Response?.wallet}} <small>points</small> </h2>
+<a class="btn btn-primary" routerLink='balances'> BUY BALANCE</a>
 
             </div>
         </div>
@@ -15,14 +15,11 @@
                 <h5>reward points system</h5>
 
                 <ul class="list-group">
-                    <li class="list-group-item d-flex justify-content-between">
-                        <span>10 points</span>
-                        <span>100EGP</span>
+                    <li *ngFor='let mypoint of mypoints' class="list-group-item d-flex justify-content-between">
+                        <span>{{mypoint.point.points}} points</span>
+                        <span>{{mypoint.price}}EGP</span>
                     </li>
-                    <li class="list-group-item d-flex justify-content-between">
-                        <span>100 points</span>
-                        <span>1000EGP</span>
-                    </li>
+                  
                 </ul>
 
             </div>

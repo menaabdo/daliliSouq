@@ -60,6 +60,7 @@ import { EditaddressincartComponent } from './modules/pages/cartcheckout/editadd
 import { RepostproductComponent } from './modules/me/profile/profile-components/repostproduct/repostproduct.component';
 import { RepostproductinstoreComponent } from './modules/store/products/components/repostproductinstore/repostproductinstore.component';
 import { ReportproductComponent } from './modules/me/profile/profile-components/reportproduct/reportproduct.component';
+import { BalancesComponent } from './modules/me/my-wallet/balances/balances.component';
 
 
 
@@ -109,6 +110,7 @@ import { ReportproductComponent } from './modules/me/profile/profile-components/
     RepostproductComponent,
     RepostproductinstoreComponent,
     ReportproductComponent,
+    BalancesComponent,
     
 
     

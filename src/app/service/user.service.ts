@@ -474,6 +474,21 @@ this.image_file=file
   return this.httpclient.post(`${environment.apiURL}checkout?os=android`,data,{headers})
  
  }
+ reward_points(){
+  this.country_id=localStorage.getItem('country_id') as string
+  return this.httpclient.get(`${environment.apiURL}reward_points?os=android&country_id=${this.country_id}`)
+ }
+ balances(){
+  this.country_id=localStorage.getItem('country_id') as string
+  return this.httpclient.get(`${environment.apiURL}balances?os=android&country_id=${this.country_id}`)
+ 
+ }
+ charge(id:number){
+  const headers =this.headers
+  return this.httpclient.post(`${environment.apiURL}profile/charge?os=android`,{balance_id:id},{headers})
+ 
+
+ }
   
 }
 

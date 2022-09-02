@@ -15,5 +15,7 @@ export interface Package{
     view:number
     types:any[]
     views:number
+    ////////////
+points:number
 }
 
