@@ -18,6 +18,8 @@ export class ProfileEditComponent implements OnInit {
   country!:Country
   allcountries:any
   countries!:Country[]
+  country_code!:string
+  is_confirm=0
 
   constructor(private profile:UserService,private categoryserve:CategoryService,private route:Router) { }
    fd=new FormData();
@@ -26,15 +28,21 @@ export class ProfileEditComponent implements OnInit {
     }).subscribe((res)=>{
   this.profile_data=res
   this.country=this.profile_data.Response.country 
+  this.country_code=this.profile_data.Response.country_code
   let mobile=(this.profile_data.Response.mobile).toString()
       mobile= mobile.slice((this.country.phone_code).toString().length)
         this.profile_data.Response.mobile=mobile
+        console.log(this.country_code)
   this.gender=this.profile_data?.Response.gender
   this.imageSrc=`https://dalilisouq.com/${this.profile_data.Response.image}`
   console.log(this.profile_data)
  
 })
 
+  }
+  changecountrycode(event:any){
+     this.country_code=event.target.value
+    console.log(event.target.value)
   }
   changegender(gender:number){
   
@@ -47,9 +55,15 @@ export class ProfileEditComponent implements OnInit {
  this.categoryserve.countries().subscribe((res)=>{this.allcountries=res.Response.countries;console.log(this.allcountries)})
   }
 
-
+confirm(){
+  if(this.is_confirm==0)
+  this.is_confirm=1
+  else
+  this.is_confirm=0
+  console.log(this.is_confirm)
+}
 edit(){
-
+this.fd.append('is_public',this.is_confirm as unknown as string)
  this.fd.append('name',this.profile_data.Response.name)
  this.fd.append('s_name',this.profile_data.Response.s_name)
  this.fd.append('email',this.profile_data.Response.email)
@@ -65,7 +79,7 @@ edit(){
  if(this.selectedfile)
  this.fd.append('image',this.selectedfile as unknown as string)
   
-
+this.fd.append('country_code',this.country_code)
 
   this.profile.update(this.fd).subscribe((res)=>{this.profile_data=res;this.route.navigateByUrl('/home/me/settings')})
 

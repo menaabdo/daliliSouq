@@ -20,7 +20,7 @@ export class ProfileDataComponent implements OnInit {
     this.profile.profile({country_id:1    
         }).subscribe((res)=>{
       this.profile_data=res
-      console.log(this.cookieService.get('token'))
+      console.log(res)
     })
    }
 

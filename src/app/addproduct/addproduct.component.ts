@@ -95,6 +95,12 @@ marker!:any
 
 
   ngOnInit(): void {
+  //   this.route.setUpLocationChangeListener = function() {
+  //     window.addEventListener("beforeunload", function (e) {
+  //     console.log('kskkskskksks')   
+  //     });
+  // };
+    
     L.Icon.Default.imagePath = "assets/marker-icon.png" 
     this.storessserve.cities().subscribe((res)=>{this.response1=res;this.cities=this.response1.Response
       
