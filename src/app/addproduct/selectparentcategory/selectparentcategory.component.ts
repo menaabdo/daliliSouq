@@ -25,7 +25,7 @@ selectedcolorid?:number
  sizes!:[]
  next!:number
  
-  properties!:properity[]
+  properties!:any
   i:number=0
  
   constructor(private _location: Location,private catserve:CategoryService,private route:Router,private active:ActivatedRoute) {
@@ -40,6 +40,7 @@ selectedcolorid?:number
   console.log(this.data)
    
     this.data=JSON.parse(this.data)
+    console.log(this.data.update2)
   //   if(this.data.store_flag==1)
   //  { this.catserve.all().subscribe((res)=>{this.respose=res
   //     this.categories=this.respose.Response
@@ -78,9 +79,14 @@ if(this.data.update2==0&&(this.data.update==0||this.data.category_ids[0]==this.d
   console.log(typeof(this.data))
   this.catserve.sub_categories(this.data.category_ids[(this.data.category_ids).indexOf(this.data.update)-1]).subscribe(
     (res)=>{this.respose=res;this.categories=this.respose.Response
+      // this.data=JSON.parse(this.data)
+      // this.data.category_ids.pop()
+      // this.data.category_name.pop()
+      // this.data=JSON.stringify(this.data)
     })
 }
 }
+
   this.data=JSON.stringify(this.data)
 }
 getid(id:number,has_category:boolean,name:string,prop:[],is_color:number,is_size:number,is_online:number){
@@ -221,7 +227,7 @@ submit(){
  if(this.next!=1)
 { this.data=JSON.parse(this.data)
   this.data.properties=properities
-  if((this.data.is_color!=0||this.data.is_size!=0)&&this.data.update2==0)
+  if((this.data.is_color!=0||this.data.is_size!=0))
   { 
     this.data=JSON.stringify(this.data)
      this.route.navigateByUrl(`home/me/profile/my-profile/properity-color/${this.data}`)
@@ -242,6 +248,73 @@ submit(){
  
   //this.route.navigateByUrl(`home/me/profile/my-profile/add_product/${this.data}`)
 
+}
+back(){
+  //this.data=JSON.parse(this.data)
+  console.log((this.properties))
+  let data=JSON.parse(this.data)
+  data.update=0
+  if(data.colors)
+    delete (data.colors)
+    if(data.properities)
+      delete(data.properties)
+  if(data.properities||this.properties){
+    if(data.colors)
+    delete (data.colors)
+      delete(data.properties)
+    this.catserve.sub_categories(data.category_ids[data.category_ids.length-2]).subscribe(
+      (res)=>{this.respose=res;this.categories=this.respose.Response
+        data.category_ids.pop()
+        data.category_name.pop()
+       this.properties=undefined 
+        console.log(data.category_ids)
+        this.data=JSON.stringify(data)
+      })
+  }else
+ { if(data.category_ids&&data.category_ids.length>1)
+          {
+            console.log(data.category_ids[(data.category_ids).indexOf(data.update)-1])
+            
+            this.catserve.sub_categories(data.category_ids[data.category_ids.length-2]).subscribe(
+              (res)=>{this.respose=res;this.categories=this.respose.Response
+                data.category_ids.pop()
+              data.category_name.pop()
+                console.log(data.category_ids)
+                this.data=JSON.stringify(data)
+              })
+          }
+          else{
+            if(data.category_ids&&data.category_ids.length==1)
+            { if(!data.store_id)
+              {   data.category_ids.pop()
+                data.category_name.pop()
+               
+                console.log(data.category_ids)
+                this.data=JSON.stringify(data)
+                this.catserve.categories_store(0).subscribe((res)=>{this.respose=res
+                this.categories=this.respose.Response
+            })}else{
+              data.category_ids.pop()
+              data.category_name.pop()
+                console.log(data.category_ids)
+               
+              this.catserve.categories_store(data.store_id).subscribe((res)=>{this.respose=res
+                this.categories=this.respose.Response
+            this.data=JSON.stringify(data)
+
+            })
+            }
+          }else{
+            
+            console.log(this.data)
+            data.update=0
+            this.data=JSON.stringify(data)
+            if(data.category_ids.length==0){
+              this.route.navigateByUrl(`home/me/profile/my-profile/add_product/${(this.data)}`)
+
+            }
+          }
+          }}
 }
 
 }

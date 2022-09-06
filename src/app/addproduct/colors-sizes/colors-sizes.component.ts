@@ -154,5 +154,23 @@ this.quantity++
 
     this.route.navigateByUrl(`home/me/profile/my-profile/add_product/${this.data.replaceAll('#','*')}`)
   }
+  back(){
+  console.log(this.data)
+ 
+    if(this.data.properties&&this.data.properties.length!=0)
+    { delete (this.data.colors)
+      delete(this.data.properties)
+      this.data.update2=this.data.category_ids[(this.data.category_ids.length)-1]
+ 
+    this.route.navigateByUrl(`/home/me/profile/my-profile/select-category/${JSON.stringify(this.data)}`)
+}else{
+  console.log(this.data.id.length)
+  this.data.update=this.data.category_ids[this.data.category_ids.length-1]
+   
+this.route.navigateByUrl(`/home/me/profile/my-profile/select-category/${(JSON.stringify(this.data)).replaceAll('#','*')}`)
+
+}
+      
+  }
 
 }
