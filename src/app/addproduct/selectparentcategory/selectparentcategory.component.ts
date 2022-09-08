@@ -24,7 +24,7 @@ selectedcolorid?:number
  colors!:Color[]
  sizes!:[]
  next!:number
- 
+ term!:string
   properties!:any
   i:number=0
  
@@ -315,6 +315,47 @@ back(){
             }
           }
           }}
+}
+close(){
+  //this.getproducts()
+  this.ngOnInit()
+ if(this.term!='')
+ {document.getElementById('icon')?.classList.remove('fa-times')
+ document.getElementById('icon')?.classList.remove('fa')
+
+ document.getElementById('icon')?.classList.add('porto-icon-search-3') 
+}
+ else{document.getElementById('icon')?.classList.remove('porto-icon-search-3')
+ console.log(document.getElementById('icon'))
+ document.getElementById('icon')?.classList.add('fa') 
+ document.getElementById('icon')?.classList.add('fa-times') 
+}
+}
+search(){
+ this.ngOnInit()
+  if(this.term=='')
+ {document.getElementById('icon')?.classList.remove('fa-times')
+ document.getElementById('icon')?.classList.remove('fa')
+
+ document.getElementById('icon')?.classList.add('porto-icon-search-3') 
+}
+
+}
+toggle(){
+ 
+  if( document.getElementById('icon')?.classList.contains('fa')){
+      this.term=''
+      document.getElementById('icon')?.classList.remove('fa-times')
+ document.getElementById('icon')?.classList.remove('fa')
+
+ document.getElementById('icon')?.classList.add('porto-icon-search-3') 
+
+  }
+  this.ngOnInit()
+ 
+}
+change(e:any){
+  e.target.style.color='black'
 }
 
 }

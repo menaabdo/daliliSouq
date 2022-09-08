@@ -32,7 +32,7 @@ export class StoreMySalesComponent implements OnInit {
   }
     getdetailes(id:number){
       
-       this.route.navigateByUrl(`/home/me/store/${this.id}/order-detailes/${id}/${this.id}`)
+       this.route.navigateByUrl(`/home/me/store/${this.id}/sale-detailes/${id}/${this.id}`)
     }
 
 }

@@ -61,6 +61,7 @@ import { RepostproductComponent } from './modules/me/profile/profile-components/
 import { RepostproductinstoreComponent } from './modules/store/products/components/repostproductinstore/repostproductinstore.component';
 import { ReportproductComponent } from './modules/me/profile/profile-components/reportproduct/reportproduct.component';
 import { BalancesComponent } from './modules/me/my-wallet/balances/balances.component';
+import { StoreSalesDetailesComponent } from './modules/store/sotre-details/components/store-my-sales/store-sales-detailes/store-sales-detailes.component';
 
 
 
@@ -111,6 +112,7 @@ import { BalancesComponent } from './modules/me/my-wallet/balances/balances.comp
     RepostproductinstoreComponent,
     ReportproductComponent,
     BalancesComponent,
+    StoreSalesDetailesComponent,
     
 
     

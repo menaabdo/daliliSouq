@@ -7,6 +7,7 @@ import { BestSellerComponent } from './components/best-seller/best-seller.compon
 import { RejectedSalesComponent } from './components/rejected-sales/rejected-sales.component';
 import { StoreFollowersComponent } from './components/store-followers/store-followers.component';
 import { StoreMySalesComponent } from './components/store-my-sales/store-my-sales.component';
+import { StoreSalesDetailesComponent } from './components/store-my-sales/store-sales-detailes/store-sales-detailes.component';
 import { StorePaidSalesComponent } from './components/store-paid-sales/store-paid-sales.component';
 import { StoreorderdetailesComponent } from './components/store-paid-sales/storeorderdetailes/storeorderdetailes.component';
 import { StoresellercodepaidComponent } from './components/store-paid-sales/storesellercodepaid/storesellercodepaid.component';
@@ -39,6 +40,10 @@ const routes: Routes = [
       
       {path:'order-detailes/:order-id/:store-id',
       component:StoreorderdetailesComponent
+    },
+    {
+      path:'sale-detailes/:order-id/:store-id',
+      component:StoreSalesDetailesComponent
     },
       {
         path: "rejected-sales/:id",

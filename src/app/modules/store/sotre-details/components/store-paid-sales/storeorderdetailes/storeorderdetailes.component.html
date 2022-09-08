@@ -66,13 +66,17 @@
                                 </div>
                                 </div>
                                 </div>
-                                <h3 class="title">{{product.name}}</h3>
+                                <h3 class="title d-flex justify-content-start align-item-center" ><span>{{product.name}}</span>
+                                    <span class="bg-light bordery h6 px-5 py-3 ml-5 border-secondary" style=" border-radius: 20%;">Ads:#{{product.id}}</span>
+                                </h3>
                                 <p class="price" py-2 mx-5 >{{product.price}} EGP</p>
-                               <div class="row">
-                                <p  class="bg-light border py-3 mx-3 rounded-pill text-center text-dark col-md-2"> QTY :{{product.quantity}} </p>
-                                <p class="price" py-2 mx-3 > {{product.size_id}} </p>
-                               
-                                <span  id='color-product' [style.background-color]='product.color_id' ></span>
+                               <div class="row ">
+                            
+                                <p  class="bg-light border py-3  rounded-pill text-center text-dark col-md-2" style=" border-radius: 20%;"> QTY :{{product.quantity}} </p>
+                                <p *ngIf='product.size_id' class=" bg-light border py-3 mx-3 rounded-pill text-center text-dark col-md-2" style="border-radius: 20%;"> {{product.size_id}} </p>
+                                <p class="pt-5" id='color-product' [style.background-color]='product.color_id' ></p>
+                           
+                           
                                 
                               </div>
                                 <p>Rate this product:</p>
