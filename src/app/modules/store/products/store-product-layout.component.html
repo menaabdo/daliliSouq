@@ -4,18 +4,21 @@
             <a  class='' routerLink="active-ads/{{id}}" [routerLinkActive]="'active'" [routerLinkActiveOptions]="{exact: true}">
                 <i class="fa fa-store"></i>
                 <span>active ads</span>
+                <div>{{ads?.active.total}}</div>
             </a>
         </li>
         <li class='col-md-4'>
             <a routerLink="passive-ads/{{id}}" [routerLinkActive]="'active'" [routerLinkActiveOptions]="{exact: false}">
                 <i class="fas fa-credit-card"></i>
                 <span>passive ads</span>
+                <div>{{ads?.passive.total}}</div>
             </a>
         </li>
         <li class="col-md-4 mx-0">
             <a routerLink="expired-ads/{{id}}" [routerLinkActive]="'active'" [routerLinkActiveOptions]="{exact: false}">
                 <i class="fas fa-money-check"></i>
                 <span>expired ads</span>
+                <div>{{ads?.expired.total}}</div>
             </a>
         </li>
         <!-- <li>
