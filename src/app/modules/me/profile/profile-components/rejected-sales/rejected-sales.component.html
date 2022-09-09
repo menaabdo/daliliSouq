@@ -51,8 +51,8 @@
                     order ({{s.id}})
                 </p>
                 <p class='m-0 d-flex flex-column'>
-                    <span>18-02-2022</span>
-                    <span>12:09 AM</span>
+                    <span>{{s.created_at}}</span>
+                   
                 </p>
             </div>
             <div class="card-body " (click)='details(s.id)'>
@@ -63,10 +63,13 @@
                     </div>
                     <div>
                         <h4 class='m-0'>{{s.f_name}} {{s.s_name}}</h4>
-                        <p class='my-3 d-block'>cash on delivery</p>
+                        <p class='my-3 d-block' *ngIf='s.payment_type==0'>cash on delivery</p>
                         <h3 class='m-0'>{{s.total}} EGP</h3>
                     </div>
                 </div>
+                <span class="pr-2 d-flex justify-content-start align-item-center"> <img *ngIf='s.is_fast==1' src='assets/images/fast.svg ' style="width: 20px !important;">
+                    <span class=" ">{{s.date}}-{{s.time}}</span></span>
+            
                 <div class="text-center">
                     <a routerLink='/home/me/profile/sellercoderejected//{{i}}' class="btn btn-sm btn-primary mt-4">view code</a>
                 </div>

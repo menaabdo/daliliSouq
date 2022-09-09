@@ -13,9 +13,11 @@
             <div class='col-md-4'>{{order.created_at}}</div>
         </div>
         <div class="row p-3 pl-5">
-            <div class='col-md-8'> cash on delivery  </div>
-               <div class="col-md-4 d-flex justify-content-start">
-                <img *ngIf='order.is_fast==1' src='/assets/images/fast.svg ' style="width: 20px !important;">
+            <div class='col-md-8' *ngIf='order.payment_type==0'> cash on delivery  </div>
+            <div class='col-md-8' *ngIf='order.payment_type==2'> online payement  </div>
+               
+            <div class="col-md-4 d-flex justify-content-start">
+                <img *ngIf='order.is_fast==1' src='assets/images/fast.svg ' style="width: 20px !important;">
                    <span>{{order.date}}-{{order.time}}</span> 
                 </div>
           

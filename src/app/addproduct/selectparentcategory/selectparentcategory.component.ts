@@ -53,15 +53,15 @@ if(this.data.update2==0&&(this.data.update==0||this.data.category_ids[0]==this.d
   delete(this.data.properties)
   if(this.data.store_id==0)
   { 
-     this.catserve.categories_store(this.data.store_id).subscribe((res)=>{this.respose=res
+     this.catserve.categories_store(this.data.store_id,this.term).subscribe((res)=>{this.respose=res
       this.categories=this.respose.Response
   })}
-  else{this.catserve.categories_store(this.data.store_id).subscribe((res)=>{
+  else{this.catserve.categories_store(this.data.store_id,this.term).subscribe((res)=>{
       this.respose=res
       this.categories=this.respose.Response
     })
   }}else{if(this.data.update2!=0){
-    this.catserve.sub_categories(this.data.category_ids[(this.data.category_ids).indexOf(this.data.update2)-1]).subscribe(
+    this.catserve.sub_categories(this.data.category_ids[(this.data.category_ids).indexOf(this.data.update2)-1],this.term).subscribe(
     (res)=>{this.respose=res;
       let categories:Category[]
       categories=this.respose.Response
@@ -77,7 +77,7 @@ if(this.data.update2==0&&(this.data.update==0||this.data.category_ids[0]==this.d
     })
 }else {
   console.log(typeof(this.data))
-  this.catserve.sub_categories(this.data.category_ids[(this.data.category_ids).indexOf(this.data.update)-1]).subscribe(
+  this.catserve.sub_categories(this.data.category_ids[(this.data.category_ids).indexOf(this.data.update)-1],this.term).subscribe(
     (res)=>{this.respose=res;this.categories=this.respose.Response
       // this.data=JSON.parse(this.data)
       // this.data.category_ids.pop()
@@ -123,7 +123,7 @@ getid(id:number,has_category:boolean,name:string,prop:[],is_color:number,is_size
 this.data.category_ids.push(id)
 this.data.category_name.push(name)
 this.data=JSON.stringify(this.data)
-    this.catserve.sub_categories(id).subscribe(
+    this.catserve.sub_categories(id,this.term).subscribe(
         (res)=>{this.respose=res;this.categories=this.respose.Response})
      // this.i++  
    //this.route.navigateByUrl(`home/me/profile/my-profile/select-category/${id}/${this.data}`)
@@ -262,7 +262,7 @@ back(){
     if(data.colors)
     delete (data.colors)
       delete(data.properties)
-    this.catserve.sub_categories(data.category_ids[data.category_ids.length-2]).subscribe(
+    this.catserve.sub_categories(data.category_ids[data.category_ids.length-2],this.term).subscribe(
       (res)=>{this.respose=res;this.categories=this.respose.Response
         data.category_ids.pop()
         data.category_name.pop()
@@ -275,7 +275,7 @@ back(){
           {
             console.log(data.category_ids[(data.category_ids).indexOf(data.update)-1])
             
-            this.catserve.sub_categories(data.category_ids[data.category_ids.length-2]).subscribe(
+            this.catserve.sub_categories(data.category_ids[data.category_ids.length-2],this.term).subscribe(
               (res)=>{this.respose=res;this.categories=this.respose.Response
                 data.category_ids.pop()
               data.category_name.pop()
@@ -291,14 +291,14 @@ back(){
                
                 console.log(data.category_ids)
                 this.data=JSON.stringify(data)
-                this.catserve.categories_store(0).subscribe((res)=>{this.respose=res
+                this.catserve.categories_store(0,this.term).subscribe((res)=>{this.respose=res
                 this.categories=this.respose.Response
             })}else{
               data.category_ids.pop()
               data.category_name.pop()
                 console.log(data.category_ids)
                
-              this.catserve.categories_store(data.store_id).subscribe((res)=>{this.respose=res
+              this.catserve.categories_store(data.store_id,this.term).subscribe((res)=>{this.respose=res
                 this.categories=this.respose.Response
             this.data=JSON.stringify(data)
 
@@ -317,8 +317,8 @@ back(){
           }}
 }
 close(){
-  //this.getproducts()
-  this.ngOnInit()
+  this.getcategory()
+ 
  if(this.term!='')
  {document.getElementById('icon')?.classList.remove('fa-times')
  document.getElementById('icon')?.classList.remove('fa')
@@ -332,9 +332,10 @@ close(){
 }
 }
 search(){
- this.ngOnInit()
-  if(this.term=='')
- {document.getElementById('icon')?.classList.remove('fa-times')
+this.getcategory()
+   if(this.term=='')
+ {
+   document.getElementById('icon')?.classList.remove('fa-times')
  document.getElementById('icon')?.classList.remove('fa')
 
  document.getElementById('icon')?.classList.add('porto-icon-search-3') 
@@ -351,11 +352,56 @@ toggle(){
  document.getElementById('icon')?.classList.add('porto-icon-search-3') 
 
   }
-  this.ngOnInit()
+  this.getcategory()
  
 }
 change(e:any){
   e.target.style.color='black'
+}
+getcategory(){
+  let data=JSON.parse(this.data)
+  console.log(data)
+  if(data.category_ids&&data.category_ids.length>1)
+  {
+    console.log(data.category_ids[(data.category_ids).indexOf(data.update)-1])
+    
+    this.catserve.sub_categories(data.category_ids[data.category_ids.length-2],this.term).subscribe(
+      (res)=>{this.respose=res;this.categories=this.respose.Response
+       
+        console.log(data.category_ids)
+        this.data=JSON.stringify(data)
+      })
+  }
+  else{
+    if(data.category_ids&&data.category_ids.length==1)
+    { if(!data.store_id)
+      {  
+       
+        console.log(data.category_ids)
+        this.data=JSON.stringify(data)
+        this.catserve.categories_store(0,this.term).subscribe((res)=>{this.respose=res
+        this.categories=this.respose.Response
+    })}else{
+     
+        console.log(data.category_ids)
+       
+      this.catserve.categories_store(data.store_id,this.term).subscribe((res)=>{this.respose=res
+        this.categories=this.respose.Response
+    this.data=JSON.stringify(data)
+
+    })
+    }
+    
+  }else{
+    console.log(data.store_id)
+    this.catserve.categories_store(data.store_id,this.term).subscribe((res)=>{this.respose=res
+      this.categories=this.respose.Response
+      console.log(res)
+  // this.data=JSON.stringify(data)
+    })
+  }
+  }
+
 }
 
 }

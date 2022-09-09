@@ -27,8 +27,8 @@ country_id=localStorage.getItem('country_id')
     return this.httpclient.get<{ cateories: Category }>(`${environment.apiURL}categories?os=android&country_id=1`)
   }
   //////////////////////////////////////////////////
-  sub_categories(category_id:number){
-    return this.httpclient.get<{ cateories: Category }>(`${environment.apiURL}sub_categories?os=android&country_id=1&category_id=${category_id}`)
+  sub_categories(category_id:number,key_word:string){
+    return this.httpclient.get<{ cateories: Category }>(`${environment.apiURL}sub_categories?os=android&country_id=1&category_id=${category_id}&key_word=${key_word}`)
   }
   //////////////////////end/////////////////
   ////////////////////////getallstories/////////
@@ -37,11 +37,11 @@ return this.httpclient.get<{stores:Store []}>(`${environment.apiURL}stores_categ
   }
   ////////////////////end//////////////////
   //////////////////////categories in each store//////////////////////
-  categories_store(store_id:number){
+  categories_store(store_id:number,key_word:string){
     if(store_id!=0)
-    return this.httpclient.get(`${environment.apiURL}list_categories?os=android&country_id=1&store_id=${store_id}&page=1`)
+    return this.httpclient.get(`${environment.apiURL}list_categories?os=android&country_id=1&store_id=${store_id}&page=1&key_word=${key_word}`)
       else
-      return this.httpclient.get(`${environment.apiURL}list_categories?os=android&country_id=1&page=1`)
+      return this.httpclient.get(`${environment.apiURL}list_categories?os=android&country_id=1&page=1&key_word=${key_word}`)
      
 
     }
