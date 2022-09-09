@@ -38,8 +38,8 @@
                     order ({{s.id}})
                 </p>
                 <p class='m-0 d-flex flex-column'>
-                    <span>{{s.date}}</span>
-                    <span>{{s.time}}</span>
+                    <span>{{s.created_at}}</span>
+                   
                 </p>
             </div>
             <div class="card-body " (click)='details(s.id)'>
@@ -56,6 +56,9 @@
                 </div>
               
             </div>
+            <span class=" d-flex justify-content-center align-item-center"> <img *ngIf='s.is_fast==1' src='assets/images/fast.svg ' style="width: 20px !important;">
+                <span class=" ">{{s.date}}-{{s.time}}</span></span>
+        
             <div class="text-center">
                 <a routerLink='/home/me/profile/paidsalescode/{{id}}/{{i}}' class="btn btn-sm btn-primary mt-4">view code</a>
             </div>
