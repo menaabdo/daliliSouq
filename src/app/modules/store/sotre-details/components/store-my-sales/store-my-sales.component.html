@@ -31,10 +31,14 @@
             </div>
             <a class="card-body" (click)='getdetailes(s.id)'>
                 <i class="fa fa-store"></i><span class='name mx-3'>{{s.f_name}} {{s.s_name}}</span>
-                <p class='m-0 d-flex justify-content-between'>
-                    cash on delivery
-                    <span>{{s.date}}</span>
-                    <span>{{s.time}}</span>
+                <p class='m-0 d-flex justify-content-start align-item-center'>
+                    <span class='col-md-4' *ngIf='s.payment_type==0'> cash on delivery  </span>
+                    <span class='col-md-4' *ngIf='s.payment_type==2'> online method </span>
+                      
+                    
+                    <span class="px-2 d-flex justify-content-start align-item-center"> <img *ngIf='s.is_fast==1' src='../../../../../../assets/images/fast.svg ' style="width: 20px !important;">
+                        <span class="pt-2 "> {{s.date}} - {{s.time}}</span></span>
+                
                 </p>
                 
             </a>

@@ -48,5 +48,8 @@ export interface Order {
     products:any[]
     customer_note:string
     last_page:number
+    payment_type:number
+    
+              
     
 }
