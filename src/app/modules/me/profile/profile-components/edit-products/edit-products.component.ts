@@ -281,6 +281,7 @@ console.log(this.data)
   fd.append('price',this.data.price as unknown as string)
   fd.append('category_id',this.data.category_ids[(this.data.category_ids.length)-1],
   )
+  console.log(this.data)
   fd.append('parent_id',this.data.category_ids[(this.data.category_ids.length)-(this.data.category_ids.length)],
   )
    fd.append( 'country_id',this.country.id as unknown as string)
@@ -372,7 +373,9 @@ localStorage.setItem('imgs',JSON.stringify(this.imageSrc))
  this.data.is_color=this.response2.Response.category.is_color
  this.data.is_size=this.response2.Response.category.is_size
  this.data.is_online=this.response2.Response.is_online
- 
+ if(this.response2.Response.quantity){
+  this.data.quantity=this.response2.Response.quantity
+ }
  //this.data.link=this.response2.Response.video
  this.data.city_name=this.response2.Response.city.name + '-' +this.response2.Response.region.name
  this.data.category_name.push(this.response2.Response.category.name)
@@ -382,7 +385,7 @@ localStorage.setItem('imgs',JSON.stringify(this.imageSrc))
    ids=this.response2.Response.category
    
   this.data.category_ids.push(ids.id)
-   while(ids.hasOwnProperty('category')){
+   while(ids.hasOwnProperty('category')&&ids.category.hasOwnProperty('id')){
     
      ids2.push(ids.id)
    

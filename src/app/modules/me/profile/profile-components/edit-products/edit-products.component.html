@@ -106,7 +106,7 @@
                     <!-- end img 10 -->
                
                     </div>    
-                    <div class="form-group mt-3">      
+                    <div class="form-group mt-3" *ngIf='data.store_name'>      
                   <label class="form-label" class='js-hide-label select1'>Select account</label>
                  <select  id='select1'  required [ngClass]='select1.touched&&select1.errors?.["required"]?"danger":""' #select1="ngModel" class=" form-control select1 "  [(ngModel)]=data.store_name name='name' (change)='getstore("select1",$event)' (blur)='hidelabel("select1")' (click)='displaylabel("select1")' (focus)='displaylabel("select1")'>
                         <option  class="text-dark " [selected]='data.store_name=="my account"' >My account</option>
@@ -130,7 +130,7 @@
                          </span>
                         
                      </div>
-                      <div *ngIf='data?.colors' class='form-group'>
+                      <div *ngIf='data?.colors&&data?.colors?.length!=0' class='form-group'>
                          
                          <table class='table table-bordered w-100'>
                          <thead class=''>
@@ -198,7 +198,7 @@
            
             
                 <div class="form-group" *ngIf='((!data.colors||data.colors?.length==0)&&data.is_online==1)'>
-                    <label for="quantity"class='js-hide-label quantity' >product quantity</label>
+                    <label *ngIf='data.quantity' for="quantity" class=' quantity' >product quantity</label>
                     <input id='quantity' type='number' required [ngClass]='quantity.touched&&quantity.errors?.["required"]?"danger":""' #quantity="ngModel"  placeholder="Product quantity" class="form-control quantity"  aria-describedby="emailHelp" [(ngModel)]=data.quantity name='quantity' (change)='displaylabel("mobile")' (blur)='hidelabel("quantity")' (click)='displaylabel("quantity")' (focus)='displaylabel("quantity")'>
                 </div>
            
