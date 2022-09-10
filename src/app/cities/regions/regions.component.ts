@@ -15,9 +15,11 @@ cities!:City[]
 regions!:Region[]
 city!:City
 data!:any
+mydataforback!:any
   constructor(private storessserve:UserService,private route:Router,private activeroute:ActivatedRoute) { }
 
   ngOnInit(): void {
+    this.mydataforback=this.activeroute.snapshot.params['data']
     if(this.activeroute.snapshot.params['data']!='data')
     this.data=JSON.parse(this.activeroute.snapshot.params['data'])
   

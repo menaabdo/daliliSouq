@@ -12,18 +12,22 @@ export class CitiesComponent implements OnInit {
 response!:any
 cities!:City[]
 hasregion!:boolean
+data!:any
   constructor(private storessserve:UserService,private route:Router,private active:ActivatedRoute) { }
 
   ngOnInit(): void {
+    this.data=this.active.snapshot.params['data']
+    console.log(this.data)
   console.log(this.storessserve.product_data)
     this.storessserve.cities().subscribe((res)=>{this.response=res;this.cities=this.response.Response})
      }
   getregion(id:number,l:number,name:string){
+   
     if(this.active.snapshot.params['data']!='data')
     {let data
-
+     
     data=JSON.parse(this.active.snapshot.params['data'])
-   
+   this.data=data
      if(l!=0)
    { if(this.active.snapshot.params['data']!='data')
    
