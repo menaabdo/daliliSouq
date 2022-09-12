@@ -76,8 +76,17 @@ submit(){
  }}
  if(this.next!=1)
 { this.userserve.product_data.properties =properities ;
-  this.route.navigateByUrl(`/home/me/profile/my-profile/edit-product/${this.userserve.product_data.id}`)
+  //this.route.navigateByUrl(`/home/me/profile/my-profile/edit-product/${this.userserve.product_data.id}`)
+  if(this.userserve.product_data.routation==1)
+    this.route.navigateByUrl(`/home/me/my-advertising/edit-product/${this.userserve.product_data.id}`)
   
+  if(this.userserve.product_data.routation==0)
+  this.route.navigateByUrl(`/home/me/profile/my-profile/edit-product/${this.userserve.product_data.id}`)
+  if(this.userserve.product_data.routation==2)
+  this.route.navigateByUrl(`/home/me/my-advertising/edit-expire/${this.userserve.product_data.id}`)
+  if(this.userserve.product_data.routation==3)
+  this.route.navigateByUrl(`/home/me/my-advertising/edit-passive/${this.userserve.product_data.id}`)
+        
 }
 }
 }

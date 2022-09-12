@@ -21,6 +21,7 @@ logininfo?:any
 image_file?:any
 files:any[]=[]
 product_data!:Product
+
 token!:string
 country_id!:string
 flagoncart=0

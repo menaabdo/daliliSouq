@@ -11,7 +11,7 @@ export class MyAdvertisingLayoutComponent implements OnInit {
   constructor(private router:Router) { }
 
   ngOnInit(): void {
-    this.router.navigateByUrl('/home/me/my-advertising/active-ads')
+   // this.router.navigateByUrl('/home/me/my-advertising/active-ads')
   }
 
 }

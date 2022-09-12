@@ -62,6 +62,10 @@ import { RepostproductinstoreComponent } from './modules/store/products/componen
 import { ReportproductComponent } from './modules/me/profile/profile-components/reportproduct/reportproduct.component';
 import { BalancesComponent } from './modules/me/my-wallet/balances/balances.component';
 import { StoreSalesDetailesComponent } from './modules/store/sotre-details/components/store-my-sales/store-sales-detailes/store-sales-detailes.component';
+import { EditAdsComponent } from './modules/me/my-advertising/advertising-components/edit-ads/edit-ads.component';
+import { EditexpireComponent } from './modules/me/my-advertising/editexpire/editexpire.component';
+import { EditpassiveComponent } from './modules/me/my-advertising/advertising-components/editpassive/editpassive.component';
+
 
 
 
@@ -113,6 +117,10 @@ import { StoreSalesDetailesComponent } from './modules/store/sotre-details/compo
     ReportproductComponent,
     BalancesComponent,
     StoreSalesDetailesComponent,
+    EditAdsComponent,
+    EditexpireComponent,
+    EditpassiveComponent,
+    
     
 
     

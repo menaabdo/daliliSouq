@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+
 import { ActivatedRoute, Router } from '@angular/router';
 
 
@@ -12,13 +13,13 @@ import { Loader } from '@googlemaps/js-api-loader';
 import { Address } from 'src/app/models/addresss.model';
 import { Product } from 'src/app/models/product.model';
 
-
 @Component({
-  selector: 'app-edit-products',
-  templateUrl: './edit-products.component.html',
-  styleUrls: ['./edit-products.component.scss']
+  selector: 'app-edit-ads',
+  templateUrl: './edit-ads.component.html',
+  styleUrls: ['./edit-ads.component.scss']
 })
-export class EditProductsComponent implements OnInit {
+export class EditAdsComponent implements OnInit {
+
   mydata?:any
   counter=0
   selectedfile!: File;
@@ -82,7 +83,6 @@ marker!:any
     
 
   ngOnInit(): void {
-    console.log('fkfkfkfklrkrktktk')
     this.storessserve.product_detailes(this.active.snapshot.params['id']) .subscribe((res)=>{this.response2=res;
       this.country=this.response2.Response.country;console.log(res)
       let loader=new Loader({apiKey:'AIzaSyCuU2Tnmy93AuQWWQ7DAGJT95OJKZYZdwY'})
@@ -207,7 +207,7 @@ console.log(this.data)
    changecategory(id:number){
  this.data.update=id
  this.storessserve.product_data=this.data
- this.route.navigateByUrl(`/home/me/profile/my-profile/select-category/${(JSON.stringify(this.data)).replace('#','*')}`)
+ this.route.navigateByUrl(`/home/me/my-advertising/select-category/${(JSON.stringify(this.data)).replace('#','*')}`)
  
    }
    changepro(){
@@ -215,12 +215,12 @@ console.log(this.data)
      this.data.update2=this.data.category_ids[(this.data.category_ids.length)-1]
      this.storessserve.product_data=this.data
      
-     this.route.navigateByUrl(`/home/me/profile/my-profile/edit-properities`)
+     this.route.navigateByUrl(`/home/me/my-advertising/edit-properities`)
  
    }
    navme(){
      this.storessserve.product_data=this.data
-     this.route.navigateByUrl(`home/me/profile/my-profile/edit-color_size`)
+     this.route.navigateByUrl(`home/me/my-advertising/edit-color_size`)
  
    }
    getcity(){
@@ -229,8 +229,7 @@ console.log(this.data)
     console.log((this.response2 ))
   this.mydata=this.data
     this.storessserve.product_data=this.data
-    this.storessserve.product_data.routation=0
-  this.route.navigateByUrl(`/home/me/profile/cities/data`)
+  this.route.navigateByUrl(`/home/me/my-advertising/cities/data`)
    }
    selectedFile(event:any){
     this.selectedfile= <File> event.target.files[0]
@@ -334,7 +333,7 @@ var span = document.getElementsByClassName("close")[0];
 modal.style.display = "none";
 }
 upgrade(){
-  this.route.navigateByUrl(`/home/me/profile/my-profile`)
+  this.route.navigateByUrl(`/home/me/my-advertising/active-ads`)
 }
 toggleonline(){
   if(this.data.is_online==1)
@@ -342,7 +341,8 @@ toggleonline(){
   else this.data.is_online=1 
  }
 setdata(){
- console.log('llkkkkkk')
+ 
+this.data.routation=1
     
 // this.imageSrc[0]=`https://dalilisouq.com/${this.response2.Response.image}`
 // document.getElementById(`img${0}`)!.style.display='block'

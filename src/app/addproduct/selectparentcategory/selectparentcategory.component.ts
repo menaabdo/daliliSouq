@@ -234,14 +234,16 @@ submit(){
   }
   else { if(this.data.edit)
    { let id=this.data.edit
+    let flag=this.data.routation
      this.data=JSON.stringify(this.data)
     this.route.navigateByUrl(`home/me/profile/my-profile/edit-product/${id}/${this.data}`)
- 
+    
   }
     else
     {this.data=JSON.stringify(this.data)
       this.route.navigateByUrl(`home/me/profile/my-profile/add_product/${this.data}`)
-} }
+          
+    } }
   }
   
  

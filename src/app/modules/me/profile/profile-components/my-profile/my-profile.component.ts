@@ -104,4 +104,5 @@ this.route.navigateByUrl(`/home/me/profile/my-profile/repost/${ad.id}/${this.cat
 like_product(id:number){
   this.Adsserve.like_product(id).subscribe((res)=>{console.log(res)})
 }
+
 }

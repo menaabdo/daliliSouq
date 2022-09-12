@@ -18,7 +18,7 @@ export class PassiveAdsComponent implements OnInit {
     ngOnInit(): void {
      this.getproducts()   }
     getproducts(){
-      this.Adsserve.Ads(this.term).subscribe((res)=>{console.log(res); this.response=res;this.Ads=this.response.Response.expired.data;})
+      this.Adsserve.Ads(this.term).subscribe((res)=>{console.log(res); this.response=res;this.Ads=this.response.Response.passive.data;})
 
     }
     close(){

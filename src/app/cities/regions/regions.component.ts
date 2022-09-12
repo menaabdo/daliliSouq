@@ -71,8 +71,15 @@ mydataforback!:any
       this.storessserve.product_data.region_id=region_id
       this.storessserve.product_data.region_name=region_name
     this.storessserve.product_data.city_name=this.storessserve.product_data.city_name +'-'+this.storessserve.product_data.region_name
+    if(this.storessserve.product_data.routation==1)
+    this.route.navigateByUrl(`/home/me/my-advertising/edit-product/${this.storessserve.product_data.id}`)
+    if(this.storessserve.product_data.routation==0)
     this.route.navigateByUrl(`/home/me/profile/my-profile/edit-product/${this.storessserve.product_data.id}`)
-        
+    if(this.storessserve.product_data.routation==2)
+    this.route.navigateByUrl(`/home/me/my-advertising/edit-expire/${this.storessserve.product_data.id}`)
+    if(this.storessserve.product_data.routation==3)
+    this.route.navigateByUrl(`/home/me/my-advertising/edit-passive/${this.storessserve.product_data.id}`)
+               
     }
 
   }

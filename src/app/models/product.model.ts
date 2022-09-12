@@ -72,5 +72,6 @@ import { Color } from './color.model'
     offer_flag?:number
     product_flag?:number
     imgs?:any
+    routation?:number
  }
  
