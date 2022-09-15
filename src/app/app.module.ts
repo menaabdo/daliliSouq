@@ -65,6 +65,7 @@ import { StoreSalesDetailesComponent } from './modules/store/sotre-details/compo
 import { EditAdsComponent } from './modules/me/my-advertising/advertising-components/edit-ads/edit-ads.component';
 import { EditexpireComponent } from './modules/me/my-advertising/editexpire/editexpire.component';
 import { EditpassiveComponent } from './modules/me/my-advertising/advertising-components/editpassive/editpassive.component';
+import { EditStoreproductComponent } from './modules/store/sotre-details/components/edit-storeproduct/edit-storeproduct.component';
 
 
 
@@ -120,6 +121,7 @@ import { EditpassiveComponent } from './modules/me/my-advertising/advertising-co
     EditAdsComponent,
     EditexpireComponent,
     EditpassiveComponent,
+    EditStoreproductComponent,
     
     
 

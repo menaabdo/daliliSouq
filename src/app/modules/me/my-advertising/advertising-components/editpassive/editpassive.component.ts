@@ -207,14 +207,17 @@ console.log(this.data)
  this.data.update=id
  this.storessserve.product_data=this.data
  this.route.navigateByUrl(`/home/me/profile/my-profile/select-category/${(JSON.stringify(this.data)).replace('#','*')}`)
+ //this.route.navigateByUrl(`/home/me/profile/my-profile/edit-properities`)
  
    }
    changepro(){
     this.data.edit=this.active.snapshot.params['id']
      this.data.update2=this.data.category_ids[(this.data.category_ids.length)-1]
      this.storessserve.product_data=this.data
-     
-     this.route.navigateByUrl(`/home/me/my-advertising/select-category/${(JSON.stringify(this.data)).replace('#','*')}`)
+     //this.route.navigateByUrl(`/home/me/profile/my-profile/edit-properities`)
+     this.route.navigateByUrl(`/home/me/my-advertising/edit-properities`)
+ 
+     //this.route.navigateByUrl(`/home/me/my-advertising/select-category/${(JSON.stringify(this.data)).replace('#','*')}`)
  
    }
    navme(){

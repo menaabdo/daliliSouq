@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-
 import { ActivatedRoute, Router } from '@angular/router';
 
 
@@ -14,11 +13,13 @@ import { Address } from 'src/app/models/addresss.model';
 import { Product } from 'src/app/models/product.model';
 
 @Component({
-  selector: 'app-edit-ads',
-  templateUrl: './edit-ads.component.html',
-  styleUrls: ['./edit-ads.component.scss']
+  selector: 'app-edit-storeproduct',
+  templateUrl: './edit-storeproduct.component.html',
+  styleUrls: ['./edit-storeproduct.component.scss']
 })
-export class EditAdsComponent implements OnInit {
+export class EditStoreproductComponent implements OnInit {
+
+
 
   mydata?:any
   counter=0
@@ -207,8 +208,7 @@ console.log(this.data)
    changecategory(id:number){
  this.data.update=id
  this.storessserve.product_data=this.data
- //this.route.navigateByUrl(`/home/me/my-advertising/select-category/${(JSON.stringify(this.data)).replace('#','*')}`)
- this.route.navigateByUrl(`/home/me/profile/my-profile/edit-properities`)
+ this.route.navigateByUrl(`/home/me/store/${this.storessserve.product_data.store_id}/select-category/${(JSON.stringify(this.data)).replace('#','*')}`)
  
    }
    changepro(){
@@ -216,12 +216,12 @@ console.log(this.data)
      this.data.update2=this.data.category_ids[(this.data.category_ids.length)-1]
      this.storessserve.product_data=this.data
      
-     this.route.navigateByUrl(`/home/me/my-advertising/edit-properities`)
+     this.route.navigateByUrl(`/home/me/store/${this.storessserve.product_data.store_id}/edit-properities`)
  
    }
    navme(){
      this.storessserve.product_data=this.data
-     this.route.navigateByUrl(`home/me/my-advertising/edit-color_size`)
+     this.route.navigateByUrl(`/home/me/store/${this.storessserve.product_data.store_id}/edit-color_size`)
  
    }
    getcity(){
@@ -230,7 +230,7 @@ console.log(this.data)
     console.log((this.response2 ))
   this.mydata=this.data
     this.storessserve.product_data=this.data
-  this.route.navigateByUrl(`/home/me/my-advertising/cities/data`)
+  this.route.navigateByUrl(`/home/me/store/${this.storessserve.product_data.store_id}/cities/data`)
    }
    selectedFile(event:any){
     this.selectedfile= <File> event.target.files[0]
@@ -334,7 +334,7 @@ var span = document.getElementsByClassName("close")[0];
 modal.style.display = "none";
 }
 upgrade(){
-  this.route.navigateByUrl(`/home/me/my-advertising/active-ads`)
+  this.route.navigateByUrl(`/home/me/store/${this.storessserve.product_data.store_id}/store-profile/${this.storessserve.product_data.store_id}`)
 }
 toggleonline(){
   if(this.data.is_online==1)
@@ -343,12 +343,14 @@ toggleonline(){
  }
 setdata(){
  
-this.data.routation=1
-    
+this.data.routation=4
+  
 // this.imageSrc[0]=`https://dalilisouq.com/${this.response2.Response.image}`
 // document.getElementById(`img${0}`)!.style.display='block'
 this.storessserve.product_detailes(this.active.snapshot.params['id']) .subscribe((res)=>{this.response2=res;
   console.log(res)
+  this.data.store_id=this.response2.Response.store_id
+  
   //this.imageSrc.push(`https://dalilisouq.com/${this.response2.Response.image}`)
   if(this.response2.Response.is_online==1)
    {this.temp=1
@@ -380,7 +382,9 @@ localStorage.setItem('imgs',JSON.stringify(this.imageSrc))
   this.data.quantity=this.response2.Response.quantity
  }
  //this.data.link=this.response2.Response.video
- this.data.city_name=this.response2.Response.city.name + '-' +this.response2.Response.region.name
+ this.data.city_name=this.response2.Response.city.name 
+ if(this.response2.Response.region)
+ this.data.city_name+= '-' +this.response2.Response.region.name
  this.data.category_name.push(this.response2.Response.category.name)
  let ids:any
  let ids2:any[]=[]
@@ -401,7 +405,7 @@ localStorage.setItem('imgs',JSON.stringify(this.imageSrc))
    this.data.category_ids=ids2
    this.data.category_ids=this.data.category_ids.reverse()
 
- }console.log(this.data.category_ids)
+ }console.log('kkkkkkkkk',this.data.category_ids)
  if(this.response2.Response.colors){
    this.data.colors=this.response2.Response.colors
  }

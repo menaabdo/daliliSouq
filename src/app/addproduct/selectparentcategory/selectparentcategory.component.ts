@@ -253,7 +253,7 @@ submit(){
 }
 back(){
   //this.data=JSON.parse(this.data)
-  console.log((this.properties))
+  console.log((this.data))
   let data=JSON.parse(this.data)
   data.update=0
   if(data.colors)
@@ -317,6 +317,7 @@ back(){
             }
           }
           }}
+          
 }
 close(){
   this.getcategory()

@@ -214,7 +214,7 @@ console.log(this.data)
     this.data.edit=this.active.snapshot.params['id']
      this.data.update2=this.data.category_ids[(this.data.category_ids.length)-1]
      this.storessserve.product_data=this.data
-     
+     console.log(this.data)
      this.route.navigateByUrl(`/home/me/profile/my-profile/edit-properities`)
  
    }

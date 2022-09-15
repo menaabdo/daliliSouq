@@ -2,7 +2,7 @@
   <div id='prop' class=' col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xs-offset-3 bg '>
           <form (ngSubmit)='submit()' class="form" #f='ngForm'>
             <div class='card-header  d-flex justify-content-between' >
-              <a  ><i class="fa fa-arrow-left mr-3"></i>properties</a>
+              <a  (click)='back()'><i class="fa fa-arrow-left mr-3"></i>properties</a>
               <button [disabled]='f.invalid' class='' type='submit'>submit</button>
           </div>
             <div class="container ">

@@ -79,9 +79,34 @@ mydataforback!:any
     this.route.navigateByUrl(`/home/me/my-advertising/edit-expire/${this.storessserve.product_data.id}`)
     if(this.storessserve.product_data.routation==3)
     this.route.navigateByUrl(`/home/me/my-advertising/edit-passive/${this.storessserve.product_data.id}`)
-               
+    if(this.storessserve.product_data.routation==4) 
+    this.route.navigateByUrl(`/home/me/store/${this.storessserve.product_data.store_id}/edit-product/${this.storessserve.product_data.id}`)
+              
     }
 
   }
+}
+back(){
+  console.log(this.storessserve.product_data.routation)
+//if(this.data.edit)
+  { 
+    //if(this.storessserve.product_data.routation&& this.storessserve.product_data.routation==0)
+  //this.route.navigateByUrl(`/home/me/profile/my-profile/edit-product/${this.storessserve.product_data.id}`)
+ // this.route.navigateByUrl(`/home/me/profile/my-profile/edit-product/${this.storessserve.product_data.id}`)
+   if(this.storessserve.product_data.routation&&this.storessserve.product_data.routation==1) 
+   this.route.navigateByUrl(`/home/me/my-advertising/cities/data`)
+   if(this.storessserve.product_data.routation&&this.storessserve.product_data.routation==2) 
+   this.route.navigateByUrl(`/home/me/my-advertising/cities/data`)
+   if(this.storessserve.product_data.routation&&this.storessserve.product_data.routation==3) 
+   this.route.navigateByUrl(`/home/me/my-advertising/cities/data`)
+   if(this.storessserve.product_data.routation&&this.storessserve.product_data.routation==4) 
+   this.route.navigateByUrl(`/home/me/store/${this.storessserve.product_data.store_id}/cities/data`)
+
+  } // else   {
+    if(this.storessserve.product_data.routation&&this.storessserve.product_data.routation==4) 
+    this.route.navigateByUrl(`/home/me/store/${this.storessserve.product_data.store_id}/cities/data`)
+
+// this.route.navigateByUrl(`/home/me/profile/my-profile/add_product/${this.data}`)
+  // }
 }
 }

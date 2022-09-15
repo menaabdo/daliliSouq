@@ -1,9 +1,16 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { ColorsSizesComponent } from 'src/app/addproduct/colors-sizes/colors-sizes.component';
+import { SelectparentcategoryComponent } from 'src/app/addproduct/selectparentcategory/selectparentcategory.component';
+import { CitiesComponent } from 'src/app/cities/cities.component';
+import { RegionsComponent } from 'src/app/cities/regions/regions.component';
+import { EditColorsSizesComponent } from '../../me/profile/profile-components/edit-products/edit-colors-sizes/edit-colors-sizes.component';
 import { EditProductsComponent } from '../../me/profile/profile-components/edit-products/edit-products.component';
+import { ProperitiesComponent } from '../../me/profile/profile-components/edit-products/properities/properities.component';
 import { ViewprofileComponent } from '../../me/profile/profile-components/my-profile/viewprofile/viewprofile.component';
 import { StoreProductLayoutComponent } from '../products/store-product-layout.component';
 import { BestSellerComponent } from './components/best-seller/best-seller.component';
+import { EditStoreproductComponent } from './components/edit-storeproduct/edit-storeproduct.component';
 import { RejectedSalesComponent } from './components/rejected-sales/rejected-sales.component';
 import { StoreFollowersComponent } from './components/store-followers/store-followers.component';
 import { StoreMySalesComponent } from './components/store-my-sales/store-my-sales.component';
@@ -29,6 +36,24 @@ const routes: Routes = [
          
         
       },
+      {
+        path:'edit-product/:id',
+        component:EditStoreproductComponent
+      },
+      {
+        path:'select-category/:data',
+        component:SelectparentcategoryComponent
+    },
+    {path:'edit-properities',component:ProperitiesComponent},
+    {path:'edit-color_size',component:EditColorsSizesComponent},
+    //{path:'properity-color/:data',component:ColorsSizesComponent},
+    {
+      path:'cities/:data',
+      component:CitiesComponent
+    },
+    {path:'regions/:data',
+        component:RegionsComponent       
+  },
        {
             path:'doupleview/:product_id/:id',
             component:DoubleViewComponent
