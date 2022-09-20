@@ -43,7 +43,7 @@
                     <i class="fas fa-ellipsis-v" id="dropdownMenuButton" data-toggle="dropdown" aria-expanded="false">
                     </i>
                     <div class="dropdown-menu" aria-labelledby="dropdownMenuButton" style="margin-left: -100px">
-                        <a class="dropdown-item" routerLink="edit-product/{{ad.id}}" (mouseover)='change($event)'><i class="fas fa-pen-square"></i> edit product</a>
+                        <a class="dropdown-item" routerLink="/home/me/store/{{id}}/myproducts/{{id}}/edit-expire/{{ad.id}}" (mouseover)='change($event)'><i class="fas fa-pen-square"></i> edit product</a>
                         <a class="dropdown-item" (click)='repost(i)'><i class="fas fa-newspaper"></i>repost product</a>
                         <a (click)='delete(ad.id)' class="dropdown-item"><i class="fas fa-trash-alt"></i> delete product</a>
                         <a (click)='setoutofstock(ad.id)' class="dropdown-item"><i class="fas fa-shopping-cart"></i> set out of stock</a>

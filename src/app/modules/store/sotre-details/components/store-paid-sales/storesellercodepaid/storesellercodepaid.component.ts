@@ -14,6 +14,8 @@ export class StoresellercodepaidComponent implements OnInit {
   order!:Order
   i!:number
   id!:number
+  page=1
+pages!:number[]
   constructor(private paid_sales:UserService,private activeroute:ActivatedRoute,private router:Router) {
     this.id=this.activeroute.snapshot.params['id']
     this.i=this.activeroute.snapshot.params['index']
@@ -21,7 +23,7 @@ export class StoresellercodepaidComponent implements OnInit {
    }
 
   ngOnInit(): void {
-  this.paid_sales.paid_orders_store(this.id).subscribe((res)=>{
+  this.paid_sales.paid_orders_store(this.page,this.id).subscribe((res)=>{
     this.response=res;
     this.orders=this.response.Response.orders.data ;
     this.order=this.orders[this.i]

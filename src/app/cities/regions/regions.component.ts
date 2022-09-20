@@ -81,6 +81,12 @@ mydataforback!:any
     this.route.navigateByUrl(`/home/me/my-advertising/edit-passive/${this.storessserve.product_data.id}`)
     if(this.storessserve.product_data.routation==4) 
     this.route.navigateByUrl(`/home/me/store/${this.storessserve.product_data.store_id}/edit-product/${this.storessserve.product_data.id}`)
+    if(this.storessserve.product_data.routation==5) 
+    this.route.navigateByUrl(`/home/me/store/${this.storessserve.product_data.store_id}/myproducts/${this.storessserve.product_data.store_id}/edit-product/${this.storessserve.product_data.id}`)
+    if(this.storessserve.product_data.routation==6) 
+    this.route.navigateByUrl(`/home/me/store/${this.storessserve.product_data.store_id}/myproducts/${this.storessserve.product_data.store_id}/edit-passive/${this.storessserve.product_data.id}`)
+    if(this.storessserve.product_data.routation==7) 
+    this.route.navigateByUrl(`/home/me/store/${this.storessserve.product_data.store_id}/myproducts/${this.storessserve.product_data.store_id}/edit-expire/${this.storessserve.product_data.id}`)
               
     }
 
@@ -105,6 +111,10 @@ back(){
   } // else   {
     if(this.storessserve.product_data.routation&&this.storessserve.product_data.routation==4) 
     this.route.navigateByUrl(`/home/me/store/${this.storessserve.product_data.store_id}/cities/data`)
+    if(this.storessserve.product_data.routation&&this.storessserve.product_data.routation==5||this.storessserve.product_data.routation==6||this.storessserve.product_data.routation==7) 
+     
+      
+    this.route.navigateByUrl(`/home/me/store/${this.storessserve.product_data.store_id}/myproducts/${this.storessserve.product_data.store_id}/cities/data`)
 
 // this.route.navigateByUrl(`/home/me/profile/my-profile/add_product/${this.data}`)
   // }

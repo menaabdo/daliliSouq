@@ -75,7 +75,8 @@ submit(){
  test=[]
  }}
  if(this.next!=1)
-{ this.userserve.product_data.properties =properities ;
+{ console.log( this.userserve.product_data)
+  this.userserve.product_data.properties =properities ;
   //this.route.navigateByUrl(`/home/me/profile/my-profile/edit-product/${this.userserve.product_data.id}`)
   if(this.userserve.product_data.routation==1)
     this.route.navigateByUrl(`/home/me/my-advertising/edit-product/${this.userserve.product_data.id}`)
@@ -86,7 +87,15 @@ submit(){
   this.route.navigateByUrl(`/home/me/my-advertising/edit-expire/${this.userserve.product_data.id}`)
   if(this.userserve.product_data.routation==3)
   this.route.navigateByUrl(`/home/me/my-advertising/edit-passive/${this.userserve.product_data.id}`)
-        
+  if(this.userserve.product_data.routation&&this.userserve.product_data.routation==4) 
+  this.route.navigateByUrl(`/home/me/store/${this.userserve.product_data.store_id}/edit-product/${this.userserve.product_data.id}`)
+  if(this.userserve.product_data.routation&&this.userserve.product_data.routation==5) 
+  this.route.navigateByUrl(`/home/me/store/${this.userserve.product_data.store_id}/myproducts/${this.userserve.product_data.store_id}/edit-product/${this.userserve.product_data.id}`)
+  if(this.userserve.product_data.routation&&this.userserve.product_data.routation==6) 
+  this.route.navigateByUrl(`/home/me/store/${this.userserve.product_data.store_id}/myproducts/${this.userserve.product_data.store_id}/edit-passive/${this.userserve.product_data.id}`)
+  if(this.userserve.product_data.routation&&this.userserve.product_data.routation==7) 
+  this.route.navigateByUrl(`/home/me/store/${this.userserve.product_data.store_id}/myproducts/${this.userserve.product_data.store_id}/edit-expire/${this.userserve.product_data.id}`)
+ 
 }
 }
 back(){
@@ -108,7 +117,13 @@ back(){
   } // else   {
     if(this.userserve.product_data.routation&&this.userserve.product_data.routation==4) 
     this.route.navigateByUrl(`/home/me/store/${this.userserve.product_data.store_id}/edit-product/${this.userserve.product_data.id}`)
-
+    if(this.userserve.product_data.routation&&this.userserve.product_data.routation==5) 
+      this.route.navigateByUrl(`/home/me/store/${this.userserve.product_data.store_id}/myproducts/${this.userserve.product_data.store_id}/edit-product/${this.userserve.product_data.id}`)
+      if(this.userserve.product_data.routation&&this.userserve.product_data.routation==6) 
+      this.route.navigateByUrl(`/home/me/store/${this.userserve.product_data.store_id}/myproducts/${this.userserve.product_data.store_id}/edit-passive/${this.userserve.product_data.id}`)
+      if(this.userserve.product_data.routation&&this.userserve.product_data.routation==7) 
+      this.route.navigateByUrl(`/home/me/store/${this.userserve.product_data.store_id}/myproducts/${this.userserve.product_data.store_id}/edit-expire/${this.userserve.product_data.id}`)
+     
 // this.route.navigateByUrl(`/home/me/profile/my-profile/add_product/${this.data}`)
   // }
 }

@@ -18,17 +18,20 @@ ads!:Product[]
 
 
 catrgory_id!:number
-  constructor(private router:Router,private productservice:UserService,private activeroute:ActivatedRoute) {
-    this.id=this.activeroute.snapshot.params['id']
-   }
+constructor(private productservice:UserService,private activeroute:ActivatedRoute,private router:Router) {
+  this.id=this.activeroute.snapshot.params['id']
+ }
 
-  ngOnInit(): void {
-   this.getproducts()
-  }
-  getproducts(){
-    this.productservice.products(this.id,this.term).subscribe((res)=>{this.response=res;this.ads=this.response.Response.expired.data})
-    
-  }
+ngOnInit(): void {
+ this.getproducts()
+}
+getproducts(){
+  console.log('hghghghghhggjg')
+  this.productservice.products(this.id,this.term).subscribe((res)=>{this.response=res;this.ads=this.response.Response.active.data
+    console.log(res)
+  })
+  
+}
   check(){
     if(this.term=='')
      {document.getElementById('icon')?.classList.remove('fa-times')
