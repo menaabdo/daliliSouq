@@ -69,6 +69,7 @@ import { EditStoreproductComponent } from './modules/store/sotre-details/compone
 import { EditStoreActiveComponent } from './modules/store/products/components/edit-store-active/edit-store-active.component';
 import { EditStorePassiveComponent } from './modules/store/products/components/edit-store-passive/edit-store-passive.component';
 import { EditStoreExpireComponent } from './modules/store/products/components/edit-store-expire/edit-store-expire.component';
+import { StoresalescodefromstoreComponent } from './modules/store/sotre-details/components/store-my-sales/storesalescodefromstore/storesalescodefromstore.component';
 
 
 
@@ -128,6 +129,7 @@ import { EditStoreExpireComponent } from './modules/store/products/components/ed
     EditStoreActiveComponent,
     EditStorePassiveComponent,
     EditStoreExpireComponent,
+    StoresalescodefromstoreComponent,
     
     
 

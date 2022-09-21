@@ -16,11 +16,12 @@ export class StoreSalesDetailesComponent implements OnInit {
   order!:Order
   flag=0
     constructor(private orderdetailes:UserService,private activeroute: ActivatedRoute,) {
-      this.id=this.activeroute.snapshot.params['id'] 
+      this.id=this.activeroute.snapshot.params['store-id'] 
      }
   
 
   ngOnInit(): void {
+    console.log(this.id)
     this.orderdetailes.store_order_detailes(this.activeroute.snapshot.params['store-id'],this.activeroute.snapshot.params['order-id']).subscribe((res)=>{this.response=res; this.order=this.response.Response
    console.log(res)})
   }

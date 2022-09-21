@@ -8,6 +8,7 @@ import { EditColorsSizesComponent } from '../../me/profile/profile-components/ed
 import { EditProductsComponent } from '../../me/profile/profile-components/edit-products/edit-products.component';
 import { ProperitiesComponent } from '../../me/profile/profile-components/edit-products/properities/properities.component';
 import { ViewprofileComponent } from '../../me/profile/profile-components/my-profile/viewprofile/viewprofile.component';
+import { SellercodesalesComponent } from '../../me/profile/profile-components/sales/sellercodesales/sellercodesales.component';
 import { StoreProductLayoutComponent } from '../products/store-product-layout.component';
 import { BestSellerComponent } from './components/best-seller/best-seller.component';
 import { EditStoreproductComponent } from './components/edit-storeproduct/edit-storeproduct.component';
@@ -15,6 +16,7 @@ import { RejectedSalesComponent } from './components/rejected-sales/rejected-sal
 import { StoreFollowersComponent } from './components/store-followers/store-followers.component';
 import { StoreMySalesComponent } from './components/store-my-sales/store-my-sales.component';
 import { StoreSalesDetailesComponent } from './components/store-my-sales/store-sales-detailes/store-sales-detailes.component';
+import { StoresalescodefromstoreComponent } from './components/store-my-sales/storesalescodefromstore/storesalescodefromstore.component';
 import { StorePaidSalesComponent } from './components/store-paid-sales/store-paid-sales.component';
 import { StoreorderdetailesComponent } from './components/store-paid-sales/storeorderdetailes/storeorderdetailes.component';
 import { StoresellercodepaidComponent } from './components/store-paid-sales/storesellercodepaid/storesellercodepaid.component';
@@ -69,6 +71,10 @@ const routes: Routes = [
     {
       path:'sale-detailes/:order-id/:store-id',
       component:StoreSalesDetailesComponent
+    },
+    {
+      path:'salescode/:id/:index',
+      component:StoresalescodefromstoreComponent
     },
       {
         path: "rejected-sales/:id",
