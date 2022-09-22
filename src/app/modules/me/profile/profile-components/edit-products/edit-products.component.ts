@@ -348,6 +348,7 @@ setdata(){
 // document.getElementById(`img${0}`)!.style.display='block'
 this.storessserve.product_detailes(this.active.snapshot.params['id']) .subscribe((res)=>{this.response2=res;
   console.log(res)
+  this.data.routation=0
   //this.imageSrc.push(`https://dalilisouq.com/${this.response2.Response.image}`)
   if(this.response2.Response.is_online==1)
    {this.temp=1
