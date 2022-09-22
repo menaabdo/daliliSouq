@@ -24,7 +24,9 @@ catrgory_id!:number
    this.getproducts()
   }
   getproducts(){
-    this.productservice.products(this.id,this.term).subscribe((res)=>{this.response=res;this.ads=this.response.Response.active.data})
+
+    console.log('llllllllllllllllllll')
+    this.productservice.products(this.id,this.term).subscribe((res)=>{this.response=res;this.ads=this.response.Response.active.data;console.log(res)})
     
   }
   close(){

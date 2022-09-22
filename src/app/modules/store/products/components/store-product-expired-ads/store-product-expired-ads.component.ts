@@ -11,7 +11,7 @@ import { UserService } from 'src/app/service/user.service';
 export class StoreProductExpiredAdsComponent implements OnInit {
 
   flag=0
-term!:string
+term=''
 id!:number
 response!:any
 ads!:Product[]
@@ -27,7 +27,7 @@ ngOnInit(): void {
 }
 getproducts(){
   console.log('hghghghghhggjg')
-  this.productservice.products(this.id,this.term).subscribe((res)=>{this.response=res;this.ads=this.response.Response.active.data
+  this.productservice.products(this.id,this.term).subscribe((res)=>{this.response=res;this.ads=this.response.Response.expired.data
     console.log(res)
   })
   
