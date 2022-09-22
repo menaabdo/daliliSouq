@@ -20,7 +20,12 @@
                 <img *ngIf='order.is_fast==1' src='assets/images/fast.svg ' style="width: 20px !important;">
                    <span>{{order.date}}-{{order.time}}</span> 
                 </div>
+
           
+            </div>
+            <div class="row px-5 pb-3"  *ngIf='order.customer_note'>
+                <div class='col-md-8 '><i class="fa fa-comment mr-2 text-success  border-success" ></i> <span class="text-success">customer_note:</span>{{order.customer_note}} </div>
+                
             </div>
         <div class="row text-right pb-0">
             
@@ -55,6 +60,9 @@
                                        
                                     
                                     <div class='col-md-12 '>
+                                        <ul class="mb-3">
+                                            <li *ngIf='product.customer_note'><i class="fa fa-comment  text-success  border-success" ></i>{{product.customer_note}}</li>
+                                        </ul>
                                     <ul *ngIf='product.status==0||product.status==1||product.status==2' class=" progressbar d-flex justify-content-evenly ml-5" >
                                         <li class="
                                          col-md-4 " [ngClass]="product.status==0||product.status==1||product.status==2?'active':''">Processing</li>
