@@ -63,6 +63,7 @@ if(this.data.update2==0&&(this.data.update==0||this.data.category_ids[0]==this.d
   }}else{if(this.data.update2!=0){
     this.catserve.sub_categories(this.data.category_ids[(this.data.category_ids).indexOf(this.data.update2)-1],this.term).subscribe(
     (res)=>{this.respose=res;
+      this.term=''
       let categories:Category[]
       categories=this.respose.Response
       this.data=JSON.parse(this.data)
@@ -79,6 +80,7 @@ if(this.data.update2==0&&(this.data.update==0||this.data.category_ids[0]==this.d
   console.log(typeof(this.data))
   this.catserve.sub_categories(this.data.category_ids[(this.data.category_ids).indexOf(this.data.update)-1],this.term).subscribe(
     (res)=>{this.respose=res;this.categories=this.respose.Response
+      this.term=''
       // this.data=JSON.parse(this.data)
       // this.data.category_ids.pop()
       // this.data.category_name.pop()
@@ -320,7 +322,7 @@ back(){
           
 }
 close(){
-  this.getcategory()
+  //this.getcategory()
  
  if(this.term!='')
  {document.getElementById('icon')?.classList.remove('fa-times')
@@ -335,7 +337,7 @@ close(){
 }
 }
 search(){
-this.getcategory()
+//this.getcategory()
    if(this.term=='')
  {
    document.getElementById('icon')?.classList.remove('fa-times')
@@ -355,13 +357,14 @@ toggle(){
  document.getElementById('icon')?.classList.add('porto-icon-search-3') 
 
   }
-  this.getcategory()
+ // this.getcategory()
  
 }
 change(e:any){
   e.target.style.color='black'
 }
 getcategory(){
+  this.term=''
   let data=JSON.parse(this.data)
   console.log(data)
   if(data.category_ids&&data.category_ids.length>1)

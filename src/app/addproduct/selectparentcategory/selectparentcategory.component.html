@@ -4,22 +4,22 @@
     <!-- <a  *ngIf='data' routerLink='/home/me/profile/my-profile/add_product/{{data}}'><i class="fa fa-arrow-left mr-3"></i>Select category</a>
      -->
 </div>
-<!-- <div class="row  "  >
+<div class="row  "  >
     <div class='row ml-3 d-flex justify-content-between mb-2'>
         <div class="header-search  col-6">
         <a  class="search-toggle" role="button"><i class="porto-icon-search-3"></i></a>
         <form action="#" method="get">
             <div class="header-search-wrapper" >
-                <input (click)='close()' (blur)='search()'  (keyup)='getcategory()' type="search" class="form-control" name="q" id="q" placeholder=" Search in your ads..." required style='background-color:#990033 ;color:white;font-size:14px' [(ngModel)]="term">
+                <input (click)='close()' (blur)='search()'   type="search" class="form-control" name="q" id="q" placeholder=" Search in..." required style='background-color:#990033 ;color:white;font-size:14px' [(ngModel)]="term">
                 
            
                 <button   class="btn" type="submit" style='background-color:#990033; color:white'><i (click)='toggle()' id='icon' class="porto-icon-search-3"></i></button>
             </div>
            
         </form>
-    </div> -->
+    </div>
 <div class="row card-body" >
-    <div class='me card-header col-md-6 header rounded d-flex justify-content-between align-items-center' *ngFor='let category of categories ' >
+    <div class='me card-header col-md-6 header rounded d-flex justify-content-between align-items-center' *ngFor='let category of categories | filter:term' >
         <img  src="https://dalilisouq.com/{{category.icon}}" width='60px' height="20px">
         <a (click)='getid(category.id,category.has_category,category.name,category.properties,category.is_color,category.is_size,category.is_online)' class='d-flex h3'>{{category.name}} </a>  
     </div>
