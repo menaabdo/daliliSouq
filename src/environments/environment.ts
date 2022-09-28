@@ -4,7 +4,17 @@
 
 export const environment = {
   production: false,
-  apiURL: 'https://dalilisouq.com/api/'
+  apiURL: 'https://dalilisouq.com/api/',
+  firebase: {
+    apiKey: "AIzaSyCuU2Tnmy93AuQWWQ7DAGJT95OJKZYZdwY",
+    authDomain: "xxxxxxxxxxxxxxxxxxxxxxxx",
+    databaseURL: "xxxxxxxxxxxxxxxxxxxxxxxx",
+    projectId: "dalilisouq",
+    storageBucket: "xxxxxxxx",
+    messagingSenderId: "xxxxxx",
+    appId: "xxxxx",
+    measurementId: "xxxxxxxxxxxxxxxx"
+  }
 
 };
 

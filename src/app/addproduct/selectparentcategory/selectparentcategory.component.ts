@@ -152,7 +152,7 @@ this.data=JSON.stringify(this.data)
   else this.route.navigateByUrl(`home/me/profile/my-profile/add_product/${this.data}`)
 }else{this.properties=prop;
   
- 
+ console.log(this.properties)
   // this.catserve.properities(id).subscribe(
   //   (res)=>{this.respose=res;
   //     this.sizes=this.respose.Response.sizes
