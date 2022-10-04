@@ -7,7 +7,8 @@ import { environment } from 'src/environments/environment';
 import { User } from '../models/user.model';
 import { CookieService } from 'ngx-cookie-service';
 import { Product } from '../models/product.model';
-
+import { AngularFireMessaging } from '@angular/fire/compat/messaging'
+import { BehaviorSubject } from 'rxjs'
 
 
 @Injectable({
@@ -30,8 +31,33 @@ flagoncart=0
   Authorization: `Bearer ${localStorage.getItem('token')}`,})
  
   activeroute: any;
-  
-  constructor(private httpclient: HttpClient,private cookieService: CookieService,private route:Router ) { }
+  currentMessage = new BehaviorSubject(null);
+
+  constructor(private httpclient: HttpClient,private cookieService: CookieService,private route:Router ) { 
+    // this.angularFireMessaging.messages.subscribe(
+    //   (_messaging) => {
+    //   // _messaging.notification = _messaging.onMessage.bind(_messaging);
+    //   // _messaging.collapseKey = _messaging.onTokenRefresh.bind(_messaging);
+    //   }
+    //   )
+
+  }
+  // requestPermission() {
+  //   this.angularFireMessaging.requestToken.subscribe(
+  //   (token) => {
+  //   console.log(token);
+  //   },
+  //   (err) => {
+  //   console.error('Unable to get permission to notify.', err);
+  //   }
+  //   );
+  //   }
+  //   receiveMessage() {
+  //   this.angularFireMessaging.messages.subscribe(
+  //   (payload:any) => {
+  //   console.log("new message received. ", payload);
+  //   this.currentMessage.next(payload );
+  //   })}
  getimage(file:object){
 this.image_file=file
 

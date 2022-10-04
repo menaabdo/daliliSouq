@@ -30,7 +30,7 @@ export class ProfileEditComponent implements OnInit {
   this.country=this.profile_data.Response.country 
   this.country_code=this.profile_data.Response.country_code
   let mobile=(this.profile_data.Response.mobile).toString()
-      mobile= mobile.slice((this.country.phone_code).toString().length)
+     // mobile= mobile.slice((this.country.phone_code).toString().length)
         this.profile_data.Response.mobile=mobile
         console.log(this.country_code)
   this.gender=this.profile_data?.Response.gender
