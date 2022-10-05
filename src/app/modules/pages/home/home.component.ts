@@ -52,9 +52,13 @@ export class HomeComponent implements OnInit {
    
     this.mymess=''
     this.imageSrc=''
+    this.fd.delete('image')
   }
   get_messages(){
-    this.chatservice.mymess(this.page).subscribe((res)=>{this.response=res;console.log(res);this.messages=this.response.Response.messages.data;this.messages.reverse()})
+    this.chatservice.mymess(this.page).subscribe((res)=>{this.response=res;console.log(res);this.messages=this.response.Response.messages.data;this.messages.reverse()
+      this.mymess=''
+    this.imageSrc=''
+    })
 
   }
   selectedFile(event:any){
@@ -62,7 +66,7 @@ export class HomeComponent implements OnInit {
      
         this.fd.append('image',this.selectedfile)
        console.log(this.fd.get('image'))
- this.fd.getAll
+ 
    if (event.target.files && event.target.files[0]) {
     const file = event.target.files[0];
 
