@@ -49,6 +49,8 @@ import { SellercodesalesComponent } from './profile-components/sales/sellercodes
 import { RepostproductComponent } from './profile-components/repostproduct/repostproduct.component';
 import { ReportproductComponent } from './profile-components/reportproduct/reportproduct.component';
 import { CanDeactivateGuard } from 'src/app/guards/can-deactivate.guard';
+import { AllcodeComponent } from 'src/app/allcode/allcode.component';
+import { AllcodesellerComponent } from 'src/app/allcodeseller/allcodeseller.component';
 
 const routes: Routes = [
   {
@@ -243,7 +245,14 @@ const routes: Routes = [
         path:'sellercodepaid/:id',
         component:SellercodepaidComponent
     },
-      
+      {
+        path:'allcode/:id',
+        component:AllcodeComponent
+      },
+      {
+        path:'allcodeseller/:id',
+        component:AllcodesellerComponent
+      },
    
       {
         path:'cities/:data',

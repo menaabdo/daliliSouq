@@ -17,6 +17,7 @@ export class SellercodepaidComponent implements OnInit {
   page=1
     constructor(private orderdetailes:UserService,private activeroute: ActivatedRoute,) {
       this.id=this.activeroute.snapshot.params['id'] 
+      console.log(this.id )
      }
   
     ngOnInit(): void {

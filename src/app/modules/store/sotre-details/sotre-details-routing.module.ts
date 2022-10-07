@@ -23,6 +23,8 @@ import { StoresellercodepaidComponent } from './components/store-paid-sales/stor
 import { DoubleViewComponent } from './components/store-profile/double-view/double-view.component';
 import { StoreProfileComponent } from './components/store-profile/store-profile.component';
 import { StoreTotalViewsComponent } from './components/store-total-views/store-total-views.component';
+import { StoreallcodeComponent } from './components/storeallcode/storeallcode.component';
+import { StoreallcodesellerComponent } from './components/storeallcodeseller/storeallcodeseller.component';
 import { TotalSalesComponent } from './components/total-sales/total-sales.component';
 import { StoreDetailsLayoutComponent } from './store-details-layout.component';
 
@@ -76,6 +78,14 @@ const routes: Routes = [
       path:'salescode/:id/:index',
       component:StoresalescodefromstoreComponent
     },
+    {
+        path:'allcode/:order-id/:store-id',
+        component:StoreallcodesellerComponent
+    },
+    {
+      path:'allcodeseller/:order-id/:store-id',
+      component:StoreallcodeComponent
+  },
       {
         path: "rejected-sales/:id",
         component: RejectedSalesComponent

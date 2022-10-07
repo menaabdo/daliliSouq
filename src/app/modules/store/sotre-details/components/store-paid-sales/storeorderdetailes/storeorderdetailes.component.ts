@@ -14,8 +14,12 @@ export class StoreorderdetailesComponent implements OnInit {
   id!:number
   response!:any
   order!:Order
+  store_id!:number
+  order_id!:number
     constructor(private orderdetailes:UserService,private activeroute: ActivatedRoute,) {
       this.id=this.activeroute.snapshot.params['id'] 
+      this.store_id=this.activeroute.snapshot.params['store-id']
+      this.order_id=this.activeroute.snapshot.params['order-id']
      }
   
 

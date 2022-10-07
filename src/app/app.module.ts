@@ -70,6 +70,10 @@ import { EditStoreActiveComponent } from './modules/store/products/components/ed
 import { EditStorePassiveComponent } from './modules/store/products/components/edit-store-passive/edit-store-passive.component';
 import { EditStoreExpireComponent } from './modules/store/products/components/edit-store-expire/edit-store-expire.component';
 import { StoresalescodefromstoreComponent } from './modules/store/sotre-details/components/store-my-sales/storesalescodefromstore/storesalescodefromstore.component';
+import { AllcodeComponent } from './allcode/allcode.component';
+import { AllcodesellerComponent } from './allcodeseller/allcodeseller.component';
+import { StoreallcodesellerComponent } from './modules/store/sotre-details/components/storeallcodeseller/storeallcodeseller.component';
+import { StoreallcodeComponent } from './modules/store/sotre-details/components/storeallcode/storeallcode.component';
 
 
 
@@ -130,6 +134,10 @@ import { StoresalescodefromstoreComponent } from './modules/store/sotre-details/
     EditStorePassiveComponent,
     EditStoreExpireComponent,
     StoresalescodefromstoreComponent,
+    AllcodeComponent,
+    AllcodesellerComponent,
+    StoreallcodesellerComponent,
+    StoreallcodeComponent,
     
     
 

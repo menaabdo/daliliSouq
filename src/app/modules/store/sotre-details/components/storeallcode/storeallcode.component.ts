@@ -4,13 +4,12 @@ import { Order } from 'src/app/models/order.model';
 import { UserService } from 'src/app/service/user.service';
 
 @Component({
-  selector: 'app-store-sales-detailes',
-  templateUrl: './store-sales-detailes.component.html',
-  styleUrls: ['./store-sales-detailes.component.scss']
+  selector: 'app-storeallcode',
+  templateUrl: './storeallcode.component.html',
+  styleUrls: ['./storeallcode.component.scss']
 })
-export class StoreSalesDetailesComponent implements OnInit {
+export class StoreallcodeComponent implements OnInit {
 
-  term=''
   id!:number
   response!:any
   order!:Order
@@ -30,9 +29,10 @@ export class StoreSalesDetailesComponent implements OnInit {
     this.orderdetailes.store_order_detailes(this.activeroute.snapshot.params['store-id'],this.activeroute.snapshot.params['order-id']).subscribe((res)=>{this.response=res; this.order=this.response.Response
    console.log(res)})
   }
-  setoutofstock(cart_id:number){
-    this.flag=1
-this.orderdetailes.setoutofstock(cart_id).subscribe((res)=>{console.log(res); window.location.reload()})
+  copyit(){
+    const cb = navigator.clipboard;
+    const paragraph = document.getElementById('p')!;
+    cb.writeText(paragraph.innerText)
+  
   }
-
 }

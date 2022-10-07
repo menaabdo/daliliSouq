@@ -4,35 +4,34 @@ import { Order } from 'src/app/models/order.model';
 import { UserService } from 'src/app/service/user.service';
 
 @Component({
-  selector: 'app-store-sales-detailes',
-  templateUrl: './store-sales-detailes.component.html',
-  styleUrls: ['./store-sales-detailes.component.scss']
+  selector: 'app-storeallcodeseller',
+  templateUrl: './storeallcodeseller.component.html',
+  styleUrls: ['./storeallcodeseller.component.scss']
 })
-export class StoreSalesDetailesComponent implements OnInit {
+export class StoreallcodesellerComponent implements OnInit {
 
-  term=''
   id!:number
   response!:any
   order!:Order
-  flag=0
   store_id!:number
   order_id!:number
     constructor(private orderdetailes:UserService,private activeroute: ActivatedRoute,) {
-      this.id=this.activeroute.snapshot.params['store-id'] 
+      this.id=this.activeroute.snapshot.params['id'] 
       this.store_id=this.activeroute.snapshot.params['store-id']
       this.order_id=this.activeroute.snapshot.params['order-id']
-    
      }
   
 
   ngOnInit(): void {
-    console.log(this.id)
     this.orderdetailes.store_order_detailes(this.activeroute.snapshot.params['store-id'],this.activeroute.snapshot.params['order-id']).subscribe((res)=>{this.response=res; this.order=this.response.Response
    console.log(res)})
   }
-  setoutofstock(cart_id:number){
-    this.flag=1
-this.orderdetailes.setoutofstock(cart_id).subscribe((res)=>{console.log(res); window.location.reload()})
+  copyit(){
+    const cb = navigator.clipboard;
+    const paragraph = document.getElementById('p')!;
+    cb.writeText(paragraph.innerText)
+  
   }
+
 
 }
