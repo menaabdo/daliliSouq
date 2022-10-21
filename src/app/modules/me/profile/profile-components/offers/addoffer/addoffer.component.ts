@@ -9,6 +9,7 @@ import { Product } from 'src/app/models/product.model';
 import { Store } from 'src/app/models/store.model';
 import { CategoryService } from 'src/app/service/category.service';
 import { UserService } from 'src/app/service/user.service';
+import * as L from 'leaflet';
 
 @Component({
   selector: 'app-addoffer',
@@ -20,6 +21,7 @@ export class AddofferComponent implements OnInit {
   country!:Country
   result:any 
 map:any
+marker!:any
   response!:any
   response1!:any
   add!:Address
@@ -99,6 +101,7 @@ map:any
     })
     this.storessserve.profile({country_id:1}).subscribe((res)=>{this.response2=res;this.add=this.response2.Response.address
       this.country=this.response2.Response.country
+      this.getmap()
     //   //   // let loader=new Loader({apiKey:'AIzaSyCuU2Tnmy93AuQWWQ7DAGJT95OJKZYZdwY'})
     //   //   // loader.load().then(() => {
       
@@ -220,5 +223,56 @@ map:any
     this.data.category_store_name=''
     
   }
+  // //////////////////////////////////////////
+  getmap(){
+    let map=this.map= new L.Map('map').setView([this.data.lat ||0, this.data.lng||0],10);
+    var marker=this.marker = L.marker([this.add.lat, this.add.long]).addTo(map)
+  
+    console.log(this.data.lng,this.data.lat)
+
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+    maxZoom: 19,
+    attribution: '© OpenStreetMap'
+  }).addTo(map)
+  map.on('click', (e:any) =>{
+    var lat,
+    lon,
+    zoom;
+
+lat = e.latlng.lat;
+lon = e.latlng.lng;
+zoom = map.getZoom();
+console.log("You clicked the map at LAT: "+ lat+" and LONG: "+lon );
+if (marker != undefined) {
+  map.removeLayer(marker);
+};
+marker =  L.marker([lat,lon]).addTo(map); 
+this.data.lat=lat,
+this.data.lng=lon
+
+     })
+  
+  }
+  movemarker(){
+    this.map.remove()
+    let map=this.map= new L.Map('map').setView([this.data.lat ||0, this.data.lng||0],10);
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+      maxZoom: 10,
+      attribution: '© OpenStreetMap'
+    }).addTo(this.map)
+   this. map.removeLayer(this.marker);
+    let lat=0;let lng=0
+   lat =this.data.lat ||0
+    lng=this.data.lng ||0
+    console.log(lat,lng)
+  this.marker =  L.marker([lat,lng]).addTo(this.map); 
+ 
+  
+       
+  
+  } 
+
+  
+  
 
 }
